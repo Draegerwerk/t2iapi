@@ -1,0 +1,57 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi;
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.draeger.medical.t2iapi";
+option java_outer_classname = "ResponseTypes";
+
+
+/* Indicates the status of the rpc */
+enum Result {
+    RESULT_FAIL = 0;
+    RESULT_SUCCESS = 1;
+    RESULT_NOT_SUPPORTED = 2;
+    RESULT_NOT_IMPLEMENTED = 3;
+}
+
+
+/*
+Contains representations of Identifications (defined in SDC) with the fields needed for identifying an ensemble.
+ */
+message PartialIdentification {
+    google.protobuf.StringValue root = 1;       // a unique identifier that guarantees the global uniqueness of the
+                                                // instance identifier
+    google.protobuf.StringValue extension = 2;  // a unique identifier within the scope of pm:InstanceIdentifier/pm:Root
+    PartialCodedValue identification_type = 3;  // provides specific information about the identification instance
+}
+
+/*
+List of representations of CodedValues (defined in SDC) with the fields needed for CodedValue equality check
+ */
+message PartialCodedValue {
+    repeated Translation translations = 1;  // a list of alternative or equivalent representations for the Coded Value
+}
+
+/*
+Represents Translation from the IEEE Std 11073-10207-2017.
+ */
+message Translation {
+    string translation_code = 1;  // unique identifier of the Code in the Coding System
+    string coding_system = 2;   // unique identifier of a Coding System that Code is originating from.
+                                // The implied value in the IEEE Std 11073-10207-2017 for the coding system is
+                                // urn:oid:1.2.840.10004.1.1.1.0.0.1, however this is not the implied value here.
+                                // If urn:oid:1.2.840.10004.1.1.1.0.0.1 shall be the coding system here,
+                                // then it shall be set explicitly as a value. Also note that even though it may be
+                                // allowed as a value in protobuf and the default value, an empty string is not allowed
+                                // on the application level, since it is not a valid URI.
+    google.protobuf.StringValue coding_system_version = 3;  // Coding System Version is a particular version
+                                                            // of the Coding System defined by Coding System
+}

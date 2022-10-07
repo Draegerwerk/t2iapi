@@ -1,0 +1,70 @@
+name: Build python package
+
+on:
+  pull_request: # Apply to all pull requests
+  push: # Apply to all branches
+
+env:
+  PIP_VERSION: 22.0.4
+  WHEEL_VERSION: 0.37.0
+  HTML_TEST_RUNNER_VERSION: 1.2.1
+
+jobs:
+  build-python:
+    runs-on: ubuntu-latest
+    steps:
+      # Run `git checkout`
+      - uses: actions/checkout@v2
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v1
+        with:
+          version: '3.19.2'
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8.10'
+      - name: Install python dependencies
+        run: python -m pip install --no-cache-dir --upgrade pip==${PIP_VERSION} wheel==${WHEEL_VERSION}
+      - name: Protobuf compile
+        working-directory: ./python
+        run: ./build_protobuf.sh
+      - name: build wheel
+        working-directory: ./python
+        run: python setup.py sdist bdist_wheel
+      - name: Archive wheel
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: python/dist
+          retention-days: 1
+  run-tests-python:
+    runs-on: ubuntu-latest
+    needs: build-python
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8.10'
+      - name: Download t2iapi wheel artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - name: Install t2iapi package
+        run: python3.8 -m pip install t2iapi*.whl
+      - name: pip freeze
+        run: python3.8 -m pip freeze --no-cache-dir > pip_freeze.txt
+      - name: install html test runner
+        run: python3.8 -m pip install html-testRunner==${HTML_TEST_RUNNER_VERSION}
+      - name: run unit tests
+        run: python3.8 ./tests/python/html_report.py
+      - name: Archive freeze information
+        uses: actions/upload-artifact@v3
+        with:
+          name: freeze
+          path: pip_freeze.txt
+          retention-days: 1
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: html_unit_test
+          path: unittest_results/*.html
+          retention-days: 1

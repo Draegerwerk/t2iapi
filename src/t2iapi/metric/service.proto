@@ -1,0 +1,109 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.metric;
+
+import "t2iapi/basic_responses.proto";
+import "t2iapi/basic_requests.proto";
+import "t2iapi/metric/metric_requests.proto";
+import "t2iapi/metric/metric_responses.proto";
+
+option java_package = "com.draeger.medical.t2iapi.metric";
+option java_outer_classname = "MetricApiService";
+
+/*
+Service to handle metric manipulations.
+ */
+service MetricService {
+
+    /*
+    Set the metric value for the provided handle over the provided upper bound.
+     */
+    rpc SetOverflow (t2iapi.metric.SetOverflowRequest)
+        returns (t2iapi.metric.SetOverOrUnderflowResponse);
+
+    /*
+    Set the metric value of the provided handle under the provided lower bound.
+     */
+    rpc SetUnderflow (t2iapi.metric.SetUnderflowRequest)
+        returns (t2iapi.metric.SetOverOrUnderflowResponse);
+
+    /*
+    Set the MetricQuality/@Validity of the metric with the given handle to the given validity value.
+     */
+    rpc SetMetricQualityValidity (t2iapi.metric.SetMetricQualityValidityRequest)
+        returns (BasicResponse);
+
+    /*
+    Set no metric values for the provided metric handle.
+     */
+    rpc SetNoValue (BasicHandleRequest)
+        returns (BasicResponse);
+
+    /*
+    Change the value for the metric with the provided handle and confirm the value using the device ui.
+     */
+    rpc SetUserConfirmableValue (BasicHandleRequest)
+        returns (BasicResponse);
+
+    /*
+    Set the metric value for the provided handle to an invalid value.
+     */
+    rpc SetInvalidValue (BasicHandleRequest)
+        returns (BasicResponse);
+
+    /*
+    Calibrate the metric for the provided handle and return the calibration values.
+     */
+    rpc CalibrateMetric (BasicHandleRequest)
+        returns (t2iapi.metric.CalibrateMetricResponse);
+
+    /*
+    Provide metric values with a specific MetricQuality/@Validity for the metric with the given handle.
+     */
+    rpc SetMetricValuesWithQualityValidity (t2iapi.metric.SetMetricQualityValidityRequest)
+        returns (BasicResponse);
+
+     /*
+    Provide metric values with a specific MetricQuality/@Mode for the metric with the given handle.
+     */
+    rpc SetMetricValuesWithQualityMode (t2iapi.metric.SetMetricValuesWithQualityModeRequest)
+        returns (BasicResponse);
+
+    /*
+    Set metric values within a given range. If no limit value is defined, random but valid metric values shall be set.
+    If a limit is defined, it shall not be violated by metric values.
+     */
+    rpc SetMetricValuesInRange (t2iapi.metric.SetMetricValuesInRangeRequest)
+        returns (BasicResponse);
+
+    /*
+    Get the current value of the Numeric metric with the given handle.
+    Only values from the gui should be used (not from SDC).
+     */
+    rpc GetMetricValue (BasicHandleRequest)
+        returns (t2iapi.metric.MetricValueResponse);
+
+    /*
+    Change the status of an operation mode.
+
+    An operation mode represents a specific behaviour of a device that can be enabled, paused or disabled,
+    typically by the user.
+    BICEPS does not provide a model element out of the box that can be used for such a mode, thus the operation mode
+    is represented by a pm:EnumStringMetricDescriptor, as described by MPKP draft.
+     */
+    rpc ChangeOperationModeStatus (t2iapi.metric.ChangeOperationModeStatusRequest)
+        returns (BasicResponse);
+
+    /*
+    Set the provided measurement, calculation or setting status for the metric of the provided handle. This is not the
+    AbstractMetricState/@ActivationState, but the internal state of the device.
+     */
+    rpc SetMetricStatus (t2iapi.metric.SetMetricStatusRequest) returns (BasicResponse);
+}

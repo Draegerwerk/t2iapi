@@ -1,0 +1,22 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.operation;
+
+option java_package = "com.draeger.medical.t2iapi.operation";
+option java_outer_classname = "OperationTypes";
+
+/*
+Represents AbstractOperatingState/@OperatingMode from the IEEE Std 11073-10207-2017.
+ */
+enum OperatingMode {
+    OPERATING_MODE_DISABLED = 0;
+    OPERATING_MODE_ENABLED = 1;
+    OPERATING_MODE_NOT_AVAILABLE = 2;
+}

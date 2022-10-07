@@ -1,0 +1,45 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.activation_state;
+
+import "t2iapi/activation_state/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.activation_state";
+option java_outer_classname = "ActivationStateRequests";
+
+/*
+Request to set the ActivationState of the component or metric with the given handle to the
+given ComponentActivation value.
+ */
+message SetComponentActivationRequest {
+    string handle = 1;  // descriptor handle of the descriptor for which the ActivationState shall be set
+                        // in the corresponding state element
+    ComponentActivation activation = 2;  // value to set as the ActivationState value
+}
+
+/*
+Request to set the ActivationState of the alert with the given handle to the
+given AlertActivation value.
+ */
+message SetAlertActivationRequest {
+    string handle = 1;  // descriptor handle of the descriptor for which the ActivationState shall be set
+                        // in the corresponding state element
+    AlertActivation activation = 2;  // value to set as the ActivationState value
+}
+
+/*
+Request to set the SystemSignalActivation with the given AlertSignalManifestation and AlertActivation for the alert
+system with the given handle.
+ */
+message SetSystemSignalActivationRequest {
+    string handle = 1; // handle reference of the alert system
+    AlertSignalManifestation manifestation = 2;
+    AlertActivation activation = 3;
+}

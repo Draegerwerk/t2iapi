@@ -1,0 +1,61 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.device;
+
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.draeger.medical.t2iapi.device";
+option java_outer_classname = "DeviceTypes";
+
+/*
+Represents a type of msg:AbstractReport message from the IEEE Std 11073-10207-2017.
+ */
+enum ReportType{
+    REPORT_TYPE_EPISODIC_ALERT_REPORT = 0;                // EpisodicAlertReport of type msg:AbstractAlertReport
+    REPORT_TYPE_EPISODIC_COMPONENT_REPORT = 1;            // EpisodicComponentReport of type msg:AbstractComponentReport
+    REPORT_TYPE_EPISODIC_CONTEXT_REPORT = 2;              // EpisodicContextReport of type msg:AbstractContextReport
+    REPORT_TYPE_EPISODIC_METRIC_REPORT = 3;               // EpisodicMetricReport of type msg:AbstractMetricReport
+    REPORT_TYPE_EPISODIC_OPERATIONAL_STATE_REPORT = 4;    // EpisodicOperationalStateReport of type
+                                                          // msg:AbstractOperationalStateReport
+
+    REPORT_TYPE_PERIODIC_ALERT_REPORT = 5;                // PeriodicAlertReport of type msg:AbstractAlertReport
+    REPORT_TYPE_PERIODIC_COMPONENT_REPORT = 6;            // PeriodicComponentReport of type msg:AbstractComponentReport
+    REPORT_TYPE_PERIODIC_CONTEXT_REPORT = 7;              // PeriodicContextReport of type msg:AbstractContextReport
+    REPORT_TYPE_PERIODIC_METRIC_REPORT = 8;               // PeriodicMetricReport of type msg:AbstractMetricReport
+    REPORT_TYPE_PERIODIC_OPERATIONAL_STATE_REPORT = 9;    // PeriodicOperationalStateReport of type
+                                                          // msg:AbstractOperationalStateReport
+
+    REPORT_TYPE_DESCRIPTION_MODIFICATION_REPORT = 10;     // DescriptionModificationReport of type msg:AbstractReport
+    REPORT_TYPE_OPERATION_INVOKED_REPORT = 11;            // OperationInvokedReport of type msg:AbstractReport
+    REPORT_TYPE_SYSTEM_ERROR_REPORT = 12;                 // SystemErrorReport of type msg:AbstractReport
+    REPORT_TYPE_OBSERVED_VALUE_STREAM = 13;               // ObservedValueStream of type msg:AbstractReport
+    REPORT_TYPE_WAVEFORM_STREAM = 14;                     // WaveformStream of type msg:AbstractReport
+}
+
+
+/*
+Represents MdsOperatingMode from the IEEE Std 11073-10207-2017.
+ */
+enum MdsOperatingMode{
+    MDS_OPERATING_MODE_NORMAL = 0;
+    MDS_OPERATING_MODE_DEMO = 1;
+    MDS_OPERATING_MODE_SERVICE = 2;
+    MDS_OPERATING_MODE_MAINTENANCE = 3;
+}
+
+
+/*
+Contains information according to an expanded xml name.
+Also see the XML 1.0 specification.
+ */
+message ExpandedName {
+    google.protobuf.StringValue uri = 1;
+    string local_name = 2;
+}

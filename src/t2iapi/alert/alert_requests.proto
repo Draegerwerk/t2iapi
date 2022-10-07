@@ -1,0 +1,63 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.alert;
+
+import "t2iapi/alert/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.alert";
+option java_outer_classname = "AlertRequests";
+
+// module for alert requests
+
+
+/*
+This message is used as a request to set the AlertConditionState/@Presence.
+ */
+message SetAlertConditionPresenceRequest {
+    string handle = 1;  // handle of the alert condition state for which the presence shall be set
+    bool presence = 2;  // alert condition presence to be set
+}
+
+/*
+This message is used as a request to set AlertSignalState/@Presence.
+ */
+message SetAlertSignalPresenceRequest {
+  string handle = 1;  // handle reference of the alert signal
+  AlertSignalPresence presence = 2;  // alert signal presence to set
+}
+
+/*
+This message is used as a request to enable or disable the AlertSignalInactivationState represented by an
+AlertCondition. The AlertCondition is used to identify the AlertSignalInactivationState as there is no other way
+to do so, because it is not directly modelled in the MDIB.
+ */
+message SetAlarmSignalInactivationStateRequest{
+    string handle = 1;  // handle reference of the alert condition
+    AlarmSignalInactivationState enable = 2;
+}
+
+/*
+Request for a given alert condition to start/stop escalation/deescalation action from one alert priority to another.
+The alert priority can be set to Low, Medium, High or None.
+ */
+message AlertConditionEscalationRequest {
+  string handle = 1;
+  AlertConditionEscalationProcess escalation_process = 2;
+}
+
+/*
+This message is used as a request to trigger a MDIB change, which causes the AlertCondition corresponding to the given
+handle to change its Presence to the given value.
+ */
+message SetAlertConditionAndReturnCauseRequest {
+  string handle = 1;  // handle reference of the alert condition
+  AlertConditionPresence presence = 2;
+}
+

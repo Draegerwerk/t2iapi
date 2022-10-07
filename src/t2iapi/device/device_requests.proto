@@ -1,0 +1,56 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.device;
+
+import "t2iapi/device/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.device";
+option java_outer_classname = "DeviceRequests";
+
+
+/*
+Request to trigger an msg:AbstractReport message of the given type.
+ */
+message TriggerReportRequest {
+    ReportType report = 1;  // a type of msg:AbstractReport message
+}
+
+/*
+Request to set the device to a specific operating mode.
+ */
+message SetDeviceOperatingModeRequest {
+    MdsOperatingMode mode = 1;  // value to set as the MdsOperatingMode value
+}
+
+/*
+Request to generate all elements that can possibly exist at the same time and fulfill the given path.
+ */
+message GenerateElementsInStatesRequest {
+    // each name represents an element name and its context in the MDIB,
+    // whereas not a full path is given, but only a relative path with minimum length for uniqueness
+    // e.g. [(http://standards.ieee.org/downloads/11073/11073-10207-2017/participant, Unit),
+    //       (http://standards.ieee.org/downloads/11073/11073-10207-2017/participant, CodingSystemName)]
+    repeated ExpandedName relative_path = 1;
+}
+
+/*
+Request to set the device's (displayed) language to the given language.
+ */
+message SetLanguageRequest {
+    string language = 1;  // the language to set as specified by RFC5646, e.g. en-US
+}
+
+/*
+Request a change of the MDIB SequenceId.
+ */
+message ChangeMdibSequenceIdRequest {
+    string descriptive_name = 1;  // descriptive name as a string which describes the trigger
+                                  // for a change of the MDIB SequenceId
+}

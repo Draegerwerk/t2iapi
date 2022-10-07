@@ -1,0 +1,67 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.metric;
+
+option java_package = "com.draeger.medical.t2iapi.metric";
+option java_outer_classname = "MetricTypes";
+
+/*
+Represents MeasurementValidity from the IEEE Std 11073-10207-2017.
+ */
+enum MeasurementValidity{
+    MEASUREMENT_VALIDITY_VALID = 0;
+    MEASUREMENT_VALIDITY_VALIDATED_DATA = 1;
+    MEASUREMENT_VALIDITY_MEASUREMENT_ONGOING = 2;
+    MEASUREMENT_VALIDITY_QUESTIONABLE = 3;
+    MEASUREMENT_VALIDITY_CALIBRATION_ONGOING = 4;
+    MEASUREMENT_VALIDITY_INVALID = 5;
+    MEASUREMENT_VALIDITY_OVERFLOW = 6;
+    MEASUREMENT_VALIDITY_UNDERFLOW = 7;
+    MEASUREMENT_VALIDITY_NA = 8;  // Not Available
+}
+
+/*
+Represents GenerationMode from the IEEE Std 11073-10207-2017.
+ */
+enum GenerationMode{
+    GENERATION_MODE_REAL = 0;
+    GENERATION_MODE_TEST = 1;
+    GENERATION_MODE_DEMO = 2;
+}
+
+/*
+Defines the possible operation mode states according to MPKP draft.
+ */
+enum OperationModeStatus {
+    OPERATION_MODE_STATUS_ON = 0;  // operation mode is applied
+    OPERATION_MODE_STATUS_OFF = 1;  // operation mode is not applied, but available
+    OPERATION_MODE_STATUS_PAUSED = 2;  // operation mode is not applied, but available
+}
+
+/*
+The MetricStatus is intended to reflect the state of the device and is not the ActivationState.
+This state in turn should trigger the setting of the ActivationState, it is linked to the
+AbstractMetricState/@ActivationState.
+As defined in IEEE 11073-10207-2017 Table 5, 6 and 7:
+PERFORMED_OR_APPLIED: ActivationState On,
+CURRENTLY_INITIALIZING: ActivationState NotRdy,
+INITIALIZED_BUT_NOT_PERFORMING_OR_APPLYING: ActivationState StndBy,
+CURRENTLY_DE_INITIALIZING: ActivationState Shtdn,
+DE_INITIALIZED_AND_NOT_PERFORMING_OR_APPLYING: ActivationState Off,
+FAILED: ActivationState Fail.
+ */
+enum MetricStatus {
+    METRIC_STATUS_PERFORMED_OR_APPLIED = 0;
+    METRIC_STATUS_CURRENTLY_INITIALIZING = 1;
+    METRIC_STATUS_INITIALIZED_BUT_NOT_PERFORMING_OR_APPLYING = 2;
+    METRIC_STATUS_CURRENTLY_DE_INITIALIZING = 3;
+    METRIC_STATUS_DE_INITIALIZED_AND_NOT_PERFORMING_OR_APPLYING = 4;
+    METRIC_STATUS_FAILED = 5;
+}

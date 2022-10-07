@@ -1,0 +1,42 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.metric;
+
+import "t2iapi/basic_responses.proto";
+import "t2iapi/response_types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.metric";
+option java_outer_classname = "MetricResponses";
+
+/*
+Response containing the value which caused the over- or underflow.
+ */
+message SetOverOrUnderflowResponse {
+    BasicResponse status = 1;
+    string value = 2;  // the first NumericMetricValue that causes overflow or underflow
+}
+
+/*
+This message is used as a response for the CalibrateMetric manipulation. It returns a list of NumericMetricValue/@Value
+or SampleArrayValue/@Samples as strings measured during the calibration. An empty list is returned if no values
+can be provided.
+ */
+message CalibrateMetricResponse {
+    BasicResponse response = 1;
+    repeated string values = 2;
+}
+
+// Describes return value for the rpc that returns current Numeric Metric value
+message MetricValueResponse {
+    BasicResponse result = 1;  // the status of the rpc indicating whether or not it was successful
+    string value = 2;  // string representation of the decimal value of the metric
+    string step_width = 3;  // string representation of the decimal value of the metric value step width
+    PartialCodedValue unit = 4;  // the metric unit, represented by a partial coded value with translation
+}

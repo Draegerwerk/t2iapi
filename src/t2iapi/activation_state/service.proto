@@ -1,0 +1,43 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.activation_state;
+
+import "t2iapi/basic_responses.proto";
+import "t2iapi/activation_state/activation_state_requests.proto";
+
+option java_package = "com.draeger.medical.t2iapi.activation_state";
+option java_outer_classname = "ActivationStateApiService";
+
+
+/*
+Service to handle activation manipulations.
+ */
+service ActivationStateService {
+
+  /*
+  Set the ActivationState of the Alert with the given handle to the given AlertActivation value.
+   */
+  rpc SetAlertActivation (t2iapi.activation_state.SetAlertActivationRequest)
+      returns (BasicResponse);
+
+  /*
+  Set the ActivationState of the DeviceComponent or Metric
+  with the given handle to the given ComponentActivation value.
+   */
+  rpc SetComponentActivation (t2iapi.activation_state.SetComponentActivationRequest)
+      returns (BasicResponse);
+
+  /*
+  Set a SystemSignalActivation for a alert system with the given handle.
+   */
+  rpc SetSystemSignalActivation (t2iapi.activation_state.SetSystemSignalActivationRequest)
+      returns (BasicResponse);
+}
+

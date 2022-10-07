@@ -1,0 +1,113 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.device;
+
+import "google/protobuf/empty.proto";
+
+import "t2iapi/basic_responses.proto";
+import "t2iapi/basic_requests.proto";
+import "t2iapi/device/device_requests.proto";
+import "t2iapi/device/device_responses.proto";
+
+option java_package = "com.draeger.medical.t2iapi.device";
+option java_outer_classname = "DeviceApiService";
+
+/*
+Service to handle device manipulations.
+ */
+service DeviceService {
+
+    /*
+    Switch the device into a specific operating mode.
+    This manipulation shall result in a Mds having a specific MdsOperatingMode.
+     */
+    rpc SetDeviceOperatingMode (t2iapi.device.SetDeviceOperatingModeRequest)
+        returns (BasicResponse);
+
+    /*
+    Shutdown the device.
+     */
+    rpc ShutDownDevice (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Boot up the device.
+     */
+    rpc BootUpDevice (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Announce the presence of the device in the network via a WS-Discovery Hello message.
+     */
+    rpc SendHello (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Adjust the clock of the device as if it were set manually by a user.
+     */
+    rpc SetClockDevice (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Generate all elements, that can possibly exist at the same time and fulfill the given path.
+     */
+    rpc GenerateElementsInStates (t2iapi.device.GenerateElementsInStatesRequest)
+    returns (BasicResponse);
+
+    /*
+    Set the device's (displayed) language to the given language.
+     */
+    rpc SetLanguage (t2iapi.device.SetLanguageRequest) returns (BasicResponse);
+
+    /*
+    Get all descriptor handles which can be removed and reinserted into the MDIB of the device.
+    Includes handles which have been removed already and can be reinserted.
+    Handles must stay the same once reinserted into the MDIB.
+    The handles shall be representative of the devices capabilities to remove
+    descriptors (at least one of every possible kind).
+     */
+    rpc GetRemovableDescriptors (google.protobuf.Empty)
+        returns (t2iapi.device.GetRemovableDescriptorsResponse);
+
+    /*
+    Remove a descriptor from the device MDIB.
+     */
+    rpc RemoveDescriptor(BasicHandleRequest) returns (BasicResponse);
+
+    /*
+    Insert a descriptor into the device MDIB.
+     */
+    rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
+
+    /*
+    Change of the MDIB SequenceId.
+    This manipulation of the device shall trigger a change of the MDIB SequenceId.
+     */
+    rpc ChangeMdibSequenceID (ChangeMdibSequenceIdRequest) returns (BasicResponse);
+
+    /*
+    Insert an mds descriptor into the device MDIB.
+    */
+    rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
+
+    /*
+    Remove an mds descriptor from the device MDIB.
+     */
+    rpc RemoveMdsDescriptor (BasicHandleRequest) returns (BasicResponse);
+
+    /*
+    Trigger a descriptor update for the provided handle.
+    This manipulation of the device shall result in a msg:DescriptionModificationReport message with a report part with
+    modification type upt.
+     */
+    rpc TriggerDescriptorUpdate (BasicHandleRequest) returns (BasicResponse);
+
+     /*
+    Trigger a report message of the provided type.
+    This manipulation of the device shall result in an msg:AbstractReport message of the provided type.
+     */
+    rpc TriggerReport (TriggerReportRequest) returns (BasicResponse);
+}

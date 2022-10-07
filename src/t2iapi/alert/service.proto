@@ -1,0 +1,87 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.alert;
+
+import "t2iapi/basic_responses.proto";
+import "t2iapi/basic_requests.proto";
+import "t2iapi/alert/alert_requests.proto";
+import "t2iapi/alert/alert_responses.proto";
+import "google/protobuf/empty.proto";
+
+
+option java_package = "com.draeger.medical.t2iapi.alert";
+option java_outer_classname = "AlertApiService";
+
+
+/*
+Service to handle alert manipulations.
+ */
+service AlertService {
+
+    /*
+    Set the AlertCondition/@Presence of the AlertCondition with the given handle to the given value.
+     */
+    rpc SetAlertConditionPresence (t2iapi.alert.SetAlertConditionPresenceRequest)
+        returns (BasicResponse);
+
+    /*
+    Set the AlertSignal/Presence for a given alert signal handle.
+     */
+    rpc SetAlertSignalPresence (t2iapi.alert.SetAlertSignalPresenceRequest)
+        returns (BasicResponse);
+
+    /*
+    Set device audio pause.
+    Audio pause: if initiated, all SystemSignalActivation/State for all alarm systems of the device with
+    SystemSignalActivation/Manifestation evaluating to 'Aud' shall be set to 'Psd'.
+     */
+    rpc SetAudioPause (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Cancel audio pause.
+    Audio pause: suppresses the acoustic alarm signal of the device for all active alarms for a certain period of time.
+     */
+    rpc CancelAudioPause (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Start/Stop an Escalation/Deescalation of the AlertConditionPriority for a given alert condition handle.
+     */
+    rpc AlertConditionEscalation (t2iapi.alert.AlertConditionEscalationRequest)
+        returns (BasicResponse);
+
+    /*
+    Trigger a MDIB change, which causes the AlertCondition/@Presence to change and return the descriptor handle for
+    the value that changed and StateVersion of the first occurrence of the change that causes the Presence change.
+     */
+    rpc SwitchAlertConditionAndReturnCause (t2iapi.alert.SetAlertConditionAndReturnCauseRequest)
+        returns (t2iapi.alert.SetAlertConditionAndReturnCauseResponse);
+
+    /*
+    Change the state of the alarm signal inactivation state represented by the AlertCondition with the given
+    handle as requested.
+
+    Inactivation States can be for example:
+    - Global Audio Pause, could have an condition with the text "Audio Pause"
+    - "Pressures Off"
+    - Cardiac By-Pass Mode
+     */
+    rpc SetAlarmSignalInactivationState (t2iapi.alert.SetAlarmSignalInactivationStateRequest)
+        returns (BasicResponse);
+
+    /*
+    Set the AlertSystem with the given handle to not functional.
+     */
+    rpc SetAlertSystemNotFunctional (BasicHandleRequest) returns (BasicResponse);
+
+    /*
+    Initiate alarm off for the AlertCondition with the given handle.
+     */
+    rpc InitiateAlarmOff (BasicHandleRequest) returns (BasicResponse);
+}

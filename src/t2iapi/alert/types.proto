@@ -1,0 +1,51 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.alert;
+
+option java_package = "com.draeger.medical.t2iapi.alert";
+option java_outer_classname = "AlertTypes";
+
+/*
+It defines the possible generation states of an alert signal.
+Based on the specification in: IEEE Std 11073-10207-2017
+ */
+enum AlertSignalPresence {
+  ALERT_SIGNAL_PRESENCE_ON = 0;
+  ALERT_SIGNAL_PRESENCE_OFF = 1;
+  ALERT_SIGNAL_PRESENCE_LATCH = 2; // Latch = Latched.
+  ALERT_SIGNAL_PRESENCE_ACK = 3; // Ack = Acknowledged.
+}
+
+/*
+This enum describes all possibilities to start / stop an escalation / deescalation process for an alert condition.
+ */
+enum AlertConditionEscalationProcess {
+  ALERT_CONDITION_ESCALATION_PROCESS_START_ESCALATION = 0;
+  ALERT_CONDITION_ESCALATION_PROCESS_STOP_ESCALATION = 1;
+  ALERT_CONDITION_ESCALATION_PROCESS_START_DEESCALATION = 2;
+  ALERT_CONDITION_ESCALATION_PROCESS_STOP_DEESCALATION = 3;
+}
+
+/*
+Defines the state of AlarmSignalInactivation, Enabled or Disabled.
+ */
+enum AlarmSignalInactivationState {
+  ALARM_SIGNAL_INACTIVATION_STATE_ENABLED = 0;
+  ALARM_SIGNAL_INACTIVATION_STATE_DISABLED = 1;
+}
+
+/*
+The Presence is set to "true" if the AlertCondition has been detected and is still present. Otherwise it
+is set to "false".
+ */
+enum AlertConditionPresence {
+  ALERT_CONDITION_PRESENCE_TRUE = 0;
+  ALERT_CONDITION_PRESENCE_FALSE = 1;
+}
