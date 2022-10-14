@@ -6,6 +6,7 @@ SPDX-License-Identifier: MIT
 */
 
 package com.draeger.medical.t2iapi;
+
 import com.draeger.medical.t2iapi.device.DeviceServiceGrpc;
 import com.draeger.medical.t2iapi.device.DeviceServiceGrpc.DeviceServiceBlockingStub;
 import com.google.protobuf.Empty;

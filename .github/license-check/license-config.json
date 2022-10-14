@@ -1,13 +1,18 @@
 [
   {
     "include": [
-      "src/**/*.proto",
-      "tests/java/**/*.java"
+      "src/**/*.proto"
     ],
     "exclude": [
       "src/buf.yaml"
     ],
     "license": "./.github/license-check/header-MIT-draeger-proto.txt"
+  },
+  {
+    "include": [
+      "tests/java/src/**/*.java"
+    ],
+    "license": "./.github/license-check/header-MIT-draeger-java.txt"
   },
 
   {

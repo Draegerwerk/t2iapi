@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Run `git checkout`
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: viperproject/check-license-header@v1
         with:
           path: .
