@@ -57,7 +57,7 @@ enum PatientType {
 }
 
 /*
-Represents ValidatorType from the BPKP.
+Represents ValidatorType from the BPKP Draft.
  */
 enum ValidatorType {
     VALIDATOR_TYPE_USER = 0;

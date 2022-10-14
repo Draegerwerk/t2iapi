@@ -1,7 +1,8 @@
 [
   {
     "include": [
-      "src/**/*.proto"
+      "src/**/*.proto",
+      "tests/java/**/*.java"
     ],
     "exclude": [
       "src/buf.yaml"
@@ -11,7 +12,8 @@
 
   {
     "include": [
-      "python/**/*.py"
+      "python/**/*.py",
+      "tests/python/**/*.py"
     ],
     "license": "./.github/license-check/header-MIT-draeger-python.txt"
   }

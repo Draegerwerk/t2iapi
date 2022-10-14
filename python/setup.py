@@ -21,7 +21,7 @@ setuptools.setup(
     name="t2iapi",
     version=get_build_version(),
     author="T2I Team",
-    author_email="michael.voelker@draeger.com",
+    author_email="DLCDE-ODDS-T2I@draeger.com",
     description="T2I API for device communication in test scenarios",
     long_description='''
     Contains generated python files created from protobuf files.
