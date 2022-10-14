@@ -1,0 +1,54 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.context;
+
+import "t2iapi/basic_responses.proto";
+import "t2iapi/response_types.proto";
+import "t2iapi/context/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.context";
+option java_outer_classname = "ContextResponses";
+
+/*
+Response containing the handle of the newly created context state.
+ */
+message CreateContextStateWithAssociationResponse {
+    BasicResponse status = 1;
+    string context_state_handle = 2;  // handle of the context state, that was created
+}
+
+/*
+Response containing the handle of the newly created context state and its unique identification.
+In case of a PatientContextState having multiple pm:InstanceIdentifier, the @Extension and @Root shall be returned
+for the pm:InstanceIdentifier with pm:Type/@Code = MDC_ATTR_PT_ID.
+ */
+message CreateContextStateWithAssociationAndUniqueIdentificationResponse {
+    BasicResponse status = 1;
+    string context_state_handle = 2;  // handle of the context state, that was created
+    string extension  = 3;  // value of the identifier (from pm:InstanceIdentifier/@Extension)
+    string root  = 4;  // value of the identifier (from pm:InstanceIdentifier/@Root)
+}
+
+/*
+Response which contains all context types supported by the DUT.
+ */
+message GetSupportedContextTypesResponse {
+    BasicResponse status = 1;
+    repeated ContextType context_type = 2; // all types which are supported by the DUT
+}
+
+/*
+Response which contains a list of pm:Identification elements which identify an ensemble and thus enables the caller
+to distinguish ensembles from each other.
+ */
+message EnsembleContextIndicateMembershipWithIdentificationResponse {
+    BasicResponse status = 1;
+    repeated PartialIdentification identification = 2;
+}

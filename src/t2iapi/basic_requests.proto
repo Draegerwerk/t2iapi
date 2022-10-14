@@ -1,0 +1,27 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi;
+
+option java_package = "com.draeger.medical.t2iapi";
+option java_outer_classname = "BasicRequests";
+
+/*
+A basic request which transmits a single handle.
+*/
+message BasicHandleRequest{
+    string handle = 1;
+}
+
+/*
+A basic request which transmits multiple strings.
+*/
+message RepeatedStringRequest{
+    repeated string repeated_string = 1;
+}

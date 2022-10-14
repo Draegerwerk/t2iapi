@@ -1,0 +1,44 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.activation_state;
+
+option java_package = "com.draeger.medical.t2iapi.activation_state";
+option java_outer_classname = "ActivationStateTypes";
+
+/*
+Represents ComponentActivation from the IEEE Std 11073-10207-2017.
+ */
+enum ComponentActivation {
+    COMPONENT_ACTIVATION_ON = 0;
+    COMPONENT_ACTIVATION_NOT_READY = 1;
+    COMPONENT_ACTIVATION_STANDBY = 2;
+    COMPONENT_ACTIVATION_OFF = 3;
+    COMPONENT_ACTIVATION_SHUTDOWN = 4;
+    COMPONENT_ACTIVATION_FAILURE = 5;
+}
+
+/*
+Represents AlertActivation from the IEEE Std 11073-10207-2017.
+ */
+enum AlertActivation {
+    ALERT_ACTIVATION_ON = 0;
+    ALERT_ACTIVATION_OFF = 1;
+    ALERT_ACTIVATION_PSD = 2;  // paused
+}
+
+/*
+Represents AlertSignalManifestation from the IEEE Std 11073-10207-2017.
+ */
+enum AlertSignalManifestation {
+    ALERT_SIGNAL_MANIFESTATION_AUD = 0;
+    ALERT_SIGNAL_MANIFESTATION_VIS = 1;
+    ALERT_SIGNAL_MANIFESTATION_TAN = 2;
+    ALERT_SIGNAL_MANIFESTATION_OTH = 3;
+}

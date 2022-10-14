@@ -1,0 +1,21 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi;
+
+import "t2iapi/response_types.proto";
+
+option java_package = "com.draeger.medical.t2iapi";
+option java_outer_classname = "BasicResponses";
+
+
+// Embed the status of a rpc.
+message BasicResponse {
+    Result result = 1;
+}

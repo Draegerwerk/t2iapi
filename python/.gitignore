@@ -1,0 +1,5 @@
+# ignore all (generated) python files
+src/**/*.py
+
+# don't ignore init py
+!src/**/__init__.py

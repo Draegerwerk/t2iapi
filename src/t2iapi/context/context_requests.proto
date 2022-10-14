@@ -1,0 +1,72 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.context;
+
+import "t2iapi/context/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.context";
+option java_outer_classname = "ContextRequests";
+
+/*
+Request providing a pm:AbstractContextState/@Handle.
+*/
+message ContextStateHandleRequest {
+    string context_state_handle = 1;
+}
+
+/*
+Request to set the location detail for the LocationContextState which is associated and if needed newly created.
+ */
+message SetLocationDetailRequest {
+    LocationDetail location = 1;  // LocationDetail information to be contained in the associated LocationContextState
+}
+
+/*
+Request to set a context state to a specific association.
+ */
+message SetContextStateAssociationRequest {
+    string descriptor_handle = 1;
+    string context_state_handle = 2;
+    ContextAssociation context_association = 3;
+}
+
+/*
+Request to create a new context state with a given association.
+ */
+message CreateContextStateWithAssociationRequest {
+    string descriptor_handle = 1;
+    ContextAssociation context_association = 2;  // the initial association of the context state
+}
+
+/*
+Request to create a new pm:AbstractContextState instance with a given @ContextAssociation and a given number
+of pm:Validator elements.
+ */
+message CreateContextStateWithAssociationAndValidatorsRequest {
+    string descriptor_handle = 1;
+    ContextAssociation context_association = 2;  // the @ContextAssociation of the context state
+    string num_validators = 3;  // number of pm:Validator elements
+}
+
+/*
+Request to create a new context state with a given association and specific validator.
+ */
+message CreateContextStateWithAssocAndSpecificValidatorRequest {
+    string descriptor_handle = 1;
+    ContextAssociation context_association = 2;  // the initial association of the context state
+    ValidatorType validator_type = 3;  // type of pm:Validator
+}
+
+/*
+Request to associate a specific patient type.
+ */
+message AssociatePatientRequest {
+    PatientType patient_type = 1;  // Patient type to be associated
+}

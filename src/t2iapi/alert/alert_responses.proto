@@ -1,0 +1,24 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.alert;
+
+import "t2iapi/basic_responses.proto";
+
+option java_package = "com.draeger.medical.t2iapi.alert";
+option java_outer_classname = "AlertResponses";
+
+/*
+Response containing the handle and state version at which the alert condition was changed.
+ */
+message SetAlertConditionAndReturnCauseResponse {
+    BasicResponse response = 1;
+    string handle = 2;  // descriptor handle for the value that changed
+    uint64 state_version = 3;  // StateVersion of the first occurrence of the change that causes the Presence change
+}

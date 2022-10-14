@@ -1,0 +1,81 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.context;
+
+import "google/protobuf/wrappers.proto";
+
+option java_package = "com.draeger.medical.t2iapi.context";
+option java_outer_classname = "ContextTypes";
+
+
+/*
+Represents LocationDetail from the IEEE Std 11073-10207-2017.
+
+Note that in Protocol Buffer 3 all fields are never null. To cover this case, the absence of the respective field must
+be checked. For this purpose a python message object provides the function HasField(). If it returns false, the field was
+never set and this shall be interpreted as null. (See also wrappers.proto documentation from line 31 to 34.)
+ */
+message LocationDetail {
+    google.protobuf.StringValue poc = 1;  // name of a point of care unit
+    google.protobuf.StringValue room = 2;
+    google.protobuf.StringValue bed = 3;
+    google.protobuf.StringValue facility = 4;
+    google.protobuf.StringValue building = 5;
+    google.protobuf.StringValue floor = 6;
+}
+
+
+/*
+Represents ContextAssociation from the IEEE Std 11073-10207-2017.
+ */
+enum ContextAssociation {
+    CONTEXT_ASSOCIATION_NOT_ASSOCIATED = 0;
+    CONTEXT_ASSOCIATION_PRE_ASSOCIATED = 1;
+    CONTEXT_ASSOCIATION_ASSOCIATED = 2;
+    CONTEXT_ASSOCIATION_DISASSOCIATED = 3;
+}
+
+
+/*
+Represents PatientType from the IEEE Std 11073-10207-2017.
+ */
+enum PatientType {
+    PATIENT_TYPE_UNSPECIFIED = 0;
+    PATIENT_TYPE_ADULT = 1;
+    PATIENT_TYPE_ADOLESCENT = 2;
+    PATIENT_TYPE_PEDIATRIC = 3;
+    PATIENT_TYPE_INFANT = 4;
+    PATIENT_TYPE_NEONATAL = 5;
+    PATIENT_TYPE_OTHER = 6;
+}
+
+/*
+Represents ValidatorType from the BPKP Draft.
+ */
+enum ValidatorType {
+    VALIDATOR_TYPE_USER = 0;
+    VALIDATOR_TYPE_CLINICAL_SUPER_USER = 1;
+    VALIDATOR_TYPE_BIOMED = 2;
+    VALIDATOR_TYPE_SERVICE_PERSONNEL = 3;
+    VALIDATOR_TYPE_REMOTE_SERVICE_OPERATION = 4;
+    VALIDATOR_TYPE_TECHNICAL_MEANS = 5;
+}
+
+/*
+Represents types of contexts available in IEEE Std 11073-10207-2017.
+ */
+enum ContextType {
+    CONTEXT_TYPE_PATIENT = 0;
+    CONTEXT_TYPE_LOCATION = 1;
+    CONTEXT_TYPE_WORKFLOW = 2;
+    CONTEXT_TYPE_OPERATOR = 3;
+    CONTEXT_TYPE_MEANS = 4;
+    CONTEXT_TYPE_ENSEMBLE = 5;
+}

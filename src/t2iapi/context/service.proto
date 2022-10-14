@@ -1,0 +1,134 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.context;
+
+import "google/protobuf/empty.proto";
+import "t2iapi/basic_requests.proto";
+import "t2iapi/basic_responses.proto";
+import "t2iapi/context/context_requests.proto";
+import "t2iapi/context/context_responses.proto";
+
+option java_package = "com.draeger.medical.t2iapi.context";
+option java_outer_classname = "ContextApiService";
+
+/*
+Service to handle context manipulations.
+ */
+service ContextService {
+
+  /*
+  Use the given LocationDetail in a currently associated LocationContextState or associate a new LocationContextState
+  with the LocationDetail.
+  The goal of this rpc is to have an associated LocationContextState, that contains the given LocationDetail.
+  This can for example be achieved by changing the location of the device in its settings UI.
+   */
+  rpc SetLocationDetail (t2iapi.context.SetLocationDetailRequest)
+      returns (BasicResponse);
+
+  /*
+  Remove all Validators elements for the AbstractContextState with the provided context state handle.
+   */
+  rpc RemoveAllContextStateValidators (t2iapi.context.ContextStateHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  Set the ContextAssociation of the target ContextState to the given value.
+   */
+  rpc SetContextStateAssociation (t2iapi.context.SetContextStateAssociationRequest)
+      returns (BasicResponse);
+
+  /*
+  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle.
+   */
+  rpc CreateContextStateWithAssociation (t2iapi.context.CreateContextStateWithAssociationRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
+  Create a new pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
+  and provide at least the number of pm:Validator elements for this ContextState.
+  If the number of pm:Validator elements is zero, zero pm:Validator elements shall be provided.
+   */
+  rpc CreateContextStateWithAssociationAndValidators(
+  t2iapi.context.CreateContextStateWithAssociationAndValidatorsRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
+  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
+  and provide the unique identification.
+   */
+  rpc CreateContextStateWithAssociationAndUniqueIdentification(
+  t2iapi.context.CreateContextStateWithAssociationRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationAndUniqueIdentificationResponse);
+
+  /*
+  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
+  and provide at least one Identification and Validator for this ContextState.
+   */
+  rpc CreateContextStateWithAssocIdentificationAndValidator(
+  t2iapi.context.CreateContextStateWithAssociationRequest)
+      returns (BasicResponse);
+
+  /*
+  Remove at least one pm:Identification element for the pm:AbstractContextState/@Handle.
+ */
+  rpc RemoveIdentificationOfContextState(
+  t2iapi.context.ContextStateHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  Change at least one pm:Identification element for the pm:AbstractContextState/@Handle.
+ */
+  rpc ChangeIdentificationOfContextState(
+  t2iapi.context.ContextStateHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle,
+  confirm by requested validator type.
+   */
+  rpc CreateContextStateWithAssocAndSpecificValidator(
+    t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
+  Create a new neonatal patient with a given type of association and
+  including the mothers identification.
+   */
+  rpc CreateNeonatalPatientWithAssociationAndMothersIdentification(
+  t2iapi.context.CreateContextStateWithAssociationRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
+  Create or adapt a PatientContextState with CoreData/PatientType having the requested patient type.
+  The PatientContextState/@ContextAssociation shall be "Associated".
+   */
+  rpc AssociatePatient (t2iapi.context.AssociatePatientRequest)
+      returns (BasicResponse);
+
+  /*
+  Indicate membership in an SDC PARTICIPANT ENSEMBLE using an ensemble context, indicated by its descriptor handle.
+   */
+  rpc EnsembleContextIndicateMembership (BasicHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  Indicate membership in an SDC PARTICIPANT ENSEMBLE using an ensemble context that has the provided descriptor handle
+  and return a list of pm:Identification elements which identify an ensemble and thus enable the caller to distinguish
+  ensembles from each other.
+   */
+  rpc EnsembleContextIndicateMembershipWithIdentification (BasicHandleRequest)
+      returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
+
+  /*
+  Returns all types of contexts which are supported by the DUT.
+   */
+  rpc GetSupportedContextTypes (google.protobuf.Empty)
+      returns (t2iapi.context.GetSupportedContextTypesResponse);
+}
