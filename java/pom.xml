@@ -34,14 +34,14 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.19.2</version>
+            <version>${dependency.protobuf.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.grpc/grpc-all -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-all</artifactId>
-            <version>1.45.1</version>
+            <version>${dependency.grpc.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
