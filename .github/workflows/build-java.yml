@@ -78,6 +78,6 @@ jobs:
           distribution: 'temurin'
       - name: Publish package
         working-directory: ./java
-        run: mvn --batch-mode deploy
+        run: mvn --batch-mode -Dpackage.version=0.0.0 deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
