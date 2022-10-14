@@ -8,7 +8,9 @@ import setuptools
 
 def read_config_map():
     """
-    Reads the config map into a dict
+    Reads the config map into a dict.
+
+    @return: a dictionary representing the version config
     """
     data = {}
     with open("../config/versions.txt") as f:
