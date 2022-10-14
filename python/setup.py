@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 import os
-# import setuptools
+import setuptools
 
 def read_config_map():
     """
@@ -44,7 +44,7 @@ setuptools.setup(
     url='https://github.com/Draegerwerk/t2iapi',
     package_dir={'': 'src'},
     packages=setuptools.find_packages(where='src'),
-    install_requires=['protobuf==' + config_map["PYTHON_PROTOC_VERSION"], 'grpcio==' + config_map["PYTHON_GRPC_VERSION"],
+    install_requires=['protobuf==' + config_map["PYTHON_PROTOC_VERSION"], 'grpcio==' + config_map["PYTHON_GRPC_VERSION"]],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python :: 3 :: Only',
