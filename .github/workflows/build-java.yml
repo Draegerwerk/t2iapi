@@ -25,7 +25,7 @@ jobs:
           cat dependency_versions.txt >> $GITHUB_ENV
       - name: Build with Maven
         working-directory: ./java
-        run: mvn package -Dpackage.version=0.0.0 -Ddependency.protobuf.version=${env.JAVA_PROTOC_VERSION} -Ddependency.grpc.version=${env.JAVA_GRPC_VERSION}
+        run: mvn package -Dpackage.version=0.0.0 -Ddependency.protobuf.version=${{ env.JAVA_PROTOC_VERSION }} -Ddependency.grpc.version=${{ env.JAVA_GRPC_VERSION }}
       - name: Archive built jars
         uses: actions/upload-artifact@v3
         with:
@@ -78,6 +78,6 @@ jobs:
           cat dependency_versions.txt >> $GITHUB_ENV
       - name: Publish package
         working-directory: ./java
-        run: mvn --batch-mode -Dpackage.version=0.0.0 -Ddependency.protobuf.version=${env.JAVA_PROTOC_VERSION} -Ddependency.grpc.version=${env.JAVA_GRPC_VERSION} deploy
+        run: mvn --batch-mode -Dpackage.version=0.0.0 -Ddependency.protobuf.version=${{ env.JAVA_PROTOC_VERSION }} -Ddependency.grpc.version=${{ env.JAVA_GRPC_VERSION }} deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
