@@ -12,7 +12,38 @@ application.
 
 ## Installation
 
-TODO once clear
+### Building the package locally (Linux)
+
+#### Python
+
+t2iapi wheels can be built locally using the following steps:
+
+```shell
+cd python
+./build_protobuf.sh
+python setup.py bdist_wheel
+```
+
+Wheels will be available in `t2iapi/python/dist`.
+
+Note that this requires protoc to be in your `PATH`.
+
+
+#### Java
+
+t2iapi jars can be built locally using the following steps.
+Note that specifying versions for protoc, grpc and the jar itself is mandatory.
+Only use supported combinations of protoc and grpc, typically this can be determined
+from the protoc version used by the respective [grpc-java](https://github.com/grpc/grpc-java) release.
+
+```shell
+cd java
+mvn package -Dpackage.version=<VERSION> -Ddependency.protobuf.version=<PROTOC_VERSION> -Ddependency.grpc.version=<GRPC_VERSION>
+```
+
+Jars will be available in `t2iapi/java/target`.
+
+Note that this requires protoc to be in your `PATH`.
 
 ## Usage
 

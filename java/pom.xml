@@ -16,6 +16,15 @@
         </license>
     </licenses>
 
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Draegerwerk/t2iapi</url>
+        </repository>
+    </distributionManagement>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -25,14 +34,14 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>3.19.2</version>
+            <version>${dependency.protobuf.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.grpc/grpc-all -->
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-all</artifactId>
-            <version>1.45.1</version>
+            <version>${dependency.grpc.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api -->
@@ -85,7 +94,7 @@
                 <configuration>
                     <!-- protoc executable is provided by environment/ci -->
                     <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.49.2:exe:${os.detected.classifier}</pluginArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${dependency.grpc.version}:exe:${os.detected.classifier}</pluginArtifact>
                     <protoSourceRoot>${basedir}/../src</protoSourceRoot>
                 </configuration>
                 <executions>

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-GRPC_VERSION_PYTHON=1.46.1
+source ../config/versions.txt
 
-python3.8 -m pip install "grpcio==$GRPC_VERSION_PYTHON" "grpcio-tools==$GRPC_VERSION_PYTHON" || exit 1
+python3.8 -m pip install "grpcio==$PYTHON_GRPC_VERSION" "grpcio-tools==$PYTHON_GRPC_VERSION" || exit 1
 ./clean.sh
 
 echo "Generating model and service data"

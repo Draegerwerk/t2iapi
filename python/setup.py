@@ -6,6 +6,19 @@
 import os
 import setuptools
 
+def read_config_map():
+    """
+    Reads the config map into a dict.
+
+    @return: a dictionary representing the version config
+    """
+    data = {}
+    with open("../config/versions.txt") as f:
+        lines = f.read().splitlines()
+        for line in lines:
+            key, value = line.split("=")
+            data[key] = value
+    return data
 
 def get_build_version():
     """
@@ -16,6 +29,7 @@ def get_build_version():
     """
     return os.getenv('build_version', default='0.0.0')
 
+config_map = read_config_map()
 
 setuptools.setup(
     name="t2iapi",
@@ -32,7 +46,7 @@ setuptools.setup(
     url='https://github.com/Draegerwerk/t2iapi',
     package_dir={'': 'src'},
     packages=setuptools.find_packages(where='src'),
-    install_requires=['protobuf==3.19.4', 'grpcio==1.46.1'],
+    install_requires=['protobuf==' + config_map["PYTHON_PROTOC_VERSION"], 'grpcio==' + config_map["PYTHON_GRPC_VERSION"]],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python :: 3 :: Only',

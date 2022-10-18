@@ -15,10 +15,14 @@ jobs:
     steps:
       # Run `git checkout`
       - uses: actions/checkout@v3
+      - name: Source dependency versions
+        working-directory: config
+        run: |
+          cat versions.txt >> $GITHUB_ENV
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
         with:
-          version: '3.19.2'
+          version: ${{ env.PYTHON_PROTOC_VERSION }}
       - uses: actions/setup-python@v4
         with:
           python-version: '3.8.10'
