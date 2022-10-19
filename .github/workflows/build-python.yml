@@ -9,7 +9,6 @@ env:
   PIP_VERSION: 22.0.4
   WHEEL_VERSION: 0.37.0
   HTML_TEST_RUNNER_VERSION: 1.2.1
-  TWINE_VERSION: 4.0.1
 
 jobs:
   build-python:

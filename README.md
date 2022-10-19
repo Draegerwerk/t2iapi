@@ -16,17 +16,19 @@ application.
 
 #### Python
 
-t2iapi wheels can be built locally using the following steps:
+t2iapi wheels can be built locally using the following steps using python version 3.8.10:
 
+Note, this requires `protoc` and `python` to be in your `PATH`.
 ```shell
 cd python
 ./build_protobuf.sh
+python -m pip install wheel==0.37.0
 python setup.py bdist_wheel
 ```
 
 Wheels will be available in `t2iapi/python/dist`.
 
-Note that this requires protoc to be in your `PATH`.
+
 
 
 #### Java
