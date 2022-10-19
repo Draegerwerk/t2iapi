@@ -21,8 +21,9 @@ def read_config_map():
 
 def get_build_version():
     """
-    Get the package version from the respective environment parameter, if available.
-    Otherwise, return '0.0.0'.
+    Get the package and development release version from the respective environment parameter, if available.
+    Otherwise, return '0.0.0.dev0'.
+    Following version scheme from https://peps.python.org/pep-0440/#version-scheme
 
     @return: package version
     """
