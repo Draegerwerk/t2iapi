@@ -69,7 +69,7 @@ jobs:
   deploy-github-packages:
     runs-on: ubuntu-latest
     needs: run-tests-java11
-#    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     permissions:
       packages: write
     steps:
