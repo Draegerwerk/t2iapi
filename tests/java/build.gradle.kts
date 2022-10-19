@@ -5,7 +5,7 @@ plugins {
 repositories {
     mavenCentral()
     flatDir {
-        dirs("../../java/target/")
+        dirs("../../java/build/libs/")
     }
 }
 
