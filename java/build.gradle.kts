@@ -1,7 +1,7 @@
 import com.google.protobuf.gradle.*
 
 plugins {
-    java
+    `java-library`
     `maven-publish`
     id("com.google.protobuf") version "0.9.1"
     id("com.google.osdetector") version "1.7.1"
@@ -25,13 +25,13 @@ repositories {
 }
 
 dependencies {
-    implementation(group = "com.google.protobuf", name = "protobuf-java", version = protocVersion)
-    implementation(group = "io.grpc", name = "grpc-stub", version = grpcVersion)
-    implementation(group = "io.grpc", name = "grpc-protobuf", version = grpcVersion)
+    api(group = "com.google.protobuf", name = "protobuf-java", version = protocVersion)
+    api(group = "io.grpc", name = "grpc-stub", version = grpcVersion)
+    api(group = "io.grpc", name = "grpc-protobuf", version = grpcVersion)
     if (JavaVersion.current().isJava9Compatible) {
         // Workaround for @javax.annotation.Generated
         // see: https://github.com/grpc/grpc-java/issues/3633
-        implementation("javax.annotation:javax.annotation-api:1.3.2")
+        api("javax.annotation:javax.annotation-api:1.3.2")
     }
 
     protobuf(files("../src"))
