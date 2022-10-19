@@ -4,7 +4,9 @@
 # SPDX-License-Identifier: MIT
 
 import os
+
 import setuptools
+
 
 def read_config_map():
     """
@@ -12,13 +14,10 @@ def read_config_map():
 
     @return: a dictionary representing the version config
     """
-    data = {}
-    with open("../config/versions.txt") as f:
+    with open('../config/versions.txt') as f:
         lines = f.read().splitlines()
-        for line in lines:
-            key, value = line.split("=")
-            data[key] = value
-    return data
+        return dict(line.split('=') for line in lines)
+
 
 def get_build_version():
     """
@@ -27,16 +26,19 @@ def get_build_version():
 
     @return: package version
     """
-    return os.getenv('build_version', default='0.0.0')
+    package = os.getenv('BASE_PACKAGE_VERSION', default='0.0.0')
+    dev_release = f'dev{os.getenv("GITHUB_RUN_NUMBER", default=0)}'
+    return f'{package}.{dev_release}'
+
 
 config_map = read_config_map()
 
 setuptools.setup(
-    name="t2iapi",
+    name='t2iapi',
     version=get_build_version(),
-    author="T2I Team",
-    author_email="DLCDE-ODDS-T2I@draeger.com",
-    description="T2I API for device communication in test scenarios",
+    author='T2I Team',
+    author_email='DLCDE-ODDS-T2I@draeger.com',
+    description='T2I API for device communication in test scenarios',
     long_description='''
     Contains generated python files created from protobuf files.
     The protobuf files contain the specification of the serialization used to communicate information in test scenarios.
@@ -46,7 +48,8 @@ setuptools.setup(
     url='https://github.com/Draegerwerk/t2iapi',
     package_dir={'': 'src'},
     packages=setuptools.find_packages(where='src'),
-    install_requires=['protobuf==' + config_map["PYTHON_PROTOC_VERSION"], 'grpcio==' + config_map["PYTHON_GRPC_VERSION"]],
+    install_requires=['protobuf==' + config_map['PYTHON_PROTOC_VERSION'],
+                      'grpcio==' + config_map['PYTHON_GRPC_VERSION']],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python :: 3 :: Only',
