@@ -57,13 +57,6 @@ service AlertService {
         returns (BasicResponse);
 
     /*
-    Trigger a MDIB change, which causes the AlertCondition/@Presence to change and return the descriptor handle for
-    the value that changed and StateVersion of the first occurrence of the change that causes the Presence change.
-     */
-    rpc SwitchAlertConditionAndReturnCause (t2iapi.alert.SetAlertConditionAndReturnCauseRequest)
-        returns (t2iapi.alert.SetAlertConditionAndReturnCauseResponse);
-
-    /*
     Change the state of the alarm signal inactivation state represented by the AlertCondition with the given
     handle as requested.
 
