@@ -45,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-python
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
@@ -73,7 +73,7 @@ jobs:
           name: html_unit_test
           path: unittest_results/*.html
           retention-days: 1
-  deploy-github-packages:
+  deploy-pypi-packages:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     needs: run-tests-python

@@ -28,8 +28,8 @@ def get_build_version():
     @return: package version
     """
     package = os.getenv('BASE_PACKAGE_VERSION', default='0.0.0')
-    dev_release = f'dev{os.getenv("GITHUB_RUN_NUMBER", default=0)}'
-    return f'{package}.{dev_release}'
+    dev_release_segment = f'dev{os.getenv("GITHUB_RUN_NUMBER", default=0)}'
+    return f'{package}.{dev_release_segment}'
 
 
 config_map = read_config_map()
