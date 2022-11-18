@@ -87,7 +87,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ldeichmann/t2iapi")
+            url = uri("https://maven.pkg.github.com/Draegerwerk/t2iapi")
             credentials {
                 username = System.getenv("GITHUB_ACTOR")
                 password = System.getenv("GITHUB_TOKEN")
