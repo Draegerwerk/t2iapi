@@ -28,7 +28,10 @@ def get_build_version():
     @return: package version
     """
     package = os.getenv('BASE_PACKAGE_VERSION', default='0.0.0')
+    is_release_version = os.getenv("RELEASE_VERSION") == "1"
     dev_release_segment = f'dev{os.getenv("GITHUB_RUN_NUMBER", default=0)}'
+    if is_release_version:
+        return package
     return f'{package}.{dev_release_segment}'
 
 

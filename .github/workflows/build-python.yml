@@ -9,6 +9,7 @@ env:
   PIP_VERSION: 22.0.4
   WHEEL_VERSION: 0.37.0
   HTML_TEST_RUNNER_VERSION: 1.2.1
+  RELEASE_VERSION: 0
 
 jobs:
   build-python:
@@ -20,6 +21,10 @@ jobs:
         working-directory: config
         run: |
           cat versions.txt >> $GITHUB_ENV
+      - name: Detect release version
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          echo RELEASE_VERSION=1 >> $GITHUB_ENV
       - name: Install Protoc
         uses: arduino/setup-protoc@v1
         with:
