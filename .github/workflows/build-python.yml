@@ -80,7 +80,7 @@ jobs:
           retention-days: 1
   deploy-pypi-packages:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
     needs: run-tests-python
     steps:
       - name: Download t2iapi wheel artifact
@@ -88,7 +88,22 @@ jobs:
         with:
           name: dist
           path: dist/
+      - name: Download t2iapi test results artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: html_unit_test
+          path: unittest_results/
       - name: Publish t2iapi to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Attach artifacts to github release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            CHANGELOG.md
+            python/dist/*.whl
+            unittest_results/*.html
+          prerelease: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+          body_path: CHANGELOG.md
