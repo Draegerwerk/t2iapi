@@ -104,7 +104,6 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            CHANGELOG.md
             python/dist/*.whl
             unittest_results/*.html
           prerelease: ${{ !startsWith(github.ref, 'refs/tags/v') }}
