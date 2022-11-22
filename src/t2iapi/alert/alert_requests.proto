@@ -52,12 +52,4 @@ message AlertConditionEscalationRequest {
   AlertConditionEscalationProcess escalation_process = 2;
 }
 
-/*
-This message is used as a request to trigger a MDIB change, which causes the AlertCondition corresponding to the given
-handle to change its Presence to the given value.
- */
-message SetAlertConditionAndReturnCauseRequest {
-  string handle = 1;  // handle reference of the alert condition
-  AlertConditionPresence presence = 2;
-}
 
