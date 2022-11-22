@@ -13,9 +13,12 @@ val configFile = File("../../config/versions.txt").readLines()
 val configFileMap = configFile.associate { it.split("=")[0] to it.split("=")[1] }
 
 val grpcVersion = configFileMap["JAVA_GRPC_VERSION"]
-val baseVersion = configFileMap["BASE_PACKAGE_VERSION"]
+val baseVersion = configFileMap["BASE_PACKAGE_VERSION"]!!
 val buildId: String? = System.getenv("GITHUB_RUN_NUMBER")
-val t2iapiVersion = baseVersion + ( buildId?.let { ".$it" } ?: "" )
+val t2iapiVersion: String = when (System.getenv("RELEASE_VERSION") == "1") {
+    true -> baseVersion
+    false -> baseVersion + ( buildId?.let { ".$it" } ?: "" )
+}
 
 dependencies {
     testImplementation("io.grpc:grpc-protobuf:${grpcVersion}")
