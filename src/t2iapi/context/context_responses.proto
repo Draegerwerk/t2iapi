@@ -17,11 +17,11 @@ option java_package = "com.draeger.medical.t2iapi.context";
 option java_outer_classname = "ContextResponses";
 
 /*
-Response containing the handle of the newly created context state.
+Response containing the handle of the newly created or adapted context state.
  */
 message CreateContextStateWithAssociationResponse {
     BasicResponse status = 1;
-    string context_state_handle = 2;  // handle of the context state, that was created
+    string context_state_handle = 2;  // handle of the context state, that was created or adapted
 }
 
 /*
