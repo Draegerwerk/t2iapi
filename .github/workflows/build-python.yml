@@ -96,7 +96,7 @@ jobs:
           name: html_unit_test
           path: unittest_results/
       - name: Download pip freeze
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: actions/download-artifact@v3
         with:
           name: freeze
           path: freeze/
