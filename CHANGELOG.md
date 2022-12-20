@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Update
+
+- update used PYTHON_VERSION: 3.8
+
 ### Removed
 
 - manipulation SetMetricValuesWithQualityValidity
