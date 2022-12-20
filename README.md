@@ -16,7 +16,7 @@ application.
 
 #### Python
 
-t2iapi wheels can be built locally using the following steps using python version 3.8.10:
+t2iapi wheels can be built locally using the following steps using python version 3.8.12:
 
 Note, this requires `protoc` and `python` to be in your `PATH`.
 ```shell
