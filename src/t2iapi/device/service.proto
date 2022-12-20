@@ -52,12 +52,6 @@ service DeviceService {
     rpc SetClockDevice (google.protobuf.Empty) returns (BasicResponse);
 
     /*
-    Generate all elements, that can possibly exist at the same time and fulfill the given path.
-     */
-    rpc GenerateElementsInStates (t2iapi.device.GenerateElementsInStatesRequest)
-    returns (BasicResponse);
-
-    /*
     Set the device's (displayed) language to the given language.
      */
     rpc SetLanguage (t2iapi.device.SetLanguageRequest) returns (BasicResponse);
