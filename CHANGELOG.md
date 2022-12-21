@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Update
 
 - update used PYTHON_VERSION: 3.8
+- update BASE_PACKAGE_VERSION=2.0.0
 
 ### Removed
 
