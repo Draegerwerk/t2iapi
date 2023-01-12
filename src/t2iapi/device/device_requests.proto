@@ -30,17 +30,6 @@ message SetDeviceOperatingModeRequest {
 }
 
 /*
-Request to generate all elements that can possibly exist at the same time and fulfill the given path.
- */
-message GenerateElementsInStatesRequest {
-    // each name represents an element name and its context in the MDIB,
-    // whereas not a full path is given, but only a relative path with minimum length for uniqueness
-    // e.g. [(http://standards.ieee.org/downloads/11073/11073-10207-2017/participant, Unit),
-    //       (http://standards.ieee.org/downloads/11073/11073-10207-2017/participant, CodingSystemName)]
-    repeated ExpandedName relative_path = 1;
-}
-
-/*
 Request to set the device's (displayed) language to the given language.
  */
 message SetLanguageRequest {

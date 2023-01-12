@@ -64,12 +64,6 @@ service MetricService {
     rpc CalibrateMetric (BasicHandleRequest)
         returns (t2iapi.metric.CalibrateMetricResponse);
 
-    /*
-    Provide metric values with a specific MetricQuality/@Validity for the metric with the given handle.
-     */
-    rpc SetMetricValuesWithQualityValidity (t2iapi.metric.SetMetricQualityValidityRequest)
-        returns (BasicResponse);
-
      /*
     Provide metric values with a specific MetricQuality/@Mode for the metric with the given handle.
      */
