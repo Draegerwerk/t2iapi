@@ -40,3 +40,11 @@ message MetricValueResponse {
     string step_width = 3;  // string representation of the decimal value of the metric value step width
     PartialCodedValue unit = 4;  // the metric unit, represented by a partial coded value with translation
 }
+
+/*
+Response containing the answer as bool value if the metric is computer controlled.
+ */
+message IsComputerControlledResponse {
+    BasicResponse status = 1;
+    bool answer = 2;  // True if the metric is computer controlled otherwise False
+}
