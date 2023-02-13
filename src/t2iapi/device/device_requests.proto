@@ -43,3 +43,10 @@ message ChangeMdibSequenceIdRequest {
     string descriptive_name = 1;  // descriptive name as a string which describes the trigger
                                   // for a change of the MDIB SequenceId
 }
+
+/*
+Request a filtered List of removable Descriptors.
+ */
+message GetRemovableDescriptorsOfTypeRequest {
+    DescriptorType descriptorType = 1;
+}

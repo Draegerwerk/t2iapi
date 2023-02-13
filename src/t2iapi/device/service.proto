@@ -67,6 +67,17 @@ service DeviceService {
         returns (t2iapi.device.GetRemovableDescriptorsResponse);
 
     /*
+    Get all descriptor handles which can be removed and reinserted into the MDIB of the device
+    and whose descriptors are of the given type.
+    Includes handles which have been removed already and can be reinserted.
+    Handles must stay the same once reinserted into the MDIB.
+    The handles shall be representative of the devices capabilities to remove
+    descriptors (at least one of every possible kind).
+     */
+    rpc GetRemovableDescriptorsOfType (GetRemovableDescriptorsOfTypeRequest)
+        returns (t2iapi.device.GetRemovableDescriptorsResponse);
+
+    /*
     Remove a descriptor from the device MDIB.
      */
     rpc RemoveDescriptor(BasicHandleRequest) returns (BasicResponse);
