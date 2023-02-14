@@ -105,5 +105,5 @@ service MetricService {
     Requests if the given metric handle is a computer controlled metric.
      */
     rpc IsComputerControlled (BasicHandleRequest)
-        returns (BasicResponse);
+        returns (t2iapi.metric.IsComputerControlledResponse);
 }
