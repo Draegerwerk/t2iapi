@@ -48,5 +48,5 @@ message ChangeMdibSequenceIdRequest {
 Request a filtered List of removable Descriptors.
  */
 message GetRemovableDescriptorsOfTypeRequest {
-    DescriptorType descriptorType = 1;
+    DescriptorType descriptor_type = 1;
 }
