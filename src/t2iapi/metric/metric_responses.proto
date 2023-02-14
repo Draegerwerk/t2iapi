@@ -43,6 +43,6 @@ message MetricValueResponse {
 
 // Response containing the answer to the question if the metric is computer controlled
 message IsComputerControlledResponse {
-    BasicResponse status = 1;
+    BasicResponse status = 1;  // the status of the rpc indicating whether or not it was successful
     bool answer = 2;  // True if metric is computer controlled, otherwise False
 }
