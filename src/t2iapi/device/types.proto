@@ -51,7 +51,7 @@ enum MdsOperatingMode{
 }
 
 /*
-Represents a type of Descriptor.
+Represents a type of descriptor.
 Currently only filtering for MdsDescriptors is required.
 Will be extended as necessity arises.
  */
