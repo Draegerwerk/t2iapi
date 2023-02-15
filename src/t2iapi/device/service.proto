@@ -74,7 +74,7 @@ service DeviceService {
     The handles shall be representative of the devices capabilities to remove
     descriptors (at least one of every possible kind).
      */
-    rpc GetRemovableDescriptorsOfType (GetRemovableDescriptorsOfTypeRequest)
+    rpc GetRemovableDescriptorsOfClass (GetRemovableDescriptorsOfClassRequest)
         returns (t2iapi.device.GetRemovableDescriptorsResponse);
 
     /*
