@@ -102,7 +102,10 @@ service MetricService {
     rpc SetMetricStatus (t2iapi.metric.SetMetricStatusRequest) returns (BasicResponse);
 
     /*
-    Requests if the given metric handle is a computer controlled metric.
+    Requests if the given metric handle is a computer-controlled metric.
+
+    A computer-controlled metric is a metric with @MetricCategory ∈ { Set, Preset } which is automatically
+    adapted by the device under test, e.g. for an FiO2 closed-loop within a device.
      */
     rpc IsComputerControlled (BasicHandleRequest)
         returns (t2iapi.metric.IsComputerControlledResponse);

@@ -41,8 +41,8 @@ message MetricValueResponse {
     PartialCodedValue unit = 4;  // the metric unit, represented by a partial coded value with translation
 }
 
-// Response containing the answer to the question if the metric is computer controlled
+// Response indicating whether a metric is computer-controlled
 message IsComputerControlledResponse {
     BasicResponse status = 1;  // the status of the rpc indicating whether or not it was successful
-    bool answer = 2;  // True if metric is computer controlled, otherwise False
+    bool answer = 2;  // true if metric is computer-controlled, otherwise false
 }
