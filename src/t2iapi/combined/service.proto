@@ -14,7 +14,7 @@ import "t2iapi/basic_responses.proto";
 import "t2iapi/combined/combined_requests.proto";
 
 option java_package = "com.draeger.medical.t2iapi.combined";
-option java_outer_classname = "combinedApiService";
+option java_outer_classname = "CombinedApiService";
 
 /*
 Service to handle combined manipulations.
