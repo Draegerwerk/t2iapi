@@ -17,8 +17,8 @@ option java_outer_classname = "CombinedRequests";
 
 
 /*
-Request to associate a specific patient type and
-to change the devices state, which results in setting the requested OperatingMode for the given operation.
+Request to associate a specific patient type and at the same time to change the devices state, which results in
+setting the requested OperatingMode for the given operation.
  */
 message AssociatePatientAndSetOperatingModeRequest {
     t2iapi.context.PatientType patient_type = 1;  // Patient type to be associated

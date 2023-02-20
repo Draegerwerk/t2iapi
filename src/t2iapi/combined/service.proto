@@ -16,14 +16,15 @@ option java_package = "com.draeger.medical.t2iapi.combined";
 option java_outer_classname = "CombinedApiService";
 
 /*
-Service to handle combined manipulations.
+Service to handle combined manipulations which are resulting from at least two other manipulations active at the
+same time.
  */
 service CombinedService {
   /*
   Create or adapt a PatientContextState with pm:CoreData/pm:PatientType having the requested patient type.
   The pm:PatientContextState/@ContextAssociation shall be "Associated".
-
-  And change the devices state, which results in setting the requested @OperatingMode for the given operation.
+  And change the devices state, which results in setting the requested @OperatingMode for the given operation
+  at the same time.
   */
   rpc AssociatePatientAndSetOperatingMode (t2iapi.combined.AssociatePatientAndSetOperatingModeRequest)
       returns (BasicResponse);
