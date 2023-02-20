@@ -26,9 +26,12 @@ jobs:
         run: |
           echo RELEASE_VERSION=1 >> $GITHUB_ENV
       - name: Install Protoc
-        uses: arduino/setup-protoc@v1
-        with:
-          version: ${{ env.PYTHON_PROTOC_VERSION }}
+        working-directory: protoc_install
+        run: |
+          sudo apt-get update && apt-get install -y apt-utils && apt-get install -y unzip
+          wget https://github.com/protocolbuffers/protobuf/releases/download/v21.7/protoc-21.7-linux-x86_64.zip
+          unzip *.zip -d protoc
+          echo "$(pwd)/protoc/bin" >> $GITHUB_PATH
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
