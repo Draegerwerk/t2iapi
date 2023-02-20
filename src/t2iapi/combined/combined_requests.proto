@@ -1,0 +1,28 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.combined;
+
+import "t2iapi/context/types.proto";
+import "t2iapi/operation/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.combined";
+option java_outer_classname = "CombinedRequests";
+
+
+/*
+Request to associate a specific patient type and
+to change the devices state, which results in setting the requested OperatingMode for the given operation.
+ */
+
+message AssociatePatientAndSetOperatingModeRequest {
+    PatientType patient_type = 1;  // Patient type to be associated
+    string handle = 2;  // operation handle reference
+    OperatingMode operating_mode = 3;  // OperatingMode to set for the given operation handle
+}

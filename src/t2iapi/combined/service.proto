@@ -1,0 +1,35 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.combined;
+
+import "google/protobuf/empty.proto";
+import "t2iapi/basic_requests.proto";
+import "t2iapi/basic_responses.proto";
+import "t2iapi/combined/combined_requests.proto";
+
+option java_package = "com.draeger.medical.t2iapi.combined";
+option java_outer_classname = "combinedApiService";
+
+/*
+Service to handle combined manipulations.
+ */
+service CombinedService {
+
+  /*
+  Create or adapt a PatientContextState with pm:CoreData/pm:PatientType having the requested patient type.
+  The pm:PatientContextState/@ContextAssociation shall be "Associated".
+
+  And change the devices state, which results in setting the requested @OperatingMode for the given operation.
+  */
+
+  rpc AssociatePatientAndSetOperatingMode (t2iapi.combined.AssociatePatientAndSetOperatingModeRequest)
+      returns (BasicResponse);
+
+}
