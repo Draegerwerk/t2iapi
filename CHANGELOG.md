@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - added IsComputerControlled manipulation for metrics
 
+### Changed
+
+JAVA_PROTOC_VERSION=3.19.2 -> JAVA_PROTOC_VERSION=3.21.7
+JAVA_GRPC_VERSION=1.45.1 -> JAVA_GRPC_VERSION=1.52.1
+PYTHON_PROTOC_VERSION=3.19.4 -> PYTHON_PROTOC_VERSION=4.21.7
+PYTHON_GRPC_VERSION=1.46.1 -> PYTHON_GRPC_VERSION=1.51.1
+
 ### Removed
 
 - manipulation SetMetricValuesWithQualityValidity
