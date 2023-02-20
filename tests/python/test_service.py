@@ -16,6 +16,7 @@ from t2iapi import basic_responses_pb2, response_types_pb2
 from t2iapi.activation_state import service_pb2_grpc as activation_state_service_pb2_grpc
 
 from t2iapi.alert import service_pb2_grpc as alert_service_pb2_grpc
+from t2iapi.combined import service_pb2_grpc as combined_service_pb2_grpc
 from t2iapi.context import service_pb2_grpc as context_service_pb2_grpc
 from t2iapi.device import service_pb2_grpc as device_service_pb2_grpc
 from t2iapi.metric import service_pb2_grpc as metric_service_pb2_grpc
@@ -42,6 +43,9 @@ def serve(server_object_queue, port_queue):
 
     operation_service_pb2_grpc.add_OperationServiceServicer_to_server(
         operation_service_pb2_grpc.OperationServiceServicer(), server)
+
+    combined_service_pb2_grpc.add_CombinedServiceServicer_to_server(
+        combined_service_pb2_grpc.CombinedServiceServicer(), server)
 
     # port 0 is used to prevent collision of multiple builds on the same machine
     port = server.add_insecure_port('localhost:0')
@@ -82,7 +86,6 @@ class ServiceSmokeTest(unittest.TestCase):
         response = basic_responses_pb2.BasicResponse(result=response_types_pb2.RESULT_SUCCESS)
         with mock.patch.object(target=device_service_pb2_grpc.DeviceServiceServicer,
                                attribute='BootUpDevice', return_value=response) as server_side:
-
             with running_server_context() as port:
                 _target = f'localhost:{port}'
                 with grpc.insecure_channel(_target) as channel:
