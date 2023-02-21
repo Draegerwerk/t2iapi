@@ -101,9 +101,12 @@ jobs:
         run: |
           echo RELEASE_VERSION=1 >> $GITHUB_ENV
       - name: Install Protoc
-        uses: arduino/setup-protoc@v1
-        with:
-          version: ${{ env.JAVA_PROTOC_VERSION }}
+        run: |
+          sudo apt-get update && apt-get install -y apt-utils && apt-get install -y unzip
+          mkdir ${{ runner.temp }}/protoc_install
+          wget https://github.com/protocolbuffers/protobuf/releases/download/v${{ env.COMMON_PROTOC_VERSION }}/protoc-${{ env.COMMON_PROTOC_VERSION }}-linux-x86_64.zip -P ${{ runner.temp }}/protoc_install
+          unzip ${{ runner.temp }}/protoc_install/*.zip -d ${{ runner.temp }}/protoc_install/protoc
+          echo "${{ runner.temp }}/protoc_install/protoc/bin" >> $GITHUB_PATH
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
