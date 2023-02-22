@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - added IsComputerControlled manipulation for metrics
-- added GetRemovableDescriptorsOfClass manipulation
 - COMMON_PROTOC_VERSION=21.7 due to new versioning of protobuf
 
 ### Changed
 
+- replaced GetRemovableDescriptors manipulation by GetRemovableDescriptorsOfClass
 - JAVA_PROTOC_VERSION=3.19.2 -> JAVA_PROTOC_VERSION=3.21.7
 - JAVA_GRPC_VERSION=1.45.1 -> JAVA_GRPC_VERSION=1.52.1
 - PYTHON_PROTOC_VERSION=3.19.4 -> PYTHON_PROTOC_VERSION=4.21.7
