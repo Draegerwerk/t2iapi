@@ -40,10 +40,10 @@ from the protoc version used by the respective [grpc-java](https://github.com/gr
 
 ```shell
 cd java
-mvn package -Dpackage.version=<VERSION> -Ddependency.protobuf.version=<PROTOC_VERSION> -Ddependency.grpc.version=<GRPC_VERSION>
+./gradlew build
 ```
 
-Jars will be available in `t2iapi/java/target`.
+Jars will be available in `t2iapi/java/build/libs`.
 
 Note that this requires protoc to be in your `PATH`.
 
