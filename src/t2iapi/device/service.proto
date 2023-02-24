@@ -62,11 +62,9 @@ service DeviceService {
     Includes handles which have been removed already and can be reinserted.
     Handles must stay the same once reinserted into the MDIB.
 
-    Filtering by class should be equivalent to doing it after the manipulation:
-    i.e. the handles resulting from calling the GetRemovableDescriptorsOfClass manipulation with
-    descriptor_class = X should be the same as those resulting from calling the GetRemovableDescriptorsOfClass
-    manipulation without filtering and then applying .stream().filter((Object x) -> x instanceof X') to
-    the result where X' is the java class corresponding to descriptor class X.
+    Calling GetRemovableDescriptorsOfClass with descriptor_class = DESCRIPTOR_CLASS_ABSTRACT
+    returns the unfiltered list of all removable handles while other values for descriptor_class
+    return only handles whose descriptors are of the given class.
 
     The unfiltered handles shall be representative of the devices capabilities
     to remove descriptors (at least one of every possible kind).
