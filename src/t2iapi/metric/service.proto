@@ -52,12 +52,6 @@ service MetricService {
     rpc CalibrateMetric (BasicHandleRequest)
         returns (t2iapi.metric.CalibrateMetricResponse);
 
-    /*
-    Provide metric values with a specific MetricQuality/@Validity for the metric with the given handle.
-     */
-    rpc SetMetricValuesWithQualityValidity (t2iapi.metric.SetMetricQualityValidityRequest)
-        returns (BasicResponse);
-
      /*
     Provide metric values with a specific MetricQuality/@Mode for the metric with the given handle.
      */
@@ -94,4 +88,13 @@ service MetricService {
     AbstractMetricState/@ActivationState, but the internal state of the device.
      */
     rpc SetMetricStatus (t2iapi.metric.SetMetricStatusRequest) returns (BasicResponse);
+
+    /*
+    Requests if the given metric handle is a computer-controlled metric.
+
+    A computer-controlled metric is a metric with @MetricCategory ∈ { Set, Preset } which is automatically
+    adapted by the device under test, e.g. for an FiO2 closed-loop within a device.
+     */
+    rpc IsComputerControlled (BasicHandleRequest)
+        returns (t2iapi.metric.IsComputerControlledResponse);
 }
