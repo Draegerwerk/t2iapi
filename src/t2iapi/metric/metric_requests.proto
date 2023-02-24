@@ -15,22 +15,6 @@ option java_package = "com.draeger.medical.t2iapi.metric";
 option java_outer_classname = "MetricRequests";
 
 /*
-Request to set the metric value for the provided handle over the provided upper bound.
- */
-message SetOverflowRequest {
-    string handle = 1;  // handle reference
-    string upper_bound = 2;  // upper bound value for overflow
-}
-
-/*
-Request to set the metric value of the provided handle under the provided lower bound.
- */
-message SetUnderflowRequest {
-    string handle = 1;  // handle reference
-    string lower_bound = 2;  // lower bound value for underflow
-}
-
-/*
 Request to set the MetricQuality/@Validity of the metric with the given handle to the given validity value.
  */
 message SetMetricQualityValidityRequest {
