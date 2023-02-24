@@ -63,7 +63,7 @@ service DeviceService {
     Handles must stay the same once reinserted into the MDIB.
 
     Calling GetRemovableDescriptorsOfClass with descriptor_class = DESCRIPTOR_CLASS_ABSTRACT
-    returns the unfiltered list of all removable handles while other values for descriptor_class
+    returns the unfiltered handles while other values for descriptor_class
     return only handles whose descriptors are of the given class.
 
     The unfiltered handles shall be representative of the devices capabilities
