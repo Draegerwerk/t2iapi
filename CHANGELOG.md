@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - manipulation SetMetricValuesWithQualityValidity
 - manipulation GenerateElementsInStates
+- manipulation SetOverflow 
+- manipulation SetUnderflow 
 
 ## [1.4.0] - 2022-12-02
 
