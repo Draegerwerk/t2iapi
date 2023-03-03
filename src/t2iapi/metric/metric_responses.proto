@@ -10,7 +10,6 @@ syntax = "proto3";
 package t2iapi.metric;
 
 import "t2iapi/basic_responses.proto";
-import "t2iapi/response_types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.metric";
 option java_outer_classname = "MetricResponses";
