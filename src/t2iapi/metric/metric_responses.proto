@@ -25,14 +25,6 @@ message CalibrateMetricResponse {
     repeated string values = 2;
 }
 
-// Describes return value for the rpc that returns current Numeric Metric value
-message MetricValueResponse {
-    BasicResponse result = 1;  // the status of the rpc indicating whether or not it was successful
-    string value = 2;  // string representation of the decimal value of the metric
-    string step_width = 3;  // string representation of the decimal value of the metric value step width
-    PartialCodedValue unit = 4;  // the metric unit, represented by a partial coded value with translation
-}
-
 // Response indicating whether a metric is computer-controlled
 message IsComputerControlledResponse {
     BasicResponse status = 1;  // the status of the rpc indicating whether or not it was successful

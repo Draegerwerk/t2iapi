@@ -66,13 +66,6 @@ service MetricService {
         returns (BasicResponse);
 
     /*
-    Get the current value of the Numeric metric with the given handle.
-    Only values from the gui should be used (not from SDC).
-     */
-    rpc GetMetricValue (BasicHandleRequest)
-        returns (t2iapi.metric.MetricValueResponse);
-
-    /*
     Change the status of an operation mode.
 
     An operation mode represents a specific behaviour of a device that can be enabled, paused or disabled,
