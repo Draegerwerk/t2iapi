@@ -9,6 +9,7 @@ syntax = "proto3";
 
 package t2iapi.metric;
 
+import "t2iapi/activation_state/activation_state_requests.proto";
 import "t2iapi/basic_responses.proto";
 import "t2iapi/basic_requests.proto";
 import "t2iapi/metric/metric_requests.proto";
@@ -33,6 +34,14 @@ service MetricService {
      */
     rpc SetNoValue (BasicHandleRequest)
         returns (BasicResponse);
+
+    /*
+    For the metric with the given handle do the following at once:
+     - set the @ActivationState to the given activation value
+     - change the MetricValue/@Value and confirm the value using the device ui
+   */
+   rpc SetActivationStateAndUserConfirmableValue (t2iapi.activation_state.SetComponentActivationRequest)
+       returns (BasicResponse);
 
     /*
     Change the value for the metric with the provided handle and confirm the value using the device ui.
