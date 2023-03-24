@@ -44,12 +44,6 @@ service MetricService {
        returns (BasicResponse);
 
     /*
-    Change the value for the metric with the provided handle and confirm the value using the device ui.
-     */
-    rpc SetUserConfirmableValue (BasicHandleRequest)
-        returns (BasicResponse);
-
-    /*
     Set the metric value for the provided handle to an invalid value.
      */
     rpc SetInvalidValue (BasicHandleRequest)
