@@ -9,6 +9,7 @@ syntax = "proto3";
 
 package t2iapi.metric;
 
+import "t2iapi/activation_state/types.proto";
 import "t2iapi/metric/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.metric";
@@ -60,10 +61,11 @@ message SetMetricStatusRequest {
 }
 
 /*
-Request to set the ActivationState of the metric with the given handle to the given ActivationState value.
+Request to set the ActivationState of the metric with the given handle to the given ActivationState value and set a
+user confirmable value.
  */
-message SetActivationStateRequest {
+message SetActivationStateAndUserConfirmableValueRequest {
     string handle = 1;  // descriptor handle of the descriptor for which the ActivationState shall be set
                         // in the corresponding state element
-    ActivationState activation_state = 2;  // value to set as the ActivationState value
+    activation_state.ComponentActivation activation = 2;  // value to set as the ActivationState value
 }

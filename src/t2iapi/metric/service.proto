@@ -39,7 +39,7 @@ service MetricService {
      - set the @ActivationState to the given value
      - set the pm:MetricValue/@Value resp. @Samples and confirm the value resp. samples using the device ui
    */
-   rpc SetActivationStateAndUserConfirmableValue (t2iapi.metric.SetActivationStateRequest)
+   rpc SetActivationStateAndUserConfirmableValue (t2iapi.metric.SetActivationStateAndUserConfirmableValueRequest)
        returns (BasicResponse);
 
     /*
