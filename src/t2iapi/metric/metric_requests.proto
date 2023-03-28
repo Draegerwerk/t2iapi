@@ -58,3 +58,12 @@ message SetMetricStatusRequest {
     MetricStatus status = 2; // the measurement, calculation or setting status the metric should be set to, to trigger
     // a certain AbstractMetricState/@ActivationState
 }
+
+/*
+Request to set the ActivationState of the metric with the given handle to the given ActivationState value.
+ */
+message SetActivationStateRequest {
+    string handle = 1;  // descriptor handle of the descriptor for which the ActivationState shall be set
+                        // in the corresponding state element
+    ActivationState activation_state = 2;  // value to set as the ActivationState value
+}
