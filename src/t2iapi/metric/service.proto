@@ -35,9 +35,9 @@ service MetricService {
         returns (BasicResponse);
 
     /*
-    For the metric with the given handle do the following simultaneously:
-     - set the @ActivationState to the given value
-     - set the pm:MetricValue/@Value resp. @Samples and confirm the value resp. samples using the device ui
+    For the metric with the provided handle do the following simultaneously:
+     - set the @ActivationState to the provided value
+     - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
    */
    rpc SetActivationStateAndUserConfirmableValue (t2iapi.metric.SetActivationStateAndUserConfirmableValueRequest)
        returns (BasicResponse);

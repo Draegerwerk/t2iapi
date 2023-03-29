@@ -61,11 +61,11 @@ message SetMetricStatusRequest {
 }
 
 /*
-Request to set the ActivationState of the metric with the given handle to the given ActivationState value and set a
-user confirmable value.
+Request for the metric with the provided handle to:
+ - set the @ActivationState to the provided value
+ - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
  */
 message SetActivationStateAndUserConfirmableValueRequest {
-    string handle = 1;  // descriptor handle of the descriptor for which the ActivationState shall be set
-                        // in the corresponding state element
-    activation_state.ComponentActivation activation = 2;  // value to set as the ActivationState value
+    string handle = 1;  // handle of the metric for which the manipulation shall be performed
+    activation_state.ComponentActivation activation = 2;  // @ActivationState value to set
 }
