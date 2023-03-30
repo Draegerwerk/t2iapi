@@ -35,10 +35,13 @@ service MetricService {
         returns (BasicResponse);
 
     /*
-    Change the value for the metric with the provided handle and confirm the value using the device ui.
-     */
-    rpc SetUserConfirmableValue (BasicHandleRequest)
-        returns (BasicResponse);
+    For the metric with the provided handle do the following:
+     - set the @ActivationState to the provided value
+     - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
+    Ensure that the @ActivationState remains set for as long as the confirmable value is set.
+   */
+   rpc SetActivationStateAndUserConfirmableValue (t2iapi.metric.SetActivationStateAndUserConfirmableValueRequest)
+       returns (BasicResponse);
 
     /*
     Set the metric value for the provided handle to an invalid value.
