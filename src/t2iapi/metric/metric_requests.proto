@@ -64,6 +64,7 @@ message SetMetricStatusRequest {
 Request for the metric with the provided handle to:
  - set the @ActivationState to the provided value
  - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
+Ensure that the @ActivationState remains set for as long as the confirmable value is set.
  */
 message SetActivationStateAndUserConfirmableValueRequest {
     string handle = 1;  // handle of the metric for which the manipulation shall be performed
