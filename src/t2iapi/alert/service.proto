@@ -76,4 +76,14 @@ service AlertService {
     Initiate alarm off for the AlertCondition with the given handle.
      */
     rpc InitiateAlarmOff (BasicHandleRequest) returns (BasicResponse);
+
+    /*
+    For the AlertSignal with the provided handle do the following:
+     - set the pm:AlertSignalState/@ActivationState to 'On'
+     - set the associated pm:AlertConditionState/@Presence to 'False'
+    Ensure that the @ActivationState remains set to 'On' for as long as the the associated AlertCondition @Presence
+    changes to False.
+   */
+   rpc SetAsActivationStateOnAndChangeAcPresenceFalse (BasicHandleRequest)
+       returns (BasicResponse);
 }
