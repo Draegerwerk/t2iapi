@@ -79,8 +79,9 @@ service AlertService {
 
     /*
     For the AlertSignal with the provided handle do the following:
-     - set the pm:AlertSignalState/@ActivationState to "On"
-     - set the associated pm:AlertConditionState/@Presence to "False"
+     - ensure that prior to the following settings the pm:AlertSignalState/@Presence is set to "On"
+     - set the pm:AlertSignalState/@ActivationState to "On" and 
+     - change the associated pm:AlertConditionState/@Presence to "False"
     Ensure that the @ActivationState remains set to "On" for as long as the the associated AlertCondition @Presence
     changes to False.
    */
