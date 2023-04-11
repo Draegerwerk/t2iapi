@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - manipulation SetActivationStateAndUserConfirmableValue for metrics
-- generate stub files which are integrated into the python package
+- stub files which are integrated into the python package
 
 ### Removed
 
