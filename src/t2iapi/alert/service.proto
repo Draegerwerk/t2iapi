@@ -80,7 +80,7 @@ service AlertService {
     /*
     For the AlertSignal with the provided handle ensure that the following sequence appears
     - State 1
-       - pm:AlertSignalState/@Presence must be "On"
+       - pm:AlertSignalState/@Presence must be "On" or "Ack"
        - pm:AlertSignalState/@ActivationState must be "On"
        - the associated pm:AlertConditionState/@Presence must be "true"
     - State 2
