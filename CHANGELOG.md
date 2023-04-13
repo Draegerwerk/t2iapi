@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
 - manipulation SetActivationStateAndUserConfirmableValue for metrics
+- stub files which are integrated into the python package
 
 ### Removed
 

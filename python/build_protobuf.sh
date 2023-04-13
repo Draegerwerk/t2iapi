@@ -6,4 +6,4 @@ python -m pip install "grpcio==$PYTHON_GRPC_VERSION" "grpcio-tools==$PYTHON_GRPC
 ./clean.sh
 
 echo "Generating model and service data"
-python -m grpc_tools.protoc -I=../src --python_out=src --grpc_python_out=src ../src/t2iapi/*.proto ../src/t2iapi/**/*.proto || exit 2
+python -m grpc_tools.protoc -I=../src --python_out=src --pyi_out=src --grpc_python_out=src ../src/t2iapi/*.proto ../src/t2iapi/**/*.proto || exit 2
