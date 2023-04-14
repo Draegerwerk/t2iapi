@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
 - manipulation SetActivationStateAndUserConfirmableValue for metrics
+- description for allowed combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension
+
+### Changed
+
+- message PartialIdentification to message PartialInstanceIdentifier
 
 ### Removed
 
