@@ -24,9 +24,20 @@ enum Result {
 
 
 /*
-Contains representations of Identifications (defined in SDC) with the fields needed for identifying an ensemble.
- */
-message PartialIdentification {
+Represents InstanceIdentifier (defined in IEEE Std 11073-10207-2017).
+
+Following combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension are allowed:
+                                    +------------------------------------------------------------------------+
+                                    |                                  @Root                                 |
+                                    | complete unique | not complete unique | "biceps.uri.unk" | not defined |
++-----------------------------------+-----------------+---------------------+------------------+-------------+
+|            defined, not "Unknown" | False             True                  False              False       |
+| @Extension              "Unknown" | False             True                  False              False       |
+|                       not defined | True              False                 True               True        |
++-----------------------------------+-----------------+---------------------+------------------+-------------+
+
+*/
+message PartialInstanceIdentifier {
     google.protobuf.StringValue root = 1;       // a unique identifier that guarantees the global uniqueness of the
                                                 // instance identifier
     google.protobuf.StringValue extension = 2;  // a unique identifier within the scope of pm:InstanceIdentifier/pm:Root
@@ -34,10 +45,11 @@ message PartialIdentification {
 }
 
 /*
-List of representations of CodedValues (defined in SDC) with the fields needed for CodedValue equality check
+List of representations of CodedValue (defined in IEEE Std 11073-10207-2017)
+with the fields needed for CodedValue equality check
  */
 message PartialCodedValue {
-    repeated Translation translations = 1;  // a list of alternative or equivalent representations for the Coded Value
+    repeated Translation translations = 1;  // a list of alternative or equivalent representations for the CodedValue
 }
 
 /*
