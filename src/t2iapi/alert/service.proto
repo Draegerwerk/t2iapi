@@ -37,19 +37,6 @@ service AlertService {
         returns (BasicResponse);
 
     /*
-    Set device audio pause.
-    Audio pause: if initiated, all SystemSignalActivation/State for all alarm systems of the device with
-    SystemSignalActivation/Manifestation evaluating to 'Aud' shall be set to 'Psd'.
-     */
-    rpc SetAudioPause (google.protobuf.Empty) returns (BasicResponse);
-
-    /*
-    Cancel audio pause.
-    Audio pause: suppresses the acoustic alarm signal of the device for all active alarms for a certain period of time.
-     */
-    rpc CancelAudioPause (google.protobuf.Empty) returns (BasicResponse);
-
-    /*
     Start/Stop an Escalation/Deescalation of the AlertConditionPriority for a given alert condition handle.
      */
     rpc AlertConditionEscalation (t2iapi.alert.AlertConditionEscalationRequest)
