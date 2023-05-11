@@ -23,18 +23,6 @@ Service to handle metric manipulations.
 service MetricService {
 
     /*
-    Set the metric value for the provided handle over the provided upper bound.
-     */
-    rpc SetOverflow (t2iapi.metric.SetOverflowRequest)
-        returns (t2iapi.metric.SetOverOrUnderflowResponse);
-
-    /*
-    Set the metric value of the provided handle under the provided lower bound.
-     */
-    rpc SetUnderflow (t2iapi.metric.SetUnderflowRequest)
-        returns (t2iapi.metric.SetOverOrUnderflowResponse);
-
-    /*
     Set the MetricQuality/@Validity of the metric with the given handle to the given validity value.
      */
     rpc SetMetricQualityValidity (t2iapi.metric.SetMetricQualityValidityRequest)
@@ -47,10 +35,13 @@ service MetricService {
         returns (BasicResponse);
 
     /*
-    Change the value for the metric with the provided handle and confirm the value using the device ui.
-     */
-    rpc SetUserConfirmableValue (BasicHandleRequest)
-        returns (BasicResponse);
+    For the metric with the provided handle do the following:
+     - set the @ActivationState to the provided value
+     - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
+    Ensure that the @ActivationState remains set for as long as the confirmable value is set.
+   */
+   rpc SetActivationStateAndUserConfirmableValue (t2iapi.metric.SetActivationStateAndUserConfirmableValueRequest)
+       returns (BasicResponse);
 
     /*
     Set the metric value for the provided handle to an invalid value.
@@ -76,13 +67,6 @@ service MetricService {
      */
     rpc SetMetricValuesInRange (t2iapi.metric.SetMetricValuesInRangeRequest)
         returns (BasicResponse);
-
-    /*
-    Get the current value of the Numeric metric with the given handle.
-    Only values from the gui should be used (not from SDC).
-     */
-    rpc GetMetricValue (BasicHandleRequest)
-        returns (t2iapi.metric.MetricValueResponse);
 
     /*
     Change the status of an operation mode.

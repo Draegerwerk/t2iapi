@@ -57,13 +57,19 @@ service DeviceService {
     rpc SetLanguage (t2iapi.device.SetLanguageRequest) returns (BasicResponse);
 
     /*
-    Get all descriptor handles which can be removed and reinserted into the MDIB of the device.
+    Get all descriptor handles which can be removed and reinserted into the MDIB of the device
+    and whose descriptors are of the given class.
     Includes handles which have been removed already and can be reinserted.
     Handles must stay the same once reinserted into the MDIB.
-    The handles shall be representative of the devices capabilities to remove
-    descriptors (at least one of every possible kind).
+
+    Calling GetRemovableDescriptorsOfClass with descriptor_class = DESCRIPTOR_CLASS_ABSTRACT
+    returns the unfiltered handles while other values for descriptor_class
+    return only handles whose descriptors are of the given class.
+
+    The unfiltered handles shall be representative of the devices capabilities
+    to remove descriptors (at least one of every possible kind).
      */
-    rpc GetRemovableDescriptors (google.protobuf.Empty)
+    rpc GetRemovableDescriptorsOfClass (GetRemovableDescriptorsOfClassRequest)
         returns (t2iapi.device.GetRemovableDescriptorsResponse);
 
     /*

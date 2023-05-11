@@ -50,6 +50,15 @@ enum MdsOperatingMode{
     MDS_OPERATING_MODE_MAINTENANCE = 3;
 }
 
+/*
+Represents a class of descriptor.
+Currently only filtering for MdsDescriptors is required.
+Will be extended as necessity arises.
+ */
+enum DescriptorClass{
+    DESCRIPTOR_CLASS_ABSTRACT = 0;  // Base class of all Descriptors - i.e. no filtering
+    DESCRIPTOR_CLASS_MDS = 1;
+}
 
 /*
 Contains information according to an expanded xml name.
