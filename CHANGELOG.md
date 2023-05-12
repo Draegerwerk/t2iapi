@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - manipulation SetUserConfirmableValue
+- manipulation SetAudioPause
+- manipulation CancelAudioPause
 
 ## [2.0.0] - 2023-03-10
 
