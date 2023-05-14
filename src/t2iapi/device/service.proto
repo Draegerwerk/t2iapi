@@ -27,6 +27,8 @@ service DeviceService {
     /*
     Switch the device into a specific operating mode.
     This manipulation shall result in a Mds having a specific MdsOperatingMode.
+    The manipulated state shall be persistent until a next manipulation call or until the end of the test case
+    execution.
      */
     rpc SetDeviceOperatingMode (t2iapi.device.SetDeviceOperatingModeRequest)
         returns (BasicResponse);
