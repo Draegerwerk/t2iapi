@@ -18,7 +18,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - message PartialIdentification to message PartialInstanceIdentifier
 - semantics for SetDeviceOperatingMode
 
-
 ### Removed
 
 - manipulation SetUserConfirmableValue
