@@ -84,11 +84,6 @@ service DeviceService {
      */
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
-    /*
-    Change of the MDIB SequenceId.
-    This manipulation of the device shall trigger a change of the MDIB SequenceId.
-     */
-    rpc ChangeMdibSequenceID (ChangeMdibSequenceIdRequest) returns (BasicResponse);
 
     /*
     Insert an mds descriptor into the device MDIB.
