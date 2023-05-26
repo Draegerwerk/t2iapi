@@ -35,6 +35,13 @@ service ActivationStateService {
       returns (BasicResponse);
 
   /*
+  Set the ActivationState of the DeviceComponent or Metric
+  with the given handle to the given ComponentActivation value.
+   */
+  rpc TransitionComponentActivation (t2iapi.activation_state.TransitionComponentActivationRequest)
+      returns (BasicResponse);
+
+  /*
   Set a SystemSignalActivation for a alert system with the given handle.
    */
   rpc SetSystemSignalActivation (t2iapi.activation_state.SetSystemSignalActivationRequest)
