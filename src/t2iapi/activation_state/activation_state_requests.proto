@@ -38,7 +38,7 @@ message SetAlertActivationRequest {
 Request to set the ActivationState of the component or metric with the given handle and the start and
 end @ActivationState value.
  */
-message TransitionComponentActivationRequest {
+message SetTransitionComponentActivationRequest {
     string handle = 1;  // descriptor handle of the descriptor for which the ActivationState shall be set
                         // in the corresponding state element
     ComponentActivation start_activation = 2;  // the start @ActivationState value
