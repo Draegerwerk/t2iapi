@@ -35,8 +35,8 @@ service ActivationStateService {
       returns (BasicResponse);
 
   /*
-  Set the ActivationState of the DeviceComponent or Metric
-  with the given handle to the given ComponentActivation value.
+  Set the ActivationState of the DeviceComponent or Metric with the given handle and the start and
+  end @ActivationState value.
    */
   rpc TransitionComponentActivation (t2iapi.activation_state.TransitionComponentActivationRequest)
       returns (BasicResponse);
