@@ -17,9 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - message PartialIdentification to message PartialInstanceIdentifier
+- semantics for SetDeviceOperatingMode
 
 ### Removed
 
+- manipulation ChangeMdibSequenceId
 - manipulation SetUserConfirmableValue
 - manipulation SetAudioPause
 - manipulation CancelAudioPause
