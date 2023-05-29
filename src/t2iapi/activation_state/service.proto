@@ -35,10 +35,9 @@ service ActivationStateService {
       returns (BasicResponse);
 
   /*
-  Set the ActivationState of the DeviceComponent or Metric with the given handle and the start and
-  end @ActivationState value.
+  The ActivationState transition from the start to the end of the DeviceComponent or Metric with the given handle.
    */
-  rpc SetTransitionComponentActivation (t2iapi.activation_state.SetTransitionComponentActivationRequest)
+  rpc TransitionComponentActivation (t2iapi.activation_state.TransitionComponentActivationRequest)
       returns (BasicResponse);
 
   /*
