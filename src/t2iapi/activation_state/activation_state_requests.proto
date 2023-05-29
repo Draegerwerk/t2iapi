@@ -46,8 +46,6 @@ message TransitionComponentActivationRequest {
 }
 
 /*
-
-/*
 Request to set the SystemSignalActivation with the given AlertSignalManifestation and AlertActivation for the alert
 system with the given handle.
  */
