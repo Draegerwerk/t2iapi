@@ -68,3 +68,12 @@ message ExpandedName {
     google.protobuf.StringValue uri = 1;
     string local_name = 2;
 }
+
+/*
+Represents electrical power sources of the device.
+ */
+enum ElectricalPowerSource{
+    INTERNAL_ELECTRICAL_POWER_SOURCE = 0;   // INTERNAL ELECTRICAL POWER SOURCE as defined in IEC 60601-1:2005
+    EXTERNAL_ELECTRICAL_POWER_SOURCE = 1;   // an external reserve electrical power source providing electrical
+                                            // power
+}

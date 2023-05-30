@@ -107,4 +107,9 @@ service DeviceService {
     This manipulation of the device shall result in an msg:AbstractReport message of the provided type.
      */
     rpc TriggerReport (TriggerReportRequest) returns (BasicResponse);
+
+     /*
+    Set the device's current electrical power source.
+     */
+    rpc SetElectricalPowerSource (t2iapi.device.SetElectricalPowerSourceRequest) returns (BasicResponse);
 }

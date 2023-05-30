@@ -42,3 +42,12 @@ Request a list of removable descriptors of the given class.
 message GetRemovableDescriptorsOfClassRequest {
     DescriptorClass descriptor_class = 1;
 }
+
+/*
+Request to set the device's current electrical power source to the provided electrical power source.
+The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+the static state, it shall return not supported.
+ */
+message SetElectricalPowerSourceRequest {
+    ElectricalPowerSource electrical_power_source = 1;
+}
