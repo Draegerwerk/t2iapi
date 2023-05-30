@@ -35,7 +35,7 @@ message SetAlertActivationRequest {
 }
 
 /*
-Request to set the ActivationState of the component or metric with the given handle and the start and
+Request to set the @ActivationState of the component or metric with the given handle and the start and
 end @ActivationState value.
 */
 message TransitionComponentActivationRequest {
