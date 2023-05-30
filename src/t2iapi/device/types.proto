@@ -73,7 +73,7 @@ message ExpandedName {
 Represents electrical power sources of the device.
  */
 enum ElectricalPowerSource{
-    INTERNAL_ELECTRICAL_POWER_SOURCE = 0;   // INTERNAL ELECTRICAL POWER SOURCE as defined in IEC 60601-1:2005
-    EXTERNAL_ELECTRICAL_POWER_SOURCE = 1;   // an external reserve electrical power source providing electrical
+    ELECTRICAL_POWER_SOURCE_INTERNAL = 0;   // INTERNAL ELECTRICAL POWER SOURCE as defined in IEC 60601-1:2005
+    ELECTRICAL_POWER_SOURCE_EXTERNAL = 1;   // an external reserve electrical power source providing electrical
                                             // power
 }
