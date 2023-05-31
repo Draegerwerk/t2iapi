@@ -35,8 +35,7 @@ message SetAlertActivationRequest {
 }
 
 /*
-Request to set the @ActivationState of the component or metric with the given handle and the start and
-end @ActivationState value.
+Request for a transition of the value of the ActivationState of the DeviceComponent or Metric with the given handle from the starting ActivationState value, given as "start_activation", to the final ActivationState value, given as "end_activation", happens during the remote procedure call.
 */
 message TransitionComponentActivationRequest {
     string handle = 1;  // descriptor handle of the descriptor for which the @ActivationState shall be set
