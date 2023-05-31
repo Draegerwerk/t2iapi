@@ -44,6 +44,8 @@ service AlertService {
     /*
     Change the state of the alarm signal inactivation state represented by the AlertCondition with the given
     handle as requested.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
 
     Inactivation States can be for example:
     - Global Audio Pause, could have an condition with the text "Audio Pause"
@@ -55,6 +57,8 @@ service AlertService {
 
     /*
     Set the AlertSystem with the given handle to not functional.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetAlertSystemNotFunctional (BasicHandleRequest) returns (BasicResponse);
 

@@ -50,11 +50,15 @@ service DeviceService {
 
     /*
     Adjust the clock of the device as if it were set manually by a user.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetClockDevice (google.protobuf.Empty) returns (BasicResponse);
 
     /*
     Set the device's (displayed) language to the given language.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetLanguage (t2iapi.device.SetLanguageRequest) returns (BasicResponse);
 
@@ -83,7 +87,6 @@ service DeviceService {
     Insert a descriptor into the device MDIB.
      */
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
-
 
     /*
     Insert an mds descriptor into the device MDIB.

@@ -28,24 +28,32 @@ service ContextService {
   with the LocationDetail.
   The goal of this rpc is to have an associated LocationContextState, that contains the given LocationDetail.
   This can for example be achieved by changing the location of the device in its settings UI.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetLocationDetail (t2iapi.context.SetLocationDetailRequest)
       returns (BasicResponse);
 
   /*
   Remove all Validators elements for the AbstractContextState with the provided context state handle.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc RemoveAllContextStateValidators (t2iapi.context.ContextStateHandleRequest)
       returns (BasicResponse);
 
   /*
   Set the ContextAssociation of the target ContextState to the given value.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetContextStateAssociation (t2iapi.context.SetContextStateAssociationRequest)
       returns (BasicResponse);
 
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssociation (t2iapi.context.CreateContextStateWithAssociationRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
@@ -64,6 +72,8 @@ service ContextService {
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
   and provide the unique identification.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssociationAndUniqueIdentification(
   t2iapi.context.CreateContextStateWithAssociationRequest)
@@ -72,6 +82,8 @@ service ContextService {
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
   and provide at least one Identification and Validator for this ContextState.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssocIdentificationAndValidator(
   t2iapi.context.CreateContextStateWithAssociationRequest)
@@ -79,6 +91,8 @@ service ContextService {
 
   /*
   Remove at least one pm:Identification element for the pm:AbstractContextState/@Handle.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
  */
   rpc RemoveIdentificationOfContextState(
   t2iapi.context.ContextStateHandleRequest)
@@ -86,6 +100,8 @@ service ContextService {
 
   /*
   Change at least one pm:Identification element for the pm:AbstractContextState/@Handle.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
  */
   rpc ChangeIdentificationOfContextState(
   t2iapi.context.ContextStateHandleRequest)
@@ -94,6 +110,8 @@ service ContextService {
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle,
   confirm by requested validator type.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssocAndSpecificValidator(
     t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
