@@ -35,6 +35,13 @@ service ActivationStateService {
       returns (BasicResponse);
 
   /*
+ Ensure that the requested transition of the value of the ActivationState of the DeviceComponent or Metric with the given handle from the starting ActivationState value, given as "start_activation" in the request, to the final ActivationState value, given as "end_activation" in the request, happens during the remote procedure call.
+ 
+   */
+  rpc ComponentActivationTransition (t2iapi.activation_state.ComponentActivationTransitionRequest)
+      returns (BasicResponse);
+
+  /*
   Set a SystemSignalActivation for a alert system with the given handle.
    */
   rpc SetSystemSignalActivation (t2iapi.activation_state.SetSystemSignalActivationRequest)
