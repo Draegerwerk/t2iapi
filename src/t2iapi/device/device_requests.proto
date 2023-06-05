@@ -46,8 +46,6 @@ message GetRemovableDescriptorsOfClassRequest {
 /*
 Request to set the device's current electrical power source to the provided electrical power source for the component
 represented by a pm:BatteryDescriptor with the provided @Handle.
-The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-the static state, it shall return not supported.
  */
 message SetElectricalPowerSourceRequest {
     string handle = 1;  // pm:BatteryDescriptor/@Handle representing the component for which the electrical
