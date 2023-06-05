@@ -69,11 +69,3 @@ message ExpandedName {
     string local_name = 2;
 }
 
-/*
-Represents electrical power sources of the device.
- */
-enum ElectricalPowerSource{
-    ELECTRICAL_POWER_SOURCE_INTERNAL = 0;       // INTERNAL ELECTRICAL POWER SOURCE as defined in IEC 60601-1:2005
-    ELECTRICAL_POWER_SOURCE_NON_INTERNAL = 1;   // an electrical power source other than
-                                                // INTERNAL ELECTRICAL POWER SOURCE
-}

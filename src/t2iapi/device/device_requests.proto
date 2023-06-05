@@ -44,11 +44,10 @@ message GetRemovableDescriptorsOfClassRequest {
 }
 
 /*
-Request to set the device's current electrical power source to the provided electrical power source for the component
-represented by a pm:BatteryDescriptor with the provided @Handle.
+Request to use or not to use the device's battery with the provided handle as the electrical power source.
  */
-message SetElectricalPowerSourceRequest {
-    string handle = 1;  // pm:BatteryDescriptor/@Handle representing the component for which the electrical
-                        // power source shall be set
-    ElectricalPowerSource electrical_power_source = 2; // electrical power source to be set
+message SetBatteryUsageRequest {
+    string handle = 1;  // pm:BatteryDescriptor/@Handle representing the battery which shall (not) be used as the
+                        // electrical power source
+    bool use = 2;       // specifies whether the battery shall be used as the electrical power source
 }

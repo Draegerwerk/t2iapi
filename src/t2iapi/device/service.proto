@@ -109,9 +109,9 @@ service DeviceService {
     rpc TriggerReport (TriggerReportRequest) returns (BasicResponse);
 
      /*
-    Set the device's current electrical power source.
-    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-    the static state, it shall return RESULT_NOT_SUPPORTED.
+    Use or not use the device's battery as the electrical power source.
+    The manipulated state shall be persistent until a next manipulation call or until power failure. If the device is
+    not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
      */
-    rpc SetElectricalPowerSource (t2iapi.device.SetElectricalPowerSourceRequest) returns (BasicResponse);
+    rpc SetBatteryUsage (t2iapi.device.SetBatteryUsageRequest) returns (BasicResponse);
 }
