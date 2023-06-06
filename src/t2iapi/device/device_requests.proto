@@ -42,3 +42,12 @@ Request a list of removable descriptors of the given class.
 message GetRemovableDescriptorsOfClassRequest {
     DescriptorClass descriptor_class = 1;
 }
+
+/*
+Request to use or not to use the device's battery with the provided handle as the electrical power source.
+ */
+message SetBatteryUsageRequest {
+    string handle = 1;  // pm:BatteryDescriptor/@Handle representing the battery which shall (not) be used as the
+                        // electrical power source
+    bool use = 2;       // specifies whether the battery shall be used as the electrical power source
+}
