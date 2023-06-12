@@ -23,6 +23,8 @@ service ActivationStateService {
 
   /*
   Set the ActivationState of the Alert with the given handle to the given AlertActivation value.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetAlertActivation (t2iapi.activation_state.SetAlertActivationRequest)
       returns (BasicResponse);
@@ -30,6 +32,8 @@ service ActivationStateService {
   /*
   Set the ActivationState of the DeviceComponent or Metric
   with the given handle to the given ComponentActivation value.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetComponentActivation (t2iapi.activation_state.SetComponentActivationRequest)
       returns (BasicResponse);
