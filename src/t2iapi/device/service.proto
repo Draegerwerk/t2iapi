@@ -110,4 +110,11 @@ service DeviceService {
     This manipulation of the device shall result in an msg:AbstractReport message of the provided type.
      */
     rpc TriggerReport (TriggerReportRequest) returns (BasicResponse);
+
+     /*
+    Use or not use the device's battery as the electrical power source.
+    The manipulated state shall be persistent until a next manipulation call or until power failure. If the device is
+    not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
+     */
+    rpc SetBatteryUsage (t2iapi.device.SetBatteryUsageRequest) returns (BasicResponse);
 }
