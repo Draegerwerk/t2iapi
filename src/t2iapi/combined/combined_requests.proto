@@ -21,8 +21,8 @@ Request to create a new or adapt an existing context state with a requested @Con
 set the requested @OperatingMode for the referenced operation.
  */
 message CreateContextStateWithAssociationAndSetOperatingModeRequest {
-    string context_descriptor_handle = 1;
-    t2iapi.context.ContextAssociation context_association = 2;  // the initial association of the context state
-    string operation_descriptor_handle = 3;
-    t2iapi.operation.OperatingMode operating_mode = 4;
+    string context_descriptor_handle = 1;  // the context descriptor handle
+    t2iapi.context.ContextAssociation context_association = 2;  // the requested ContextAssociation value of the context state
+    string operation_descriptor_handle = 3; // the operation descriptor handle
+    t2iapi.operation.OperatingMode operating_mode = 4;  // the requested OperatingMode value of the operation state
 }
