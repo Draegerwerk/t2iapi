@@ -45,9 +45,10 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Set the metric value for the provided handle to an invalid value.
+  Set an incorrect value for the metric with the provided handle. If the incorrect value for the metric is already
+  present, a new incorrect value shall be set.
    */
-  rpc SetInvalidValue (BasicHandleRequest)
+  rpc SetIncorrectValue (BasicHandleRequest)
       returns (BasicResponse);
 
   /*
