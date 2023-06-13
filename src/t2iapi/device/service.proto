@@ -32,16 +32,6 @@ service DeviceService {
         returns (BasicResponse);
 
     /*
-    Shutdown the device.
-     */
-    rpc ShutDownDevice (google.protobuf.Empty) returns (BasicResponse);
-
-    /*
-    Boot up the device.
-     */
-    rpc BootUpDevice (google.protobuf.Empty) returns (BasicResponse);
-
-    /*
     Announce the presence of the device in the network via a WS-Discovery Hello message.
      */
     rpc SendHello (google.protobuf.Empty) returns (BasicResponse);
