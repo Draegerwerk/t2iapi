@@ -7,19 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- manipulation SetBatteryUsage for device
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
 - manipulation SetActivationStateAndUserConfirmableValue for metrics
 - stub files which are integrated into the python package
 - description for allowed combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension
+- manipulation ComponentActivationTransition
 
 ### Changed
 
+- semantics for SetAlertActivation, SetComponentActivation, SetAlarmSignalInactivationState, 
+    SetAlertSystemNotFunctional, SetLocationDetail, RemoveAllContextStateValidators, SetContextStateAssociation,
+    CreateContextStateWithAssociation, CreateContextStateWithAssociationAndUniqueIdentification, 
+    CreateContextStateWithAssocIdentificationAndValidator, RemoveIdentificationOfContextState,
+    ChangeIdentificationOfContextState, CreateContextStateWithAssocAndSpecificValidator,
+    SetClockDevice, SetLanguage, SetNoValue, SetMetricValuesWithQualityMode
+- semantics for CreateContextStateWithAssociationAndValidators manipulation
+- semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
 
 ### Removed
 
+- manipulation ChangeMdibSequenceId
 - manipulation SetUserConfirmableValue
+- manipulation SetAudioPause
+- manipulation CancelAudioPause
 
 ## [2.0.0] - 2023-03-10
 
