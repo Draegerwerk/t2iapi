@@ -1,0 +1,32 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2023 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.combined;
+
+import "t2iapi/combined/combined_requests.proto";
+import "t2iapi/context/context_responses.proto";
+
+option java_package = "com.draeger.medical.t2iapi.combined";
+option java_outer_classname = "CombinedApiService";
+
+/*
+Service to handle combined manipulations which result from at least two different manipulations.
+ */
+service CombinedService {
+  /*
+  Create a new or adapt an existing context state with the requested @ContextAssociation and
+  set the requested @OperatingMode for the referenced operation.
+  The context state @Handle which was created or adapted shall be returned.
+  The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
+  If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc CreateContextStateWithAssociationAndSetOperatingMode (
+  t2iapi.combined.CreateContextStateWithAssociationAndSetOperatingModeRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+}
