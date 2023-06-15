@@ -36,7 +36,7 @@ class T2IApiTest {
                 .build();
 
         DeviceServiceBlockingStub blockingStub = DeviceServiceGrpc.newBlockingStub(channel);
-        BasicResponses.BasicResponse response = blockingStub.SendHello(Empty.newBuilder().build());
+        BasicResponses.BasicResponse response = blockingStub.sendHello(Empty.newBuilder().build());
         channel.shutdown();
         assertEquals(response.getResult(), ResponseTypes.Result.RESULT_SUCCESS);
     }
