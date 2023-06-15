@@ -1,0 +1,31 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2023 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.combined;
+
+import "t2iapi/context/types.proto";
+import "t2iapi/operation/types.proto";
+
+option java_package = "com.draeger.medical.t2iapi.combined";
+option java_outer_classname = "CombinedRequests";
+
+
+/*
+Request to create a new or adapt an existing context state with a requested @ContextAssociation and
+set the requested @OperatingMode for the referenced operation.
+ */
+message CreateContextStateWithAssociationAndSetOperatingModeRequest {
+    string context_descriptor_handle = 1;  // the context descriptor handle for which the @ContextAssociation value
+                                           // shall be set
+    t2iapi.context.ContextAssociation context_association = 2;  // the requested @ContextAssociation value
+                                                                // of the context state
+    string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
+                                            // shall be set
+    t2iapi.operation.OperatingMode operating_mode = 4;  // the requested @OperatingMode value of the operation state
+}
