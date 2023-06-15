@@ -26,7 +26,7 @@ class GrpcServer {
 
     private static class DeviceServiceImpl extends DeviceServiceImplBase {
         @Override
-        public void bootUpDevice(Empty request, StreamObserver<BasicResponses.BasicResponse> responseObserver) {
+        public void SendHello(Empty request, StreamObserver<BasicResponses.BasicResponse> responseObserver) {
             ResponseTypes.Result result = ResponseTypes.Result.RESULT_SUCCESS;
             BasicResponses.BasicResponse response = BasicResponses.BasicResponse
                     .newBuilder()

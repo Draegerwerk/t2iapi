@@ -74,20 +74,20 @@ def running_server_context():
 
 class ServiceSmokeTest(unittest.TestCase):
 
-    def test_BootUpDevice_works(self):
+    def test_SendHello_works(self):
         """
-        Tests that BootUpDevice rpc call invokes DeviceServiceServicer
+        Tests that SendHello rpc call invokes DeviceServiceServicer
         """
 
         response = basic_responses_pb2.BasicResponse(result=response_types_pb2.RESULT_SUCCESS)
         with mock.patch.object(target=device_service_pb2_grpc.DeviceServiceServicer,
-                               attribute='BootUpDevice', return_value=response) as server_side:
+                               attribute='SendHello', return_value=response) as server_side:
 
             with running_server_context() as port:
                 _target = f'localhost:{port}'
                 with grpc.insecure_channel(_target) as channel:
                     stub = device_service_pb2_grpc.DeviceServiceStub(channel)
-                    stub.BootUpDevice(empty_pb2.Empty())
+                    stub.SendHello(empty_pb2.Empty())
 
                 server_side.assert_called_once()
 
