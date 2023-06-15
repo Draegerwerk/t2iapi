@@ -34,6 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation SetUserConfirmableValue
 - manipulation SetAudioPause
 - manipulation CancelAudioPause
+- manipulation ShutDownDevice
+- manipulation BootUpDevice
 
 ## [2.0.0] - 2023-03-10
 

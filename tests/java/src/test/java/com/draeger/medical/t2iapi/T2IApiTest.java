@@ -26,17 +26,17 @@ class T2IApiTest {
     private static final String HOST = "localhost";
 
     /*
-       Tests that BootUpDevice rpc call invokes correct Service implementation
+       Tests that SendHello rpc call invokes correct Service implementation
      */
     @Test
-    void deviceBootUpTest() throws IOException {
+    void deviceSendHelloTest() throws IOException {
         GrpcServer.startGrpcServer(PORT, HOST);
         ManagedChannel channel = ManagedChannelBuilder.forAddress(HOST, PORT)
                 .usePlaintext()
                 .build();
 
         DeviceServiceBlockingStub blockingStub = DeviceServiceGrpc.newBlockingStub(channel);
-        BasicResponses.BasicResponse response = blockingStub.bootUpDevice(Empty.newBuilder().build());
+        BasicResponses.BasicResponse response = blockingStub.sendHello(Empty.newBuilder().build());
         channel.shutdown();
         assertEquals(response.getResult(), ResponseTypes.Result.RESULT_SUCCESS);
     }
