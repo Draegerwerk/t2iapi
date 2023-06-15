@@ -13,6 +13,7 @@ import java.net.InetSocketAddress;
 import com.draeger.medical.t2iapi.device.DeviceServiceGrpc.DeviceServiceImplBase;
 import com.draeger.medical.t2iapi.activation_state.ActivationStateServiceGrpc.ActivationStateServiceImplBase;
 import com.draeger.medical.t2iapi.alert.AlertServiceGrpc.AlertServiceImplBase;
+import com.draeger.medical.t2iapi.combined.CombinedServiceGrpc.CombinedServiceImplBase;
 import com.draeger.medical.t2iapi.context.ContextServiceGrpc.ContextServiceImplBase;
 import com.draeger.medical.t2iapi.metric.MetricServiceGrpc.MetricServiceImplBase;
 import com.draeger.medical.t2iapi.operation.OperationServiceGrpc.OperationServiceImplBase;
@@ -40,6 +41,7 @@ class GrpcServer {
 
     private static class ActivationStateServiceImpl extends ActivationStateServiceImplBase {}
     private static class AlertServiceImpl extends AlertServiceImplBase {}
+    private static class CombinedServiceImpl extends CombinedServiceImplBase {}
     private static class ContextServiceImpl extends ContextServiceImplBase {}
     private static class MetricServiceImpl extends MetricServiceImplBase {}
     private static class OperationServiceImpl extends OperationServiceImplBase {}
@@ -50,6 +52,7 @@ class GrpcServer {
                 .addService(new ActivationStateServiceImpl())
                 .addService(new AlertServiceImpl())
                 .addService(new ContextServiceImpl())
+                .addService(new CombinedServiceImpl())
                 .addService(new MetricServiceImpl())
                 .addService(new OperationServiceImpl())
                 .build();

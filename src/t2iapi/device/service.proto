@@ -27,6 +27,8 @@ service DeviceService {
     /*
     Switch the device into a specific operating mode.
     This manipulation shall result in a Mds having a specific MdsOperatingMode.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetDeviceOperatingMode (t2iapi.device.SetDeviceOperatingModeRequest)
         returns (BasicResponse);
@@ -38,11 +40,15 @@ service DeviceService {
 
     /*
     Adjust the clock of the device as if it were set manually by a user.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetClockDevice (google.protobuf.Empty) returns (BasicResponse);
 
     /*
     Set the device's (displayed) language to the given language.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetLanguage (t2iapi.device.SetLanguageRequest) returns (BasicResponse);
 
@@ -73,12 +79,6 @@ service DeviceService {
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Change of the MDIB SequenceId.
-    This manipulation of the device shall trigger a change of the MDIB SequenceId.
-     */
-    rpc ChangeMdibSequenceID (ChangeMdibSequenceIdRequest) returns (BasicResponse);
-
-    /*
     Insert an mds descriptor into the device MDIB.
     */
     rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
@@ -100,4 +100,11 @@ service DeviceService {
     This manipulation of the device shall result in an msg:AbstractReport message of the provided type.
      */
     rpc TriggerReport (TriggerReportRequest) returns (BasicResponse);
+
+     /*
+    Use or not use the device's battery as the electrical power source.
+    The manipulated state shall be persistent until a next manipulation call or until power failure. If the device is
+    not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
+     */
+    rpc SetBatteryUsage (t2iapi.device.SetBatteryUsageRequest) returns (BasicResponse);
 }

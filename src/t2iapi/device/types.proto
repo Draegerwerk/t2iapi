@@ -68,3 +68,4 @@ message ExpandedName {
     google.protobuf.StringValue uri = 1;
     string local_name = 2;
 }
+
