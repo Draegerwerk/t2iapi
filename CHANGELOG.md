@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- semantics for SetOperatingMode manipulation
 - manipulation SetInvalidValue to SetIncorrectValue, changed semantics
 - semantics for SetAlertActivation, SetComponentActivation, SetAlarmSignalInactivationState, 
     SetAlertSystemNotFunctional, SetLocationDetail, RemoveAllContextStateValidators, SetContextStateAssociation,
