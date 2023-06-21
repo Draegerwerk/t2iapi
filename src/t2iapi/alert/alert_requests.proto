@@ -18,23 +18,12 @@ option java_outer_classname = "AlertRequests";
 
 
 /*
-This message is used as a request to set the AlertConditionState/@Presence.
+This message is used as a request to transition the AlertConditionState/@Presence to the requested value for the
+given AlertCondition handle.
  */
 message SetAlertConditionPresenceRequest {
     string handle = 1;  // handle of the alert condition state for which the presence shall be set
-    bool presence = 2;  // alert condition presence to be set
-}
-
-/*
-Request for a transition of the value of the @Presence of the AlertCondition state with the given handle
-from the starting @Presence value, given as "start_presence", to the final @Presence value,
-given as "end_presence", happens during the remote procedure call.
-*/
-message AlertConditionPresenceTransitionRequest {
-    string handle = 1;  // descriptor handle of the descriptor for which the @Presence shall be set
-                        // in the corresponding state element
-    bool start_presence = 2;  // the start @Presence value
-    bool end_presence = 3;  // the end @Presence value
+    bool presence = 2;  // alert condition presence to be transitioned to
 }
 
 /*

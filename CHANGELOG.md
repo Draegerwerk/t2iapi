@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- manipulation AlertConditionPresenceTransition for alerts
 - manipulation CreateContextStateWithAssociationAndSetOperatingMode for contexts and operations
 - manipulation SetBatteryUsage for device
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
@@ -18,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- semantics for the SetAlertConditionPresence manipulation
 - semantics for SetOperatingMode manipulation
 - manipulation SetInvalidValue to SetIncorrectValue, changed semantics
 - semantics for SetAlertActivation, SetComponentActivation, SetAlarmSignalInactivationState, 
