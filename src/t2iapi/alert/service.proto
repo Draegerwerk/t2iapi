@@ -36,6 +36,16 @@ service AlertService {
         returns (BasicResponse);
 
     /*
+    Set the pm:AlertSignalState/@Presence for all provided alert signals or only for a subset of the provided alert
+    signals to the provided @Presence.
+    The manipulated state of all the manipulated alert signals shall be persistent until a next manipulation call.
+    If the device is not able to maintain the static state for every manipulated alert signal state, it shall
+    return RESULT_NOT_SUPPORTED.
+     */
+    rpc SetSomeAlertSignalPresence (t2iapi.alert.SetSomeAlertSignalPresenceRequest)
+        returns (BasicResponse);
+
+    /*
     Start/Stop an Escalation/Deescalation of the AlertConditionPriority for a given alert condition handle.
      */
     rpc AlertConditionEscalation (t2iapi.alert.AlertConditionEscalationRequest)
