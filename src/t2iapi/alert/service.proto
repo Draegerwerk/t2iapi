@@ -30,6 +30,14 @@ service AlertService {
         returns (BasicResponse);
 
     /*
+    Ensure that the requested transition of the @Presence of the AlertCondition with the given handle from the
+    starting @Presence value, given as "start_presence" in the request,
+    to the final @Presence value, given as "end_presence" in the request, happens during the remote procedure call.
+     */
+    rpc AlertConditionPresenceTransition (t2iapi.alert.AlertConditionPresenceTransitionRequest)
+        returns (BasicResponse);
+
+    /*
     Set the AlertSignal/Presence for a given alert signal handle.
      */
     rpc SetAlertSignalPresence (t2iapi.alert.SetAlertSignalPresenceRequest)
