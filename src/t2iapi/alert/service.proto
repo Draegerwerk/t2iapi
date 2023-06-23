@@ -24,7 +24,8 @@ Service to handle alert manipulations.
 service AlertService {
 
     /*
-    Set the AlertCondition/@Presence of the AlertCondition with the given handle to the given value.
+    The AlertConditionState/@Presence shall be transitioned to the requested value for the AlertCondition with the
+    given handle. Even if the @Presence already has the requested value.
      */
     rpc SetAlertConditionPresence (t2iapi.alert.SetAlertConditionPresenceRequest)
         returns (BasicResponse);
