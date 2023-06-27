@@ -22,8 +22,8 @@ This message is used as a request to transition the AlertConditionState/@Presenc
 given AlertCondition handle.
  */
 message SetAlertConditionPresenceRequest {
-    string handle = 1;  // handle of the alert condition state for which the presence shall be set
-    bool presence = 2;  // alert condition presence to be transitioned to
+  string handle = 1;  // handle of the alert condition state for which the presence shall be set
+  bool presence = 2;  // alert condition presence to be transitioned to
 }
 
 /*
@@ -40,8 +40,8 @@ AlertCondition. The AlertCondition is used to identify the AlertSignalInactivati
 to do so, because it is not directly modelled in the MDIB.
  */
 message SetAlarmSignalInactivationStateRequest{
-    string handle = 1;  // handle reference of the alert condition
-    AlarmSignalInactivationState enable = 2;
+  string handle = 1;  // handle reference of the alert condition
+  AlarmSignalInactivationState enable = 2;
 }
 
 /*
@@ -53,4 +53,14 @@ message AlertConditionEscalationRequest {
   AlertConditionEscalationProcess escalation_process = 2;
 }
 
-
+/*
+Request to set the pm:AlertSignalState/@Presence for a subset of requested alert signals to the
+provided presence.
+From the list of alert signals *handle*, choose a maximal set of at least *min_subset_size* handles.
+For the chosen handles, set each alert signal @Presence to a random value from *presence* list.
+*/
+message SetSomeAlertSignalPresenceRequest {
+  repeated string handle = 1;                 // a list of requested alert signal handles
+  uint32 min_subset_size = 2;                 // requested minimal number of alert signals to be manipulated
+  repeated AlertSignalPresence presence = 3;  // a list of requested AlertSignalPresence values
+}

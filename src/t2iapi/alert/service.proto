@@ -77,7 +77,17 @@ service AlertService {
     - State 2
        - pm:AlertSignalState/@ActivationState must be "On"
        - the associated pm:AlertConditionState/@Presence must be "false"
-   */
+    */
    rpc SetAsActivationStateOnAndChangeAcPresenceFalse (BasicHandleRequest)
        returns (BasicResponse);
+
+   /*
+    Set the pm:AlertSignalState/@Presence for a subset of requested alert signals to the requested
+    @Presence value(s).
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
+     */
+    rpc SetSomeAlertSignalPresence (t2iapi.alert.SetSomeAlertSignalPresenceRequest)
+        returns (BasicResponse);
+
 }
