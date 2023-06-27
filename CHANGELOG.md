@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- manipulation SetSomeAlertSignalPresence for alerts
 - manipulation CreateContextStateWithAssociationAndSetOperatingMode for contexts and operations
 - manipulation SetBatteryUsage for device
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
