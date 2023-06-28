@@ -27,14 +27,6 @@ message SetAlertConditionPresenceRequest {
 }
 
 /*
-This message is used as a request to set AlertSignalState/@Presence.
- */
-message SetAlertSignalPresenceRequest {
-  string handle = 1;  // handle reference of the alert signal
-  AlertSignalPresence presence = 2;  // alert signal presence to set
-}
-
-/*
 This message is used as a request to enable or disable the AlertSignalInactivationState represented by an
 AlertCondition. The AlertCondition is used to identify the AlertSignalInactivationState as there is no other way
 to do so, because it is not directly modelled in the MDIB.

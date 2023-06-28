@@ -31,12 +31,6 @@ service AlertService {
         returns (BasicResponse);
 
     /*
-    Set the AlertSignal/Presence for a given alert signal handle.
-     */
-    rpc SetAlertSignalPresence (t2iapi.alert.SetAlertSignalPresenceRequest)
-        returns (BasicResponse);
-
-    /*
     Start/Stop an Escalation/Deescalation of the AlertConditionPriority for a given alert condition handle.
      */
     rpc AlertConditionEscalation (t2iapi.alert.AlertConditionEscalationRequest)
