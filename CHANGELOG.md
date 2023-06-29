@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- manipulation ProvideMetricValuesOrSamples for metrics
+- manipulation ProvideMetricValueOrSamples for metrics
 - manipulation SetSomeAlertSignalPresence for alerts
 - manipulation CreateContextStateWithAssociationAndSetOperatingMode for contexts and operations
 - manipulation SetBatteryUsage for device
