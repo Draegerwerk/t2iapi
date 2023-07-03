@@ -103,7 +103,7 @@ service MetricService {
   /*
   Provide pm:MetricValue/@Value or pm:MetricValue/@Samples for the metric with the requested handle.
 
-  The goal of this rpc is to have values provided, they must not be stable to the same value (e.g. for measurements).
+  The goal of this rpc is to have values continually provided, whereby the values may change over time.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
