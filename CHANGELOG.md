@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- manipulation SetAlertSignalPresence
 - manipulation ChangeMdibSequenceId
 - manipulation SetUserConfirmableValue
 - manipulation SetAudioPause
