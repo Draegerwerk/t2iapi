@@ -54,7 +54,8 @@ setuptools.setup(
     package_data={'': ['*.pyi']},
     packages=setuptools.find_packages(where='src'),
     install_requires=['protobuf==' + config_map['PYTHON_PROTOC_VERSION'],
-                      'grpcio==' + config_map['PYTHON_GRPC_VERSION']],
+                      'grpcio==' + config_map['PYTHON_GRPC_VERSION'],
+                      'types-protobuf'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python :: 3 :: Only',

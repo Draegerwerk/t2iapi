@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - stub files which are integrated into the python package
 - description for allowed combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension
 - manipulation ComponentActivationTransition
+- type hinting for python package via [types-protobuf](https://pypi.org/project/types-protobuf/)
 
 ### Changed
 
