@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - description for allowed combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension
 - manipulation ComponentActivationTransition
 - type hinting for python package via [types-protobuf](https://pypi.org/project/types-protobuf/)
+- TriggerAnyDescriptorUpdate manipulation
 
 ### Changed
 
@@ -50,7 +51,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - added IsComputerControlled manipulation for metrics
 - COMMON_PROTOC_VERSION=21.7 due to new versioning of protobuf
-- TriggerAnyDescriptorUpdate manipulation
 
 ### Changed
 
