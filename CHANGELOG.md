@@ -50,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - added IsComputerControlled manipulation for metrics
 - COMMON_PROTOC_VERSION=21.7 due to new versioning of protobuf
+- TriggerAnyDescriptorUpdate manipulation
 
 ### Changed
 
