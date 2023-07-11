@@ -33,14 +33,12 @@ message SetMetricValuesWithQualityModeRequest {
 }
 
 /*
-Request to set metric values within a given range.
+Request to set new metric values within the given range for the metric with the given handle.
  */
 message SetMetricValuesInRangeRequest {
-    string handle = 1;  // handle of the metric state for which values shall be set
-    // Lower and upper limit values which should not be violated by metric values.
-    // If both limit values are not defined (empty string) a valid metric value shall be set.
-    string lower = 2;
-    string upper = 3;
+    string handle = 1;  // handle of the metric for which new metric values shall be set
+    string lower = 2;   // the lower limit value for the new metric values generation
+    string upper = 3;   // the upper limit value for the new metric values generation
 }
 
 /*
