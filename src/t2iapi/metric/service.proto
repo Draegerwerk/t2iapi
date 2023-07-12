@@ -68,10 +68,11 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Set new metric values within a given range. The range is defined by lower and upper limit values which shall not be
-  violated. If no limit value is defined (empty string), random but valid metric values shall be set.
-  If a limit is defined, it shall not be violated by metric values. If metric values are already present, new metric
-  values shall be provided.
+  Set new metric value(s) (resulting in new pm:AbstractMetricValue/@Value resp. @Samples) within a given range.
+  The range is defined by lower and upper limit values which shall not be violated.
+  If no limit value is requested (empty string), random but valid metric value(s) shall be set.
+  If a limit is requested, it shall not be violated by the new metric value(s).
+  Even if a metric value(s) is already present, new metric value(s) shall be provided.
    */
   rpc SetMetricValuesInRange (t2iapi.metric.SetMetricValuesInRangeRequest)
       returns (BasicResponse);
