@@ -33,12 +33,13 @@ message SetMetricValuesWithQualityModeRequest {
 }
 
 /*
-Request to set new metric values within the given range for the metric with the given handle.
+Request to set new pm:AbstractMetricValue/@Value resp. @Samples within the given range for the metric with the
+given handle.
  */
 message SetMetricValuesInRangeRequest {
-    string handle = 1;  // handle of the metric for which new metric values shall be set
-    string lower = 2;   // the lower limit value for the new metric values generation
-    string upper = 3;   // the upper limit value for the new metric values generation
+    string handle = 1;  // handle of the metric for which new pm:AbstractMetricValue/@Value resp. @Samples shall be set
+    string lower = 2;   // lower limit for setting the new pm:AbstractMetricValue/@Value resp. @Samples
+    string upper = 3;   // upper limit for setting the new pm:AbstractMetricValue/@Value resp. @Samples
 }
 
 /*
