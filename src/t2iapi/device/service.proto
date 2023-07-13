@@ -95,6 +95,15 @@ service DeviceService {
      */
     rpc TriggerDescriptorUpdate (BasicHandleRequest) returns (BasicResponse);
 
+    /*
+    Trigger a descriptor update.
+    The descriptor to update has to be chosen by the device. It is expected that this manipulation succeeds
+    as long as there are descriptors than can be updated.
+    This manipulation shall result in a msg:DescriptionModificationReport message containing a report part with
+    msg:ReportPart/@ModificationType = "Upt".
+     */
+    rpc TriggerAnyDescriptorUpdate (google.protobuf.Empty) returns (BasicResponse);
+
      /*
     Trigger a report message of the provided type.
     This manipulation of the device shall result in an msg:AbstractReport message of the provided type.
