@@ -33,7 +33,7 @@ message SetMetricValuesWithQualityModeRequest {
 }
 
 /*
-Request to set new pm:AbstractMetricValue/@Value resp. @Samples within the given range for the metric with the
+Request to set new pm:MetricValue/@Value resp. @Samples within the given range for the metric with the
 given handle.
  */
 message SetMetricValuesInRangeRequest {
