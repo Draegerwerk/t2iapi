@@ -37,9 +37,9 @@ Request to set new pm:MetricValue/@Value resp. @Samples within the given range f
 given handle.
  */
 message SetMetricValuesInRangeRequest {
-    string handle = 1;  // handle of the metric for which new pm:AbstractMetricValue/@Value resp. @Samples shall be set
-    string lower = 2;   // lower limit for setting the new pm:AbstractMetricValue/@Value resp. @Samples
-    string upper = 3;   // upper limit for setting the new pm:AbstractMetricValue/@Value resp. @Samples
+    string handle = 1;  // handle of the metric for which newpm:MetricValue/@Value or @Samples shall be set
+    string lower = 2;   // lower limit for setting the new pm:MetricValue/@Value or @Samples
+    string upper = 3;   // upper limit for setting the new pm:MetricValue/@Value or @Samples
 }
 
 /*
