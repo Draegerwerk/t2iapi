@@ -33,14 +33,13 @@ message SetMetricValuesWithQualityModeRequest {
 }
 
 /*
-Request to set metric values within a given range.
+Request to set new pm:MetricValue/@Value resp. @Samples within the given range for the metric with the
+given handle.
  */
 message SetMetricValuesInRangeRequest {
-    string handle = 1;  // handle of the metric state for which values shall be set
-    // Lower and upper limit values which should not be violated by metric values.
-    // If both limit values are not defined (empty string) a valid metric value shall be set.
-    string lower = 2;
-    string upper = 3;
+    string handle = 1;  // handle of the metric for which new pm:MetricValue/@Value or @Samples shall be set
+    string lower = 2;   // lower limit for setting the new pm:MetricValue/@Value or @Samples
+    string upper = 3;   // upper limit for setting the new pm:MetricValue/@Value or @Samples
 }
 
 /*
