@@ -45,10 +45,11 @@ message GetSupportedContextTypesResponse {
 }
 
 /*
-Response which contains Identification including a list of InstanceIdentifier elements
-which identify an ensemble and thus enables the caller to distinguish ensembles from each other.
+Response which contains lists of Identification objects including a list of InstanceIdentifier elements.
+Each Identification object identifies an ensemble and thus enables the caller to distinguish ensembles from each other.
+For each pm:EnsembleContextState to identify, an Identification object shall be returned.
  */
 message EnsembleContextIndicateMembershipWithIdentificationResponse {
     BasicResponse status = 1;
-    repeated PartialInstanceIdentifier identification = 2;
+    repeated Identification identification = 2;
 }

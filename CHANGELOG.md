@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - TriggerAnyDescriptorUpdate manipulation
 
 ### Changed
+- semantics for the EnsembleContextIndicateMembershipWithIdentification manipulation
 - semantics for the SetMetricValuesInRange manipulation
 - semantics for the SetAlertConditionPresence manipulation
 - semantics for SetOperatingMode manipulation
