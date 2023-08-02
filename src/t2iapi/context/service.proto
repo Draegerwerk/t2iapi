@@ -71,16 +71,6 @@ service ContextService {
 
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
-  and provide the unique identification.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
-   */
-  rpc CreateContextStateWithAssociationAndUniqueIdentification(
-  t2iapi.context.CreateContextStateWithAssociationRequest)
-      returns (t2iapi.context.CreateContextStateWithAssociationAndUniqueIdentificationResponse);
-
-  /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
   and provide at least one Identification and Validator for this ContextState.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
@@ -90,22 +80,22 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Remove at least one pm:Identification element for the pm:AbstractContextState/@Handle.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
+  For the Context with the provided handle perform the following transition:
+  - create a new associated pm:AbstractContextState instance for the given descriptor handle and provide at least
+    one unique pm:Identification element(s)
+  - remove at least one pm:Identification element for the previous created pm:AbstractContextState.
  */
-  rpc RemoveIdentificationOfContextState(
-  t2iapi.context.ContextStateHandleRequest)
-      returns (BasicResponse);
+  rpc TransitionFromCreateStateWithIdentificationToRemoveIdentification (BasicHandleRequest)
+      returns (CreateContextStateWithAssociationResponse);
 
   /*
-  Change at least one pm:Identification element for the pm:AbstractContextState/@Handle.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
+  For the Context with the provided handle perform the following transition:
+  - create a new associated pm:AbstractContextState instance for the given descriptor handle and provide at least
+    one unique pm:Identification element(s)
+  - change at least one pm:Identification element for the previous created pm:AbstractContextState.
  */
-  rpc ChangeIdentificationOfContextState(
-  t2iapi.context.ContextStateHandleRequest)
-      returns (BasicResponse);
+  rpc TransitionFromCreateStateWithIdentificationToChangeIdentification (BasicHandleRequest)
+      returns (CreateContextStateWithAssociationResponse);
 
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle,
