@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation TransitionFromCreateStateWithIdentificationToRemoveIdentification for contexts
+- manipulation TransitionFromCreateStateWithIdentificationToChangeIdentification for contexts
 - manipulation TransitionProvideValueToExpressNoValueAvailable for metrics
 - manipulation ProvideMetricValueOrSamples for metrics
 - manipulation SetSomeAlertSignalPresence for alerts
@@ -38,6 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- manipulation CreateContextStateWithAssociationAndUniqueIdentification, RemoveIdentificationOfContextState, 
+    ChangeIdentificationOfContextState
 - manipulation SetNoValue
 - manipulation SetAlertSignalPresence
 - manipulation ChangeMdibSequenceId
