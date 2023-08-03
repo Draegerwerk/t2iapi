@@ -92,7 +92,7 @@ service ContextService {
   For the Context with the provided descriptor handle perform the following transition:
   - create a new associated pm:AbstractContextState instance with at least one unique pm:Identification element
     for the Context with the given descriptor handle
-  - change at least one pm:Identification element for the previously created pm:AbstractContextState.
+  - change at least one already present pm:Identification element for the previously created pm:AbstractContextState.
  */
   rpc TransitionFromCreateStateWithIdentificationToChangeIdentification (BasicHandleRequest)
       returns (CreateContextStateWithAssociationResponse);
