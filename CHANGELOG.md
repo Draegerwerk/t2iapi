@@ -31,10 +31,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation SetInvalidValue to SetIncorrectValue, changed semantics
 - semantics for SetAlertActivation, SetComponentActivation, SetAlarmSignalInactivationState, 
     SetAlertSystemNotFunctional, SetLocationDetail, RemoveAllContextStateValidators, SetContextStateAssociation,
-    CreateContextStateWithAssociation, CreateContextStateWithAssociationAndUniqueIdentification, 
-    CreateContextStateWithAssocIdentificationAndValidator, RemoveIdentificationOfContextState,
-    ChangeIdentificationOfContextState, CreateContextStateWithAssocAndSpecificValidator,
-    SetClockDevice, SetLanguage, SetNoValue, SetMetricValuesWithQualityMode
+    CreateContextStateWithAssociation, CreateContextStateWithAssocIdentificationAndValidator, 
+    CreateContextStateWithAssocAndSpecificValidator, SetClockDevice, SetLanguage, SetNoValue, 
+    SetMetricValuesWithQualityMode
 - semantics for CreateContextStateWithAssociationAndValidators manipulation
 - semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
