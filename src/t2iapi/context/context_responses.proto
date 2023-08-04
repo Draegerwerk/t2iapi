@@ -25,18 +25,6 @@ message CreateContextStateWithAssociationResponse {
 }
 
 /*
-Response containing the handle of the newly created context state and its unique identification.
-In case of a PatientContextState having multiple pm:InstanceIdentifier, the @Extension and @Root shall be returned
-for the pm:InstanceIdentifier with pm:Type/@Code = MDC_ATTR_PT_ID.
- */
-message CreateContextStateWithAssociationAndUniqueIdentificationResponse {
-    BasicResponse status = 1;
-    string context_state_handle = 2;  // handle of the context state, that was created
-    string extension  = 3;  // value of the identifier (from pm:InstanceIdentifier/@Extension)
-    string root  = 4;  // value of the identifier (from pm:InstanceIdentifier/@Root)
-}
-
-/*
 Response which contains all context types supported by the DUT.
  */
 message GetSupportedContextTypesResponse {

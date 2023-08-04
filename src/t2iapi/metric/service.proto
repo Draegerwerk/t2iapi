@@ -29,13 +29,6 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Set no metric values for the provided metric handle.
-  The manipulated state can be set temporarily or persistent until a next manipulation call.
-   */
-  rpc SetNoValue (BasicHandleRequest)
-      returns (BasicResponse);
-
-  /*
   For the metric with the provided handle do the following:
    - set the @ActivationState to the provided value
    - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
@@ -111,5 +104,13 @@ service MetricService {
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc ProvideMetricValueOrSamples (BasicHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  For the metric with the provided handle perform the following transition:
+   - provide pm:MetricValue/@Value resp. @Samples and then
+   - express for the metric that no value is available.
+   */
+  rpc TransitionProvideValueToExpressNoValueAvailable (BasicHandleRequest)
       returns (BasicResponse);
 }
