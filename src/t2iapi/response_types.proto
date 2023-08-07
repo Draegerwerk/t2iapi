@@ -25,8 +25,8 @@ enum Result {
 /*
 Represents pm:Identification (defined in IEEE Std 11073-10207-2017).
 */
-message Identification {
-    repeated PartialInstanceIdentifier identification = 2;  // list of identifiers for contexts
+message IdentificationList {
+    repeated PartialInstanceIdentifier identification = 1;  // list of identifiers for contexts
 }
 
 /*
