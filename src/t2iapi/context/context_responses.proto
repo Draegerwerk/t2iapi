@@ -33,7 +33,7 @@ message GetSupportedContextTypesResponse {
 }
 
 /*
-Response which contains a list of lists with pm:Identification elements. Each list if pm:Identification elements
+Response which contains a list of lists with pm:Identification elements. Each list of pm:Identification elements
 identifies a pm:EnsembleContextState and thus enables the differentiation of ensembles from each other.
  */
 message EnsembleContextIndicateMembershipWithIdentificationResponse {
