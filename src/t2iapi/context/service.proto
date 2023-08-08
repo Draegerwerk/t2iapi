@@ -129,9 +129,13 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Indicate membership in an SDC PARTICIPANT ENSEMBLE using an ensemble context that has the provided descriptor handle
-  and return a list of pm:Identification elements which identify an ensemble and thus enable the caller to distinguish
-  ensembles from each other.
+  Indicate membership in an SDC PARTICIPANT ENSEMBLE using ensemble context state(s) that have the provided descriptor
+  handle and return a list of pm:Identification elements which identify the ensemble context state(s).
+  If already one or more pm:EnsembleContextState(s) indicate the membership, it is not needed to create a new
+  pm:EnsembleContextState(s). In this case it is sufficient to only return the BasicResponse and the pm:Identification
+  elements.
+  The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
+  it shall return RESULT_NOT_SUPPORTED.
    */
   rpc EnsembleContextIndicateMembershipWithIdentification (BasicHandleRequest)
       returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
