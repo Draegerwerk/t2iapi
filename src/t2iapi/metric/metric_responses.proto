@@ -15,13 +15,15 @@ option java_package = "com.draeger.medical.t2iapi.metric";
 option java_outer_classname = "MetricResponses";
 
 /*
-This message is used as a response for the CalibrateMetric manipulation. It returns a list of NumericMetricValue/@Value
-or SampleArrayValue/@Samples as strings measured during the calibration. An empty list is returned if no values
-can be provided.
+This message is used as a response for the CalibrateMetric manipulation.
+It returns a list of pm:MetricValue/@Value or pm:MetricValue/@Samples as strings measured during the calibration.
+For further comparison of the value(s) it is required that each returned value has the same unit and floating point
+resolution as defined in the respective pm:AbstractMetricDescriptor.
+An empty list is returned if no values can be provided.
  */
 message CalibrateMetricResponse {
     BasicResponse response = 1;
-    repeated string values = 2;
+    repeated string values = 2;  // pm:MetricValue/@Value or pm:MetricValue/@Samples
 }
 
 // Response indicating whether a metric is computer-controlled

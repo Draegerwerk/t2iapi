@@ -47,7 +47,7 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Calibrate the metric for the provided handle and return the calibration values.
+  Start a new calibration for the metric with the provided handle and return the calibration values.
    */
   rpc CalibrateMetric (BasicHandleRequest)
       returns (t2iapi.metric.CalibrateMetricResponse);
