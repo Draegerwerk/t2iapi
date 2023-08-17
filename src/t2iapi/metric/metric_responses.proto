@@ -17,8 +17,9 @@ option java_outer_classname = "MetricResponses";
 /*
 This message is used as a response for the CalibrateMetric manipulation.
 It returns a list of pm:MetricValue/@Value or pm:MetricValue/@Samples as strings measured during the calibration.
-For further comparison of the value(s) it is required that each returned string value has to match the value that
-would be transmitted via SDC.
+For further comparison of the value(s) it is required that each returned string value has the same representation
+of the whole and fractional part that would be transmitted via SDC, i.e. if the value is represented as '0.01'
+via SDC, do not provide it as '00.010'.
 An empty list is returned if no values can be provided.
  */
 message CalibrateMetricResponse {
