@@ -33,7 +33,7 @@ to do so, because it is not directly modelled in the MDIB.
  */
 message SetAlarmSignalInactivationStateRequest{
   string handle = 1;  // handle reference of the alert condition
-  AlarmSignalInactivationState enable = 2;
+  bool enable = 2;  // if enable is True, the AlertConditionState/@Presence is requested to be True, otherwise False
 }
 
 /*
