@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- semantics for SetMetricStatus manipulation
 - semantics for the CalibrateMetric manipulation
 - semantics for the EnsembleContextIndicateMembershipWithIdentification manipulation
 - semantics for the SetMetricValuesInRange manipulation
@@ -39,7 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - semantics for CreateContextStateWithAssociationAndValidators manipulation
 - semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
-- semantics for SetMetricStatus manipulation
 
 ### Removed
 
