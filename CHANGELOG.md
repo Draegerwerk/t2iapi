@@ -39,7 +39,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     CreateContextStateWithAssociation, CreateContextStateWithAssocIdentificationAndValidator, 
     CreateContextStateWithAssocAndSpecificValidator, SetClockDevice, SetLanguage, SetNoValue, 
     SetMetricValuesWithQualityMode
-- semantics for CreateContextStateWithAssociationAndValidators manipulation
 - semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
 
