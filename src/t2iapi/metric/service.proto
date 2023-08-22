@@ -84,6 +84,8 @@ service MetricService {
   /*
   Set the provided measurement, calculation or setting status for the metric of the provided handle. This is not the
   AbstractMetricState/@ActivationState, but the internal state of the device.
+  The resulting AbstractMetricState/@ActivationState shall be persistent until the next manipulation call.
+  If the device is not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetMetricStatus (t2iapi.metric.SetMetricStatusRequest) returns (BasicResponse);
 
