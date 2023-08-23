@@ -70,3 +70,15 @@ Request to associate a specific patient type.
 message AssociatePatientRequest {
     PatientType patient_type = 1;  // Patient type to be associated
 }
+
+/*
+Request to create a new context state for the given descriptor handle with the starting @ContextAssociation value,
+given as "start_association", to perform a transition to the final @ContextAssociation value, given as
+"end_association", happens during the remote procedure call.
+ */
+message ContextAssociationTransitionRequest {
+    string descriptor_handle = 1;   // descriptor handle for which the new context state shall be created and
+                                    // the transition of the @ContextAssociation shall be performed
+    ContextAssociation start_association = 2;  // the start @ContextAssociation value
+    ContextAssociation end_association = 3;  // the end @ContextAssociation value
+}
