@@ -158,5 +158,5 @@ service ContextService {
   value, given as "end_association".
    */
   rpc ContextAssociationTransition (t2iapi.context.ContextAssociationTransitionRequest)
-      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+      returns (BasicResponse);
 }
