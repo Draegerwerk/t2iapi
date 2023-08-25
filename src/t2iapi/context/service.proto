@@ -59,8 +59,8 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
-  and provide at least the number of pm:Validator elements for this ContextState.
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle and provide at least the number of pm:Validator elements for this ContextState.
   If the number of pm:Validator elements is zero, zero pm:Validator elements shall be provided.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
@@ -153,9 +153,9 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
   
   /*
-  Create a new context state for the given descriptor handle with the starting @ContextAssociation value,
-  given as "start_association" and perform a transition of the created context state to the final @ContextAssociation
-  value, given as "end_association".
+  Create or adapt a context state for the given descriptor handle with the starting @ContextAssociation value
+  given as "start_association" (to trigger a context state report) and perform a transition of the previously
+  used context state to the final @ContextAssociation value, given as "end_association".
    */
   rpc ContextAssociationTransition (t2iapi.context.ContextAssociationTransitionRequest)
       returns (BasicResponse);
