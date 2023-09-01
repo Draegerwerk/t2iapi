@@ -74,7 +74,7 @@ message AssociatePatientRequest {
 /*
 Request to create or adapt a context state for the given descriptor handle with the starting @ContextAssociation value
 given as "start_association", to perform a transition to the final @ContextAssociation value, given as
-"end_association", happens during the remote procedure call.
+"end_association".
  */
 message ContextAssociationTransitionRequest {
     string descriptor_handle = 1;   // descriptor handle for which the context state shall be created / adapted and
