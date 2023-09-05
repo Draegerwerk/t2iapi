@@ -11,6 +11,8 @@ package t2iapi.combined;
 
 import "t2iapi/context/types.proto";
 import "t2iapi/operation/types.proto";
+import "t2iapi/activation_state/types.proto";
+
 
 option java_package = "com.draeger.medical.t2iapi.combined";
 option java_outer_classname = "CombinedRequests";
@@ -31,26 +33,27 @@ message CreateContextStateWithAssociationAndSetOperatingModeRequest {
 }
 
 /*
-Request to create a new or adapt an existing component activation state to the given ComponentActivation value and
-set the requested @OperatingMode for the referenced operation.
- */
+Request to set the ActivationState of the component or metric with the given handle to the requested
+ComponentActivation value and to set the OperatingMode of the operation with the given handle to the requested
+OperatingMode value.
+*/
 message SetComponentActivationAndSetOperatingModeRequest {
     string component_metric_descriptor_handle = 1; // descriptor handle of the descriptor for which the ActivationState
                                                    // shall be set in the corresponding state element
-    ComponentActivation activation = 2; // value to set as the ActivationState value
+    t2iapi.activation_state.ComponentActivation activation= 2; // value to set as the ActivationState value
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
     // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // the requested @OperatingMode value of the operation state
 }
 
 /*
-Request to create a new or adapt an existing alert activation state to the given AlertActivation value and
-set the requested @OperatingMode for the referenced operation.
- */
+Request to set the ActivationState of the alert with the given handle to the requested AlertActivation value and
+to set the OperatingMode of the operation with the given handle to the requested OperatingMode value.
+*/
 message SetAlertActivationAndSetOperatingModeRequest {
     string alert_descriptor_handle = 1; // descriptor handle of the descriptor for which the ActivationState shall be
                                         // set in the corresponding state element
-    AlertActivation activation = 2; // value to set as the ActivationState value
+    t2iapi.activation_state.AlertActivation activation= 2; // value to set as the ActivationState value
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // the requested @OperatingMode value of the operation state
