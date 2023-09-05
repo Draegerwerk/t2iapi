@@ -29,3 +29,29 @@ message CreateContextStateWithAssociationAndSetOperatingModeRequest {
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4;  // the requested @OperatingMode value of the operation state
 }
+
+/*
+Request to create a new or adapt an existing component activation state to the given ComponentActivation value and
+set the requested @OperatingMode for the referenced operation.
+ */
+message SetComponentActivationAndSetOperatingModeRequest {
+    string component_metric_descriptor_handle = 1; // descriptor handle of the descriptor for which the ActivationState
+                                                   // shall be set in the corresponding state element
+    ComponentActivation activation = 2; // value to set as the ActivationState value
+    string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
+    // shall be set
+    t2iapi.operation.OperatingMode operating_mode = 4; // the requested @OperatingMode value of the operation state
+}
+
+/*
+Request to create a new or adapt an existing alert activation state to the given AlertActivation value and
+set the requested @OperatingMode for the referenced operation.
+ */
+message SetAlertActivationAndSetOperatingModeRequest {
+    string alert_descriptor_handle = 1; // descriptor handle of the descriptor for which the ActivationState shall be
+                                        // set in the corresponding state element
+    AlertActivation activation = 2; // value to set as the ActivationState value
+    string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
+                                            // shall be set
+    t2iapi.operation.OperatingMode operating_mode = 4; // the requested @OperatingMode value of the operation state
+}
