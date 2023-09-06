@@ -59,7 +59,7 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
   and provide at least the number of pm:Validator elements for this ContextState.
   If the number of pm:Validator elements is zero, zero pm:Validator elements shall be provided.
    */
@@ -102,7 +102,7 @@ service ContextService {
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssocAndSpecificValidator(
-    t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
+  t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*

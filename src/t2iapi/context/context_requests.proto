@@ -46,7 +46,7 @@ message CreateContextStateWithAssociationRequest {
 }
 
 /*
-Request to create a new pm:AbstractContextState instance with a given @ContextAssociation and a given number
+Request to create or adapt a pm:AbstractContextState instance with a given @ContextAssociation and a given number
 of pm:Validator elements.
  */
 message CreateContextStateWithAssociationAndValidatorsRequest {
