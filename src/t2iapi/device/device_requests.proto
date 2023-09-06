@@ -51,3 +51,10 @@ message SetBatteryUsageRequest {
                         // electrical power source
     bool use = 2;       // specifies whether the battery shall be used as the electrical power source
 }
+
+/*
+Request a DescriptionModificationReport with (multiple) Upt-ReportParts.
+*/
+message TriggerDescriptorUpdateRequest{
+    repeated string handle = 1;
+}
