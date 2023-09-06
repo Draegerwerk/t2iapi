@@ -32,20 +32,3 @@ enum AlertConditionEscalationProcess {
   ALERT_CONDITION_ESCALATION_PROCESS_START_DEESCALATION = 2;
   ALERT_CONDITION_ESCALATION_PROCESS_STOP_DEESCALATION = 3;
 }
-
-/*
-Defines the state of AlarmSignalInactivation, Enabled or Disabled.
- */
-enum AlarmSignalInactivationState {
-  ALARM_SIGNAL_INACTIVATION_STATE_ENABLED = 0;
-  ALARM_SIGNAL_INACTIVATION_STATE_DISABLED = 1;
-}
-
-/*
-The Presence is set to "true" if the AlertCondition has been detected and is still present. Otherwise it
-is set to "false".
- */
-enum AlertConditionPresence {
-  ALERT_CONDITION_PRESENCE_TRUE = 0;
-  ALERT_CONDITION_PRESENCE_FALSE = 1;
-}

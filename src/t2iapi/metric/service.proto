@@ -29,13 +29,6 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Set no metric values for the provided metric handle.
-  The manipulated state can be set temporarily or persistent until a next manipulation call.
-   */
-  rpc SetNoValue (BasicHandleRequest)
-      returns (BasicResponse);
-
-  /*
   For the metric with the provided handle do the following:
    - set the @ActivationState to the provided value
    - set the pm:MetricValue/@Value resp. @Samples and confirm the value via the device ui
@@ -54,7 +47,7 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Calibrate the metric for the provided handle and return the calibration values.
+  Start a new calibration for the metric with the provided handle and return the calibration values.
    */
   rpc CalibrateMetric (BasicHandleRequest)
       returns (t2iapi.metric.CalibrateMetricResponse);
@@ -68,8 +61,11 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Set metric values within a given range. If no limit value is defined, random but valid metric values shall be set.
-  If a limit is defined, it shall not be violated by metric values.
+  Set new metric value(s) (resulting in new pm:MetricValue/@Value resp. pm:MetricValue/@Samples) within a given range.
+  The range is defined by lower and upper limit values which shall not be violated.
+  If no limit values are requested (empty strings), a random but valid metric @Value or @Samples shall be set.
+  If a limit is requested, it shall not be violated by the new metric @Value or @Samples.
+  Even if a metric @Value or @Samples is already present, a new metric @Value or @Samples shall be provided.
    */
   rpc SetMetricValuesInRange (t2iapi.metric.SetMetricValuesInRangeRequest)
       returns (BasicResponse);
@@ -88,6 +84,8 @@ service MetricService {
   /*
   Set the provided measurement, calculation or setting status for the metric of the provided handle. This is not the
   AbstractMetricState/@ActivationState, but the internal state of the device.
+  The resulting AbstractMetricState/@ActivationState shall be persistent until the next manipulation call.
+  If the device is not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetMetricStatus (t2iapi.metric.SetMetricStatusRequest) returns (BasicResponse);
 
@@ -108,5 +106,13 @@ service MetricService {
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc ProvideMetricValueOrSamples (BasicHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  For the metric with the provided handle perform the following transition:
+   - provide pm:MetricValue/@Value resp. @Samples and then
+   - express for the metric that no value is available.
+   */
+  rpc TransitionProvideValueToExpressNoValueAvailable (BasicHandleRequest)
       returns (BasicResponse);
 }

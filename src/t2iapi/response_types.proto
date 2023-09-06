@@ -22,9 +22,15 @@ enum Result {
     RESULT_NOT_IMPLEMENTED = 3;
 }
 
+/*
+Represents pm:Identification (defined in IEEE Std 11073-10207-2017).
+*/
+message IdentificationList {
+    repeated PartialInstanceIdentifier identification = 1;  // list of identifiers for contexts
+}
 
 /*
-Represents InstanceIdentifier (defined in IEEE Std 11073-10207-2017).
+Represents pm:InstanceIdentifier (defined in IEEE Std 11073-10207-2017).
 
 Following combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension are allowed:
                                     +------------------------------------------------------------------------+

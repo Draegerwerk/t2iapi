@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation TransitionFromCreateStateWithIdentificationToRemoveIdentification for contexts
+- manipulation TransitionFromCreateStateWithIdentificationToChangeIdentification for contexts
+- manipulation TransitionProvideValueToExpressNoValueAvailable for metrics
 - manipulation ProvideMetricValueOrSamples for metrics
 - manipulation SetSomeAlertSignalPresence for alerts
 - manipulation CreateContextStateWithAssociationAndSetOperatingMode for contexts and operations
@@ -22,22 +25,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- semantics for CreateContextStateWithAssociationAndValidators manipulation
+- semantics for SetMetricStatus manipulation
+- semantics for the CalibrateMetric manipulation
+- message SetAlarmSignalInactivationStateRequest
+- semantics for the EnsembleContextIndicateMembershipWithIdentification manipulation
+- semantics for the SetMetricValuesInRange manipulation
 - semantics for the SetAlertConditionPresence manipulation
 - semantics for SetOperatingMode manipulation
 - manipulation SetInvalidValue to SetIncorrectValue, changed semantics
 - semantics for SetAlertActivation, SetComponentActivation, SetAlarmSignalInactivationState, 
     SetAlertSystemNotFunctional, SetLocationDetail, RemoveAllContextStateValidators, SetContextStateAssociation,
-    CreateContextStateWithAssociation, CreateContextStateWithAssociationAndUniqueIdentification, 
-    CreateContextStateWithAssocIdentificationAndValidator, RemoveIdentificationOfContextState,
-    ChangeIdentificationOfContextState, CreateContextStateWithAssocAndSpecificValidator,
-    SetClockDevice, SetLanguage, SetNoValue, SetMetricValuesWithQualityMode
-- semantics for CreateContextStateWithAssociationAndValidators manipulation
+    CreateContextStateWithAssociation, CreateContextStateWithAssocIdentificationAndValidator, 
+    CreateContextStateWithAssocAndSpecificValidator, SetClockDevice, SetLanguage, SetNoValue, 
+    SetMetricValuesWithQualityMode
 - semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
 - generalized triggerDescriptorUpdate manipulation to multiple ReportParts
 
 ### Removed
 
+- manipulation CreateContextStateWithAssociationAndUniqueIdentification, RemoveIdentificationOfContextState, 
+    ChangeIdentificationOfContextState
+- manipulation SetNoValue
 - manipulation SetAlertSignalPresence
 - manipulation ChangeMdibSequenceId
 - manipulation SetUserConfirmableValue

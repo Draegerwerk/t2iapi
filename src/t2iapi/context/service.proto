@@ -62,22 +62,10 @@ service ContextService {
   Create a new pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
   and provide at least the number of pm:Validator elements for this ContextState.
   If the number of pm:Validator elements is zero, zero pm:Validator elements shall be provided.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssociationAndValidators(
   t2iapi.context.CreateContextStateWithAssociationAndValidatorsRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
-
-  /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
-  and provide the unique identification.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
-   */
-  rpc CreateContextStateWithAssociationAndUniqueIdentification(
-  t2iapi.context.CreateContextStateWithAssociationRequest)
-      returns (t2iapi.context.CreateContextStateWithAssociationAndUniqueIdentificationResponse);
 
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
@@ -90,22 +78,22 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Remove at least one pm:Identification element for the pm:AbstractContextState/@Handle.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
+  For the Context with the provided descriptor handle perform the following transition:
+  - associate a pm:AbstractContextState instance with at least one unique pm:Identification element
+    for the Context with the given descriptor handle
+  - remove at least one pm:Identification element for the previously associated pm:AbstractContextState.
  */
-  rpc RemoveIdentificationOfContextState(
-  t2iapi.context.ContextStateHandleRequest)
-      returns (BasicResponse);
+  rpc TransitionFromCreateStateWithIdentificationToRemoveIdentification (BasicHandleRequest)
+      returns (CreateContextStateWithAssociationResponse);
 
   /*
-  Change at least one pm:Identification element for the pm:AbstractContextState/@Handle.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
+  For the Context with the provided descriptor handle perform the following transition:
+  - associate a pm:AbstractContextState instance with at least one unique pm:Identification element
+    for the Context with the given descriptor handle
+  - change at least one already present pm:Identification element for the previously associated pm:AbstractContextState.
  */
-  rpc ChangeIdentificationOfContextState(
-  t2iapi.context.ContextStateHandleRequest)
-      returns (BasicResponse);
+  rpc TransitionFromCreateStateWithIdentificationToChangeIdentification (BasicHandleRequest)
+      returns (CreateContextStateWithAssociationResponse);
 
   /*
   Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle,
@@ -139,9 +127,13 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Indicate membership in an SDC PARTICIPANT ENSEMBLE using an ensemble context that has the provided descriptor handle
-  and return a list of pm:Identification elements which identify an ensemble and thus enable the caller to distinguish
-  ensembles from each other.
+  Indicate membership in an SDC PARTICIPANT ENSEMBLE using ensemble context state(s) that have the provided descriptor
+  handle and return a list of pm:Identification elements which identify the ensemble context state(s).
+  If already one or more pm:EnsembleContextState(s) indicate the membership, it is not needed to create a new
+  pm:EnsembleContextState(s). In this case it is sufficient to only return the BasicResponse and the pm:Identification
+  elements.
+  The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
+  it shall return RESULT_NOT_SUPPORTED.
    */
   rpc EnsembleContextIndicateMembershipWithIdentification (BasicHandleRequest)
       returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
