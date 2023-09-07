@@ -38,11 +38,12 @@ ComponentActivation value and to set the OperatingMode of the operation with the
 OperatingMode value.
 */
 message SetComponentActivationAndSetOperatingModeRequest {
-    string component_metric_descriptor_handle = 1; // descriptor handle of the descriptor for which the ActivationState
-                                                   // shall be set in the corresponding state element
-    t2iapi.activation_state.ComponentActivation activation= 2; // value to set as the ActivationState value
+    string component_metric_descriptor_handle = 1; // the component descriptor handle for which the ActivationState
+                                                   // shall be set
+    t2iapi.activation_state.ComponentActivation component_activation= 2; // the requested ComponentActivation value
+                                                                         // for which the ActivationState shall be set
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
-    // shall be set
+                                            // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // the requested @OperatingMode value of the operation state
 }
 
@@ -51,9 +52,9 @@ Request to set the ActivationState of the alert with the given handle to the req
 to set the OperatingMode of the operation with the given handle to the requested OperatingMode value.
 */
 message SetAlertActivationAndSetOperatingModeRequest {
-    string alert_descriptor_handle = 1; // descriptor handle of the descriptor for which the ActivationState shall be
-                                        // set in the corresponding state element
-    t2iapi.activation_state.AlertActivation activation= 2; // value to set as the ActivationState value
+    string alert_descriptor_handle = 1; // alert descriptor handle for which the ActivationState shall be set
+    t2iapi.activation_state.AlertActivation alert_activation= 2; // the requested AlertActivation value for which
+                                                                 // the ActivationState shall be set
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the @OperatingMode value
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // the requested @OperatingMode value of the operation state
