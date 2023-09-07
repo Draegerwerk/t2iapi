@@ -51,7 +51,7 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle.
+  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
@@ -68,7 +68,7 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
+  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle
   and provide at least one Identification and Validator for this ContextState.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.

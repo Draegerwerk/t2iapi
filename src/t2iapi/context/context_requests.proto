@@ -38,7 +38,7 @@ message SetContextStateAssociationRequest {
 }
 
 /*
-Request to create a new context state with a given association.
+Request to create or adapt a context state with a given association.
  */
 message CreateContextStateWithAssociationRequest {
     string descriptor_handle = 1;
@@ -56,7 +56,7 @@ message CreateContextStateWithAssociationAndValidatorsRequest {
 }
 
 /*
-Request to create a new context state with a given association and specific validator.
+Request to create or adapt a context state with a given association and specific validator.
  */
 message CreateContextStateWithAssocAndSpecificValidatorRequest {
     string descriptor_handle = 1;
