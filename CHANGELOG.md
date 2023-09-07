@@ -41,7 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     SetMetricValuesWithQualityMode
 - semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
-- generalized triggerDescriptorUpdate manipulation to multiple ReportParts
+- generalized TriggerDescriptorUpdate manipulation to multiple ReportParts
 
 ### Removed
 
