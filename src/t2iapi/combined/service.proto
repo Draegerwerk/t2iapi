@@ -32,8 +32,8 @@ service CombinedService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Request to set the ActivationState of the component or metric with the given handle to the requested
-  ComponentActivation value and to set the OperatingMode of the operation with the given handle to the requested
+  Request to set the @ActivationState of the component or metric with the given handle to the requested
+  ComponentActivation value and to set the @OperatingMode of the operation with the given handle to the requested
   OperatingMode value.
   The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
   If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
@@ -43,8 +43,8 @@ service CombinedService {
       returns (BasicResponse);
 
   /*
-  Request to set the ActivationState of the alert with the given handle to the requested AlertActivation value and
-  to set the OperatingMode of the operation with the given handle to the requested OperatingMode value.
+  Request to set the @ActivationState of the alert with the given handle to the requested AlertActivation value and
+  to set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
   The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
   If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
   */
