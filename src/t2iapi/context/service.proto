@@ -106,7 +106,7 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new neonatal patient with a given type of association and
+  Create or adapt neonatal patient with a given type of association and
   including the mothers identification.
    */
   rpc CreateNeonatalPatientWithAssociationAndMothersIdentification(
