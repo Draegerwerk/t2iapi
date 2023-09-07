@@ -51,7 +51,7 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle.
+  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
@@ -59,7 +59,7 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
   and provide at least the number of pm:Validator elements for this ContextState.
   If the number of pm:Validator elements is zero, zero pm:Validator elements shall be provided.
    */
@@ -68,7 +68,7 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle
+  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle
   and provide at least one Identification and Validator for this ContextState.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
@@ -96,17 +96,17 @@ service ContextService {
       returns (CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new ContextState instance with the given ContextAssociation value for the given descriptor handle,
+  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle,
   confirm by requested validator type.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssocAndSpecificValidator(
-    t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
+  t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a new neonatal patient with a given type of association and
+  Create or adapt neonatal patient with a given type of association and
   including the mothers identification.
    */
   rpc CreateNeonatalPatientWithAssociationAndMothersIdentification(
