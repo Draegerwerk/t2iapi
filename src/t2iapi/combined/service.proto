@@ -11,6 +11,7 @@ package t2iapi.combined;
 
 import "t2iapi/combined/combined_requests.proto";
 import "t2iapi/context/context_responses.proto";
+import "t2iapi/basic_responses.proto";
 
 option java_package = "com.draeger.medical.t2iapi.combined";
 option java_outer_classname = "CombinedApiService";
@@ -29,4 +30,25 @@ service CombinedService {
   rpc CreateContextStateWithAssociationAndSetOperatingMode (
   t2iapi.combined.CreateContextStateWithAssociationAndSetOperatingModeRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
+  Request to set the @ActivationState of the component or metric with the given handle to the requested
+  ComponentActivation value and to set the @OperatingMode of the operation with the given handle to the requested
+  OperatingMode value.
+  The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
+  If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc SetComponentActivationAndSetOperatingMode (
+  t2iapi.combined.SetComponentActivationAndSetOperatingModeRequest)
+      returns (BasicResponse);
+
+  /*
+  Request to set the @ActivationState of the alert with the given handle to the requested AlertActivation value and
+  to set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
+  The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
+  If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc SetAlertActivationAndSetOperatingMode (
+  t2iapi.combined.SetAlertActivationAndSetOperatingModeRequest)
+      returns (BasicResponse);
 }
