@@ -92,8 +92,7 @@ service DeviceService {
 
     /*
     Trigger a descriptor update for the provided handles.
-    This manipulation of the device shall result in a msg:DescriptionModificationReport message with one report part with
-    modification type upt for each handle provided.
+    This manipulation of the device shall result in a msg:DescriptionModificationReport message in which each provided handle is present in a report part with modification type upt.
      */
     rpc TriggerDescriptorUpdate (TriggerDescriptorUpdateRequest) returns (BasicResponse);
 
