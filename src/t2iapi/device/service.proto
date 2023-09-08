@@ -89,11 +89,16 @@ service DeviceService {
     rpc RemoveMdsDescriptor (BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Trigger a descriptor update for the provided handle.
-    This manipulation of the device shall result in a msg:DescriptionModificationReport message with a report part with
-    modification type upt.
+    Trigger a DescriptionManipulationReport that fulfills the following:
+
+    For each given handle there exists an "Upt"-ReportPart that contains an updated descriptor, whose @DescriptorHandle
+    is equal to the given handle, and that is contained in the DescriptionModificationReport.
+
+    ---
+
+    Note that when no handle is given, every DescriptionModificationReport fulfills the request.
      */
-    rpc TriggerDescriptorUpdate (BasicHandleRequest) returns (BasicResponse);
+    rpc TriggerDescriptorUpdate (TriggerDescriptorUpdateRequest) returns (BasicResponse);
 
     /*
     Trigger a descriptor update.
