@@ -57,8 +57,6 @@ service DeviceService {
     and whose descriptors are of the given class.
     Includes handles which have been removed already and can be reinserted.
     Handles must stay the same once reinserted into the MDIB.
-    NOTE: When the requirement Biceps:R5025 is applicable to a Device, it is advisable to have at least one
-          removable descriptor that has children.
 
     Calling GetRemovableDescriptorsOfClass with descriptor_class = DESCRIPTOR_CLASS_ABSTRACT
     returns the unfiltered handles while other values for descriptor_class
