@@ -54,7 +54,9 @@ message SetBatteryUsageRequest {
 
 /*
 Request a DescriptionModificationReport that fulfills the following:
-For each given handle there exists an "Upt"-ReportPart that contains an updated descriptor, whose @DescriptorHandle is equal to the given handle, and that is contained in the DescriptionModificationReport.
+
+For each given handle there exists an "Upt"-ReportPart that contains an updated descriptor, whose @DescriptorHandle
+is equal to the given handle, and that is contained in the DescriptionModificationReport.
 
 ---
 
