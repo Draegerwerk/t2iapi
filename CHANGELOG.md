@@ -4,7 +4,7 @@ All notable changes to the t2iapi module will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.0.0] - 2023-09-11
 
 ### Added
 
@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
 - manipulation SetActivationStateAndUserConfirmableValue for metrics
 - stub files which are integrated into the python package
-- description for allowed combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension
+- description for allowed combinations of Root and Extension attributes of InstanceIdentifiers
 - manipulation ComponentActivationTransition
 - type hinting for python package via [types-protobuf](https://pypi.org/project/types-protobuf/)
 - TriggerAnyDescriptorUpdate manipulation
