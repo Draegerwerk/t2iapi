@@ -48,7 +48,7 @@ service ActivationStateService {
 
   /*
   Set the ActivationStates for the given alert condition handle and alert signal handle to the given
-  AlertActivation value.
+  AlertActivation values.
   The manipulated state shall be persistent until a next manipulation call or an SDC operation invocation.
   If the device is not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
    */
