@@ -115,4 +115,11 @@ service MetricService {
    */
   rpc TransitionProvideValueToExpressNoValueAvailable (BasicHandleRequest)
       returns (BasicResponse);
+
+  /*
+  Convey demo values for the metric with the given handle.
+  This means that the metric value is arbitrary and for demonstration purposes only.
+   */
+  rpc ConveyMetricDemoValues (BasicHandleRequest)
+      returns (BasicResponse);
 }
