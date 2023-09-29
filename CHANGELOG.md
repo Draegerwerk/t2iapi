@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- manipulation ModifyInvocationEffectiveTimeout for operations
+
 ### Changed
 
 - gRPC version to 1.58.0
