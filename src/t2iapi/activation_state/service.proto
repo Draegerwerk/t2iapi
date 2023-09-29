@@ -47,6 +47,16 @@ service ActivationStateService {
       returns (BasicResponse);
 
   /*
+  Set the ActivationStates for the given alert condition handle and alert signal handle to the given
+  AlertActivation values.
+  The manipulated state shall be persistent until a next manipulation call or an SDC operation invocation.
+  If the device is not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
+   */
+  rpc SetAlertConditionAndAlertSignalActivationState (
+  t2iapi.activation_state.SetAlertConditionAndAlertSignalActivationStateRequest)
+      returns (BasicResponse);
+
+  /*
   Set a SystemSignalActivation for a alert system with the given handle.
    */
   rpc SetSystemSignalActivation (t2iapi.activation_state.SetSystemSignalActivationRequest)
