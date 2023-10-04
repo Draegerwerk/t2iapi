@@ -12,6 +12,7 @@ package t2iapi.combined;
 import "t2iapi/context/types.proto";
 import "t2iapi/operation/types.proto";
 import "t2iapi/activation_state/types.proto";
+import "t2iapi/metric/types.proto";
 
 
 option java_package = "com.draeger.medical.t2iapi.combined";
@@ -56,4 +57,16 @@ message SetAlertActivationAndSetOperatingModeRequest {
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the OperatingMode value
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // the requested OperatingMode value of the operation state
+}
+
+/*
+Request to set the status of an operation mode of an enum metric with the given handle to the requested value and
+set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
+*/
+message SetOperationModeStatusAndSetOperatingModeRequest {
+    string metric_descriptor_handle = 1; // handle of the enum metric, which represents the operation mode
+    t2iapi.metric.OperationModeStatus operation_mode_status = 2;  // defines the operation mode status to be applied
+    string operation_descriptor_handle = 3; // the operation descriptor handle for which the OperatingMode value
+                                            // shall be set
+    t2iapi.operation.OperatingMode operating_mode = 4; // OperatingMode value to be set for the operation
 }

@@ -51,4 +51,14 @@ service CombinedService {
   rpc SetAlertActivationAndSetOperatingMode (
   t2iapi.combined.SetAlertActivationAndSetOperatingModeRequest)
       returns (BasicResponse);
+
+  /*
+  Request to set the status of an operation mode of an enum metric with the given handle to the requested value and
+  set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
+  The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
+  If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc SetOperationModeStatusAndSetOperatingMode (
+  t2iapi.combined.SetOperationModeStatusAndSetOperatingModeRequest)
+      returns (BasicResponse);
 }
