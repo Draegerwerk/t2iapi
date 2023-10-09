@@ -53,12 +53,13 @@ service CombinedService {
       returns (BasicResponse);
 
   /*
-  Request to set the status of an operation mode of an enum metric with the given handle to the requested value and
-  set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
+  Request to set the non-exclusive mode of operation represented by an enum metric with the given handle to the
+  requested value and set the @OperatingMode of the operation with the given handle to the requested OperatingMode
+  value.
   The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
   If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
   */
-  rpc SetOperationModeStatusAndSetOperatingMode (
-  t2iapi.combined.SetOperationModeStatusAndSetOperatingModeRequest)
+  rpc SetModeOfOperationAndSetOperatingMode (
+  t2iapi.combined.SetModeOfOperationAndSetOperatingModeRequest)
       returns (BasicResponse);
 }

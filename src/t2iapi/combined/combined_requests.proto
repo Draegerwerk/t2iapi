@@ -60,12 +60,12 @@ message SetAlertActivationAndSetOperatingModeRequest {
 }
 
 /*
-Request to set the status of an operation mode of an enum metric with the given handle to the requested value and
-set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
+Request to set the non-exclusive mode of operation represented by an enum metric with the given handle to the
+requested value and set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
 */
-message SetOperationModeStatusAndSetOperatingModeRequest {
-    string metric_descriptor_handle = 1; // handle of the enum metric, which represents the operation mode
-    t2iapi.metric.OperationModeStatus operation_mode_status = 2;  // defines the operation mode status to be applied
+message SetModeOfOperationAndSetOperatingModeRequest {
+    string metric_descriptor_handle = 1; // handle of the enum metric, which represents the mode of operation
+    t2iapi.metric.ModeOfOperation mode_of_operation = 2;  // defines the mode of operation to be applied
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the OperatingMode value
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // OperatingMode value to be set for the operation
