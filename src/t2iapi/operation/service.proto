@@ -31,7 +31,7 @@ service OperationService {
         returns (BasicResponse);
 
     /*
-    Update the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle.
+    Modify the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle.
     The manipulated descriptor shall be persistent until a next manipulation call. If the device is not able to maintain
     the static descriptor, it shall return RESULT_NOT_SUPPORTED.
     */
