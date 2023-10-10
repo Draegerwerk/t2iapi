@@ -21,3 +21,12 @@ message SetOperatingModeRequest {
     string handle = 1;
     OperatingMode operating_mode = 2;
 }
+
+/*
+Request to modify the devices descriptor, which results in setting the requested the @InvocationEffectiveTimeout for
+the pm:AbstractOperationDescriptor with the given handle.
+*/
+message ModifyInvocationEffectiveTimeoutRequest {
+    string handle = 1;
+    string invocation_effective_timeout = 2;
+}
