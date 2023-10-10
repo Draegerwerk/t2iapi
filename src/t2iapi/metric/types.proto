@@ -46,6 +46,19 @@ enum OperationModeStatus {
 }
 
 /*
+Defines the possible non-exclusive MODE OF OPERATION according to MPKP (11073-10701-2022).
+These are represented as an enum metric where the instances of pm:AllowedValue have the pm:Type of:
+- MDC_MODE_OF_OPERATION_ON,
+- MDC_MODE_OF_OPERATION_OFF, and
+- optionally MDC_MODE_OF_OPERATION_PAUSED.
+ */
+enum ModeOfOperation {
+    MODE_OF_OPERATION_ON = 0;  // mode of operation is applied
+    MODE_OF_OPERATION_OFF = 1;  // mode of operation is not applied, but available
+    MODE_OF_OPERATION_PAUSED = 2;  // mode of operation is not applied, but available
+}
+
+/*
 The MetricStatus is intended to reflect the state of the device and is not the ActivationState.
 This state in turn should trigger the setting of the ActivationState, it is linked to the
 AbstractMetricState/@ActivationState.
