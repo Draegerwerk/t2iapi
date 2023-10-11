@@ -31,4 +31,5 @@ message SetInvocationEffectiveTimeoutLteToThresholdRequest {
                         // shall be set
     string threshold = 2;  // threshold value for which applies that the @InvocationEffectiveTimeout is less than or
                            // equal to this threshold value
+                           // threshold shall be of type xsd:duration
 }
