@@ -30,10 +30,11 @@ service OperationService {
         returns (BasicResponse);
 
     /*
-    Modify the pm:AbstractOperationDescriptor with the given handle such that the @InvocationEffectiveTimeout is set to
-    the requested value.
+    Set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value that is
+    less than or equal to the requested threshold.
     The manipulated descriptor shall be persistent until a next manipulation call or an SDC operation invocation. If
     the device is not able to maintain the static descriptor, it shall return RESULT_NOT_SUPPORTED.
     */
-    rpc ModifyInvocationEffectiveTimeout (ModifyInvocationEffectiveTimeoutRequest) returns (BasicResponse);
+    rpc SetInvocationEffectiveTimeoutLteToThreshold (SetInvocationEffectiveTimeoutLteToThresholdRequest)
+        returns (BasicResponse);
 }

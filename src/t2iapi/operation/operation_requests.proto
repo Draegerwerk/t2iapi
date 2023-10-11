@@ -23,10 +23,10 @@ message SetOperatingModeRequest {
 }
 
 /*
-Request to modify the devices descriptor, which results in setting the requested the @InvocationEffectiveTimeout for
-the pm:AbstractOperationDescriptor with the given handle.
+Request to set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value
+that is less than or equal to the requested threshold.
 */
-message ModifyInvocationEffectiveTimeoutRequest {
+message SetInvocationEffectiveTimeoutLteToThresholdRequest {
     string handle = 1;
-    string invocation_effective_timeout = 2;
+    string threshold = 2;
 }
