@@ -10,6 +10,7 @@ syntax = "proto3";
 package t2iapi.operation;
 
 import "t2iapi/operation/types.proto";
+import "google/protobuf/duration.proto";
 
 option java_package = "com.draeger.medical.t2iapi.operation";
 option java_outer_classname = "OperationRequests";
@@ -29,7 +30,7 @@ that is less than or equal to the requested threshold.
 message SetInvocationEffectiveTimeoutLteToThresholdRequest {
     string handle = 1;  // handle of the pm:AbstractOperationDescriptor for which the @InvocationEffectiveTimeout
                         // shall be set
-    string threshold = 2;  // threshold value for which applies that the @InvocationEffectiveTimeout is less than or
-                           // equal to this threshold value
-                           // threshold shall be of type xsd:duration
+    google.protobuf.Duration threshold = 2;  // threshold value in seconds at nanosecond resolution for which applies
+                                             // that the @InvocationEffectiveTimeout is less than or equal to this
+                                             // threshold value
 }
