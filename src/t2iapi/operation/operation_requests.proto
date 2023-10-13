@@ -27,7 +27,7 @@ message SetOperatingModeRequest {
 Request to set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value
 that is less than or equal to the requested threshold.
 */
-message SetInvocationEffectiveTimeoutLteToThresholdRequest {
+message SetInvocationEffectiveTimeoutLessThanOrEqualToThresholdRequest {
     string handle = 1;  // handle of the pm:AbstractOperationDescriptor for which the @InvocationEffectiveTimeout
                         // shall be set
     google.protobuf.Duration threshold = 2;  // threshold value in seconds at nanosecond resolution for which applies
