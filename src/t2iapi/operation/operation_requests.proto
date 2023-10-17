@@ -30,7 +30,8 @@ that is less than or equal to the requested threshold.
 message SetInvocationEffectiveTimeoutLessThanOrEqualToThresholdRequest {
     string handle = 1;  // handle of the pm:AbstractOperationDescriptor for which the @InvocationEffectiveTimeout
                         // shall be set
-    google.protobuf.Duration threshold = 2;  // threshold value in seconds at nanosecond resolution for which applies
-                                             // that the @InvocationEffectiveTimeout is less than or equal to this
-                                             // threshold value
+    google.protobuf.Duration threshold = 2;  // threshold value for which applies that the @InvocationEffectiveTimeout
+                                             // is less than or equal to this threshold value
+                                             // threshold value is represented as a count of seconds and fractions of
+                                             // seconds at nanosecond resolution
 }
