@@ -29,4 +29,11 @@ service OperationService {
     rpc SetOperatingMode (t2iapi.operation.SetOperatingModeRequest)
         returns (BasicResponse);
 
+    /*
+    Set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value that is
+    less than or equal to the requested threshold.
+    */
+    rpc SetInvocationEffectiveTimeoutLessThanOrEqualToThreshold (
+        SetInvocationEffectiveTimeoutLessThanOrEqualToThresholdRequest)
+        returns (BasicResponse);
 }

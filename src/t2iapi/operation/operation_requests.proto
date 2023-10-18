@@ -10,6 +10,7 @@ syntax = "proto3";
 package t2iapi.operation;
 
 import "t2iapi/operation/types.proto";
+import "google/protobuf/duration.proto";
 
 option java_package = "com.draeger.medical.t2iapi.operation";
 option java_outer_classname = "OperationRequests";
@@ -20,4 +21,17 @@ Request to change the devices state, which results in setting the requested Oper
 message SetOperatingModeRequest {
     string handle = 1;
     OperatingMode operating_mode = 2;
+}
+
+/*
+Request to set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value
+that is less than or equal to the requested threshold.
+*/
+message SetInvocationEffectiveTimeoutLessThanOrEqualToThresholdRequest {
+    string handle = 1;  // handle of the pm:AbstractOperationDescriptor for which the @InvocationEffectiveTimeout
+                        // shall be set
+    google.protobuf.Duration threshold = 2;  // threshold value for which applies that the @InvocationEffectiveTimeout
+                                             // is less than or equal to this threshold value
+                                             // threshold value is represented as a count of seconds and fractions of
+                                             // seconds at nanosecond resolution
 }

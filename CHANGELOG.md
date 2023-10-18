@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation SetInvocationEffectiveTimeoutLessThanOrEqualToThreshold for operations
 - manipulation SetModeOfOperationAndSetOperatingMode for combined settings
 - manipulation ConveyMetricDemoValues for metrics
 - manipulation SetAlertConditionAndAlertSignalActivationState for alert activation states
