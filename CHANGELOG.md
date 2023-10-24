@@ -18,6 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - gRPC version to 1.58.0
 - protoc version to 24.1
 
+### Removed
+
+- manipulation ChangeOperationModeStatus for metrics
+
 ## [3.0.0] - 2023-09-11
 
 ### Added

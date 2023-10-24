@@ -43,14 +43,6 @@ message SetMetricValuesInRangeRequest {
 }
 
 /*
-Request to change the status of an operation mode.
- */
-message ChangeOperationModeStatusRequest {
-    string handle = 1;  // handle of the enum metric, which represents the operation mode
-    OperationModeStatus operation_mode_status = 2;  // defines if the operation mode status shall be applied
-}
-
-/*
 Request a change of the status of a metric.
  */
 message SetMetricStatusRequest {

@@ -71,17 +71,6 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Change the status of an operation mode.
-
-  An operation mode represents a specific behaviour of a device that can be enabled, paused or disabled,
-  typically by the user.
-  BICEPS does not provide a model element out of the box that can be used for such a mode, thus the operation mode
-  is represented by a pm:EnumStringMetricDescriptor, as described by MPKP draft.
-   */
-  rpc ChangeOperationModeStatus (t2iapi.metric.ChangeOperationModeStatusRequest)
-      returns (BasicResponse);
-
-  /*
   Set the provided measurement, calculation or setting status for the metric of the provided handle. This is not the
   AbstractMetricState/@ActivationState, but the internal state of the device.
   The resulting AbstractMetricState/@ActivationState shall be persistent until the next manipulation call.
