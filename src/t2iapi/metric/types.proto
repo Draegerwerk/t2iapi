@@ -37,15 +37,6 @@ enum GenerationMode{
 }
 
 /*
-Defines the possible operation mode states according to MPKP draft.
- */
-enum OperationModeStatus {
-    OPERATION_MODE_STATUS_ON = 0;  // operation mode is applied
-    OPERATION_MODE_STATUS_OFF = 1;  // operation mode is not applied, but available
-    OPERATION_MODE_STATUS_PAUSED = 2;  // operation mode is not applied, but available
-}
-
-/*
 Defines the possible non-exclusive MODE OF OPERATION according to MPKP (11073-10701-2022).
 These are represented as an enum metric where the instances of pm:AllowedValue have the pm:Type of:
 - MDC_MODE_OF_OPERATION_ON,
