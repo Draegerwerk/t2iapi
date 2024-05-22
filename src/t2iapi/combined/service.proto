@@ -62,4 +62,14 @@ service CombinedService {
   rpc SetModeOfOperationAndSetOperatingMode (
   t2iapi.combined.SetModeOfOperationAndSetOperatingModeRequest)
       returns (BasicResponse);
+
+  /*
+  Request to set the activation state of the system context with the specified handle to the requested value and to set
+    the context association of a context state from the context descriptor with the given handle to the requested value.
+  The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
+  If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc SetSystemContextActivationStateAndContextAssociation (
+  t2iapi.combined.SetSystemContextActivationStateAndContextAssociationRequest)
+        returns (BasicResponse);
 }

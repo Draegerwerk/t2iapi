@@ -70,3 +70,14 @@ message SetModeOfOperationAndSetOperatingModeRequest {
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // OperatingMode value to be set for the operation
 }
+
+/*
+  Request to set the activation state of the system context with the specified handle to the requested value and to set
+  the context association of a context state from the context descriptor with the given handle to the requested value.
+*/
+message SetSystemContextActivationStateAndContextAssociationRequest {
+    string system_context_handle = 1; // handle of the system context for which the activation state shall be set
+    t2iapi.activation_state.ComponentActivation system_context_activation = 2; // the activation state the system context shall be set to
+    string context_descriptor_handle = 3; // handle of the context descriptor from which the context association of one of its context states shall be set
+    t2iapi.context.ContextAssociation context_association = 3; // the context association to be set to a context state of the requested context descriptor
+}
