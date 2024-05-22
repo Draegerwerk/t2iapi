@@ -79,5 +79,5 @@ message SetSystemContextActivationStateAndContextAssociationRequest {
     string system_context_handle = 1; // handle of the system context for which the activation state shall be set
     t2iapi.activation_state.ComponentActivation system_context_activation = 2; // the activation state the system context shall be set to
     string context_descriptor_handle = 3; // handle of the context descriptor from which the context association of one of its context states shall be set
-    t2iapi.context.ContextAssociation context_association = 3; // the context association to be set to a context state of the requested context descriptor
+    t2iapi.context.ContextAssociation context_association = 4; // the context association to be set to a context state of the requested context descriptor
 }
