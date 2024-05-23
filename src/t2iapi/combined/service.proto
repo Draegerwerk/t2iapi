@@ -64,8 +64,9 @@ service CombinedService {
       returns (BasicResponse);
 
   /*
-  Request to set the @ActivationState of the system context with the specified handle to the requested value and to set
-  the @ContextAssociation of a context state from the context descriptor with the given handle to the requested value.
+  Request to set the @ActivationState of the system context with the specified handle to the requested value and to
+  create or adapt the @ContextAssociation of a context state from the context descriptor with the given handle to the
+  requested value.
   The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
   If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
   */
