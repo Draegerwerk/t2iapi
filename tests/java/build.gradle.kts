@@ -14,9 +14,10 @@ val configFileMap = configFile.associate { it.split("=")[0] to it.split("=")[1] 
 
 val grpcVersion = configFileMap["JAVA_GRPC_VERSION"]
 val baseVersion = configFileMap["BASE_PACKAGE_VERSION"]!!
+val buildId: String? = System.getenv("GITHUB_RUN_NUMBER")
 val t2iapiVersion: String = when (System.getenv("RELEASE_VERSION") == "1") {
     true -> baseVersion
-    false -> baseVersion + "-SNAPSHOT"
+    false -> baseVersion + ( buildId?.let { ".$it" } ?: "" ) + "-SNAPSHOT"
 }
 
 dependencies {
