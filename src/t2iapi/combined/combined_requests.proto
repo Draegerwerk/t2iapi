@@ -76,7 +76,7 @@ Request to set the @ActivationState of the pm:SystemContextState with the specif
 create or adapt a pm:AbstractContextState with the requested @ContextAssociation for the pm:AbstractContextDescriptor with the given HANDLE.
 */
 message SetSystemContextActivationStateAndContextAssociationRequest {
-    string system_context_handle = 1; // handle of the system context for which the @ActivationState shall be set
+    string system_context_handle = 1; // HANDLE of the pm:SystemContextState for which the @ActivationState shall be set
     t2iapi.activation_state.ComponentActivation system_context_activation = 2; // the requested pm:ComponentActivation value to set for the system context
     string context_descriptor_handle = 3; // handle of the context descriptor from which the @ContextAssociation of one of its context states shall be set
     t2iapi.context.ContextAssociation context_association = 4; // the @ContextAssociation to be set to a context state of the requested context descriptor
