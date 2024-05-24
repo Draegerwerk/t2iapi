@@ -17,7 +17,7 @@ val baseVersion = configFileMap["BASE_PACKAGE_VERSION"]!!
 val isRelease = System.getenv("RELEASE_VERSION") == "1"
 val t2iapiVersion: String = when (isRelease) {
     true -> baseVersion
-    false -> baseVersion + "-SNAPSHOT"
+    false -> baseVersion + ( buildId?.let { ".$it" } ?: "" ) + "-SNAPSHOT"
 }
 
 version = t2iapiVersion
@@ -112,7 +112,7 @@ publishing {
 
     repositories {
         maven {
-            name = "SonatypeStaging"
+            name = "Sonatype"
 
             val releaseUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             val snapshotsUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
