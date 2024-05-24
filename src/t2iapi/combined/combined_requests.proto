@@ -73,8 +73,7 @@ message SetModeOfOperationAndSetOperatingModeRequest {
 
 /*
 Request to set the @ActivationState of the system context with the specified handle to the requested value and to
-create or adapt the @ContextAssociation of a context state from the context descriptor with the given handle to the
-requested value.
+create or adapt a context state with the requested @ContextAssociation for the context descriptor with the given handle.
 */
 message SetSystemContextActivationStateAndContextAssociationRequest {
     string system_context_handle = 1; // handle of the system context for which the @ActivationState shall be set
