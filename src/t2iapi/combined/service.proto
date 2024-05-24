@@ -66,7 +66,7 @@ service CombinedService {
   /*
   Request to set the @ActivationState of the pm:SystemContextState with the specified HANDLE to the requested value and to
   create or adapt a pm:AbstractContextState with the requested @ContextAssociation for the pm:AbstractContextDescriptor with the given
-  handle.
+  HANDLE.
   The manipulated states shall be persistent until a next manipulation call or an SDC operation invocation.
   If the device is not able to maintain the static states, it shall return RESULT_NOT_SUPPORTED.
   */
