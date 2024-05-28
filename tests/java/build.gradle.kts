@@ -17,7 +17,7 @@ val baseVersion = configFileMap["BASE_PACKAGE_VERSION"]!!
 val buildId: String? = System.getenv("GITHUB_RUN_NUMBER")
 val t2iapiVersion: String = when (System.getenv("RELEASE_VERSION") == "1") {
     true -> baseVersion
-    false -> baseVersion + ( buildId?.let { ".$it" } ?: "" )
+    false -> baseVersion + ( buildId?.let { ".$it" } ?: "" ) + "-SNAPSHOT"
 }
 
 dependencies {
