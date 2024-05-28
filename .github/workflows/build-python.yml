@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Run `git checkout`
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Source dependency versions
         working-directory: config
         run: |
@@ -32,7 +32,7 @@ jobs:
           wget https://github.com/protocolbuffers/protobuf/releases/download/v${{ env.COMMON_PROTOC_VERSION }}/protoc-${{ env.COMMON_PROTOC_VERSION }}-linux-x86_64.zip -P ${{ runner.temp }}/protoc_install
           unzip ${{ runner.temp }}/protoc_install/*.zip -d ${{ runner.temp }}/protoc_install/protoc
           echo "${{ runner.temp }}/protoc_install/protoc/bin" >> $GITHUB_PATH
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Install python dependencies
@@ -44,7 +44,7 @@ jobs:
         working-directory: ./python
         run: python setup.py sdist bdist_wheel
       - name: Archive wheel
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: python/dist
@@ -53,12 +53,12 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-python
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Download t2iapi wheel artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist
       - name: Install t2iapi package
@@ -70,13 +70,13 @@ jobs:
       - name: run unit tests
         run: python ./tests/python/html_report.py
       - name: Archive freeze information
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: freeze
           path: pip_freeze.txt
           retention-days: 1
       - name: Archive test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: html_unit_test
           path: unittest_results/*.html
@@ -89,17 +89,17 @@ jobs:
       contents: write
     steps:
       - name: Download t2iapi wheel artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
       - name: Download t2iapi test results artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: html_unit_test
           path: unittest_results/
       - name: Download pip freeze
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: freeze
           path: freeze/
