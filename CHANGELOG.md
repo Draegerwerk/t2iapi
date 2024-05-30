@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation CreateContextStateWithAssocAndSpecificValidatorAndSpecificIdentification for contexts
 - manipulation SetComponentActivationAndSetOperatingMode for components and operations
 - manipulation SetAlertActivationAndSetOperatingMode for alerts and operations
 - manipulation TransitionFromCreateStateWithIdentificationToRemoveIdentification for contexts
