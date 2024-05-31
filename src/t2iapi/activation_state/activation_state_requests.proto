@@ -35,6 +35,19 @@ message SetAlertActivationRequest {
 }
 
 /*
+Request to set the ActivationState for the given alert condition handle and alert signal handle to the
+given AlertActivation value.
+ */
+message SetAlertConditionAndAlertSignalActivationStateRequest {
+    string alert_condition_handle = 1;  // alert condition descriptor handle for which the
+                                        // ActivationState shall be set in the corresponding state element
+    string alert_signal_handle = 2;     // alert signal descriptor handle for which the
+                                        // ActivationState shall be set in the corresponding state element
+    AlertActivation alert_condition_activation = 3;  // ActivationState value to set for the alert condition
+    AlertActivation alert_signal_activation = 4;  // ActivationState value to set for the alert signal
+}
+
+/*
 Request for a transition of the value of the ActivationState of the DeviceComponent or Metric with the given handle
 from the starting ActivationState value, given as "start_activation", to the final ActivationState value,
 given as "end_activation", happens during the remote procedure call.

@@ -12,6 +12,7 @@ package t2iapi.combined;
 import "t2iapi/context/types.proto";
 import "t2iapi/operation/types.proto";
 import "t2iapi/activation_state/types.proto";
+import "t2iapi/metric/types.proto";
 
 
 option java_package = "com.draeger.medical.t2iapi.combined";
@@ -56,4 +57,27 @@ message SetAlertActivationAndSetOperatingModeRequest {
     string operation_descriptor_handle = 3; // the operation descriptor handle for which the OperatingMode value
                                             // shall be set
     t2iapi.operation.OperatingMode operating_mode = 4; // the requested OperatingMode value of the operation state
+}
+
+/*
+Request to set the non-exclusive mode of operation represented by an enum metric with the given handle to the
+requested value and set the @OperatingMode of the operation with the given handle to the requested OperatingMode value.
+*/
+message SetModeOfOperationAndSetOperatingModeRequest {
+    string metric_descriptor_handle = 1; // handle of the enum metric, which represents the mode of operation
+    t2iapi.metric.ModeOfOperation mode_of_operation = 2;  // defines the mode of operation to be applied
+    string operation_descriptor_handle = 3; // the operation descriptor handle for which the OperatingMode value
+                                            // shall be set
+    t2iapi.operation.OperatingMode operating_mode = 4; // OperatingMode value to be set for the operation
+}
+
+/*
+Request to set the @ActivationState of the pm:SystemContextState with the specified HANDLE to the requested value and to
+create or adapt a pm:AbstractContextState with the requested @ContextAssociation for the pm:AbstractContextDescriptor with the given HANDLE.
+*/
+message SetSystemContextActivationStateAndContextAssociationRequest {
+    string system_context_handle = 1; // HANDLE of the pm:SystemContextState for which the @ActivationState shall be set
+    t2iapi.activation_state.ComponentActivation system_context_activation = 2; // the requested pm:ComponentActivation value to set for the system context
+    string context_descriptor_handle = 3; // HANDLE of the pm:AbstractContextDescriptor for which one of its pm:AbstractContextStates shall be created or adapted with the given @ContextAssociation
+    t2iapi.context.ContextAssociation context_association = 4; // the @ContextAssociation to be set for the created or adapted pm:AbstractContextState of the requested pm:AbstractContextDescriptor
 }

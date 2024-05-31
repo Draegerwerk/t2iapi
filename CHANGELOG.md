@@ -8,7 +8,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation SetSystemContextActivationStateAndContextAssociation for combined settings
 - manipulation CreateContextStateWithAssocAndSpecificValidatorAndSpecificIdentification for contexts
+
+## [4.1.0] - 2024-02-22
+
+### Changed
+
+- gRPC version to 1.60.1
+- protoc version to 25.0
+
+## [4.0.0] - 2023-11-20
+
+### Added
+
+- manipulation SetInvocationEffectiveTimeoutLessThanOrEqualToThreshold for operations
+- manipulation SetModeOfOperationAndSetOperatingMode for combined settings
+- manipulation ConveyMetricDemoValues for metrics
+- manipulation SetAlertConditionAndAlertSignalActivationState for alert activation states
+
+### Changed
+
+- gRPC version to 1.58.0
+- protoc version to 24.1
+
+### Removed
+
+- manipulation ChangeOperationModeStatus for metrics
+
+## [3.0.0] - 2023-09-11
+
+### Added
+
 - manipulation SetComponentActivationAndSetOperatingMode for components and operations
 - manipulation SetAlertActivationAndSetOperatingMode for alerts and operations
 - manipulation TransitionFromCreateStateWithIdentificationToRemoveIdentification for contexts
@@ -21,7 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation SetAsActivationStateOnAndChangeAcPresenceFalse for alerts
 - manipulation SetActivationStateAndUserConfirmableValue for metrics
 - stub files which are integrated into the python package
-- description for allowed combinations of InstanceIdentifier/@Root and InstanceIdentifier/@Extension
+- description for allowed combinations of Root and Extension attributes of InstanceIdentifiers
 - manipulation ComponentActivationTransition
 - type hinting for python package via [types-protobuf](https://pypi.org/project/types-protobuf/)
 - TriggerAnyDescriptorUpdate manipulation
@@ -44,6 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     SetMetricValuesWithQualityMode
 - semantics for SetDeviceOperatingMode manipulation
 - message PartialIdentification to message PartialInstanceIdentifier
+- TriggerDescriptorUpdate to request an update for an arbitrary amount of handles
 
 ### Removed
 
