@@ -106,11 +106,17 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create a ContextState instance for the given descriptor handle, that
-  - has the given @contextAssociation value,
-  - has exactly the pm:Validators listed in the request, (in particular: no pm:Validators when
-    the list is empty), and
-  - has exactly one pm:Identification with the given @Root and @Extension and no other children.
+  Create or adapt a ContextState instance for the given descriptor handle, that
+  - is related to the given descriptor_handle and of appropriate class for a state of this descriptor,
+  - has the given context_association value,
+  - has the given number of pm:Validators (num_validators)
+  - has exactly one pm:Identification with the given identification_root
+    and identification_extension and no other children.
+  Shall return the handle of the context state. This context state shall either be
+  newly created or it shall be adapted from a previously existing context state of the same descriptor, by
+  - disassociating it (in case it was associated)
+  - changing its Validators and Identifications
+  - setting its @contextAssociation to the given value.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */

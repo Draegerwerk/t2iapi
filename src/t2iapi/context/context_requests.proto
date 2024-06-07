@@ -71,7 +71,7 @@ Request to create or adapt a context state with a given association, a list of s
 message CreateContextStateWithAssocAndSpecificValidatorAndSpecificIdentificationRequest {
     string descriptor_handle = 1;
     ContextAssociation context_association = 2;  // the initial association of the context state
-    repeated ValidatorType validator_type = 3;  // type of pm:Validator
+    string num_validators = 3;  // number of pm:Validator elements
     string identification_root = 4; // pm:Identification/@Root
     string identification_extension = 5; // pm:Identification/@Extension
 }
