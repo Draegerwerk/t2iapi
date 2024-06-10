@@ -110,8 +110,8 @@ service ContextService {
   - is related to the given descriptor_handle and of appropriate class for a state of this descriptor,
   - has the given context_association value,
   - has the given number of pm:Validators (num_validators)
-  - has exactly one pm:Identification with the given identification_root
-    and identification_extension and no other children.
+  - has exactly one pm:Identification, that does not match any of the pm:Identification elements given
+    in identification_exclusions.
   Shall return the handle of the context state. This context state shall either be
   newly created or it shall be adapted from a previously existing context state of the same descriptor, by
   - disassociating it (in case it was associated)
@@ -120,8 +120,8 @@ service ContextService {
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
-  rpc CreateContextStateWithAssocAndSpecificValidatorAndSpecificIdentification(
-  t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorAndSpecificIdentificationRequest)
+  rpc CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentification(
+  t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentificationRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*

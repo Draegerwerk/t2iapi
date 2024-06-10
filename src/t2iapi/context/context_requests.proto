@@ -68,12 +68,12 @@ message CreateContextStateWithAssocAndSpecificValidatorRequest {
 Request to create or adapt a context state with a given association, a list of specific validators
   and a specific Identification.
  */
-message CreateContextStateWithAssocAndSpecificValidatorAndSpecificIdentificationRequest {
+message CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentificationRequest {
     string descriptor_handle = 1;
-    ContextAssociation context_association = 2;  // the initial association of the context state
-    string num_validators = 3;  // number of pm:Validator elements
-    string identification_root = 4; // pm:Identification/@Root
-    string identification_extension = 5; // pm:Identification/@Extension
+    ContextAssociation context_association = 2;            // the initial association of the context state
+    string num_validators = 3;                             // number of pm:Validator elements
+    repeated Identification identification_exclusions = 4; // list of pm:Identifications that the context state
+                                                           //   should NOT have
 }
 
 /*

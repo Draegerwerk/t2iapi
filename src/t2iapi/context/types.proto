@@ -79,3 +79,8 @@ enum ContextType {
     CONTEXT_TYPE_MEANS = 4;
     CONTEXT_TYPE_ENSEMBLE = 5;
 }
+
+message Identification {
+    google.protobuf.StringValue root = 1;       // @Root of pm:Identification
+    google.protobuf.StringValue extension = 2;  // @Extension of pm:Identification
+}
