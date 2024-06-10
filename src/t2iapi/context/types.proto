@@ -80,6 +80,9 @@ enum ContextType {
     CONTEXT_TYPE_ENSEMBLE = 5;
 }
 
+/*
+Represents elements of type pm:Identification from IEEE Std 11073-10207-2017.
+*/
 message Identification {
     google.protobuf.StringValue root = 1;       // @Root of pm:Identification
     google.protobuf.StringValue extension = 2;  // @Extension of pm:Identification
