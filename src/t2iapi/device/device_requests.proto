@@ -65,3 +65,13 @@ Note that when no handle is given, every DescriptionModificationReport fulfills 
 message TriggerDescriptorUpdateRequest{
     repeated string handle = 1;
 }
+
+/*
+Request to provide information about the pm:NextCalibration/@ComponentCalibrationState for the given descriptor handle.
+ */
+message ProvideInformationAboutNextCalibrationRequest {
+    string handle = 1;  // handle of the pm:AbstractDeviceComponentDescriptor for which
+                        // the next calibration information shall be provided
+    CalibrationState calibration_state = 2;     // ComponentCalibrationState value to set as the next calibration
+                                                // information
+}

@@ -69,3 +69,14 @@ message ExpandedName {
     string local_name = 2;
 }
 
+/*
+Represents pm:CalibrationState from the IEEE Std 11073-10207-2017.
+ */
+enum CalibrationState{
+    CALIBRATION_STATE_NOT_CALIBRATED = 0;
+    CALIBRATION_STATE_CALIBRATION_REQUIRED = 1;
+    CALIBRATION_STATE_RUNNING = 2;
+    CALIBRATION_STATE_CALIBRATED = 3;
+    CALIBRATION_STATE_OTHER = 4;
+}
+
