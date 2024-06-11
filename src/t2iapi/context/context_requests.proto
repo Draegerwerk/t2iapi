@@ -65,16 +65,17 @@ message CreateContextStateWithAssocAndSpecificValidatorRequest {
 }
 
 /*
-Request to create or adapt a context state with a given association, a list of specific validators
-  and a specific Identification.
+Request to create or adapt a context state with a given association, a number of validators
+  and a list of excluded Identifications.
  */
 message CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentificationRequest {
     string descriptor_handle = 1;
-    ContextAssociation context_association = 2;            // the initial association of the context state
-    string num_validators = 3;                             // number of pm:Validator elements
-    repeated Identification identification_exclusions = 4; // list of pm:Identifications that the context state
-                                                           //   should NOT have
+    ContextAssociation context_association = 2;                  // the initial association of the context state
+    string num_validators = 3;                                   // number of pm:Validator elements
+    repeated SimpleIdentification identification_exclusions = 4; // list of pm:Identifications
+                                                                    // that the context state should NOT have
 }
+
 
 /*
 Request to associate a specific patient type.

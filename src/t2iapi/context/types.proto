@@ -69,7 +69,7 @@ enum ValidatorType {
 }
 
 /*
-Represents types of contexts available in IEEE Std 11073-10207-2017.
+ Represents types of contexts available in IEEE Std 11073-10207-2017.
  */
 enum ContextType {
     CONTEXT_TYPE_PATIENT = 0;
@@ -81,9 +81,16 @@ enum ContextType {
 }
 
 /*
-Represents elements of type pm:Identification from IEEE Std 11073-10207-2017.
+Simplified Representation of pm:Identification from IEEE Std 11073-10207-2017.
 */
-message Identification {
-    google.protobuf.StringValue root = 1;       // @Root of pm:Identification
-    google.protobuf.StringValue extension = 2;  // @Extension of pm:Identification
+message SimpleIdentification {
+    repeated SimpleInstanceIdentifier identifications = 1;
+}
+
+/*
+ Simplified representation of pm:InstanceIdentifier from IEEE Std 11073-10207-2017.
+ */
+message SimpleInstanceIdentifier {
+    google.protobuf.StringValue root = 1;
+    google.protobuf.StringValue extension = 2;
 }
