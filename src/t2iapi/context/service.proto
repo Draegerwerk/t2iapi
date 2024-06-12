@@ -123,7 +123,7 @@ service ContextService {
    */
   rpc AssociateValidateAndChangeIdentificationOfContextState(
   t2iapi.context.AssociateValidateAndChangeIdentificationOfContextStateRequest)
-      returns (t2iapi.context.BasicResponse);
+      returns (BasicResponse);
 
   /*
   Create or adapt neonatal patient with a given type of association and
