@@ -79,18 +79,3 @@ enum ContextType {
     CONTEXT_TYPE_MEANS = 4;
     CONTEXT_TYPE_ENSEMBLE = 5;
 }
-
-/*
-Simplified Representation of pm:Identification from IEEE Std 11073-10207-2017.
-*/
-message SimpleIdentification {
-    repeated SimpleInstanceIdentifier identifications = 1;
-}
-
-/*
- Simplified representation of pm:InstanceIdentifier from IEEE Std 11073-10207-2017.
- */
-message SimpleInstanceIdentifier {
-    google.protobuf.StringValue root = 1;
-    google.protobuf.StringValue extension = 2;
-}

@@ -65,15 +65,16 @@ message CreateContextStateWithAssocAndSpecificValidatorRequest {
 }
 
 /*
-Request to create or adapt a context state with a given association, a number of validators
-  and a list of excluded Identifications.
+ Request to manipulate the context state with @handle = #state_handle# so that
+ - it has @contextAssociation = #context_association#
+ - it has #num_validators# pm:Validator elements
+ - its pm:Identification changes (after the manipulation it should at least
+   differ from the last 2 pm:Identifications of the manipulated context state)
  */
-message CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentificationRequest {
-    string descriptor_handle = 1;
-    ContextAssociation context_association = 2;                  // the initial association of the context state
-    string num_validators = 3;                                   // number of pm:Validator elements
-    repeated SimpleIdentification identification_exclusions = 4; // list of pm:Identifications
-                                                                    // that the context state should NOT have
+message AssociateValidateAndChangeIdentificationOfContextStateRequest {
+    string state_handle = 1;
+    ContextAssociation context_association = 2;
+    string num_validators = 3;
 }
 
 

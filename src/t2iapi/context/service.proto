@@ -106,23 +106,24 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create or adapt a ContextState instance for the given descriptor handle, that
-  - is related to the given descriptor_handle and of appropriate class for a state of this descriptor,
+  Manipulate a given context state (specified by state_handle), such that
   - has the given context_association value,
   - has the given number of pm:Validators (num_validators)
-  - has exactly one pm:Identification, that does not match any of the pm:Identification elements given
-    in identification_exclusions.
+  - its pm:Identification changes so that it differs from the last 2 pm:Identifications
+    of this particular context state.
   Shall return the handle of the context state. This context state shall either be
   newly created or it shall be adapted from a previously existing context state of the same descriptor, by
   - disassociating it (in case it was associated)
   - changing its Validators and Identifications
   - setting its @contextAssociation to the given value.
+  Note that changing the pm:Validator or pm:Identification elements of a context state might
+  require disassociating it, changing them and re-associating it again.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
-  rpc CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentification(
-  t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentificationRequest)
-      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+  rpc AssociateValidateAndChangeIdentificationOfContextState(
+  t2iapi.context.AssociateValidateAndChangeIdentificationOfContextStateRequest)
+      returns (t2iapi.context.BasicResponse);
 
   /*
   Create or adapt neonatal patient with a given type of association and
