@@ -116,12 +116,13 @@ service ContextService {
     previous pm:Identification of this particular context state)
   Note that changing the pm:Validator or pm:Identification elements of a context state might
   require disassociating it, changing them and then re-associating it again.
+  Returns the handle of the created or adapted context state.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc AssociateValidateAndChangeIdentificationOfContextState(
   t2iapi.context.CreateContextStateWithAssociationAndValidatorsRequest)
-      returns (BasicResponse);
+      returns (CreateContextStateWithAssociationResponse);
 
   /*
   Create or adapt neonatal patient with a given type of association and
