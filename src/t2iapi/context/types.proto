@@ -69,7 +69,7 @@ enum ValidatorType {
 }
 
 /*
- Represents types of contexts available in IEEE Std 11073-10207-2017.
+Represents types of contexts available in IEEE Std 11073-10207-2017.
  */
 enum ContextType {
     CONTEXT_TYPE_PATIENT = 0;

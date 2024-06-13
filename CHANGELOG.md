@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - manipulation SetSystemContextActivationStateAndContextAssociation for combined settings
-- manipulation CreateContextStateWithAssocAndSpecificValidatorAndExcludedIdentification for contexts
+- manipulation AssociateValidateAndChangeIdentificationOfContextState for contexts
 
 ## [4.1.0] - 2024-02-22
 

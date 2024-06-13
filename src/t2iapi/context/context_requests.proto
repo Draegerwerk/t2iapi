@@ -65,20 +65,6 @@ message CreateContextStateWithAssocAndSpecificValidatorRequest {
 }
 
 /*
- Request to manipulate the context state with @handle = #state_handle# so that
- - it has @contextAssociation = #context_association#
- - it has #num_validators# pm:Validator elements
- - its pm:Identification changes (after the manipulation it should at least
-   differ from the last 2 pm:Identifications of the manipulated context state)
- */
-message AssociateValidateAndChangeIdentificationOfContextStateRequest {
-    string state_handle = 1;
-    ContextAssociation context_association = 2;
-    string num_validators = 3;
-}
-
-
-/*
 Request to associate a specific patient type.
  */
 message AssociatePatientRequest {
