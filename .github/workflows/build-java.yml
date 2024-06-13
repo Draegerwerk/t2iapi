@@ -40,12 +40,21 @@ jobs:
           gradle-version: ${{ env.GRADLE_VERSION }}
       - name: Execute build
         working-directory: ./java
-        run: ./gradlew jar
-      - name: Archive built jars
+        run: ./gradlew jar generatePomFileForMavenPublication
+      - name: Rename pom
+        working-directory: ./java/build/publications/maven
+        run: |
+          ref='refs/tags/v'
+          if [ ${{ github.ref }} == *${ref}* ]; then
+            mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.pom
+          else
+            mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.${{ github.run_number }}-SNAPSHOT.pom
+          fi
+      - name: Archive built jars and pom
         uses: actions/upload-artifact@v4
         with:
           name: target_jars
-          path: java/build/libs/*.jar
+          path: java/build/libs
   run-tests-java17:
     runs-on: ubuntu-latest
     needs: build-java
