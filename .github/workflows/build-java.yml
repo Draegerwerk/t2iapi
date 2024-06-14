@@ -41,15 +41,14 @@ jobs:
       - name: Execute build
         working-directory: ./java
         run: ./gradlew jar generatePomFileForMavenPublication
-      - name: Rename pom
+      - name: Rename pom file for release
+        if: startsWith(github.ref, 'refs/tags/v')
         working-directory: ./java/build/publications/maven
-        run: |
-          ref='refs/tags/v'
-          if [ ${{ github.ref }} == *${ref}* ]; then
-            mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.pom
-          else
-            mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.${{ github.run_number }}-SNAPSHOT.pom
-          fi
+        run: mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.pom
+      - name: Rename pom file for snapshot
+        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+        working-directory: ./java/build/publications/maven
+        run: mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.${{ github.run_number }}-SNAPSHOT.pom
       - name: Archive built jars and pom
         uses: actions/upload-artifact@v4
         with:
