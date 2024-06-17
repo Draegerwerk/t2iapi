@@ -17,9 +17,15 @@ import "t2iapi/biceps/codeidentifier.proto";
 import "google/protobuf/wrappers.proto";
 import "t2iapi/biceps/symboliccodename.proto";
 
+/*
+Represents pm:CodedValue (defined in IEEE Std 11073-10207-2017).
+*/
 message CodedValueMsg {
   repeated LocalizedTextMsg coding_system_name = 1;
   repeated LocalizedTextMsg concept_description = 2;
+  /*
+  Represents pm:Translation (defined in IEEE Std 11073-10207-2017).
+  */
   message TranslationMsg {
     CodeIdentifierMsg code_attr = 3;
     google.protobuf.StringValue coding_system_attr = 4;

@@ -75,6 +75,9 @@ message ExpandedName {
 Contains the meta data of the device.
  */
 message MetaDataMsg {
+    /*
+    Represents pm:Udi (defined in IEEE Std 11073-10207-2017).
+    */
     message UdiMsg {
       string device_identifier = 1;
       string human_readable_form = 2;

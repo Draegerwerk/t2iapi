@@ -14,6 +14,9 @@ option java_outer_classname = "ReferencedVersionProto";
 
 import "t2iapi/biceps/versioncounter.proto";
 
+/*
+Represents pm:ReferencedVersion (defined in IEEE Std 11073-10207-2017).
+*/
 message ReferencedVersionMsg {
   VersionCounterMsg version_counter = 1;
 }

@@ -18,6 +18,9 @@ import "google/protobuf/wrappers.proto";
 import "t2iapi/biceps/referencedversion.proto";
 import "t2iapi/biceps/localizedtextwidth.proto";
 
+/*
+Represents pm:LocalizedText (defined in IEEE Std 11073-10207-2017).
+*/
 message LocalizedTextMsg {
   LocalizedTextContentMsg localized_text_content = 1;
   LocalizedTextRefMsg ref_attr = 2;

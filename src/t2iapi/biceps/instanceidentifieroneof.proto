@@ -15,6 +15,9 @@ option java_outer_classname = "InstanceIdentifierOneOfProto";
 import "t2iapi/biceps/instanceidentifier.proto";
 import "t2iapi/biceps/operatingjurisdiction.proto";
 
+/*
+Represents either pm:InstanceIdentifier or pm:OperatingJurisdiction (defined in IEEE Std 11073-10207-2017).
+*/
 message InstanceIdentifierOneOfMsg {
   oneof InstanceIdentifierOneOf {
     InstanceIdentifierMsg instance_identifier = 1;

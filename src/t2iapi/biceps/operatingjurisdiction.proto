@@ -14,6 +14,9 @@ option java_outer_classname = "OperatingJurisdictionProto";
 
 import "t2iapi/biceps/instanceidentifier.proto";
 
+/*
+Represents pm:OperatingJurisdiction (defined in IEEE Std 11073-10207-2017).
+*/
 message OperatingJurisdictionMsg {
   InstanceIdentifierMsg instance_identifier = 1;
 }

@@ -13,6 +13,9 @@ option java_package = "com.draeger.medical.t2iapi.biceps";
 option java_outer_classname = "LocalizedTextRefProto";
 
 
+/*
+Represents pm:LocalizedTextRef (defined in IEEE Std 11073-10207-2017).
+*/
 message LocalizedTextRefMsg {
   string string = 1;
 }

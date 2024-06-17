@@ -13,14 +13,21 @@ option java_package = "com.draeger.medical.t2iapi.biceps";
 option java_outer_classname = "LocalizedTextWidthProto";
 
 
+/*
+Represents pm:LocalizedTextWidth (defined in IEEE Std 11073-10207-2017).
+*/
 message LocalizedTextWidthMsg {
+  /*
+  Indicates the width of a localized text based on the number of fullwidth characters
+  (defined in IEEE Std 11073-10207-2017).
+ */
   enum EnumType {
-    XS = 0;
-    S = 1;
-    M = 2;
-    L = 3;
-    XL = 4;
-    XXL = 5;
+    ENUM_TYPE_XS = 0;   // A line has 4 or less fullwidth characters.
+    ENUM_TYPE_S = 1;    // A line has 8 or less fullwidth characters.
+    ENUM_TYPE_M = 2;    // A line has 12 or less fullwidth characters.
+    ENUM_TYPE_L = 3;    // A line has 16 or less fullwidth characters.
+    ENUM_TYPE_XL = 4;   // A line has 20 or less fullwidth characters.
+    ENUM_TYPE_XXL = 5;  // A line has 21 or more fullwidth characters.
   }
   EnumType enum_type = 1;
 }
