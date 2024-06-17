@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - manipulation SetSystemContextActivationStateAndContextAssociation for combined settings
+- manipulation GetAvailableDeviceMetaData for device
 
 ## [4.1.0] - 2024-02-22
 
