@@ -1,0 +1,24 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "InstanceIdentifierOneOfProto";
+
+import "t2iapi/biceps/instanceidentifier.proto";
+import "t2iapi/biceps/operatingjurisdiction.proto";
+
+message InstanceIdentifierOneOfMsg {
+  oneof InstanceIdentifierOneOf {
+    InstanceIdentifierMsg instance_identifier = 1;
+    OperatingJurisdictionMsg operating_jurisdiction = 2;
+  }
+}
+

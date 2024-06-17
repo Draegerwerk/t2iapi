@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022-2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -10,6 +10,7 @@ syntax = "proto3";
 package t2iapi.device;
 
 import "t2iapi/basic_responses.proto";
+import "t2iapi/device/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.device";
 option java_outer_classname = "DeviceResponses";
@@ -28,4 +29,12 @@ Response containing the handle of the newly created mds descriptor.
 message InsertMdsDescriptorResponse {
     BasicResponse status = 1;
     string handle = 2; // handle of the mds descriptor, that was created
+}
+
+/*
+Response containing the available device meta data.
+ */
+message AvailableDeviceMetaDataResponse {
+    BasicResponse status = 1;
+    MetaDataMsg meta_data = 2; // available device meta data
 }

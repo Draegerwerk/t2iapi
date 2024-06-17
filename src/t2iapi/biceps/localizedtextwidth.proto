@@ -1,0 +1,27 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "LocalizedTextWidthProto";
+
+
+message LocalizedTextWidthMsg {
+  enum EnumType {
+    XS = 0;
+    S = 1;
+    M = 2;
+    L = 3;
+    XL = 4;
+    XXL = 5;
+  }
+  EnumType enum_type = 1;
+}
+

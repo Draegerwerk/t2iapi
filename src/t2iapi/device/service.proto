@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022-2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -121,4 +121,12 @@ service DeviceService {
     not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetBatteryUsage (t2iapi.device.SetBatteryUsageRequest) returns (BasicResponse);
+
+    /*
+    Get the available device meta data of the pm:MdsDescriptor for the given handle. For each item of the meta data
+    that is not available for this MDS leave the corresponding element empty. In this context, "available" does not
+    mean a copy of the data from the pm:MdsDescriptor/pm:MetaData. It means a provision of the data which, in the
+    user's opinion, must be present for this device.
+     */
+    rpc GetAvailableDeviceMetaData(BasicHandleRequest) returns (AvailableDeviceMetaDataResponse);
 }

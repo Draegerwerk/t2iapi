@@ -1,0 +1,30 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "InstanceIdentifierProto";
+
+import "t2iapi/biceps/codedvalue.proto";
+import "t2iapi/biceps/localizedtext.proto";
+
+message InstanceIdentifierMsg {
+  CodedValueMsg type = 1;
+  repeated LocalizedTextMsg identifier_name = 2;
+  message RootAttrMsg {
+    string any_u_r_i = 3;
+  }
+  RootAttrMsg root_attr = 4;
+  message ExtensionAttrMsg {
+    string string = 5;
+  }
+  ExtensionAttrMsg extension_attr = 6;
+}
+
