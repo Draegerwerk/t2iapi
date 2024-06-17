@@ -19,7 +19,10 @@ import "t2iapi/biceps/operatingjurisdiction.proto";
 Represents either pm:InstanceIdentifier or pm:OperatingJurisdiction (defined in IEEE Std 11073-10207-2017).
 */
 message InstanceIdentifierOneOfMsg {
-  oneof InstanceIdentifierOneOf {
+  /*
+  At most one of the following fields will be set at the same time.
+   */
+  oneof instance_identifier_one_of {
     InstanceIdentifierMsg instance_identifier = 1;
     OperatingJurisdictionMsg operating_jurisdiction = 2;
   }
