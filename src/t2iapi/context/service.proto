@@ -108,14 +108,12 @@ service ContextService {
   /*
   Create or adapt a context state, such that
   - it belongs to the given descriptor_handle,
-  - it has the given context_association value,
-  - it has the given number of pm:Validators (num_validators)
-  - its pm:Identification changes (in case the context state is newly created, it
-    must differ from the pm:Identification of the previously associated context state
-    of the same descriptor_handle and in case it is adapted, it must differs from the
-    previous pm:Identification of this particular context state)
-  Note that changing the pm:Validator or pm:Identification elements of a context state might
-  require disassociating it, changing them and then re-associating it again.
+  - it has the given @ContextAssociation value,
+  - it has the given number of pm:Validators
+  - its pm:Identification changes. In case the context state is newly created, it
+    must differ from the pm:Identifications of all previously associated context states
+    of the same @DescriptorHandle and in case it is adapted, it must differ from the
+    previous pm:Identification of this particular context state.
   Returns the handle of the created or adapted context state.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
