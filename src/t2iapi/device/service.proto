@@ -121,4 +121,11 @@ service DeviceService {
     not able to maintain the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetBatteryUsage (t2iapi.device.SetBatteryUsageRequest) returns (BasicResponse);
+
+     /*
+    Provide information about the pm:NextCalibration for the given pm:AbstractDeviceComponentDescriptor.
+    If the device is not able to provide the information, it shall return RESULT_NOT_SUPPORTED.
+     */
+    rpc ProvideInformationAboutNextCalibration (t2iapi.device.ProvideInformationAboutNextCalibrationRequest)
+        returns (BasicResponse);
 }
