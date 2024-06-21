@@ -110,10 +110,12 @@ service ContextService {
   - it belongs to the given descriptor_handle,
   - it has the given @ContextAssociation value,
   - it has the given number of pm:Validators
-  - its pm:Identification changes. In case the context state is newly created, it
-    must differ from the pm:Identifications of all previously associated context states
-    of the same @DescriptorHandle and in case it is adapted, it must differ from the
-    previous pm:Identification of this particular context state.
+  - its pm:Identification changes. In case the context state is newly created,
+    its pm:Identification must differ from the pm:Identifications of all
+    context states of the same @DescriptorHandle that were associated
+    previously and in case it is adapted, its pm:Identification must differ
+    from its previous pm:Identification. In this context previous
+    means directly prior to the manipulation call.
   Returns the handle of the created or adapted context state.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
