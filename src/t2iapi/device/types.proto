@@ -79,4 +79,3 @@ enum CalibrationState{
     CALIBRATION_STATE_CALIBRATED = 3;
     CALIBRATION_STATE_OTHER = 4;
 }
-
