@@ -17,7 +17,7 @@ option java_package = "com.draeger.medical.t2iapi.context";
 option java_outer_classname = "ContextResponses";
 
 /*
- * Response containing the handle of the newly created or adapted context state.
+Response containing the handle of the newly created or adapted context state.
  */
 message CreateContextStateWithAssociationResponse {
     BasicResponse status = 1;
@@ -25,8 +25,8 @@ message CreateContextStateWithAssociationResponse {
 }
 
 /*
- * Response containing the context state handle and the prior mdib version.
- * @see: AssociateValidateAndChangeIdentificationOfPatientOrLocationContextState()
+Response containing the context state handle and the prior mdib version.
+@see: AssociateValidateAndChangeIdentificationOfPatientOrLocationContextState()
  */
 message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateResponse {
     BasicResponse status = 1;
