@@ -26,12 +26,11 @@ message CreateContextStateWithAssociationResponse {
 
 /*
 Response containing the context state handle and the prior mdib version.
-@see: AssociateValidateAndChangeIdentificationOfPatientOrLocationContextState()
  */
 message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateResponse {
     BasicResponse status = 1;
     string context_state_handle = 2;  // handle of the context state, that was created or adapted
-    string prior_mdib_version = 3;    // mdib version before the change - contains the previously associated
+    uint64 prior_mdib_version = 3;    // mdib version before the change - contains the previously associated
                                       //   context state whose pm:Identification the changed
                                       //   pm:Identification must structurally differ from.
 }
