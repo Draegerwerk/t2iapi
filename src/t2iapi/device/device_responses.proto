@@ -18,14 +18,23 @@ option java_outer_classname = "DeviceResponses";
 Response which contains all descriptor handles that can be removed and reinserted into the MDIB of the device.
  */
 message GetRemovableDescriptorsResponse {
-    BasicResponse status = 1;
-    repeated string handle = 2;  // list of descriptor handles which can be removed and inserted
+  BasicResponse status = 1;
+  repeated string handle = 2;  // list of descriptor handles which can be removed and inserted
 }
 
 /*
 Response containing the handle of the newly created mds descriptor.
  */
 message InsertMdsDescriptorResponse {
-    BasicResponse status = 1;
-    string handle = 2; // handle of the mds descriptor, that was created
+  BasicResponse status = 1;
+  string handle = 2; // handle of the mds descriptor, that was created
+
+
+/*
+Response containing the software version of the requested pm:AbstractDeviceComponentDescriptor handle when supported.
+ */
+  message GetComponentSwVersionResponse {
+    BasicResponse status = 1;    // status of the rpc
+    string software_version = 2; // Software version of the requested device component
+  }
 }
