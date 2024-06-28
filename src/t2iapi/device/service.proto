@@ -135,4 +135,11 @@ service DeviceService {
      */
     rpc ProvideInformationAboutNextCalibration (t2iapi.device.ProvideInformationAboutNextCalibrationRequest)
         returns (BasicResponse);
+
+    /*
+    Get the software version of the requested pm:AbstractDeviceComponentDescriptor handle if it is representing
+    a component with a software version.
+     */
+    rpc GetComponentSwVersion (BasicHandleRequest)
+        returns (t2iapi.device.GetComponentSwVersionResponse);
 }
