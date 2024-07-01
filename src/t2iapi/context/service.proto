@@ -113,7 +113,7 @@ service ContextService {
   - its pm:Identification changes.
   The pm:Identification of the created resp. adapted context state must differ structurally from
   the pm:Identification of the previously associated context state of the same @DescriptorHandle.
-  Returns the handle of the created or adapted context state and a mdib version
+  Returns the handle of the created or adapted context state and an mdib version
   that contains the version of the previously associated context state whose pm:Identification
   the changed pm:Identification must structurally differ from.
   The mdib version must represent the mdib of the device before the changes of the
