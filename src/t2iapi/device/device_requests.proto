@@ -67,8 +67,18 @@ message TriggerDescriptorUpdateRequest{
 }
 
 /*
+Request to provide information about the pm:CalibrationInfo/@ComponentCalibrationState for the given descriptor handle.
+*/
+message ProvideInformationAboutLastCalibrationRequest {
+    string handle = 1;  // handle of the pm:AbstractDeviceComponentDescriptor for which
+                        // the last calibration information shall be provided
+    CalibrationState calibration_state = 2;     // @ComponentCalibrationState value to set as the last calibration
+                                                // information
+}
+
+/*
 Request to provide information about the pm:NextCalibration/@ComponentCalibrationState for the given descriptor handle.
- */
+*/
 message ProvideInformationAboutNextCalibrationRequest {
     string handle = 1;  // handle of the pm:AbstractDeviceComponentDescriptor for which
                         // the next calibration information shall be provided
