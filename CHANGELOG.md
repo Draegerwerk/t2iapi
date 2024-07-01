@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation GetAvailableDeviceMetaData for device
 - manipulation AssociateValidateAndChangeIdentificationOfPatientOrLocationContextState for contexts
 - manipulation ProvideInformationAboutLastCalibration for devices
 - manipulation ProvideInformationAboutNextCalibration for devices
