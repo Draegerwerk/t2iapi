@@ -9,7 +9,6 @@ syntax = "proto3";
 
 package t2iapi.device;
 
-import "t2iapi/biceps/instanceidentifieroneof.proto";
 import "t2iapi/biceps/localizedtext.proto";
 import "google/protobuf/wrappers.proto";
 
