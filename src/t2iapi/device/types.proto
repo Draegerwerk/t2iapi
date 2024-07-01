@@ -81,27 +81,3 @@ enum CalibrationState{
     CALIBRATION_STATE_CALIBRATED = 3;
     CALIBRATION_STATE_OTHER = 4;
 }
-
-
-/*
-Contains the meta data of the device.
- */
-message MetaDataMsg {
-    /*
-    Represents pm:Udi (defined in IEEE Std 11073-10207-2017).
-    */
-    message UdiMsg {
-      string device_identifier = 1;
-      string human_readable_form = 2;
-      t2iapi.biceps.InstanceIdentifierOneOfMsg issuer = 3;
-      t2iapi.biceps.InstanceIdentifierOneOfMsg jurisdiction = 4;
-    }
-    repeated UdiMsg udi = 5;
-    google.protobuf.StringValue lot_number = 6;
-    repeated t2iapi.biceps.LocalizedTextMsg manufacturer = 7;
-    google.protobuf.StringValue manufacture_date = 8;
-    google.protobuf.StringValue expiration_date = 9;
-    repeated t2iapi.biceps.LocalizedTextMsg model_name = 10;
-    google.protobuf.StringValue model_number = 11;
-    repeated string serial_number = 12;
-}

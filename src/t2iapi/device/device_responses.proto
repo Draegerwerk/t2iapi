@@ -10,6 +10,7 @@ syntax = "proto3";
 package t2iapi.device;
 
 import "t2iapi/basic_responses.proto";
+import "t2iapi/biceps/metadata.proto";
 import "t2iapi/device/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.device";
@@ -36,5 +37,5 @@ Response containing the available device meta data.
  */
 message AvailableDeviceMetaDataResponse {
     BasicResponse status = 1;
-    MetaDataMsg meta_data = 2; // available device meta data
+    t2iapi.biceps.MetaDataMsg meta_data = 2; // available device meta data
 }

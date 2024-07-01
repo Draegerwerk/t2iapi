@@ -1,0 +1,43 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "MetadataProto";
+
+import "t2iapi/biceps/localizedtext.proto";
+import "t2iapi/biceps/instanceidentifier.proto";
+import "google/protobuf/wrappers.proto";
+
+
+
+
+/*
+Contains the meta data of the device. Represents pm:MetaData (defined in IEEE Std 11073-10207-2017).
+ */
+message MetaDataMsg {
+    /*
+    Represents pm:Udi (defined in IEEE Std 11073-10207-2017).
+    */
+    message UdiMsg {
+      string device_identifier = 1;
+      string human_readable_form = 2;
+      t2iapi.biceps.InstanceIdentifierMsg issuer = 3;
+      t2iapi.biceps.InstanceIdentifierMsg jurisdiction = 4;
+    }
+    repeated UdiMsg udi = 5;
+    google.protobuf.StringValue lot_number = 6;
+    repeated t2iapi.biceps.LocalizedTextMsg manufacturer = 7;
+    google.protobuf.StringValue manufacture_date = 8;
+    google.protobuf.StringValue expiration_date = 9;
+    repeated t2iapi.biceps.LocalizedTextMsg model_name = 10;
+    google.protobuf.StringValue model_number = 11;
+    repeated string serial_number = 12;
+}

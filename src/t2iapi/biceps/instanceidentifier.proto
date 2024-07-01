@@ -21,19 +21,6 @@ Represents pm:InstanceIdentifier (defined in IEEE Std 11073-10207-2017).
 message InstanceIdentifierMsg {
   CodedValueMsg type = 1;
   repeated LocalizedTextMsg identifier_name = 2;
-  /*
-  Represents pm:InstanceIdentifier/@Root (defined in IEEE Std 11073-10207-2017).
-  */
-  message RootAttrMsg {
-    string any_u_r_i = 3;
-  }
-  RootAttrMsg root_attr = 4;
-  /*
-  Represents pm:InstanceIdentifier/@Extension (defined in IEEE Std 11073-10207-2017).
-  */
-  message ExtensionAttrMsg {
-    string string = 5;
-  }
-  ExtensionAttrMsg extension_attr = 6;
+  string root_attr = 3;
+  string extension_attr = 4;
 }
-

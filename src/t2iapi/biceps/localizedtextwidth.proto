@@ -31,4 +31,3 @@ message LocalizedTextWidthMsg {
   }
   EnumType enum_type = 1;
 }
-

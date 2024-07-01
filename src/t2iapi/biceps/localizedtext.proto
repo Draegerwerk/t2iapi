@@ -12,20 +12,16 @@ package t2iapi.biceps;
 option java_package = "com.draeger.medical.t2iapi.biceps";
 option java_outer_classname = "LocalizedTextProto";
 
-import "t2iapi/biceps/localizedtextcontent.proto";
-import "t2iapi/biceps/localizedtextref.proto";
 import "google/protobuf/wrappers.proto";
-import "t2iapi/biceps/referencedversion.proto";
 import "t2iapi/biceps/localizedtextwidth.proto";
 
 /*
 Represents pm:LocalizedText (defined in IEEE Std 11073-10207-2017).
 */
 message LocalizedTextMsg {
-  LocalizedTextContentMsg localized_text_content = 1;
-  LocalizedTextRefMsg ref_attr = 2;
+  string localized_text_content = 1;
+  string ref_attr = 2;
   google.protobuf.StringValue lang_attr = 3;
-  ReferencedVersionMsg version_attr = 4;
+  uint64 version_attr = 4;
   LocalizedTextWidthMsg text_width_attr = 5;
 }
-

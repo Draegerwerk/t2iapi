@@ -13,9 +13,7 @@ option java_package = "com.draeger.medical.t2iapi.biceps";
 option java_outer_classname = "CodedValueProto";
 
 import "t2iapi/biceps/localizedtext.proto";
-import "t2iapi/biceps/codeidentifier.proto";
 import "google/protobuf/wrappers.proto";
-import "t2iapi/biceps/symboliccodename.proto";
 
 /*
 Represents pm:CodedValue (defined in IEEE Std 11073-10207-2017).
@@ -27,14 +25,13 @@ message CodedValueMsg {
   Represents pm:Translation (defined in IEEE Std 11073-10207-2017).
   */
   message TranslationMsg {
-    CodeIdentifierMsg code_attr = 3;
+    string code_attr = 3;
     google.protobuf.StringValue coding_system_attr = 4;
     google.protobuf.StringValue coding_system_version_attr = 5;
   }
   repeated TranslationMsg translation = 6;
-  CodeIdentifierMsg code_attr = 7;
+  string code_attr = 7;
   google.protobuf.StringValue coding_system_attr = 8;
   google.protobuf.StringValue coding_system_version_attr = 9;
-  SymbolicCodeNameMsg symbolic_code_name_attr = 10;
+  string symbolic_code_name_attr = 10;
 }
-
