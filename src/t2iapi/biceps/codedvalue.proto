@@ -33,5 +33,5 @@ message CodedValueMsg {
   string code_attr = 7;
   google.protobuf.StringValue coding_system_attr = 8;
   google.protobuf.StringValue coding_system_version_attr = 9;
-  string symbolic_code_name_attr = 10;
+  google.protobuf.StringValue symbolic_code_name_attr = 10;
 }

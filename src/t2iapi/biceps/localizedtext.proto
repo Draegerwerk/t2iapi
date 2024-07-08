@@ -19,9 +19,9 @@ import "t2iapi/biceps/localizedtextwidth.proto";
 Represents pm:LocalizedText (defined in IEEE Std 11073-10207-2017).
 */
 message LocalizedTextMsg {
-  string localized_text_content = 1;
-  string ref_attr = 2;
+  google.protobuf.StringValue localized_text_content = 1;
+  google.protobuf.StringValue ref_attr = 2;
   google.protobuf.StringValue lang_attr = 3;
-  uint64 version_attr = 4;
+  google.protobuf.UInt64Value version_attr = 4;
   LocalizedTextWidthMsg text_width_attr = 5;
 }
