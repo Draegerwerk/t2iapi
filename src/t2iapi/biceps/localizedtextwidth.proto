@@ -12,7 +12,6 @@ package t2iapi.biceps;
 option java_package = "com.draeger.medical.t2iapi.biceps";
 option java_outer_classname = "LocalizedTextWidthProto";
 
-
 /*
 Represents pm:LocalizedTextWidth (defined in IEEE Std 11073-10207-2017).
 */

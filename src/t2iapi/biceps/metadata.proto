@@ -16,11 +16,8 @@ import "t2iapi/biceps/localizedtext.proto";
 import "t2iapi/biceps/instanceidentifier.proto";
 import "google/protobuf/wrappers.proto";
 
-
-
-
 /*
-Contains the meta data of the device. Represents pm:MetaData (defined in IEEE Std 11073-10207-2017).
+Contains the metadata of the device. Represents pm:MetaData (defined in IEEE Std 11073-10207-2017).
  */
 message MetaDataMsg {
     /*

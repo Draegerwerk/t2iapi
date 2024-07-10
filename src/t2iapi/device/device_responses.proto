@@ -32,9 +32,9 @@ message InsertMdsDescriptorResponse {
 }
 
 /*
-Response containing the available device meta data.
+Response containing the available device metadata.
  */
 message AvailableDeviceMetaDataResponse {
     BasicResponse status = 1;
-    t2iapi.biceps.MetaDataMsg meta_data = 2; // available device meta data
+    t2iapi.biceps.MetaDataMsg meta_data = 2; // available device metadata
 }
