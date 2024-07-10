@@ -1,0 +1,27 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "InstanceIdentifierProto";
+
+import "google/protobuf/wrappers.proto";
+import "t2iapi/biceps/codedvalue.proto";
+import "t2iapi/biceps/localizedtext.proto";
+
+/*
+Represents pm:InstanceIdentifier (defined in IEEE Std 11073-10207-2017).
+*/
+message InstanceIdentifierMsg {
+  CodedValueMsg type = 1;
+  repeated LocalizedTextMsg identifier_name = 2;
+  google.protobuf.StringValue root_attr = 3;
+  google.protobuf.StringValue extension_attr = 4;
+}

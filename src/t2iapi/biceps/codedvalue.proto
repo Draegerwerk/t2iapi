@@ -1,0 +1,37 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "CodedValueProto";
+
+import "t2iapi/biceps/localizedtext.proto";
+import "google/protobuf/wrappers.proto";
+
+/*
+Represents pm:CodedValue (defined in IEEE Std 11073-10207-2017).
+*/
+message CodedValueMsg {
+  repeated LocalizedTextMsg coding_system_name = 1;
+  repeated LocalizedTextMsg concept_description = 2;
+  /*
+  Represents pm:Translation (defined in IEEE Std 11073-10207-2017).
+  */
+  message TranslationMsg {
+    string code_attr = 3;
+    google.protobuf.StringValue coding_system_attr = 4;
+    google.protobuf.StringValue coding_system_version_attr = 5;
+  }
+  repeated TranslationMsg translation = 6;
+  string code_attr = 7;
+  google.protobuf.StringValue coding_system_attr = 8;
+  google.protobuf.StringValue coding_system_version_attr = 9;
+  google.protobuf.StringValue symbolic_code_name_attr = 10;
+}

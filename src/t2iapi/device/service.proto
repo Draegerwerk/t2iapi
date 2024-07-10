@@ -135,4 +135,12 @@ service DeviceService {
      */
     rpc ProvideInformationAboutNextCalibration (t2iapi.device.ProvideInformationAboutNextCalibrationRequest)
         returns (BasicResponse);
+
+    /*
+    Get the available device metadata of the pm:MdsDescriptor for the given handle. For each item of the metadata
+    that is not available for this MDS leave the corresponding element empty. In this context, "available" does not
+    mean a copy of the data from the pm:MdsDescriptor/pm:MetaData. It means a provision of the data which, in the
+    user's opinion, must be present for this device.
+     */
+    rpc GetAvailableDeviceMetaData(BasicHandleRequest) returns (AvailableDeviceMetaDataResponse);
 }
