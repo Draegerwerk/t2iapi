@@ -10,6 +10,7 @@ syntax = "proto3";
 package t2iapi.device;
 
 import "t2iapi/basic_responses.proto";
+import "t2iapi/biceps/metadata.proto";
 
 option java_package = "com.draeger.medical.t2iapi.device";
 option java_outer_classname = "DeviceResponses";
@@ -18,22 +19,30 @@ option java_outer_classname = "DeviceResponses";
 Response which contains all descriptor handles that can be removed and reinserted into the MDIB of the device.
  */
 message GetRemovableDescriptorsResponse {
-  BasicResponse status = 1;
-  repeated string handle = 2;  // list of descriptor handles which can be removed and inserted
+    BasicResponse status = 1;
+    repeated string handle = 2;  // list of descriptor handles which can be removed and inserted
 }
 
 /*
 Response containing the handle of the newly created mds descriptor.
  */
 message InsertMdsDescriptorResponse {
-  BasicResponse status = 1;
-  string handle = 2; // handle of the mds descriptor, that was created
+    BasicResponse status = 1;
+    string handle = 2; // handle of the mds descriptor, that was created
+}
+
+/*
+Response containing the available device metadata.
+ */
+message AvailableDeviceMetaDataResponse {
+    BasicResponse status = 1;
+    t2iapi.biceps.MetaDataMsg meta_data = 2; // available device metadata
 }
 
 /*
 Response containing the software version of the requested pm:AbstractDeviceComponentDescriptor handle when supported.
  */
 message GetComponentSwVersionResponse {
-  BasicResponse status = 1;    // status of the rpc
-  string software_version = 2; // Software version of the requested device component
+    BasicResponse status = 1;    // status of the rpc
+    string software_version = 2; // Software version of the requested device component
 }

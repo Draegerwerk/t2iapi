@@ -56,6 +56,16 @@ message CreateContextStateWithAssociationAndValidatorsRequest {
 }
 
 /*
+Request to create or adapt a pm:PatientContextState or pm:LocationContextState instance with
+@ContextAssociation = Assoc for the given @DescriptorHandle, with a given number
+of pm:Validator elements and a changed pm:Identification.
+ */
+message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateRequest {
+    string descriptor_handle = 1;
+    string num_validators = 2;  // number of pm:Validator elements
+}
+
+/*
 Request to create or adapt a context state with a given association and specific validator.
  */
 message CreateContextStateWithAssocAndSpecificValidatorRequest {

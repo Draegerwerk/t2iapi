@@ -1,0 +1,27 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "LocalizedTextProto";
+
+import "google/protobuf/wrappers.proto";
+import "t2iapi/biceps/localizedtextwidth.proto";
+
+/*
+Represents pm:LocalizedText (defined in IEEE Std 11073-10207-2017).
+*/
+message LocalizedTextMsg {
+  google.protobuf.StringValue localized_text_content = 1;
+  google.protobuf.StringValue ref_attr = 2;
+  google.protobuf.StringValue lang_attr = 3;
+  google.protobuf.UInt64Value version_attr = 4;
+  LocalizedTextWidthMsg text_width_attr = 5;
+}
