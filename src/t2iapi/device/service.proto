@@ -62,7 +62,7 @@ service DeviceService {
     /*
     Get all supported languages of the component with a UI represented by the MDS with the provided handle.
     */
-    rpc GetMdsUiSupportedLanguages (t2iapi.device.SetMdsUiLanguageRequest) returns (BasicResponse);
+    rpc GetMdsUiSupportedLanguages (t2iapi.device.SetMdsUiLanguageRequest) returns (GetMdsUiSupportedLanguagesResponse);
 
     /*
     Get all descriptor handles which can be removed and reinserted into the MDIB of the device
@@ -78,7 +78,7 @@ service DeviceService {
     to remove descriptors (at least one of every possible kind).
      */
     rpc GetRemovableDescriptorsOfClass (GetRemovableDescriptorsOfClassRequest)
-        returns (t2iapi.device.GetMdsUiSupportedLanguagesResponse);
+        returns (t2iapi.device.GetRemovableDescriptorsResponse);
 
     /*
     Remove a descriptor from the device MDIB.
