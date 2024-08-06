@@ -38,3 +38,11 @@ message AvailableDeviceMetaDataResponse {
     BasicResponse status = 1;
     t2iapi.biceps.MetaDataMsg meta_data = 2; // available device metadata
 }
+
+/*
+Response containing the software version of the requested pm:AbstractDeviceComponentDescriptor handle when supported.
+ */
+message GetComponentSwVersionResponse {
+    BasicResponse status = 1;    // status of the rpc
+    string software_version = 2; // Software version of the requested device component
+}
