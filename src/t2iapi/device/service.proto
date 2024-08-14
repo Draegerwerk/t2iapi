@@ -152,6 +152,13 @@ service DeviceService {
         returns (t2iapi.device.GetComponentSwVersionResponse);
 
     /*
+    Get the hardware version of the requested pm:AbstractDeviceComponentDescriptor handle if it is representing
+    a component with a hardware version.
+     */
+    rpc GetComponentHwVersion (BasicHandleRequest)
+        returns (t2iapi.device.GetComponentHwVersionResponse);
+
+    /*
     Request for the given pm:AbstractDeviceComponentDescriptor handle, if it can be required by a particular standard
     or RISK MANAGEMENT process to indicate the time of the next calibration to the USER.
      */
