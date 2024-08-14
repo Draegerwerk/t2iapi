@@ -46,3 +46,11 @@ message GetComponentSwVersionResponse {
     BasicResponse status = 1;    // status of the rpc
     string software_version = 2; // Software version of the requested device component
 }
+
+/*
+Response containing the hardware version of the requested pm:AbstractDeviceComponentDescriptor handle when supported.
+ */
+message GetComponentHwVersionResponse {
+    BasicResponse status = 1;    // status of the rpc
+    string hardware_version = 2; // Hardware version of the requested device component
+}

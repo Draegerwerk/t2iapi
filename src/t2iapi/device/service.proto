@@ -150,4 +150,11 @@ service DeviceService {
      */
     rpc GetComponentSwVersion (BasicHandleRequest)
         returns (t2iapi.device.GetComponentSwVersionResponse);
+
+    /*
+    Get the hardware version of the requested pm:AbstractDeviceComponentDescriptor handle if it is representing
+    a component with a hardware version.
+     */
+    rpc GetComponentHwVersion (BasicHandleRequest)
+        returns (t2iapi.device.GetComponentHwVersionResponse);
 }
