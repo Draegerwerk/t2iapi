@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2023 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2023, 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -11,6 +11,7 @@ package t2iapi.combined;
 
 import "t2iapi/combined/combined_requests.proto";
 import "t2iapi/context/context_responses.proto";
+import "t2iapi/basic_requests.proto"
 import "t2iapi/basic_responses.proto";
 
 option java_package = "com.draeger.medical.t2iapi.combined";
@@ -72,5 +73,24 @@ service CombinedService {
   */
   rpc SetSystemContextActivationStateAndContextAssociation (
   t2iapi.combined.SetSystemContextActivationStateAndContextAssociationRequest)
+        returns (BasicResponse);
+
+  /*
+  Request to set the pm:AbstractDeviceComponentState/@ActivationState corresponding to the specified handle to
+  a value in { "On", "StndBy" } and
+  physically disconnect the removable subsystem being represented by the
+  corresponding pm:AbstractDeviceComponentDescriptor all while persisting the aforementioned ActivationState except when
+  it is necessary to change it due to the physical disconnection by means other than this manipulation.
+
+  The ActivationState as requested shall be persisted in all cases except (indirectly)
+  as a result of the physical disconnection.
+  Reasons other than the physical disconnection constitute a RESULT_NOT_SUPPORTED or RESULT_FAIL.
+  In case the ActivationState is not going to be persisted it shall not be a direct result of this manipulation, i.e.
+  this manipulation shall not directly change the ActivationState in a way not described here.
+
+  In case the pm:AbstractDeviceComponentDescriptor with the specified handle does not represent a removable subsystem
+  it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc PhysicallyDisconnectRemovableSubsystemAfterSettingActivationStateOnOrStndBy (BasicHandleRequest)
         returns (BasicResponse);
 }
