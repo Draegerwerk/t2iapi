@@ -1,0 +1,23 @@
+[DraegerLicenseMITJava]
+file_name_pattern: tests/java/src/**/*.java
+file_header_encoding: utf-8
+header_regex_file: .github/license-check/header-MIT-draeger-java-and-proto.txt
+header_regex_file_encoding: utf-8
+
+[DraegerLicenseMITProto]
+file_name_pattern: src/**/*.proto
+file_header_encoding: utf-8
+header_regex_file: .github/license-check/header-MIT-draeger-java-and-proto.txt
+header_regex_file_encoding: utf-8
+
+[DraegerLicenseMITPythonTests]
+file_name_pattern: tests/python/**/*.py
+file_header_encoding: utf-8
+header_regex_file: .github/license-check/header-MIT-draeger-python.txt
+header_regex_file_encoding: utf-8
+
+[DraegerLicenseMITPythonSetup]
+file_name_pattern: python/**/*.py
+file_header_encoding: utf-8
+header_regex_file: .github/license-check/header-MIT-draeger-python.txt
+header_regex_file_encoding: utf-8
