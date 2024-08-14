@@ -11,7 +11,7 @@ package t2iapi.combined;
 
 import "t2iapi/combined/combined_requests.proto";
 import "t2iapi/context/context_responses.proto";
-import "t2iapi/basic_requests.proto"
+import "t2iapi/basic_requests.proto";
 import "t2iapi/basic_responses.proto";
 
 option java_package = "com.draeger.medical.t2iapi.combined";
