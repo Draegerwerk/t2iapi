@@ -155,4 +155,18 @@ service DeviceService {
     user's opinion, must be present for this device.
      */
     rpc GetAvailableDeviceMetaData(BasicHandleRequest) returns (AvailableDeviceMetaDataResponse);
+
+    /*
+    Get the software version of the requested pm:AbstractDeviceComponentDescriptor handle if it is representing
+    a component with a software version.
+     */
+    rpc GetComponentSwVersion (BasicHandleRequest)
+        returns (t2iapi.device.GetComponentSwVersionResponse);
+
+    /*
+    Get the hardware version of the requested pm:AbstractDeviceComponentDescriptor handle if it is representing
+    a component with a hardware version.
+     */
+    rpc GetComponentHwVersion (BasicHandleRequest)
+        returns (t2iapi.device.GetComponentHwVersionResponse);
 }
