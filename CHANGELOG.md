@@ -9,7 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - manipulation PhysicallyDisconnectRemovableSubsystemAfterSettingActivationStateOnOrStndBy
-- manipulation GetComponentHwVersion for devices
 - manipulation RequestIndicationOfNextCalibrationTimeRequired for devices
 - manipulation IndicateTimeOfNextCalibrationToUser for devices
 - manipulation GetComponentHwVersion for devices
