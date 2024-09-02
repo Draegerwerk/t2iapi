@@ -46,6 +46,14 @@ message CreateContextStateWithAssociationRequest {
 }
 
 /*
+Request to create or adapt a pm:EnsembleContextState with a given @ContextAssociation.
+ */
+message CreateEnsembleContextStateWithAssociationRequest {
+    string descriptor_handle = 1;
+    ContextAssociation context_association = 2;  // the initial association of the pm:EnsembleContextState
+}
+
+/*
 Request to create or adapt a pm:AbstractContextState instance with a given @ContextAssociation and a given number
 of pm:Validator elements.
  */

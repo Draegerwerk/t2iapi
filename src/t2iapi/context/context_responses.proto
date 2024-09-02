@@ -25,6 +25,14 @@ message CreateContextStateWithAssociationResponse {
 }
 
 /*
+Response containing the handle of the newly created or adapted pm:EnsembleContextState.
+ */
+message CreateContextStateWithAssociationResponse {
+    BasicResponse status = 1;
+    string ensemble_context_state_handle = 2;  // handle of the pm:EnsembleContextState, that was created or adapted
+}
+
+/*
 Response containing the context state handle and the prior mdib version.
  */
 message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateResponse {
