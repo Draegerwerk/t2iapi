@@ -16,11 +16,12 @@ option java_package = "com.draeger.medical.t2iapi.device";
 option java_outer_classname = "DeviceResponses";
 
 /*
-Response containing all languages supported by the UI component represented by a MDS
+Response containing all languages supported by the UI component represented by an MDS
  */
 message GetMdsUiSupportedLanguagesResponse {
     BasicResponse status = 1;
-    repeated string languages = 2;  // list of languages which are supported by the UI component represented by a MDS
+    repeated string languages = 2;  // list of languages as specified by RFC5646 which are supported by the
+                                    // UI component represented by an MDS
 }
 
 /*
