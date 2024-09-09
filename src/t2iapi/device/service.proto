@@ -169,4 +169,17 @@ service DeviceService {
      */
     rpc GetComponentHwVersion (BasicHandleRequest)
         returns (t2iapi.device.GetComponentHwVersionResponse);
+
+    /*
+    Request for the given pm:AbstractDeviceComponentDescriptor handle, if it can be required by a particular standard
+    or RISK MANAGEMENT process to indicate the time of the next calibration to the USER.
+     */
+    rpc RequestIndicationOfNextCalibrationTimeRequired (BasicHandleRequest)
+        returns (BasicResponse);
+
+    /*
+    Indicate the time of the next calibration to the USER for the given pm:AbstractDeviceComponentDescriptor handle.
+     */
+    rpc IndicateTimeOfNextCalibrationToUser (BasicHandleRequest)
+        returns (BasicResponse);
 }
