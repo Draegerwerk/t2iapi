@@ -182,4 +182,41 @@ service DeviceService {
      */
     rpc IndicateTimeOfNextCalibrationToUser (BasicHandleRequest)
         returns (BasicResponse);
+
+    /*
+    Make available the CONTAINMENT TREE ENTRY(as defined in IEEE Std 11073-10207-2017) that was previously
+    represented by the provided handle in the MDIB with the provided @SequenceId. If the CONTAINMENT TREE ENTRY is
+    absent in the current MDIB, it shall be inserted and its (new) handle shall be returned. If the
+    CONTAINMENT TREE ENTRY is already present in the current MDIB, only its handle shall be returned, no further
+    action is required.
+
+    Hint: Devices which use static handles for descriptors do not have to lookup the previous handles since
+    they stay the same.
+
+    Example 1: returning the same handle for the Metric
+    - device presented an MDIB with the Metric handle "metric_1" in @SequenceID "123"
+    - device changes @SequenceID to "789" and presents a new MDIB
+    - metric with the handle "metric_1" is still present in the current MDIB
+    - InsertContainmentTreeEntryForSequenceId with handle="metric_1" and sequence_id="123" is executed
+    - "metric_1" is returned since the descriptor with this handle it is still available in the current MDIB
+    - no further action from the device is required
+
+    Example 2: returning a new handle for the MDS:
+    - device presented an MDIB with MDS handle "mds0" in @SequenceID "123"
+    - device changes @SequenceID to "789" and presents a new MDIB
+    - MDS with the handle "mds0" is still present in the current MDIB but it's handle changed to "mds10"
+    - InsertContainmentTreeEntryForSequenceId with handle="mds0" and sequence_id="123" is executed
+    - "mds10" is returned since the descriptor handle for that MDS has changed
+    - no further action from the device is required
+
+    Example 3: inserting the Channel into the current MDIB and returning the (new) handle:
+    - device presented the Channel with handle "channel123" in @SequenceID "123"
+    - device changes @SequenceID to "789" and presents a new MDIB
+    - channel with handle "channel123" is no longer present in the current MDIB
+    - InsertContainmentTreeEntryForSequenceId with handle="channel123" and sequence_id="123" is executed
+    - channel is inserted into the device's current MDIB
+    - the (new) handle of the inserted channel is returned
+    */
+    rpc InsertContainmentTreeEntryForSequenceId (InsertContainmentTreeEntryForSequenceIdRequest)
+        returns (InsertContainmentTreeEntryForSequenceIdResponse);
 }
