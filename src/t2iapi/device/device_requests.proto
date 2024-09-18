@@ -37,6 +37,15 @@ message SetLanguageRequest {
 }
 
 /*
+Request to set the language of the component with a UI represented by the MDS to the given language.
+ */
+message SetMdsUiLanguageRequest {
+    string handle = 1;    // pm:MdsDescriptor/@Handle representing the component with a UI for which the language
+                          // shall be set
+    string language = 2;  // the language to set as specified by RFC5646, e.g. en-US
+}
+
+/*
 Request a list of removable descriptors of the given class.
  */
 message GetRemovableDescriptorsOfClassRequest {

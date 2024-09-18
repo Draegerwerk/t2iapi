@@ -53,6 +53,18 @@ service DeviceService {
     rpc SetLanguage (t2iapi.device.SetLanguageRequest) returns (BasicResponse);
 
     /*
+    Set the language of the component with a UI represented by the MDS to the given language.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
+    */
+    rpc SetMdsUiLanguage (t2iapi.device.SetMdsUiLanguageRequest) returns (BasicResponse);
+
+    /*
+    Get all supported languages of the component with a UI represented by the MDS with the provided handle.
+    */
+    rpc GetMdsUiSupportedLanguages (t2iapi.BasicHandleRequest) returns (GetMdsUiSupportedLanguagesResponse);
+
+    /*
     Get all descriptor handles which can be removed and reinserted into the MDIB of the device
     and whose descriptors are of the given class.
     Includes handles which have been removed already and can be reinserted.
@@ -128,7 +140,7 @@ service DeviceService {
      */
     rpc ProvideInformationAboutLastCalibration (t2iapi.device.ProvideInformationAboutLastCalibrationRequest)
         returns (BasicResponse);
- 
+
      /*
     Provide information about the pm:NextCalibration for the given pm:AbstractDeviceComponentDescriptor.
     If the device is not able to provide the information, it shall return RESULT_NOT_SUPPORTED.
