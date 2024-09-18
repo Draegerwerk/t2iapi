@@ -170,4 +170,27 @@ service DeviceService {
      */
     rpc IndicateTimeOfNextCalibrationToUser (BasicHandleRequest)
         returns (BasicResponse);
+
+    /*
+    Determine whether or not the given descriptor represents a Removable Subsystem in the sense of
+    IEEE Std 11073-10700-2022:
+    */
+    rpc DoesDescriptorRepresentARemovableSubsystem(BasicHandleRequest)
+        returns (TrueFalseResponse);
+
+    /*
+    Physically disconnect the REMOVABLE SUBSYSTEM represented by the given descriptor. Ensure that it stays disconnected
+    at least until the next manipulation call.
+    Returns the mdib version starting from which the REMOVABLE SUBSYSTEM is disconnected.
+    */
+    rpc DisconnectRemovableSubsystem(BasicHandleRequest)
+        returns (MdibVersionResponse);
+
+    /*
+    Physically connect the Removable Subsystem represented by the given descriptor. Ensure that it stays connected
+    at least until the next manipulation call.
+    Returns the mdib version starting from which the REMOVABLE SUBSYSTEM is connected.
+    */
+    rpc ConnectRemovableSubsystem(BasicHandleRequest)
+        returns (MdibVersionResponse);
 }

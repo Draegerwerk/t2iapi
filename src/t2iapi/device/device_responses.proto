@@ -54,3 +54,19 @@ message GetComponentHwVersionResponse {
     BasicResponse status = 1;    // status of the rpc
     string hardware_version = 2; // Hardware version of the requested device component
 }
+
+/*
+Response containing a boolean answer.
+ */
+message TrueFalseResponse {
+    BasicResponse status = 1;    // status of the rpc
+    bool answer = 2;          // Boolean answer
+}
+
+/*
+Response containing the mdib version from which on the requested change will be effective.
+ */
+message MdibVersionResponse {
+    BasicResponse status = 1;    // status of the rpc
+    string mdibVersion = 2;      // Mdib Version from which on the change will be effective.
+}
