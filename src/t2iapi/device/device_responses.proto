@@ -68,5 +68,5 @@ Response containing the mdib version from which on the requested change will be 
  */
 message MdibVersionResponse {
     BasicResponse status = 1;    // status of the rpc
-    string mdibVersion = 2;      // Mdib Version from which on the change will be effective.
+    string mdib_version = 2;      // Mdib Version from which on the change will be effective.
 }
