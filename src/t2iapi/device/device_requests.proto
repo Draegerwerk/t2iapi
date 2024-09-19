@@ -94,3 +94,13 @@ message ProvideInformationAboutNextCalibrationRequest {
     CalibrationState calibration_state = 2;     // ComponentCalibrationState value to set as the next calibration
                                                 // information
 }
+
+/*
+Request to make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that was
+previously represented by the descriptor with the provided handle in the device's MDIB in the provided @SequenceId.
+ */
+message InsertContainmentTreeEntryForSequenceIdRequest {
+    string handle = 1;      // descriptor handle which represented the BICEPS CONTAINMENT TREE ENTRY
+    string sequence_id = 2; // @SequenceId of the devices MDIB where the requested BICEPS CONTAINMENT TREE ENTRY
+                            // was seen
+}
