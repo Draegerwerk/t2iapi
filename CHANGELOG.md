@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation DoesDescriptorRepresentARemovableSubsystem for devices
+- manipulation DisconnectRemovableSubsystem for devices
+- manipulation ConnectRemovableSubsystem for devices
 - manipulation PhysicallyDisconnectRemovableSubsystemAfterSettingActivationStateOnOrStndBy
 - manipulation RequestIndicationOfNextCalibrationTimeRequired for devices
 - manipulation IndicateTimeOfNextCalibrationToUser for devices
