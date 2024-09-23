@@ -81,22 +81,22 @@ service DeviceService {
         returns (t2iapi.device.GetRemovableDescriptorsResponse);
 
     /*
-    Remove a descriptor from the device MDIB.
+    Remove a descriptor from the device MDIB using a DescriptionManipulationReport.
      */
     rpc RemoveDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Insert a descriptor into the device MDIB.
+    Insert a descriptor into the device MDIB using a DescriptionManipulationReport.
      */
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Insert an mds descriptor into the device MDIB.
+    Insert an mds descriptor into the device MDIB using a DescriptionManipulationReport.
     */
     rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
 
     /*
-    Remove an mds descriptor from the device MDIB.
+    Remove an mds descriptor from the device MDIB using a DescriptionManipulationReport.
      */
     rpc RemoveMdsDescriptor (BasicHandleRequest) returns (BasicResponse);
 
@@ -184,8 +184,8 @@ service DeviceService {
         returns (BasicResponse);
 
     /*
-    Determine whether or not the given descriptor represents a Removable Subsystem in the sense of
-    IEEE Std 11073-10700-2022:
+    Determine whether the given descriptor represents a REMOVABLE SUBSYSTEM in the sense of
+    IEEE Std 11073-10700-2022.
     */
     rpc DoesDescriptorRepresentARemovableSubsystem(BasicHandleRequest)
         returns (TrueFalseResponse);
@@ -199,7 +199,7 @@ service DeviceService {
         returns (MdibVersionResponse);
 
     /*
-    Physically connect the Removable Subsystem represented by the given descriptor. Ensure that it stays connected
+    Physically connect the REMOVABLE SUBSYSTEM represented by the given descriptor. Ensure that it stays connected
     at least until the next manipulation call.
     Returns the mdib version starting from which the REMOVABLE SUBSYSTEM is connected.
     */
