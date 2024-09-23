@@ -184,6 +184,46 @@ service DeviceService {
         returns (BasicResponse);
 
     /*
+    Make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that was previously
+    represented by the provided handle in the MDIB with the provided @SequenceId. If the BICEPS CONTAINMENT TREE ENTRY
+    is absent in the current MDIB, it shall be inserted and its handle in the current MDIB shall be returned.
+    If the BICEPS CONTAINMENT TREE ENTRY is already present in the current MDIB, only its handle shall be returned,
+    no further action is required.
+
+    Hint: Devices which use static handles for descriptors do not have to look up the entity that was previously
+    represented by the requested handle, since they stay the same between the changes of the @SequenceId. It is
+    sufficient to ensure the descriptor is present and return the handle.
+
+    Example 1: returning the same handle for the Metric
+    - device presented an MDIB with the Metric handle "metric_1" in @SequenceID "123"
+    - device changes @SequenceID to "789" and presents a new MDIB
+    - metric with the handle "metric_1" is still present in the current MDIB and represents the *same* metric
+      as in @SequenceID "123"
+    - InsertContainmentTreeEntryForSequenceId with handle="metric_1" and sequence_id="123" is executed
+    - the handle "metric_1" is returned as the descriptor with this handle it is still available in the current MDIB
+    - no further action from the device is required
+
+    Example 2: returning a new handle for the MDS:
+    - device presented an MDIB with MDS handle "mds0" in @SequenceID "123"
+    - device changes @SequenceID to "789" and presents a new MDIB
+    - MDS which had the Handle "mds0" in @SequenceId "123" is still present in the current MDIB, but it's Handle
+      changed to "mds10"
+    - InsertContainmentTreeEntryForSequenceId with handle="mds0" and sequence_id="123" is executed
+    - the handle "mds10" is returned as the descriptor handle for that MDS has changed
+    - no further action from the device is required
+
+    Example 3: inserting the Channel into the current MDIB and returning the (new) handle:
+    - device presented the Channel with handle "channel123" in @SequenceID "123"
+    - device changes @SequenceID to "789" and presents a new MDIB
+    - Channel which had the Handle "channel123" in @SequenceId "123" is no longer present in the current MDIB
+    - InsertContainmentTreeEntryForSequenceId with handle="channel123" and sequence_id="123" is executed
+    - Channel is inserted into the device's current MDIB with the handle "channel789"
+    - the handle "channel789" is returned
+    */
+    rpc InsertContainmentTreeEntryForSequenceId (InsertContainmentTreeEntryForSequenceIdRequest)
+        returns (InsertContainmentTreeEntryForSequenceIdResponse);
+
+    /*
     Determine whether the given descriptor represents a REMOVABLE SUBSYSTEM in the sense of
     IEEE Std 11073-10700-2022.
     */

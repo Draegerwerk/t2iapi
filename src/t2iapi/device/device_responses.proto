@@ -65,6 +65,16 @@ message GetComponentHwVersionResponse {
 }
 
 /*
+Response containing the descriptor handle which is representing the requested
+BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) in the device's current MDIB.
+ */
+message InsertContainmentTreeEntryForSequenceIdResponse{
+    BasicResponse status = 1;   // status of the rpc
+    string handle = 2;          // descriptor handle which is representing the requested BICEPS CONTAINMENT TREE ENTRY
+                                // in the device's current MDIB
+}
+
+/*
 Response containing a boolean answer.
  */
 message TrueFalseResponse {
