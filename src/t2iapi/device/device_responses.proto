@@ -87,6 +87,6 @@ Response containing the mdib version from which on the requested change will be 
  */
 message MdibVersionResponse {
     BasicResponse status = 1;    // status of the rpc
-    string sequenceId = 2;       // SequenceId of MdibVersion.
+    string sequence_id = 2;      // SequenceId of MdibVersion.
     int64 mdib_version = 3;      // Mdib Version from which on the change will be effective.
 }
