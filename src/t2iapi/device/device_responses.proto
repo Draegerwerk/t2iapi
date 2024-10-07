@@ -83,7 +83,7 @@ message TrueFalseResponse {
 }
 
 /*
-Response containing the mdib version from which on the requested change will be effective.
+Response containing the @MdibVersion from which on the requested change will be effective.
  */
 message MdibVersionResponse {
     BasicResponse status = 1;    // status of the rpc
