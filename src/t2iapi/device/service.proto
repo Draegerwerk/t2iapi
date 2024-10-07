@@ -81,7 +81,7 @@ service DeviceService {
         returns (t2iapi.device.GetRemovableDescriptorsResponse);
 
     /*
-    Remove a descriptor from the device MDIB using a DescriptionManipulationReport.
+    Remove a descriptor from the device MDIB resulting in a DescriptionModificationReport.
      */
     rpc RemoveDescriptor(BasicHandleRequest) returns (BasicResponse);
 
@@ -91,7 +91,7 @@ service DeviceService {
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Insert an mds descriptor into the device MDIB using a DescriptionManipulationReport.
+    Insert an mds descriptor into the device MDIB resulting in a DescriptionModificationReport.
     */
     rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
 
