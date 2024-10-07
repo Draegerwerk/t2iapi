@@ -91,7 +91,7 @@ service DeviceService {
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Insert an mds descriptor into the device MDIB using a DescriptionManipulationReport.
+    Insert an mds descriptor into the device MDIB resulting in a DescriptionModificationReport.
     */
     rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
 
