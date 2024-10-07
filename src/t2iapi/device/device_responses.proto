@@ -73,3 +73,20 @@ message InsertContainmentTreeEntryForSequenceIdResponse{
     string handle = 2;          // descriptor handle which is representing the requested BICEPS CONTAINMENT TREE ENTRY
                                 // in the device's current MDIB
 }
+
+/*
+Response containing a boolean answer.
+ */
+message TrueFalseResponse {
+    BasicResponse status = 1;    // status of the rpc
+    bool answer = 2;          // Boolean answer
+}
+
+/*
+Response containing the @MdibVersion from which on the requested change will be effective.
+ */
+message MdibVersionResponse {
+    BasicResponse status = 1;    // status of the rpc
+    string sequence_id = 2;      // @SequenceId of Mdib.
+    int64 mdib_version = 3;      // @MdibVersion from which on the change will be effective.
+}
