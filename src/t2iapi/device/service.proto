@@ -231,16 +231,20 @@ service DeviceService {
         returns (TrueFalseResponse);
 
     /*
-    Physically disconnect the REMOVABLE SUBSYSTEM represented by the given descriptor. Ensure that it stays disconnected
-    at least until the next manipulation call.
+    Physically disconnect the REMOVABLE SUBSYSTEM (as defined in IEEE Std 11073-10700-2022)
+    represented by the given descriptor. The manipulated state shall be persistent until a
+    next manipulation call. If the device is not able to maintain the static state,
+    it shall return RESULT_NOT_SUPPORTED.
     Returns the mdib version starting from which the REMOVABLE SUBSYSTEM is disconnected.
     */
     rpc DisconnectRemovableSubsystem(BasicHandleRequest)
         returns (MdibVersionResponse);
 
     /*
-    Physically connect the REMOVABLE SUBSYSTEM represented by the given descriptor. Ensure that it stays connected
-    at least until the next manipulation call.
+    Physically connect the REMOVABLE SUBSYSTEM  (as defined in IEEE Std 11073-10700-2022)
+    represented by the given descriptor. The manipulated state shall be persistent until a
+    next manipulation call. If the device is not able to maintain the static state,
+    it shall return RESULT_NOT_SUPPORTED.
     Returns the mdib version starting from which the REMOVABLE SUBSYSTEM is connected.
     */
     rpc ConnectRemovableSubsystem(BasicHandleRequest)
