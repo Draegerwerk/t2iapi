@@ -224,7 +224,7 @@ service DeviceService {
         returns (InsertContainmentTreeEntryForSequenceIdResponse);
 
     /*
-    Determine whether the given descriptor represents a REMOVABLE SUBSYSTEM in the sense of
+    Determine whether the given descriptor represents a REMOVABLE SUBSYSTEM as defined in
     IEEE Std 11073-10700-2022.
     */
     rpc DoesDescriptorRepresentARemovableSubsystem(BasicHandleRequest)
