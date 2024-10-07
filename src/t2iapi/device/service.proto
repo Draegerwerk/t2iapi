@@ -86,7 +86,7 @@ service DeviceService {
     rpc RemoveDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Insert a descriptor into the device MDIB using a DescriptionManipulationReport.
+    Insert a descriptor into the device MDIB resulting in a DescriptionModificationReport.
      */
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
