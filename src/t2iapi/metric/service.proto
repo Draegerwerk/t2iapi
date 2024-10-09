@@ -114,7 +114,7 @@ service MetricService {
 
   /*
   The metric with the given handle shall be set to an active MODE OF OPERATION if it is representing a
-  MODE OF OPERATION. If the metric does not represent this mode, it shall return RESULT_NOT_SUPPORTED.
+  MODE OF OPERATION. If the metric does not represent a MODE OF OPERATION, it shall return RESULT_NOT_SUPPORTED.
 
   Hint: MODE OF OPERATION is defined in the standard 11073-10701-2022 and more details in chapter 6.2.1.
    */
