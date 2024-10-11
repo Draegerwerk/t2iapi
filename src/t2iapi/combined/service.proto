@@ -93,4 +93,23 @@ service CombinedService {
   */
   rpc PhysicallyDisconnectRemovableSubsystemAfterSettingActivationStateOnOrStndBy (BasicHandleRequest)
         returns (BasicResponse);
+
+  /*
+  Request to ensure that the pm:AbstractDeviceComponentState corresponding to the specified handle has a
+  pm:AbstractDeviceComponentState/@PhysicalConnector element and then to
+  physically disconnect the removable subsystem being represented by the
+  corresponding pm:AbstractDeviceComponentDescriptor all while persisting the aforementioned PhysicalConnector
+  except when it is necessary to change it due to the physical disconnection by means other than this manipulation.
+
+  The PhysicalConnector as requested shall be persisted in all cases except (indirectly)
+  as a result of the physical disconnection.
+  Reasons other than the physical disconnection constitute a RESULT_NOT_SUPPORTED or RESULT_FAIL.
+  In case the PhysicalConnector is not going to be persisted it shall not be a direct result of this manipulation, i.e.
+  this manipulation shall not directly change the PhysicalConnector in a way not described here.
+
+  In case the pm:AbstractDeviceComponentDescriptor with the specified handle does not represent a removable subsystem
+  it shall return RESULT_NOT_SUPPORTED.
+  */
+  rpc PhysicallyDisconnectRemovableSubsystemAfterEnsuringAPhysicalConnectorIsProvided (BasicHandleRequest)
+        returns (BasicResponse);
 }
