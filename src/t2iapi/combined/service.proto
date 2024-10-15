@@ -110,6 +110,6 @@ service CombinedService {
   In case the pm:AbstractDeviceComponentDescriptor with the specified handle does not represent a removable subsystem
   it shall return RESULT_NOT_SUPPORTED.
   */
-  rpc PhysicallyDisconnectRemovableSubsystemAfterEnsuringAPhysicalConnectorIsProvided (BasicHandleRequest)
+  rpc PhysicallyDisconnectRemovableSubsystemAfterPhysicalConnectorProvided (BasicHandleRequest)
         returns (BasicResponse);
 }

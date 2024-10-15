@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- manipulation PhysicallyDisconnectRemovableSubsystemAfterEnsuringAPhysicalConnectorIsProvided
+- manipulation PhysicallyDisconnectRemovableSubsystemAfterPhysicalConnectorProvided
 - manipulation SetActiveModeOfOperation for metrics
 - manipulation PhysicallyDisconnectRemovableSubsystemAfterSettingActivationStateOnOrStndBy
 - manipulation RequestIndicationOfNextCalibrationTimeRequired for devices
