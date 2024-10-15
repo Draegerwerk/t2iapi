@@ -159,6 +159,30 @@ service ContextService {
       returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
 
   /*
+  Indicate membership in each intended SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor by
+  associating each state contained in a representative set of pm:EnsembleContextStates of that descriptor. Return the
+  list of handles of states contained in that representative set.
+
+  The representative set of pm:EnsembleContextStates for a given pm:EnsembleContextDescriptor is a set of
+  pm:EnsembleContextStates which if associated are sufficient to indicate membership in each possible SDC PARTICIPANT
+  ENSEMBLE for that descriptor.
+
+  The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
+  it shall return RESULT_NOT_SUPPORTED.
+   */
+  rpc IndicateMembershipInEachPossibleEnsemble (BasicHandleRequest)
+      returns (IndicateMembershipInEachPossibleEnsembleResponse);
+
+  /*
+  End membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextState/@Handle.
+
+  The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
+  it shall return RESULT_NOT_SUPPORTED.
+   */
+  rpc EndMembershipInEnsemble (ContextStateHandleRequest)
+      returns (BasicResponse);
+
+  /*
   Returns all types of contexts which are supported by the DUT.
    */
   rpc GetSupportedContextTypes (google.protobuf.Empty)
