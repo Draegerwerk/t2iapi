@@ -95,8 +95,8 @@ service CombinedService {
         returns (BasicResponse);
 
   /*
-  Request to ensure that the pm:AbstractDeviceComponentState corresponding to the specified handle has a
-  pm:AbstractDeviceComponentState/pm:PhysicalConnector element and then to
+  Request to provide a pm:AbstractDeviceComponentState/pm:PhysicalConnector element for the
+  pm:AbstractDeviceComponentState corresponding to the specified handle and then to
   physically disconnect the removable subsystem being represented by the
   corresponding pm:AbstractDeviceComponentDescriptor all while persisting the aforementioned pm:PhysicalConnector
   except when it is necessary to change it due to the physical disconnection by means other than this manipulation.
