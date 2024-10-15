@@ -69,3 +69,11 @@ enum MetricStatus {
     METRIC_STATUS_DE_INITIALIZED_AND_NOT_PERFORMING_OR_APPLYING = 4;
     METRIC_STATUS_FAILED = 5;
 }
+
+/*
+Represents whether pm:AbstractMetricDescriptor is determined episodically or periodically.
+ */
+enum MetricDeterminationMode {
+    DETERMINED_EPISODICALLY = 0;
+    DETERMINED_PERIODICALLY = 1;
+}
