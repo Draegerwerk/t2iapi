@@ -74,6 +74,6 @@ enum MetricStatus {
 Represents whether pm:AbstractMetricDescriptor is determined episodically or periodically.
  */
 enum MetricDeterminationMode {
-    DETERMINED_EPISODICALLY = 0;
-    DETERMINED_PERIODICALLY = 1;
+    METRIC_DETERMINATION_MODE_EPISODICALLY = 0;
+    METRIC_DETERMINATION_MODE_PERIODICALLY = 1;
 }
