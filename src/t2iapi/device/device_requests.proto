@@ -37,6 +37,15 @@ message SetLanguageRequest {
 }
 
 /*
+Request to set the language of the component with a UI represented by the MDS to the given language.
+ */
+message SetMdsUiLanguageRequest {
+    string handle = 1;    // pm:MdsDescriptor/@Handle representing the component with a UI for which the language
+                          // shall be set
+    string language = 2;  // the language to set as specified by RFC5646, e.g. en-US
+}
+
+/*
 Request a list of removable descriptors of the given class.
  */
 message GetRemovableDescriptorsOfClassRequest {
@@ -84,4 +93,14 @@ message ProvideInformationAboutNextCalibrationRequest {
                         // the next calibration information shall be provided
     CalibrationState calibration_state = 2;     // ComponentCalibrationState value to set as the next calibration
                                                 // information
+}
+
+/*
+Request to make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that was
+previously represented by the descriptor with the provided handle in the device's MDIB in the provided @SequenceId.
+ */
+message InsertContainmentTreeEntryForSequenceIdRequest {
+    string handle = 1;      // descriptor handle which represented the BICEPS CONTAINMENT TREE ENTRY
+    string sequence_id = 2; // @SequenceId of the devices MDIB where the requested BICEPS CONTAINMENT TREE ENTRY
+                            // was seen
 }
