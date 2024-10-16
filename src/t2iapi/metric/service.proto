@@ -122,7 +122,7 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Requests if the given metric handle is determined episodically or periodically.
+  Requests if the metric with the given handle is determined episodically or periodically.
    */
   rpc GetMetricDeterminationMode (BasicHandleRequest)
       returns (t2iapi.metric.GetMetricDeterminationMode);

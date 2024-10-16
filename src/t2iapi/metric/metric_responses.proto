@@ -34,7 +34,9 @@ message IsComputerControlledResponse {
     bool answer = 2;  // true if metric is computer-controlled, otherwise false
 }
 
-// Response indicating whether a metric is determined episodically or periodically
+/*
+Response indicating whether a metric is determined episodically or periodically
+ */
 message GetMetricDeterminationMode {
     BasicResponse status = 1;  // the status of the rpc indicating whether or not it was successful
     MetricDeterminationMode answer = 2;  // 0 - Episodically, 1 - Periodically
