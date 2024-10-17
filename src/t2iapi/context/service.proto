@@ -159,7 +159,7 @@ service ContextService {
       returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
 
   /*
-  Indicate membership in each intended SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor by
+  Indicate membership in each possible SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor by
   associating each state contained in a representative set of pm:EnsembleContextStates of that descriptor. Return the
   list of handles of states contained in that representative set.
 
