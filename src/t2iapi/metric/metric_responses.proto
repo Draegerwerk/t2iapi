@@ -10,6 +10,7 @@ syntax = "proto3";
 package t2iapi.metric;
 
 import "t2iapi/basic_responses.proto";
+import "t2iapi/metric/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.metric";
 option java_outer_classname = "MetricResponses";
@@ -31,4 +32,12 @@ message CalibrateMetricResponse {
 message IsComputerControlledResponse {
     BasicResponse status = 1;  // the status of the rpc indicating whether or not it was successful
     bool answer = 2;  // true if metric is computer-controlled, otherwise false
+}
+
+/*
+Response indicating whether a metric is determined episodically or periodically
+ */
+message GetMetricDeterminationMode {
+    BasicResponse status = 1;  // the status of the rpc indicating whether or not it was successful
+    MetricDeterminationMode answer = 2;  // 0 - Episodically, 1 - Periodically
 }
