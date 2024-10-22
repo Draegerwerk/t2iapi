@@ -54,10 +54,10 @@ message EnsembleContextIndicateMembershipWithIdentificationResponse {
 
 /*
 Response which contains a list of @Handles of pm:EnsembleContextStates. The corresponding states form a representative
-set of pm:EnsembleContextStates which if associated are sufficient to indicate membership in each possible SDC
-PARTICIPANT ENSEMBLE for a given pm:EnsembleContextDescriptor.
+set of pm:EnsembleContextStates which if associated are sufficient to indicate membership in the SDC
+PARTICIPANT ENSEMBLE(s) for a given pm:EnsembleContextDescriptor.
  */
-message IndicateMembershipInEachPossibleEnsembleResponse {
+message RepresentativeEnsembleMembershipIndicationResponse {
     BasicResponse status = 1;
     repeated string context_state_handle_list = 2;
 }

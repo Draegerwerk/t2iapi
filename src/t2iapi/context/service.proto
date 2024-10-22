@@ -159,19 +159,41 @@ service ContextService {
       returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
 
   /*
-  Indicate membership in each possible SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor by
-  associating each state contained in a representative set of pm:EnsembleContextStates of that descriptor. Return the
-  list of handles of states contained in that representative set.
+  Indicate membership in an SDC PARTICIPANT ENSEMBLE resp. in SDC PARTICIPANT ENSEMBLEs for a provided
+  pm:EnsembleContextDescriptor by associating each state contained in a representative set of pm:EnsembleContextStates
+  of that descriptor. Return the list of handles of states contained in that representative set.
 
-  The representative set of pm:EnsembleContextStates for a given pm:EnsembleContextDescriptor is a set of
-  pm:EnsembleContextStates which if associated are sufficient to indicate membership in each possible SDC PARTICIPANT
-  ENSEMBLE for that descriptor.
+  The representative set of pm:EnsembleContextStates for a given pm:EnsembleContextDescriptor is a minimal set of
+  pm:EnsembleContextStates which if associated are sufficient to indicate membership in the SDC PARTICIPANT ENSEMBLE(s)
+  for that descriptor.
+
+  Example 1: treatment session
+    A POC MEDICAL DEVICE currently working in a (temporal) logical group based on a treatment session
+    may expressed by a pm:EnsembleContextDescriptor. If each of its pm:EnsembleContextStates describes a step in
+    this treatment session, then it is sufficient if the manipulation returns only one state handle. It is
+    representative since all pm:EnsembleContextStates of the pm:EnsembleContextDescriptor behave the same and indicate
+    membership in the logical group resp. SDC PARTICIPANT ENSEMBLE if associated.
+
+  Example 2: location inferring
+    If a pm:EnsembleContextDescriptor has multiple pm:EnsembleContextStates whereby each describes a membership of a
+    location-inferred SDC PARTICIPANT ENSEMBLE if associated. It is sufficient that the manipulation returns only one
+    state handle since it is representative. All pm:EnsembleContextStates of the pm:EnsembleContextDescriptor behave the
+    same independent of the location allocation.
+
+  Example 3: general hospital process
+    Consider a general process within the hospital with multiple steps whereby each step is divided into multiple minor
+    steps describing the major step more precisely. Membership of this main process as well as of the sub processes is
+    modeled by a pm:EnsembleContextDescriptor that has multiple pm:EnsembleContextStates for the major as well as for
+    the minor steps. To indicate membership in the main as well as in the sub process a
+    pm:EnsembleContextState representing a major step and a pm:EnsembleContextState representing a major's minor step
+    have to be associated. It is sufficient that the manipulation returns the state handles of these two
+    pm:EnsembleContextStates.
 
   The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
   it shall return RESULT_NOT_SUPPORTED.
    */
-  rpc IndicateMembershipInEachPossibleEnsemble (BasicHandleRequest)
-      returns (IndicateMembershipInEachPossibleEnsembleResponse);
+  rpc RepresentativeEnsembleMembershipIndication (BasicHandleRequest)
+      returns (RepresentativeEnsembleMembershipIndicationResponse);
 
   /*
   End membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextState/@Handle.
