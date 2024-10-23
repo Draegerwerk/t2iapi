@@ -69,3 +69,11 @@ enum MetricStatus {
     METRIC_STATUS_DE_INITIALIZED_AND_NOT_PERFORMING_OR_APPLYING = 4;
     METRIC_STATUS_FAILED = 5;
 }
+
+/*
+Represents whether a METRIC is determined episodically or periodically.
+ */
+enum MetricDeterminationMode {
+    METRIC_DETERMINATION_MODE_EPISODICALLY = 0;
+    METRIC_DETERMINATION_MODE_PERIODICALLY = 1;
+}
