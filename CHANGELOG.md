@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation SetMdsUiLanguage for devices
 - manipulation GetMdsUiSupportedLanguages for devices
 - manipulation InsertContainmentTreeEntryForSequenceId for devices
+- manipulation to shut down and restart for devices
 
 ## [4.1.0] - 2024-02-22
 
