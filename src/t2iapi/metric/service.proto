@@ -128,8 +128,8 @@ service MetricService {
       returns (t2iapi.metric.GetMetricDeterminationMode);
 
   /*
-  Request for the metric with the given handle to display it with a different pm:Unit than given in the respective
-  descriptor.
+  Request for the metric with the given handle to display its @Value or @Samples to a USER with a different
+  pm:Unit than the one which is currently provided in the respective descriptor.
    */
   rpc DisplayMetricWithDifferentUnit (BasicHandleRequest)
       returns (BasicResponse);
