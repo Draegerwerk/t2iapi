@@ -222,4 +222,10 @@ service DeviceService {
     */
     rpc InsertContainmentTreeEntryForSequenceId (InsertContainmentTreeEntryForSequenceIdRequest)
         returns (InsertContainmentTreeEntryForSequenceIdResponse);
+
+    /*
+    Shut down the device gracefully and then restart it. When restarting, the device should have a new
+    pm:MdibVersionGroup/@SequenceId.
+     */
+    rpc ShutDownAndRestartDevice (google.protobuf.Empty) returns (BasicResponse);
 }
