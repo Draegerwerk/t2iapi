@@ -73,3 +73,13 @@ message InsertContainmentTreeEntryForSequenceIdResponse{
     string handle = 2;          // descriptor handle which is representing the requested BICEPS CONTAINMENT TREE ENTRY
                                 // in the device's current MDIB
 }
+
+/*
+Response containing the BasicResponse, SequenceId and the MdibVersion for the requested
+pm:AbstractDeviceComponentDescriptor handle to indicate the time of the next calibration to the USER.
+ */
+message IndicateTimeOfNextCalibrationToUserResponse{
+    BasicResponse status = 1;   // status of the rpc
+    string sequence_id = 2;     // SequenceId when finishing the rpc
+    uint64 mdib_version = 3;    // MdibVersion when finishing the rpc
+}

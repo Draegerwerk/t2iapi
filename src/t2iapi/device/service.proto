@@ -181,7 +181,7 @@ service DeviceService {
     Indicate the time of the next calibration to the USER for the given pm:AbstractDeviceComponentDescriptor handle.
      */
     rpc IndicateTimeOfNextCalibrationToUser (BasicHandleRequest)
-        returns (BasicResponse);
+        returns (t2iapi.device.IndicateTimeOfNextCalibrationToUserResponse);
 
     /*
     Make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that was previously
