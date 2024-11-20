@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -11,6 +11,7 @@ package t2iapi.device;
 
 import "t2iapi/basic_responses.proto";
 import "t2iapi/biceps/metadata.proto";
+import "t2iapi/device/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.device";
 option java_outer_classname = "DeviceResponses";
@@ -80,6 +81,5 @@ pm:AbstractDeviceComponentDescriptor handle to indicate the time of the next cal
  */
 message IndicateTimeOfNextCalibrationToUserResponse{
     BasicResponse status = 1;   // status of the rpc
-    string sequence_id = 2;     // SequenceId when finishing the rpc
-    uint64 mdib_version = 3;    // MdibVersion when finishing the rpc
+    MdibVersion mdib_version = 2;     // MdibVersion container when finishing the rpc
 }

@@ -79,3 +79,11 @@ enum CalibrationState{
     CALIBRATION_STATE_CALIBRATED = 3;
     CALIBRATION_STATE_OTHER = 4;
 }
+
+/*
+Represents a container for MDIB version attributes containing the SequenceId and MdibVersion
+ */
+message MdibVersion {
+    string sequence_id = 1;     // SequenceId when finishing the rpc
+    uint64 mdib_version = 2;    // MdibVersion when finishing the rpc
+}
