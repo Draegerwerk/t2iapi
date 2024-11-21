@@ -81,9 +81,10 @@ enum CalibrationState{
 }
 
 /*
-Represents a container for MDIB version attributes containing the SequenceId and MdibVersion
+Represents a container for MDIB version attributes.
  */
 message MdibVersion {
     string sequence_id = 1;     // SequenceId when finishing the rpc
-    uint64 mdib_version = 2;    // MdibVersion when finishing the rpc
+    uint64 instance_id = 2;     // InstanceId when finishing the rpc
+    uint64 mdib_version = 3;    // MdibVersion when finishing the rpc
 }

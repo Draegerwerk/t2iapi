@@ -76,7 +76,7 @@ message InsertContainmentTreeEntryForSequenceIdResponse{
 }
 
 /*
-Response containing the BasicResponse, SequenceId and the MdibVersion for the requested
+Response containing the BasicResponse and the MdibVersion for the requested
 pm:AbstractDeviceComponentDescriptor handle to indicate the time of the next calibration to the USER.
  */
 message IndicateTimeOfNextCalibrationToUserResponse{
