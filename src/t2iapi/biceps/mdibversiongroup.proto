@@ -19,6 +19,6 @@ Represents the attributeGroup MdibVersionGroup (defined in IEEE Std 11073-10207-
 */
 message MdibVersionGroup {
     google.protobuf.UInt64Value mdib_version = 1;    // optional MdibVersion when finishing the rpc
-    google.protobuf.StringValue sequence_id = 2;     // SequenceId when finishing the rpc
+    string sequence_id = 2;     // SequenceId when finishing the rpc
     google.protobuf.UInt64Value instance_id = 3;     // optional InstanceId when finishing the rpc
 }
