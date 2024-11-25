@@ -81,5 +81,5 @@ pm:AbstractDeviceComponentDescriptor handle to indicate the time of the next cal
  */
 message IndicateTimeOfNextCalibrationToUserResponse{
     BasicResponse status = 1;   // status of the rpc
-    MdibVersionGroup mdib_version_group = 2;     // MdibVersion attributes when finishing the rpc
+    t2iapi.biceps.MdibVersionGroup mdib_version_group = 2;     // MdibVersion attributes when finishing the rpc
 }
