@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022, 2024 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022 - 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -78,13 +78,4 @@ enum CalibrationState{
     CALIBRATION_STATE_RUNNING = 2;
     CALIBRATION_STATE_CALIBRATED = 3;
     CALIBRATION_STATE_OTHER = 4;
-}
-
-/*
-Represents a container for MDIB version attributes.
- */
-message MdibVersion {
-    string sequence_id = 1;     // SequenceId when finishing the rpc
-    uint64 mdib_version = 2;    // MdibVersion when finishing the rpc
-    optional google.protobuf.UInt64Value instance_id = 3;     // InstanceId when finishing the rpc
 }
