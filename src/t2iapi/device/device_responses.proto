@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -11,6 +11,7 @@ package t2iapi.device;
 
 import "t2iapi/basic_responses.proto";
 import "t2iapi/biceps/metadata.proto";
+import "t2iapi/biceps/mdibversiongroup.proto";
 
 option java_package = "com.draeger.medical.t2iapi.device";
 option java_outer_classname = "DeviceResponses";
@@ -72,4 +73,13 @@ message InsertContainmentTreeEntryForSequenceIdResponse{
     BasicResponse status = 1;   // status of the rpc
     string handle = 2;          // descriptor handle which is representing the requested BICEPS CONTAINMENT TREE ENTRY
                                 // in the device's current MDIB
+}
+
+/*
+Response containing the BasicResponse and the MdibVersionGroup for the requested
+pm:AbstractDeviceComponentDescriptor handle to indicate the time of the next calibration to the USER.
+ */
+message IndicateTimeOfNextCalibrationToUserResponse{
+    BasicResponse status = 1;   // status of the rpc
+    t2iapi.biceps.MdibVersionGroup mdib_version_group = 2;     // MdibVersion attributes when finishing the rpc
 }
