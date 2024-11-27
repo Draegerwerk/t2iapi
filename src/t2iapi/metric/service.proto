@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2023, 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -119,6 +119,19 @@ service MetricService {
   Hint: MODE OF OPERATION is defined in the standard 11073-10701-2022 and more details in chapter 6.2.1.
    */
   rpc SetActiveModeOfOperation (BasicHandleRequest)
+      returns (BasicResponse);
+
+  /*
+  Requests if the metric with the given handle is determined episodically or periodically.
+   */
+  rpc GetMetricDeterminationMode (BasicHandleRequest)
+      returns (t2iapi.metric.GetMetricDeterminationMode);
+
+  /*
+  Request for the metric with the given handle to display its @Value or @Samples to a USER with a different
+  pm:Unit than the one which is currently provided in the respective descriptor.
+   */
+  rpc DisplayMetricWithDifferentUnit (BasicHandleRequest)
       returns (BasicResponse);
 
   /*

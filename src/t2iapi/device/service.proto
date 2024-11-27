@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2023, 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -181,7 +181,7 @@ service DeviceService {
     Indicate the time of the next calibration to the USER for the given pm:AbstractDeviceComponentDescriptor handle.
      */
     rpc IndicateTimeOfNextCalibrationToUser (BasicHandleRequest)
-        returns (BasicResponse);
+        returns (t2iapi.device.IndicateTimeOfNextCalibrationToUserResponse);
 
     /*
     Make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that was previously
@@ -222,4 +222,10 @@ service DeviceService {
     */
     rpc InsertContainmentTreeEntryForSequenceId (InsertContainmentTreeEntryForSequenceIdRequest)
         returns (InsertContainmentTreeEntryForSequenceIdResponse);
+
+    /*
+    Shut down the device gracefully and then restart it. When restarting, the device should have a new
+    pm:MdibVersionGroup/@SequenceId.
+     */
+    rpc ShutDownAndRestartDevice (google.protobuf.Empty) returns (BasicResponse);
 }
