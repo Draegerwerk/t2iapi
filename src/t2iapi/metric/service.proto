@@ -120,4 +120,14 @@ service MetricService {
    */
   rpc SetActiveModeOfOperation (BasicHandleRequest)
       returns (BasicResponse);
+
+  /*
+  For the metric with the provided handle perform the following transition:
+   - provide pm:MetricValue/@Value resp. @Samples with pm:MetricQuality/@Validity = 'Vld' then
+   - change its accuracy such that it does not meet the limits specified either by an applicable standard that the
+     SDC METRIC PROVIDER demonstrates conformity to or in the ACCOMPANYING INFORMATION of the SDC METRIC PROVIDER
+   - provide a new pm:MetricValue/@Value resp. @Samples.
+   */
+  rpc TransitionValidToAccuracyBelowSpecifiedLimits (BasicHandleRequest)
+      returns (BasicResponse);
 }
