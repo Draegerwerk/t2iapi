@@ -1,0 +1,24 @@
+/*
+This Source Code Form is subject to the terms of the MIT License.
+Copyright (c) 2024 Draegerwerk AG & Co. KGaA.
+
+SPDX-License-Identifier: MIT
+*/
+
+syntax = "proto3";
+
+package t2iapi.biceps;
+
+option java_package = "com.draeger.medical.t2iapi.biceps";
+option java_outer_classname = "MdibVersionGroupProto";
+
+import "google/protobuf/wrappers.proto";
+
+/*
+Represents the attributeGroup MdibVersionGroup (defined in IEEE Std 11073-10207-2017).
+*/
+message MdibVersionGroup {
+    google.protobuf.UInt64Value mdib_version = 1;    // optional MdibVersion when finishing the rpc
+    string sequence_id = 2;     // SequenceId when finishing the rpc
+    google.protobuf.UInt64Value instance_id = 3;     // optional InstanceId when finishing the rpc
+}

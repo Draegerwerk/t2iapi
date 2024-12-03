@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2023, 2024 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -126,4 +126,11 @@ service MetricService {
    */
   rpc GetMetricDeterminationMode (BasicHandleRequest)
       returns (t2iapi.metric.GetMetricDeterminationMode);
+
+  /*
+  Request for the metric with the given handle to display its @Value or @Samples to a USER with a different
+  pm:Unit than the one which is currently provided in the respective descriptor.
+   */
+  rpc DisplayMetricWithDifferentUnit (BasicHandleRequest)
+      returns (BasicResponse);
 }
