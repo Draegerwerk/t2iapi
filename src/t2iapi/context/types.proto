@@ -79,3 +79,11 @@ enum ContextType {
     CONTEXT_TYPE_MEANS = 4;
     CONTEXT_TYPE_ENSEMBLE = 5;
 }
+
+/*
+Represents pair of pm:EnsembleContextState/@Handle and ENSEMBLE identifier referring to an SDC PARTICIPANT ENSEMBLE.
+ */
+message ContextStateEnsembleIdentifierPair {
+    string context_state_handle = 1;
+    string ensemble_identifier = 2;
+}
