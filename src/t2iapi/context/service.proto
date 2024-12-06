@@ -201,8 +201,8 @@ service ContextService {
   The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
   it shall return RESULT_NOT_SUPPORTED.
    */
-  rpc IndicateMembershipInEnsembleByIdentifier (EnsembleIdentifierRequest)
-      returns (IndicateMembershipInEnsembleByIdentifierResponse);
+  rpc IndicateMembershipInEnsembleByEnsembleId (EnsembleIdRequest)
+      returns (IndicateMembershipInEnsembleByEnsembleIdResponse);
 
   /*
   End membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor and a provided ensemble-id.
@@ -211,7 +211,7 @@ service ContextService {
   The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
   it shall return RESULT_NOT_SUPPORTED.
    */
-  rpc EndMembershipInEnsemble (EnsembleIdentifierRequest)
+  rpc EndMembershipInEnsembleByEnsembleId (EnsembleIdRequest)
       returns (BasicResponse);
 
   /*
