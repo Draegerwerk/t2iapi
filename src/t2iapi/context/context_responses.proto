@@ -53,23 +53,21 @@ message EnsembleContextIndicateMembershipWithIdentificationResponse {
 }
 
 /*
-Response which contains a list of pairs whereby each pair consists of a pm:EnsembleContextStates/@Handle and an ENSEMBLE
-identifier that refers to the SDC PARTICIPANT ENSEMBLE whose membership is indicated by that state. The states form a
-representative set of pm:EnsembleContextStates which if associated are sufficient to indicate membership in the SDC
-PARTICIPANT ENSEMBLE(s) for a given pm:EnsembleContextDescriptor.
+Response which contains a list of ensemble-ids referring to each SDC PARTICIPANT ENSEMBLE membership can be
+indicated in by a pm:EnsembleContextState with @ContextAssociation = 'Assoc' of a provided pm:EnsembleContextDescriptor.
  */
-message RepresentativeEnsembleMembershipIndicationResponse {
+message GetEnsembleIdsResponse {
     BasicResponse status = 1;
-    repeated ContextStateEnsembleIdentifierPair context_state_ensemble_identifier_pair = 2;
+    repeated string ensemble_id = 2;
 }
 
 /*
-Response containing the @Handle of the newly created or adapted pm:EnsembleContextState. It is created or adapted such
-that its @ContextAssociation is 'Assoc' in order to indicates membership in a SDC PARTICIPANT ENSEMBLE specified by the
-ENSEMBLE identifier.
+Response containing the @Handles of the newly created or adapted pm:EnsembleContextStates. They are created or adapted
+such that their @ContextAssociation is 'Assoc' in order to indicate membership in an SDC PARTICIPANT ENSEMBLE specified
+by the provided ensemble-id.
  */
 message IndicateMembershipInEnsembleByIdentifierResponse {
     BasicResponse status = 1;
-    string context_state_handle = 2;  // @Handle of the pm:EnsembleContextStates, that was created or adapted such that
-                                      // it indicates membership in an SDC PARTICIPANT ENSEMBLE
+    repeated string context_state_handle = 2;  // @Handles of the pm:EnsembleContextStates, that were created or adapted
+                                               // to indicate membership in an SDC PARTICIPANT ENSEMBLE
 }

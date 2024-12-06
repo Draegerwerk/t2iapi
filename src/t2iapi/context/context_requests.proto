@@ -82,12 +82,12 @@ message AssociatePatientRequest {
 }
 
 /*
-Request to indicate membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor and a
-provided ENSEMBLE identifier.
+Request to indicate or end membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor and a
+provided ensemble-id.
  */
 message EnsembleIdentifierRequest {
     string descriptor_handle = 1;
-    string ensemble_identifier = 2;  // ENSEMBLE identifier that refers to a SDC PARTICIPANT ENSEMBLE whose membership
-                                     // to be indicated
+    string ensemble_identifier = 2;  // ensemble-id that refers to an SDC PARTICIPANT ENSEMBLE membership
+                                     // shall be indicated in
 }
 

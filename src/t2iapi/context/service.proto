@@ -159,55 +159,44 @@ service ContextService {
       returns (EnsembleContextIndicateMembershipWithIdentificationResponse);
 
   /*
-  Indicate membership in an SDC PARTICIPANT ENSEMBLE resp. in SDC PARTICIPANT ENSEMBLEs for a provided
-  pm:EnsembleContextDescriptor by associating each state contained in a representative set of pm:EnsembleContextStates
-  of that descriptor. Return a list of pairs whereby each pair consists of a state handle contained in the
-  representative set and an ENSEMBLE identifier that refers to the SDC PARTICIPANT ENSEMBLE whose membership is
-  indicated by that state.There is exactly one pair for each state handle contained in the representative set.
+  Get all ensemble-ids for a provided pm:EnsembleContextDescriptor and return them.
 
-  The ENSEMBLE identifier is valid until the next call of this method. It is specified by the USER and shall uniquely
-  identify the related SDC PARTICIPANT ENSEMBLE.
+  The ensemble-id is an identifier specified by the USER that uniquely refers to an SDC PARTICIPANT ENSEMBLE. The list
+  shall contain all ensemble-ids needed to cover each SDC PARTICIPANT ENSEMBLE membership can be indicated in by a
+  pm:EnsembleContextState with @ContextAssociation = 'Assoc' of the provided pm:EnsembleContextDescriptor.
+  The ensemble-ids are valid until the next call of this manipulation.
+   */
+  rpc GetEnsembleIds (BasicHandleRequest)
+      returns (GetEnsembleIdsResponse);
 
-  The representative set of pm:EnsembleContextStates for a given pm:EnsembleContextDescriptor is a minimal set of
-  pm:EnsembleContextStates which if associated are sufficient to indicate membership in the SDC PARTICIPANT ENSEMBLE(s)
-  for that descriptor.
+  /*
+  Indicate membership in an SDC PARTICIPANT ENSEMBLE for a provided ensemble-id by creating or adapting all needed
+  pm:EnsembleContextStates such that their @ContextAssociation is "Assoc" and return a list of their @Handles.
+
+  The ensemble-id is an identifier specified by the USER that uniquely refers to an SDC PARTICIPANT ENSEMBLE.
+  To clarify which pm:EnsembleContextStates are needed, three examples are given.
 
   Example 1: treatment session
     The fact that a POC MEDICAL DEVICE is currently working in a (temporal) logical group based on a treatment session
     may be expressed by a pm:EnsembleContextDescriptor. If each of its pm:EnsembleContextStates describes a step in
-    this treatment session, then it is sufficient if the manipulation returns only one state handle and the related
-    ENSEMBLE identifier. It is representative since all pm:EnsembleContextStates of the pm:EnsembleContextDescriptor
-    behave the same and indicate membership in the logical group resp. SDC PARTICIPANT ENSEMBLE if associated.
+    this treatment session, then the manipulation returns only the state handle of the pm:EnsembleContextState with
+    @ContextAssociation = 'Assoc' that indicates membership in the logical group resp. SDC PARTICIPANT ENSEMBLE. The
+    provided ensemble-id refers to this logical group resp. SDC PARTICIPANT ENSEMBLE. In this scenario there shall be
+    only one pm:EnsembleContextState with @ContextAssociation = 'Assoc' at a time for the pm:EnsembleContextDescriptor.
 
   Example 2: location inferring
     If a pm:EnsembleContextDescriptor has multiple pm:EnsembleContextStates whereby each describes a membership of a
-    location-inferred SDC PARTICIPANT ENSEMBLE if associated. It is sufficient that the manipulation returns only one
-    state handle and the related ENSEMBLE identifier since it is representative. All pm:EnsembleContextStates of the
-    pm:EnsembleContextDescriptor behave the same independent of the location allocation.
+    location-inferred SDC PARTICIPANT ENSEMBLE if associated. The manipulation shall return the state handle of the
+    pm:EnsembleContextState with @ContextAssociation = 'Assoc' that indicates membership in the SDC PARTICIPANT
+    ENSEMBLE referred by the provided ensemble-id.
 
   Example 3: general hospital process
     Consider a general process within the hospital with multiple steps whereby each step is divided into multiple minor
     steps describing the major step more precisely. Membership of this main process as well as of the sub processes is
     modeled by a pm:EnsembleContextDescriptor that has multiple pm:EnsembleContextStates for the major as well as for
-    the minor steps. To indicate membership in the main as well as in the sub process a pm:EnsembleContextState
-    representing a major step and a pm:EnsembleContextState representing a major's minor step have to be associated.
-    It is sufficient that the manipulation returns the state handles of these two pm:EnsembleContextStates and their
-    related ENSEMBLE identifiers. In case the process steps at each level differs structurally (e.g. a main step has
-    no minor steps or the nesting depth of the sub processes varies) the returned set of states must be extended
-    accordingly to be still representative.
-
-  The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
-  it shall return RESULT_NOT_SUPPORTED.
-   */
-  rpc RepresentativeEnsembleMembershipIndication (BasicHandleRequest)
-      returns (RepresentativeEnsembleMembershipIndicationResponse);
-
-  /*
-  Indicate membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor and for a provided
-  ENSEMBLE identifier by creation or adaption of a pm:EnsembleContextState such that its @ContextAssociation is "Assoc".
-  Return the handle of that pm:EnsembleContextState.
-
-  The ENSEMBLE identifier is USER specified and shall uniquely identify the related SDC PARTICIPANT ENSEMBLE.
+    the minor steps. To indicate membership in a sub process referred by the provided ensemble-id a
+    pm:EnsembleContextState representing a major step and a pm:EnsembleContextState representing a major's minor step
+    have to be associated. The manipulation shall return the state handles of both pm:EnsembleContextStates.
 
   The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
   it shall return RESULT_NOT_SUPPORTED.
@@ -216,12 +205,13 @@ service ContextService {
       returns (IndicateMembershipInEnsembleByIdentifierResponse);
 
   /*
-  End membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextState/@Handle.
+  End membership in an SDC PARTICIPANT ENSEMBLE for a provided pm:EnsembleContextDescriptor and a provided ensemble-id.
+  The ensemble-id is an identifier specified by the USER that uniquely refers to an SDC PARTICIPANT ENSEMBLE.
 
   The state shall be persistent until a next manipulation call. If the device is not able to maintain the static state,
   it shall return RESULT_NOT_SUPPORTED.
    */
-  rpc EndMembershipInEnsemble (ContextStateHandleRequest)
+  rpc EndMembershipInEnsemble (EnsembleIdentifierRequest)
       returns (BasicResponse);
 
   /*
