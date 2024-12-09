@@ -87,6 +87,6 @@ provided ensemble-id.
  */
 message EnsembleIdRequest {
     string descriptor_handle = 1;
-    string ensemble_id = 2;  // ensemble-id that refers to an SDC PARTICIPANT ENSEMBLE membership shall be indicated in
+    string ensemble_id = 2;  // ensemble-id that refers to the SDC PARTICIPANT ENSEMBLE
 }
 
