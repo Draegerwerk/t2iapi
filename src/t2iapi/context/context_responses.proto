@@ -51,3 +51,23 @@ message EnsembleContextIndicateMembershipWithIdentificationResponse {
     BasicResponse status = 1;
     repeated IdentificationList identification_list = 3;
 }
+
+/*
+Response which contains a list of ensemble-ids referring to each SDC PARTICIPANT ENSEMBLE membership can be
+indicated in by a pm:EnsembleContextState with @ContextAssociation = 'Assoc' of a provided pm:EnsembleContextDescriptor.
+ */
+message GetEnsembleIdsResponse {
+    BasicResponse status = 1;
+    repeated string ensemble_id = 2;
+}
+
+/*
+Response containing the @Handles of the newly created or adapted pm:EnsembleContextStates. They are created or adapted
+such that their @ContextAssociation is 'Assoc' in order to indicate membership in an SDC PARTICIPANT ENSEMBLE specified
+by the provided ensemble-id.
+ */
+message IndicateMembershipInEnsembleByEnsembleIdResponse {
+    BasicResponse status = 1;
+    repeated string context_state_handle = 2;  // @Handles of the pm:EnsembleContextStates, that were created or adapted
+                                               // to indicate membership in an SDC PARTICIPANT ENSEMBLE
+}
