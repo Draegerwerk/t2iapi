@@ -139,8 +139,9 @@ service MetricService {
    - provide pm:MetricValue/@Value resp. @Samples with pm:MetricQuality/@Validity = 'Vld' then
    - change its accuracy such that it does not meet the limits specified either by an applicable standard that the
      SDC METRIC PROVIDER demonstrates conformity to or in the ACCOMPANYING INFORMATION of the SDC METRIC PROVIDER
+     and then
    - provide a new pm:MetricValue/@Value resp. @Samples.
    */
-  rpc TransitionValidToAccuracyBelowSpecifiedLimits (BasicHandleRequest)
+  rpc TransitionAccuracyFromWithinLimitsToBelowSpecifiedLimits (BasicHandleRequest)
       returns (BasicResponse);
 }
