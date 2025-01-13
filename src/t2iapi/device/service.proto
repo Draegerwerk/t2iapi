@@ -224,6 +224,28 @@ service DeviceService {
         returns (InsertContainmentTreeEntryForSequenceIdResponse);
 
     /*
+    Make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that is represented by
+    the provided handle in the device's MDIB. If the BICEPS CONTAINMENT TREE ENTRY is absent in the current MDIB,
+    it shall be inserted. If the BICEPS CONTAINMENT TREE ENTRY is already present in the current MDIB no further
+    action is required.
+
+    Hint: This manipulation is only applicable for devices which use static handles for descriptors over all
+    MDIB @SequenceID's.
+
+    Example 1: inserting the MDS into the current MDIB:
+    - devices is able to present a MDS with the handle mds1 which is currently not present in devices MDIB
+    - InsertContainmentTreeEntry with handle mds1 is executed
+    - MDS with the handle mds1 is inserted into the device's current MDIB
+    - no further action from the device is required
+
+    Example 2: Metric is already present in the current MDIB:
+    - Metric with the handle "metric_1" is already present in the devices current MDIB
+    - InsertContainmentTreeEntry with handle metric_1 is executed
+    - no further action from the device is required
+     */
+    rpc InsertContainmentTreeEntryWithHandle(InsertContainmentTreeEntryWithHandleRequest) returns (BasicResponse);
+
+    /*
     Shut down the device gracefully and then restart it. When restarting, the device should have a new
     pm:MdibVersionGroup/@SequenceId.
      */
