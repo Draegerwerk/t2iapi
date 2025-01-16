@@ -242,7 +242,7 @@ service DeviceService {
   - InsertContainmentTreeEntryWithStaticHandle with handle metric_1 is executed
   - no further action from the device is required
    */
-  rpc InsertContainmentTreeEntryWithStaticHandle (InsertContainmentTreeEntryWithStaticHandleRequest)
+  rpc InsertContainmentTreeEntryWithStaticHandle (BasicHandleRequest)
       returns (BasicResponse);
 
     /*
