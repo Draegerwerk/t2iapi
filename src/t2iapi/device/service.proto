@@ -244,10 +244,10 @@ service DeviceService {
   - InsertContainmentTreeEntryWithStaticHandle with handle "metric_1" is executed
   - no further action from the device is required
 
-   Example 3: the requested Channel is not known for the device:
-  - Channel with the handle "channel_a" is not present in the devices current MDIB
-  - InsertContainmentTreeEntryWithStaticHandle with handle "channel_a" is executed
-  - GRPC Status Code INVALID_ARGUMENT is returned since the requested Channel is unknown for the device
+   Example 3: the requested descriptor is not known for the device:
+  - descriptor with the handle "some_channel" is not present in the devices current MDIB and no such descriptor can exist in the devices MDIB
+  - InsertContainmentTreeEntryWithStaticHandle with handle "some_channel" is executed
+  - GRPC Status Code INVALID_ARGUMENT is returned since the requested entity is unknown for the device
    */
   rpc InsertContainmentTreeEntryWithStaticHandle (BasicHandleRequest)
       returns (BasicResponse);
