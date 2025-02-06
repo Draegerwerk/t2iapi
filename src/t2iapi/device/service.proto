@@ -219,7 +219,7 @@ service DeviceService {
     - InsertContainmentTreeEntryForSequenceId with handle="channel123" and sequence_id="123" is executed
     - Channel is inserted into the device's current MDIB with the handle "channel789"
     - the handle "channel789" is returned
-    */
+     */
     rpc InsertContainmentTreeEntryForSequenceId (InsertContainmentTreeEntryForSequenceIdRequest)
         returns (InsertContainmentTreeEntryForSequenceIdResponse);
 
@@ -248,7 +248,7 @@ service DeviceService {
       - descriptor with the handle "some_channel" is not present in the devices current MDIB and no such descriptor can exist in the devices MDIB
       - InsertContainmentTreeEntryWithStaticHandle with handle "some_channel" is executed
       - GRPC Status Code INVALID_ARGUMENT is returned since the requested entity is unknown for the device
-    */
+     */
     rpc InsertContainmentTreeEntryWithStaticHandle (BasicHandleRequest)
         returns (BasicResponse);
 
@@ -259,9 +259,9 @@ service DeviceService {
     rpc ShutDownAndRestartDevice (google.protobuf.Empty) returns (BasicResponse);
 
     /*
-    Provide all possible types of EXTENSION(s) (see BPKP IEEE Std 11073‐10700™‐2022).
-    Hint: It is not needed to provide all EXTENSION(s) in one single notification.
-          The occurrence of the EXTENSION(s) can be sequential.
+    Provide all possible EXTENSION(s) with @ext:MustUnderstand = true
+    (as defined in IEEE Std 11073‐10700™‐2022 and in IEEE Std 11073-10207-2017).
+    It is allowed to provide the EXTENSION(s) sequentially.
      */
     rpc ProvideExtensionElements (google.protobuf.Empty) returns (BasicResponse);
 }
