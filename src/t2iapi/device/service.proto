@@ -260,7 +260,7 @@ service DeviceService {
 
     /*
     Provide all possible EXTENSION(s) with @ext:MustUnderstand = true
-    (as defined in IEEE Std 11073‐10700™‐2022 and in IEEE Std 11073-10207-2017).
+    (as defined in IEEE Std 11073‐10700‐2022 and in IEEE Std 11073-10207-2017).
     It is allowed to provide the EXTENSION(s) sequentially.
      */
     rpc ProvideExtensionElements (google.protobuf.Empty) returns (BasicResponse);
