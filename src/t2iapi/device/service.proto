@@ -219,42 +219,49 @@ service DeviceService {
     - InsertContainmentTreeEntryForSequenceId with handle="channel123" and sequence_id="123" is executed
     - Channel is inserted into the device's current MDIB with the handle "channel789"
     - the handle "channel789" is returned
-    */
+     */
     rpc InsertContainmentTreeEntryForSequenceId (InsertContainmentTreeEntryForSequenceIdRequest)
         returns (InsertContainmentTreeEntryForSequenceIdResponse);
 
-  /*
-  This manipulation is only applicable for devices which use static handles for descriptors across all sequences of
-  MDIB's. If the device under test does not support static handles for descriptors, it shall return the GRPC Status Code
-  UNIMPLEMENTED. If the request contains a handle that is unknown for the device, it shall return GRPC Status Code
-  INVALID_ARGUMENT.
+    /*
+    This manipulation is only applicable for devices which use static handles for descriptors across all sequences of
+    MDIB's. If the device under test does not support static handles for descriptors, it shall return the GRPC Status Code
+    UNIMPLEMENTED. If the request contains a handle that is unknown for the device, it shall return GRPC Status Code
+    INVALID_ARGUMENT.
 
-  Make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that is represented by the
-  provided handle in the device's MDIB. If the BICEPS CONTAINMENT TREE ENTRY is absent in the current MDIB, it shall be
-  inserted. If the BICEPS CONTAINMENT TREE ENTRY is already present in the current MDIB no further action is required.
+    Make available the BICEPS CONTAINMENT TREE ENTRY (as defined in IEEE Std 11073-10700-2022) that is represented by the
+    provided handle in the device's MDIB. If the BICEPS CONTAINMENT TREE ENTRY is absent in the current MDIB, it shall be
+    inserted. If the BICEPS CONTAINMENT TREE ENTRY is already present in the current MDIB no further action is required.
 
-  Example 1: inserting the MDS into the current MDIB:
-  - devices is able to present a MDS with the handle mds1 which is currently not present in devices MDIB
-  - InsertContainmentTreeEntryWithStaticHandle with handle mds1 is executed
-  - MDS with the handle mds1 is inserted into the device's current MDIB
-  - no further action from the device is required
+    Example 1: inserting the MDS into the current MDIB:
+      - devices is able to present a MDS with the handle mds1 which is currently not present in devices MDIB
+      - InsertContainmentTreeEntryWithStaticHandle with handle mds1 is executed
+      - MDS with the handle mds1 is inserted into the device's current MDIB
+      - no further action from the device is required
 
-  Example 2: Metric is already present in the current MDIB:
-  - Metric with the handle "metric_1" is already present in the devices current MDIB
-  - InsertContainmentTreeEntryWithStaticHandle with handle "metric_1" is executed
-  - no further action from the device is required
+    Example 2: Metric is already present in the current MDIB:
+      - Metric with the handle "metric_1" is already present in the devices current MDIB
+      - InsertContainmentTreeEntryWithStaticHandle with handle "metric_1" is executed
+      - no further action from the device is required
 
-   Example 3: the requested descriptor is not known for the device:
-  - descriptor with the handle "some_channel" is not present in the devices current MDIB and no such descriptor can exist in the devices MDIB
-  - InsertContainmentTreeEntryWithStaticHandle with handle "some_channel" is executed
-  - GRPC Status Code INVALID_ARGUMENT is returned since the requested entity is unknown for the device
-   */
-  rpc InsertContainmentTreeEntryWithStaticHandle (BasicHandleRequest)
-      returns (BasicResponse);
+    Example 3: the requested descriptor is not known for the device:
+      - descriptor with the handle "some_channel" is not present in the devices current MDIB and no such descriptor can exist in the devices MDIB
+      - InsertContainmentTreeEntryWithStaticHandle with handle "some_channel" is executed
+      - GRPC Status Code INVALID_ARGUMENT is returned since the requested entity is unknown for the device
+     */
+    rpc InsertContainmentTreeEntryWithStaticHandle (BasicHandleRequest)
+        returns (BasicResponse);
 
     /*
     Shut down the device gracefully and then restart it. When restarting, the device should have a new
     pm:MdibVersionGroup/@SequenceId.
      */
     rpc ShutDownAndRestartDevice (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Provide all possible EXTENSION(s) with @ext:MustUnderstand = true
+    (as defined in IEEE Std 11073‐10700‐2022 and in IEEE Std 11073-10207-2017).
+    It is allowed to provide the EXTENSION(s) sequentially.
+     */
+    rpc ProvideExtensionElements (google.protobuf.Empty) returns (BasicResponse);
 }
