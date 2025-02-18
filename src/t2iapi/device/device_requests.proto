@@ -34,7 +34,7 @@ Request to set the mds to a specific @OperatingMode.
  */
 message SetMdsOperatingModeRequest {
     string handle = 1;  // handle of the mds to set the @OperatingMode
-    MdsOperatingMode mode = 1;  // value to set as the MdsOperatingMode value
+    MdsOperatingMode mode = 2;  // value to set as the MdsOperatingMode value
 }
 
 /*
