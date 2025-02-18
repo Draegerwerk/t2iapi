@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022, 2023, 2024 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2023, 2024, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -31,6 +31,15 @@ service DeviceService {
     the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetDeviceOperatingMode (t2iapi.device.SetDeviceOperatingModeRequest)
+        returns (BasicResponse);
+
+    /*
+    Switch the given mds into a specific @OperatingMode.
+    This manipulation shall result in a Mds having a specific MdsOperatingMode.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
+     */
+    rpc SetMdsOperatingMode (t2iapi.device.SetMdsOperatingModeRequest)
         returns (BasicResponse);
 
     /*
