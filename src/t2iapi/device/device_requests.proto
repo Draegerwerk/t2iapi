@@ -30,10 +30,10 @@ message SetDeviceOperatingModeRequest {
 }
 
 /*
-Request to set the mds to a specific @OperatingMode.
+Request to set the provided MDS to a specific @OperatingMode.
  */
 message SetMdsOperatingModeRequest {
-    string handle = 1;  // handle of the mds to set the @OperatingMode
+    string handle = 1;  // handle of the MDS to set the @OperatingMode
     MdsOperatingMode mode = 2;  // value to set as the MdsOperatingMode value
 }
 
