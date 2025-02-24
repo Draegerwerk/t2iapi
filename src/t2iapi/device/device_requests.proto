@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -27,6 +27,14 @@ Request to set the device to a specific operating mode.
  */
 message SetDeviceOperatingModeRequest {
     MdsOperatingMode mode = 1;  // value to set as the MdsOperatingMode value
+}
+
+/*
+Request to set the provided MDS to a specific @OperatingMode.
+ */
+message SetMdsOperatingModeRequest {
+    string handle = 1;  // handle of the MDS to set the @OperatingMode
+    MdsOperatingMode mode = 2;  // value to set as the MdsOperatingMode value
 }
 
 /*
