@@ -23,5 +23,5 @@ message BasicHandleRequest{
 A basic request which transmits multiple handles.
 */
 message RepeatedHandleRequest{
-    repeated string repeated_handle = 1;
+    repeated string handle = 1;
 }
