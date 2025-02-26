@@ -262,10 +262,12 @@ service DeviceService {
         returns (BasicResponse);
 
     /*
-    Shut down the device gracefully and then restart it. When restarting, the device should have a new
-    pm:MdibVersionGroup/@SequenceId.
+    Shut down the device gracefully and then restart it. Before the shut down the @ActivationState of the
+    pm:AbstractDeviceComponentStates with the provided handles must be set to 'ON' and not be changed until the
+    shutdown process has been completed, with the exception of changes due to the shutdown process itself.
+    When restarting, the device should have a new pm:MdibVersionGroup/@SequenceId.
      */
-    rpc ShutDownAndRestartDevice (google.protobuf.Empty) returns (BasicResponse);
+    rpc SetActivationStateToOnAndShutDownAndRestartDevice (RepeatedStringRequest) returns (BasicResponse);
 
     /*
     Provide all possible EXTENSION(s) with @ext:MustUnderstand = true
