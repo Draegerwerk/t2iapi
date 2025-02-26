@@ -264,7 +264,7 @@ service DeviceService {
     /*
     Shut down the device gracefully and then restart it. Before the shut down the @ActivationState of the
     pm:AbstractDeviceComponentStates with the provided handles must be set to 'ON' and not be changed until the
-    shutdown process has been completed, with the exception of changes due to the shutdown process itself.
+    shutdown process has been completed, except for changes due to the shutdown process itself.
     When restarting, the device should have a new pm:MdibVersionGroup/@SequenceId.
      */
     rpc SetActivationStateToOnAndShutDownAndRestartDevice (RepeatedHandleRequest) returns (BasicResponse);
