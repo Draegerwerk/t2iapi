@@ -267,7 +267,7 @@ service DeviceService {
     shutdown process has been completed, with the exception of changes due to the shutdown process itself.
     When restarting, the device should have a new pm:MdibVersionGroup/@SequenceId.
      */
-    rpc SetActivationStateToOnAndShutDownAndRestartDevice (RepeatedStringRequest) returns (BasicResponse);
+    rpc SetActivationStateToOnAndShutDownAndRestartDevice (RepeatedHandleRequest) returns (BasicResponse);
 
     /*
     Provide all possible EXTENSION(s) with @ext:MustUnderstand = true

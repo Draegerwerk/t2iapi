@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -20,8 +20,8 @@ message BasicHandleRequest{
 }
 
 /*
-A basic request which transmits multiple strings.
+A basic request which transmits multiple handles.
 */
-message RepeatedStringRequest{
-    repeated string repeated_string = 1;
+message RepeatedHandleRequest{
+    repeated string repeated_handle = 1;
 }
