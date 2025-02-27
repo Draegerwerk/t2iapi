@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation InsertContainmentTreeEntryForSequenceId for devices
 - manipulation InsertContainmentTreeEntryWithStaticHandle for devices
 - manipulation ProvideExtensionElements for devices
-- manipulation to shut down and restart for devices
+- manipulation SetActivationStateToOnAndShutDownAndRestartDevice for devices
 - manipulation GetEnsembleIds for contexts
 - manipulation IndicateMembershipInEnsembleByEnsembleId for contexts
 - manipulation EndMembershipInEnsembleByEnsembleId for contexts
