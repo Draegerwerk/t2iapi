@@ -280,17 +280,17 @@ service DeviceService {
     Request to remove a pm:ProductionSpecification element of the given descriptor handle.
      */
     rpc RemoveProductionSpecificationElement (BasicHandleRequest)
-        returns (BasicResponse);
+        returns (t2iapi.device.ProductionSpecificationElementResponse);
 
     /*
     Request to change a pm:ProductionSpecification element of the given descriptor handle.
      */
     rpc ChangeProductionSpecificationElement (BasicHandleRequest)
-        returns (BasicResponse);
+        returns (t2iapi.device.ProductionSpecificationElementResponse);
 
     /*
     Request to insert a pm:ProductionSpecification element of the given descriptor handle.
      */
     rpc InsertProductionSpecificationElement (BasicHandleRequest)
-        returns (BasicResponse);
+        returns (t2iapi.device.ProductionSpecificationElementResponse);
 }

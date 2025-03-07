@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022, 2024 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2024, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -82,4 +82,14 @@ pm:AbstractDeviceComponentDescriptor handle to indicate the time of the next cal
 message IndicateTimeOfNextCalibrationToUserResponse{
     BasicResponse status = 1;   // status of the rpc
     t2iapi.biceps.MdibVersionGroup mdib_version_group = 2;     // MdibVersion attributes when finishing the rpc
+}
+
+/*
+Response containing the BasicResponse and the (new) handle of the descriptor for which a pm:ProductionSpecification
+element was changed, removed or inserted.
+ */
+message ProductionSpecificationElementResponse {
+    BasicResponse status = 1;
+    string handle = 2;  // (new) handle of the descriptor for which a pm:ProductionSpecification was changed, removed or
+                        // inserted
 }
