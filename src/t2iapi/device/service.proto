@@ -275,4 +275,22 @@ service DeviceService {
     It is allowed to provide the EXTENSION(s) sequentially.
      */
     rpc ProvideExtensionElements (google.protobuf.Empty) returns (BasicResponse);
+
+    /*
+    Request to remove a pm:ProductionSpecification element of the given descriptor handle.
+     */
+    rpc RemoveProductionSpecificationElement (BasicHandleRequest)
+        returns (BasicResponse);
+
+    /*
+    Request to change a pm:ProductionSpecification element of the given descriptor handle.
+     */
+    rpc ChangeProductionSpecificationElement (BasicHandleRequest)
+        returns (BasicResponse);
+
+    /*
+    Request to insert a pm:ProductionSpecification element of the given descriptor handle.
+     */
+    rpc InsertProductionSpecificationElement (BasicHandleRequest)
+        returns (BasicResponse);
 }

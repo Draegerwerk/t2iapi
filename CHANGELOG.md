@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation RemoveProductionSpecificationElement for devices
+- manipulation ChangeProductionSpecificationElement for devices
+- manipulation InsertProductionSpecificationElement for devices
 - manipulation SetMdsOperatingMode for devices
 - manipulation TransitionAccuracyFromWithinLimitsToBelowSpecifiedLimits for metrics
 - manipulation DisplayMetricWithDifferentUnit for metrics
