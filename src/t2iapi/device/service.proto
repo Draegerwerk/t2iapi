@@ -277,19 +277,19 @@ service DeviceService {
     rpc ProvideExtensionElements (google.protobuf.Empty) returns (BasicResponse);
 
     /*
-    Request to remove a pm:ProductionSpecification element of the given descriptor handle.
+    Request to remove a pm:ProductionSpecification element of the given descriptor represented by the provided handle.
      */
     rpc RemoveProductionSpecificationElement (BasicHandleRequest)
         returns (t2iapi.device.ProductionSpecificationElementResponse);
 
     /*
-    Request to change a pm:ProductionSpecification element of the given descriptor handle.
+    Request to change a pm:ProductionSpecification element of the given descriptor represented by the provided handle.
      */
     rpc ChangeProductionSpecificationElement (BasicHandleRequest)
         returns (t2iapi.device.ProductionSpecificationElementResponse);
 
     /*
-    Request to insert a pm:ProductionSpecification element of the given descriptor handle.
+    Request to insert a pm:ProductionSpecification element into the given descriptor represented by the provided handle.
      */
     rpc InsertProductionSpecificationElement (BasicHandleRequest)
         returns (t2iapi.device.ProductionSpecificationElementResponse);

@@ -86,7 +86,9 @@ message IndicateTimeOfNextCalibrationToUserResponse{
 
 /*
 Response containing the BasicResponse and the (new) handle of the descriptor for which a pm:ProductionSpecification
-element was changed, removed or inserted.
+element was changed, removed or inserted. The requirement IEEE Std 11073-10701-2022 TR1949 expects a new
+pm:MdibVersionGroup/@SequenceId after a change of pm:ProductionSpecification, therefore the potentially
+changed handle of the descriptor in the new @SequenceId is required.
  */
 message ProductionSpecificationElementResponse {
     BasicResponse status = 1;
