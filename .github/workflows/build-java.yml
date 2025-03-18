@@ -125,22 +125,39 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
           MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+
+      - name: Download target_jars
+        uses: actions/download-artifact@v4
+        with:
+          name: target_jars
+          path: release/jar/
+
+      - name: Download test_results
+        uses: actions/download-artifact@v4
+        with:
+          name: test_results
+          path: release/test_results/
+
       - name: Install zip
         if: startsWith(github.ref, 'refs/tags/')
         uses: montudor/action-zip@v1
 
+      - name: Zip jar files
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          zip -qq -j -r java-artifacts.zip release/jar/
+
       - name: Zip test results
         if: startsWith(github.ref, 'refs/tags/')
         run: |
-          zip -qq -r java-test-results.zip test_results
+          zip -qq -j -r java-test-results.zip release/test_results/
 
       - name: Attach artifacts to github release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            java/build/libs/*.jar
-            java/build/publications/maven/pom-default.xml
+            java-artifacts.zip
             java-test-results.zip
           prerelease: ${{ !startsWith(github.ref, 'refs/tags/v') }}
           body_path: CHANGELOG.md
