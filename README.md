@@ -10,6 +10,10 @@ application.
 
 [More information on SDC.](https://en.wikipedia.org/wiki/IEEE_11073_service-oriented_device_connectivity)
 
+For this open source project the [Contributor License Agreement](Contributor_License_Agreement.md) governs all
+relevant activities and your contributions.\
+By contributing to the project you agree to be bound by this Agreement and to license your work accordingly.
+
 ## Installation
 
 ### Building the package locally (Linux)
