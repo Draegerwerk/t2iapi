@@ -37,15 +37,6 @@ message SetAlarmSignalInactivationStateRequest{
 }
 
 /*
-Request for a given alert condition to start/stop escalation/deescalation action from one alert priority to another.
-The alert priority can be set to Low, Medium, High or None.
- */
-message AlertConditionEscalationRequest {
-  string handle = 1;
-  AlertConditionEscalationProcess escalation_process = 2;
-}
-
-/*
 Request to set the pm:AlertSignalState/@Presence for a subset of requested alert signals to the
 provided presence.
 From the list of alert signals *handle*, choose a maximal set of at least *min_subset_size* handles.

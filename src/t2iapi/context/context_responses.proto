@@ -25,25 +25,6 @@ message CreateContextStateWithAssociationResponse {
 }
 
 /*
-Response containing the context state handle and the prior mdib version.
- */
-message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateResponse {
-    BasicResponse status = 1;
-    string context_state_handle = 2;  // handle of the context state, that was created or adapted
-    uint64 prior_mdib_version = 3;    // mdib version before the change - contains the previously associated
-                                      //   context state whose pm:Identification the changed
-                                      //   pm:Identification must structurally differ from.
-}
-
-/*
-Response which contains all context types supported by the DUT.
- */
-message GetSupportedContextTypesResponse {
-    BasicResponse status = 1;
-    repeated ContextType context_type = 2; // all types which are supported by the DUT
-}
-
-/*
 Response which contains a list of lists with pm:Identification elements. Each list of pm:Identification elements
 identifies a pm:EnsembleContextState and thus enables the differentiation of ensembles from each other.
  */

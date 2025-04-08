@@ -35,14 +35,6 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Remove all Validators elements for the AbstractContextState with the provided context state handle.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
-   */
-  rpc RemoveAllContextStateValidators (t2iapi.context.ContextStateHandleRequest)
-      returns (BasicResponse);
-
-  /*
   Set the ContextAssociation of the target ContextState to the given value.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
@@ -104,26 +96,6 @@ service ContextService {
   rpc CreateContextStateWithAssocAndSpecificValidator(
   t2iapi.context.CreateContextStateWithAssocAndSpecificValidatorRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
-
-  /*
-  Create or adapt a patient- or location context state, such that
-  - it belongs to the given @DescriptorHandle,
-  - it has @ContextAssociation = Assoc,
-  - it has the given number of pm:Validators, and
-  - its pm:Identification changes.
-  The pm:Identification of the created resp. adapted context state must differ structurally from
-  the pm:Identification of the previously associated context state of the same @DescriptorHandle.
-  Returns the handle of the created or adapted context state and an mdib version
-  that contains the version of the previously associated context state whose pm:Identification
-  the changed pm:Identification must structurally differ from.
-  The mdib version must represent the mdib of the device before the changes of the
-  manipulation are applied to the mdib.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
-   */
-  rpc AssociateValidateAndChangeIdentificationOfPatientOrLocationContextState(
-  t2iapi.context.AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateRequest)
-      returns (AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateResponse);
 
   /*
   Create or adapt neonatal patient with a given type of association and
@@ -222,12 +194,6 @@ service ContextService {
    */
   rpc EndMembershipInEnsembleByEnsembleId (EnsembleIdRequest)
       returns (BasicResponse);
-
-  /*
-  Returns all types of contexts which are supported by the DUT.
-   */
-  rpc GetSupportedContextTypes (google.protobuf.Empty)
-      returns (t2iapi.context.GetSupportedContextTypesResponse);
 
   /*
   Create or adapt a pm:PatientContextState having an associated patient with an auto generated patient id.

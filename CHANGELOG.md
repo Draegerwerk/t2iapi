@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Removed
+
+- manipulation AlertConditionEscalation for alerts
+- manipulation AssociateValidateAndChangeIdentificationOfPatientOrLocationContextState for contexts
+- manipulation GetSupportedContextTypes for contexts
+- manipulation RemoveAllContextStateValidators for contexts
+- manipulation InsertMdsDescriptor for devices
+- manipulation RemoveMdsDescriptor for devices
+
 ## [4.2.0] - 2025-03-17
 
 ### Added

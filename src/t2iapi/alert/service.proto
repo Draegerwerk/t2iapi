@@ -31,12 +31,6 @@ service AlertService {
         returns (BasicResponse);
 
     /*
-    Start/Stop an Escalation/Deescalation of the AlertConditionPriority for a given alert condition handle.
-     */
-    rpc AlertConditionEscalation (t2iapi.alert.AlertConditionEscalationRequest)
-        returns (BasicResponse);
-
-    /*
     Change the state of the alarm signal inactivation state represented by the AlertCondition with the given
     handle as requested.
     The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain

@@ -100,16 +100,6 @@ service DeviceService {
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
 
     /*
-    Insert an mds descriptor into the device MDIB.
-    */
-    rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
-
-    /*
-    Remove an mds descriptor from the device MDIB.
-     */
-    rpc RemoveMdsDescriptor (BasicHandleRequest) returns (BasicResponse);
-
-    /*
     Trigger a DescriptionManipulationReport that fulfills the following:
 
     For each given handle there exists an "Upt"-ReportPart that contains an updated descriptor, whose @DescriptorHandle
