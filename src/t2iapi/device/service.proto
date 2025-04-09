@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022, 2023, 2024, 2025 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022-2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -98,16 +98,6 @@ service DeviceService {
     Insert a descriptor into the device MDIB.
      */
     rpc InsertDescriptor(BasicHandleRequest) returns (BasicResponse);
-
-    /*
-    Insert an mds descriptor into the device MDIB.
-    */
-    rpc InsertMdsDescriptor (google.protobuf.Empty) returns (t2iapi.device.InsertMdsDescriptorResponse);
-
-    /*
-    Remove an mds descriptor from the device MDIB.
-     */
-    rpc RemoveMdsDescriptor (BasicHandleRequest) returns (BasicResponse);
 
     /*
     Trigger a DescriptionManipulationReport that fulfills the following:

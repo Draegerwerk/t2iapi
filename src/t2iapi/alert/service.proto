@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -28,12 +28,6 @@ service AlertService {
     given handle. Even if the @Presence already has the requested value.
      */
     rpc SetAlertConditionPresence (t2iapi.alert.SetAlertConditionPresenceRequest)
-        returns (BasicResponse);
-
-    /*
-    Start/Stop an Escalation/Deescalation of the AlertConditionPriority for a given alert condition handle.
-     */
-    rpc AlertConditionEscalation (t2iapi.alert.AlertConditionEscalationRequest)
         returns (BasicResponse);
 
     /*

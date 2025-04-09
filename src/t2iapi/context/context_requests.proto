@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -13,13 +13,6 @@ import "t2iapi/context/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.context";
 option java_outer_classname = "ContextRequests";
-
-/*
-Request providing a pm:AbstractContextState/@Handle.
-*/
-message ContextStateHandleRequest {
-    string context_state_handle = 1;
-}
 
 /*
 Request to set the location detail for the LocationContextState which is associated and if needed newly created.
@@ -53,16 +46,6 @@ message CreateContextStateWithAssociationAndValidatorsRequest {
     string descriptor_handle = 1;
     ContextAssociation context_association = 2;  // the @ContextAssociation of the context state
     string num_validators = 3;  // number of pm:Validator elements
-}
-
-/*
-Request to create or adapt a pm:PatientContextState or pm:LocationContextState instance with
-@ContextAssociation = Assoc for the given @DescriptorHandle, with a given number
-of pm:Validator elements and a changed pm:Identification.
- */
-message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateRequest {
-    string descriptor_handle = 1;
-    string num_validators = 2;  // number of pm:Validator elements
 }
 
 /*
