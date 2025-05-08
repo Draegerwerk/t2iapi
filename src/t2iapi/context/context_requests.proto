@@ -73,3 +73,11 @@ message EnsembleIdRequest {
     string ensemble_id = 2;  // ensemble-id that refers to the SDC PARTICIPANT ENSEMBLE
 }
 
+/*
+Request to create or adapt a context state with a given association and a specific BindingMdibVersion.
+ */
+message CreateContextStateWithAssocAndSpecificBindingMdibVersionRequest {
+    string descriptor_handle = 1;
+    ContextAssociation context_association = 2;
+    string binding_mdib_version = 3;
+}
