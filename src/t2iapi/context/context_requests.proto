@@ -74,10 +74,9 @@ message EnsembleIdRequest {
 }
 
 /*
-Request to create or adapt a context state with a given association and a specific BindingMdibVersion.
+Request to create or adapt a context state with a given association and a BindingMdibVersion.
  */
-message CreateContextStateWithAssocAndSpecificBindingMdibVersionRequest {
+message CreateContextStateWithAssocAndBindingMdibVersionRequest {
     string descriptor_handle = 1;
     ContextAssociation context_association = 2;
-    string binding_mdib_version = 3;
 }
