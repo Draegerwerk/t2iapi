@@ -80,3 +80,11 @@ message CreateContextStateWithAssocAndBindingMdibVersionRequest {
     string descriptor_handle = 1;
     ContextAssociation context_association = 2;
 }
+
+/*
+Request to create or adapt a context state with a given association and an UnbindingMdibVersion.
+ */
+message CreateContextStateWithAssocAndUnbindingMdibVersionRequest {
+    string descriptor_handle = 1;
+    ContextAssociation context_association = 2;
+}

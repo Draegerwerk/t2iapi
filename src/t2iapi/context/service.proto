@@ -108,6 +108,16 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
+  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle,
+  and assign a UnbindingMdibVersion.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
+   */
+  rpc CreateContextStateWithAssocAndUnbindingMdibVersion(
+  t2iapi.context.CreateContextStateWithAssocAndUnbindingMdibVersionRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
   Create or adapt neonatal patient with a given type of association and
   including the mothers identification.
    */
