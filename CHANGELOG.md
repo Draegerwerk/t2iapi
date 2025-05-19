@@ -79,6 +79,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- manipulation CreateContextStateWithAssocAndBindingMdibVersion for contexts
+- manipulation CreateContextStateWithAssocAndUnbindingMdibVersion for contexts
 - manipulation SetComponentActivationAndSetOperatingMode for components and operations
 - manipulation SetAlertActivationAndSetOperatingMode for alerts and operations
 - manipulation TransitionFromCreateStateWithIdentificationToRemoveIdentification for contexts
