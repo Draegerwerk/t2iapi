@@ -285,7 +285,9 @@ service DeviceService {
         returns (t2iapi.device.ProductionSpecificationElementResponse);
 
     /*
-    Set the @SafetyClassification to the given value for the provided descriptor handle.
+    Set the @SafetyClassification to the given value for the provided descriptor handle. The manipulated device state
+    shall be persistent until a next manipulation call. If the device is not able to maintain the static state, it shall
+    return RESULT_NOT_SUPPORTED.
      */
     rpc SetSafetyClassification (SetSafetyClassificationRequest)
         returns (BasicResponse);
