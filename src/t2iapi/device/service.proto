@@ -283,4 +283,10 @@ service DeviceService {
      */
     rpc InsertProductionSpecificationElement (BasicHandleRequest)
         returns (t2iapi.device.ProductionSpecificationElementResponse);
+
+    /*
+    Set the @SafetyClassification to the given value for the provided descriptor handle.
+     */
+    rpc SetSafetyClassification (SetSafetyClassificationRequest)
+        returns (BasicResponse);
 }
