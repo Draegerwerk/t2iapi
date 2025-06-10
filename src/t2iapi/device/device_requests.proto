@@ -112,3 +112,12 @@ message InsertContainmentTreeEntryForSequenceIdRequest {
     string sequence_id = 2; // @SequenceId of the devices MDIB where the requested BICEPS CONTAINMENT TREE ENTRY
                             // was seen
 }
+
+/*
+Request to set the @SafetyClassification for the provided descriptor handle to the given safety classification value.
+ */
+message SetSafetyClassificationRequest {
+    string handle = 1;      // handle of the pm:AbstractDescriptor for which the @SafetyClassification shall be set
+    SafetyClassification safety_classification = 2; // @SafetyClassification value to set, if not provided this shall
+                                                    // be interpreted as removing the attribute
+}
