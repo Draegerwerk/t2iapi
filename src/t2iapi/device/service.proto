@@ -285,10 +285,11 @@ service DeviceService {
         returns (t2iapi.device.ProductionSpecificationElementResponse);
 
     /*
-    Set the @SafetyClassification to the given value for the provided descriptor handle. The manipulated device state
-    shall be persistent until a next manipulation call. If the device is not able to maintain the static state, it shall
-    return RESULT_NOT_SUPPORTED.
+    Set the @SafetyClassification to a value in ∈ { MedA, MedB, MedC } for the descriptor with the provided handle.
+    MedA, MedB and MedC are of type pm:SafetyClassification as defined in the IEEE Std 11073-10207-2017. The manipulated
+    device state shall be persistent until a next manipulation call. If the device is not able to maintain the static
+    state, it shall return RESULT_NOT_SUPPORTED.
      */
-    rpc SetSafetyClassification (SetSafetyClassificationRequest)
+    rpc SetSafetyClassificationToMedAMedBOrMedC (BasicHandleRequest)
         returns (BasicResponse);
 }
