@@ -61,3 +61,12 @@ message SetActivationStateAndUserConfirmableValueRequest {
     string handle = 1;  // handle of the metric for which the manipulation shall be performed
     activation_state.ComponentActivation activation = 2;  // @ActivationState value to set
 }
+
+/*
+Request to set the @MetricAvailability of the metric with the given handle to the provided value.
+ */
+message SetMetricAvailabilityRequest {
+    string handle = 1;  // handle of the metric for which the @MetricAvailability shall be set
+    MetricAvailability metric_availability = 2; // @MetricAvailability value to set, if not provided this shall
+                                                // be interpreted as removing the attribute
+}

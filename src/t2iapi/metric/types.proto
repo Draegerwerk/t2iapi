@@ -77,3 +77,11 @@ enum MetricDeterminationMode {
     METRIC_DETERMINATION_MODE_EPISODICALLY = 0;
     METRIC_DETERMINATION_MODE_PERIODICALLY = 1;
 }
+
+/*
+Represents pm:MetricAvailability from the IEEE Std 11073-10207-2017.
+ */
+enum MetricAvailability {
+    METRIC_AVAILABILITY_INTR = 0;
+    METRIC_AVAILABILITY_CONT = 1;
+}
