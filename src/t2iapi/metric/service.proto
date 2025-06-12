@@ -146,8 +146,9 @@ service MetricService {
       returns (BasicResponse);
 
   /*
-  Request for the metric with the given handle to set it @MetricAvailability to the provided value.
+  Request for the metric with the given handle to set its @MetricAvailability to Intr. Intr is of type
+  pm:MetricAvailability as defined in the IEEE Std 11073-10207-2017.
    */
-  rpc SetMetricAvailability (t2iapi.metric.SetMetricAvailabilityRequest)
+  rpc SetMetricAvailabilityIntr (BasicHandleRequest)
       returns (BasicResponse);
 }
