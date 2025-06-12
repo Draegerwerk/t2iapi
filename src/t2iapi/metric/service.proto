@@ -147,7 +147,9 @@ service MetricService {
 
   /*
   Request for the metric with the given handle to set its @MetricAvailability to 'Intr'. 'Intr' is of type
-  pm:MetricAvailability as defined in the IEEE Std 11073-10207-2017.
+  pm:MetricAvailability as defined in the IEEE Std 11073-10207-2017. The manipulated device state shall be persistent
+  until a next manipulation call. If the device is not able to maintain the static state, it
+  shall return RESULT_NOT_SUPPORTED.
    */
   rpc SetMetricAvailabilityIntr (BasicHandleRequest)
       returns (BasicResponse);
