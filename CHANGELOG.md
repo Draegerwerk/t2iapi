@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- manipulation SetSafetyClassification for devices
-- manipulation SetMetricAvailability for metrics
+- manipulation SetSafetyClassificationToMedAMedBOrMedC for devices
+- manipulation SetMetricAvailabilityIntr for metrics
 
 ### Removed
 

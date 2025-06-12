@@ -79,13 +79,3 @@ enum CalibrationState{
     CALIBRATION_STATE_CALIBRATED = 3;
     CALIBRATION_STATE_OTHER = 4;
 }
-
-/*
-Represents pm:SafetyClassification from the IEEE Std 11073-10207-2017.
- */
-enum SafetyClassification {
-    SAFETY_CLASSIFICATION_INF = 0;
-    SAFETY_CLASSIFICATION_MED_A = 1;
-    SAFETY_CLASSIFICATION_MED_B = 2;
-    SAFETY_CLASSIFICATION_MED_C = 3;
-}
