@@ -286,9 +286,9 @@ service DeviceService {
 
     /*
     Set the @SafetyClassification to a value ∈ { MedA, MedB, MedC } for the descriptor with the provided handle.
-    MedA, MedB and MedC are of type pm:SafetyClassification as defined in the IEEE Std 11073-10207-2017. The manipulated
-    device state shall be persistent until a next manipulation call. If the device is not able to maintain the static
-    state, it shall return RESULT_NOT_SUPPORTED.
+    'MedA', 'MedB' and 'MedC' are of type pm:SafetyClassification as defined in the IEEE Std 11073-10207-2017.
+    The manipulated device state shall be persistent until a next manipulation call. If the device is not able to
+    maintain the static state, it shall return RESULT_NOT_SUPPORTED.
      */
     rpc SetSafetyClassificationToMedAMedBOrMedC (BasicHandleRequest)
         returns (BasicResponse);
