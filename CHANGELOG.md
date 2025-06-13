@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - manipulation SetSafetyClassificationToMedAMedBOrMedC for devices
 - manipulation SetMetricAvailabilityIntr for metrics
+- manipulation SetMetricCategoryMsrmtOrClc for metrics
 
 ### Removed
 
