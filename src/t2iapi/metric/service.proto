@@ -153,4 +153,13 @@ service MetricService {
    */
   rpc SetMetricAvailabilityIntr (BasicHandleRequest)
       returns (BasicResponse);
+
+    /*
+    Set the @MetricCategory to a value ∈ { Msrmt , Clc } for the metric descriptor with the provided handle.
+    'Msrmt' and 'Clc' are of type pm:SafetyClassification as defined in the IEEE Std 11073-10207-2017. The manipulated
+    device state shall be persistent until a next manipulation call. If the device is not able to maintain the static
+    state, it shall return RESULT_NOT_SUPPORTED.
+   */
+  rpc SetMetricCategoryMsrmtOrClc (BasicHandleRequest)
+      returns (BasicResponse);
 }
