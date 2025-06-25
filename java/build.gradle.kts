@@ -51,6 +51,10 @@ java {
     withSourcesJar()
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 protobuf {
     protoc {
         // The artifact spec for the Protobuf Compiler
@@ -136,4 +140,5 @@ tasks.javadoc {
     if (JavaVersion.current().isJava9Compatible) {
         (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
     }
+    options.encoding = "UTF-8"
 }
