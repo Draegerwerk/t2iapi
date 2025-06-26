@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - gradle version to 8.14.2
+- adapt deploy process, switch from legacy OSSRH to Central Portal
 
 ### Removed
 
