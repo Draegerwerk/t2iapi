@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation SetMetricCategoryMsrmtOrClc for metrics
 - manipulation SetMetricCategorySetOrPreset for metrics
 
+### Changed
+
+- gradle version to 8.14.2
+
 ### Removed
 
 - manipulation AlertConditionEscalation for alerts
