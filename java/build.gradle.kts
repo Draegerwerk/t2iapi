@@ -90,7 +90,7 @@ configure<org.jreleaser.gradle.plugin.JReleaserExtension> {
             bugTracker = "https://github.com/Draegerwerk/t2iapi/issues"
             contact = "t2i@draeger.com"
         }
-        inceptionYear = "2025"
+        inceptionYear = "2022"
         vendor = "Draegerwerk AG & Co. KGaA"
         copyright = "Copyright (c) ${LocalDate.now().year} Draegerwerk AG & Co. KGaA"
     }
