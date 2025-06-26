@@ -1,10 +1,13 @@
 import com.google.protobuf.gradle.*
+import org.jreleaser.model.Active
+import java.time.LocalDate
 
 plugins {
     `java-library`
     `maven-publish`
     id("com.google.protobuf") version "0.9.1"
     id("com.google.osdetector") version "1.7.1"
+    id("org.jreleaser") version "1.17.0"
     signing
 }
 
@@ -75,6 +78,38 @@ protobuf {
     }
 }
 
+configure<org.jreleaser.gradle.plugin.JReleaserExtension> {
+    gitRootSearch = true
+    project {
+        description = "t2iapi describes a product-independent interface to manipulate devices which utilize " +
+            "ISO/IEEE 11073 SDC during verification."
+        authors = listOf("T2I Team")
+        license = "MIT"
+        links {
+            homepage = "https://github.com/Draegerwerk/t2iapi"
+            bugTracker = "https://github.com/Draegerwerk/t2iapi/issues"
+            contact = "t2i@draeger.com"
+        }
+        inceptionYear = "2025"
+        vendor = "Draegerwerk AG & Co. KGaA"
+        copyright = "Copyright (c) ${LocalDate.now().year} Draegerwerk AG & Co. KGaA"
+    }
+
+    deploy {
+        maven {
+            mavenCentral {
+                register("sonatype") {
+                    active = Active.ALWAYS
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    subprojects.filter { it.name != "examples" }.forEach { project ->
+                        stagingRepository(project.layout.buildDirectory.dir("staging-deploy").get().asFile.path)
+                    }
+                }
+            }
+        }
+    }
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
@@ -119,8 +154,8 @@ publishing {
         maven {
             name = "Sonatype"
 
-            val releaseUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            val snapshotsUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            val releaseUrl = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
+            val snapshotsUrl = "https://central.sonatype.com/repository/maven-snapshots/"
 
             url = uri(if (isRelease) releaseUrl else snapshotsUrl)
             credentials {
