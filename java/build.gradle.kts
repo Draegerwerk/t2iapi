@@ -1,6 +1,7 @@
-import com.google.protobuf.gradle.*
+import com.google.protobuf.gradle.id
+import com.google.protobuf.gradle.protobuf
 import org.jreleaser.model.Active
-import java.time.LocalDate
+import org.jreleaser.model.Http.Authorization
 
 plugins {
     `java-library`
@@ -23,6 +24,8 @@ val t2iapiVersion: String = when (isRelease) {
     true -> baseVersion
     false -> baseVersion + ( buildId?.let { ".$it" } ?: "" ) + "-SNAPSHOT"
 }
+val targetToStagingDeployRelease = layout.buildDirectory.dir("staging-deploy-release").get().asFile
+val targetToStagingDeploySnapshot = layout.buildDirectory.dir("staging-deploy-snapshot").get().asFile
 
 version = t2iapiVersion
 group = "com.draeger.medical"
@@ -78,38 +81,6 @@ protobuf {
     }
 }
 
-configure<org.jreleaser.gradle.plugin.JReleaserExtension> {
-    gitRootSearch = true
-    project {
-        description = "t2iapi describes a product-independent interface to manipulate devices which utilize " +
-            "ISO/IEEE 11073 SDC during verification."
-        authors = listOf("T2I Team")
-        license = "MIT"
-        links {
-            homepage = "https://github.com/Draegerwerk/t2iapi"
-            bugTracker = "https://github.com/Draegerwerk/t2iapi/issues"
-            contact = "t2i@draeger.com"
-        }
-        inceptionYear = "2022"
-        vendor = "Draegerwerk AG & Co. KGaA"
-        copyright = "Copyright (c) ${LocalDate.now().year} Draegerwerk AG & Co. KGaA"
-    }
-
-    deploy {
-        maven {
-            mavenCentral {
-                register("sonatype") {
-                    active = Active.ALWAYS
-                    url = "https://central.sonatype.com/api/v1/publisher"
-                    subprojects.filter { it.name != "examples" }.forEach { project ->
-                        stagingRepository(project.layout.buildDirectory.dir("staging-deploy").get().asFile.path)
-                    }
-                }
-            }
-        }
-    }
-}
-
 publishing {
     publications {
         create<MavenPublication>("maven") {
@@ -152,16 +123,8 @@ publishing {
 
     repositories {
         maven {
-            name = "Sonatype"
-
-            val releaseUrl = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
-            val snapshotsUrl = "https://central.sonatype.com/repository/maven-snapshots/"
-
-            url = uri(if (isRelease) releaseUrl else snapshotsUrl)
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
+            name = "StagingForCentralPortal"
+            url = uri(if (isRelease) targetToStagingDeployRelease else targetToStagingDeploySnapshot)
         }
     }
 }
@@ -176,4 +139,35 @@ tasks.javadoc {
         (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
     }
     options.encoding = "UTF-8"
+}
+
+jreleaser {
+    deploy {
+        maven {
+            mavenCentral {
+                register("release-deploy") {
+                    username = System.getenv("CENTRAL_PORTAL_USERNAME")
+                    password = System.getenv("CENTRAL_PORTAL_TOKEN")
+                    authorization = Authorization.BEARER
+                    active = Active.RELEASE
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository(targetToStagingDeployRelease.path)
+                }
+            }
+            nexus2 {
+                register("snapshot-deploy") {
+                    username = System.getenv("CENTRAL_PORTAL_USERNAME")
+                    password = System.getenv("CENTRAL_PORTAL_TOKEN")
+                    authorization = Authorization.BEARER
+                    active = Active.SNAPSHOT
+                    snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
+                    applyMavenCentralRules = true
+                    snapshotSupported = true
+                    closeRepository = true
+                    releaseRepository = true
+                    stagingRepository(targetToStagingDeploySnapshot.path)
+                }
+            }
+        }
+    }
 }
