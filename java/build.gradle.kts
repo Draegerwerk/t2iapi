@@ -152,6 +152,11 @@ jreleaser {
                     active = Active.RELEASE
                     url = "https://central.sonatype.com/api/v1/publisher"
                     stagingRepository(targetToStagingDeployRelease.path)
+                    sign = false // Signing is already handled by the signing plugin
+                    checksums = true
+                    sourceJar = true
+                    javadocJar = true
+                    verifyPom = true
                 }
             }
             nexus2 {
@@ -160,12 +165,15 @@ jreleaser {
                     password = System.getenv("CENTRAL_PORTAL_TOKEN")
                     authorization = Authorization.BEARER
                     active = Active.SNAPSHOT
+                    url = "https://central.sonatype.com/repository/maven-snapshots/"
                     snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
-                    applyMavenCentralRules = true
                     snapshotSupported = true
-                    closeRepository = true
-                    releaseRepository = true
                     stagingRepository(targetToStagingDeploySnapshot.path)
+                    sign = false // Signing is already handled by the signing plugin
+                    checksums = true
+                    sourceJar = true
+                    javadocJar = true
+                    verifyPom = true
                 }
             }
         }

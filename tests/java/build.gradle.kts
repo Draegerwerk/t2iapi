@@ -25,7 +25,7 @@ dependencies {
     testImplementation("io.grpc:grpc-stub:${grpcVersion}")
     testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
     testImplementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
-    testImplementation("com.draeger.medical.ti2api:t2iapi:${t2iapiVersion}")
+    testImplementation("com.draeger.medical:t2iapi:${t2iapiVersion}")
 }
 
 tasks.withType<Test> {
