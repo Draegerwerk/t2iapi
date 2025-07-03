@@ -8,7 +8,7 @@ plugins {
     `maven-publish`
     id("com.google.protobuf") version "0.9.1"
     id("com.google.osdetector") version "1.7.1"
-    id("org.jreleaser") version "1.17.0"
+    id("org.jreleaser") version "1.19.0"
     signing
 }
 
