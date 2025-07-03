@@ -14,14 +14,15 @@ jobs:
     steps:
       # Run `git checkout`
       - uses: actions/checkout@v4
+
       - name: Source dependency versions
         working-directory: config
-        run: |
-          cat versions.txt >> $GITHUB_ENV
+        run: cat versions.txt >> $GITHUB_ENV
+
       - name: Detect release version
         if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          echo RELEASE_VERSION=1 >> $GITHUB_ENV
+        run: echo RELEASE_VERSION=1 >> $GITHUB_ENV
+
       - name: Install Protoc
         run: |
           sudo apt-get update && apt-get install -y apt-utils && apt-get install -y unzip
@@ -29,77 +30,91 @@ jobs:
           wget https://github.com/protocolbuffers/protobuf/releases/download/v${{ env.COMMON_PROTOC_VERSION }}/protoc-${{ env.COMMON_PROTOC_VERSION }}-linux-x86_64.zip -P ${{ runner.temp }}/protoc_install
           unzip ${{ runner.temp }}/protoc_install/*.zip -d ${{ runner.temp }}/protoc_install/protoc
           echo "${{ runner.temp }}/protoc_install/protoc/bin" >> $GITHUB_PATH
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
+
       - name: Execute build
         working-directory: ./java
         run: ./gradlew jar generatePomFileForMavenPublication
+
       - name: Rename pom file for release
         if: startsWith(github.ref, 'refs/tags/v')
         working-directory: ./java/build/publications/maven
         run: mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.pom
+
       - name: Rename pom file for snapshot
         if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
         working-directory: ./java/build/publications/maven
         run: mv pom-default.xml ./../../libs/t2iapi-${{ env.BASE_PACKAGE_VERSION }}.${{ github.run_number }}-SNAPSHOT.pom
+
       - name: Archive built jars and pom
         uses: actions/upload-artifact@v4
         with:
           name: target_jars
           path: java/build/libs
+
   run-tests-java17:
     runs-on: ubuntu-latest
     needs: build-java
     steps:
       # Run `git checkout`
       - uses: actions/checkout@v4
+
       - name: Download t2iapi jar artifact
         uses: actions/download-artifact@v4
         with:
           name: target_jars
           path: java/build/libs/
+
       - name: Detect release version
         if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          echo RELEASE_VERSION=1 >> $GITHUB_ENV
+        run: echo RELEASE_VERSION=1 >> $GITHUB_ENV
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
+
       - name: Execute tests
         working-directory: tests/java
         run: ./gradlew test
+
       - name: Archive test results
         uses: actions/upload-artifact@v4
         with:
           name: test_results
           path: tests/java/build/reports/tests/test/**/*.*
+
   deploy-maven-central:
     runs-on: ubuntu-latest
     needs: run-tests-java17
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v4
+
       - name: Source dependency versions
         working-directory: config
-        run: |
-          cat versions.txt >> $GITHUB_ENV
+        run: cat versions.txt >> $GITHUB_ENV
+
       - name: Detect release version
         if: startsWith(github.ref, 'refs/tags/v')
-        run: |
-          echo RELEASE_VERSION=1 >> $GITHUB_ENV
+        run: echo RELEASE_VERSION=1 >> $GITHUB_ENV
+
       - name: Install Protoc
         run: |
           sudo apt-get update && apt-get install -y apt-utils && apt-get install -y unzip
@@ -107,24 +122,32 @@ jobs:
           wget https://github.com/protocolbuffers/protobuf/releases/download/v${{ env.COMMON_PROTOC_VERSION }}/protoc-${{ env.COMMON_PROTOC_VERSION }}-linux-x86_64.zip -P ${{ runner.temp }}/protoc_install
           unzip ${{ runner.temp }}/protoc_install/*.zip -d ${{ runner.temp }}/protoc_install/protoc
           echo "${{ runner.temp }}/protoc_install/protoc/bin" >> $GITHUB_PATH
+
       - name: Set up Java for publishing to Maven Central Repository
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
+
       - name: Publish package
         working-directory: ./java
-        run: |
-          ./gradlew publish
+        run: ./gradlew publish
         env:
-          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
           MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
           MAVEN_GPG_PRIVATE_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+
+      - name: Deploy package
+        working-directory: ./java
+        run: ./gradlew jreleaserDeploy
+        env:
+          JRELEASER_MAVENCENTRAL_STAGE: UPLOAD
+          CENTRAL_PORTAL_USERNAME: ${{ secrets.CENTRAL_PORTAL_USERNAME }}
+          CENTRAL_PORTAL_TOKEN: ${{ secrets.CENTRAL_PORTAL_TOKEN }}
 
       - name: Download target_jars
         uses: actions/download-artifact@v4
@@ -144,13 +167,11 @@ jobs:
 
       - name: Zip jar files
         if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          zip -qq -j -r java-artifacts.zip release/jar/
+        run: zip -qq -j -r java-artifacts.zip release/jar/
 
       - name: Zip test results
         if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          zip -qq -j -r java-test-results.zip release/test_results/
+        run: zip -qq -j -r java-test-results.zip release/test_results/
 
       - name: Attach artifacts to github release
         uses: softprops/action-gh-release@v1

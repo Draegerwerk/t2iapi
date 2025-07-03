@@ -1,10 +1,14 @@
-import com.google.protobuf.gradle.*
+import com.google.protobuf.gradle.id
+import com.google.protobuf.gradle.protobuf
+import org.jreleaser.model.Active
+import org.jreleaser.model.Http.Authorization
 
 plugins {
     `java-library`
     `maven-publish`
     id("com.google.protobuf") version "0.9.1"
     id("com.google.osdetector") version "1.7.1"
+    id("org.jreleaser") version "1.19.0"
     signing
 }
 
@@ -20,6 +24,8 @@ val t2iapiVersion: String = when (isRelease) {
     true -> baseVersion
     false -> baseVersion + ( buildId?.let { ".$it" } ?: "" ) + "-SNAPSHOT"
 }
+val targetToStagingDeployRelease = layout.buildDirectory.dir("staging-deploy-release").get().asFile
+val targetToStagingDeploySnapshot = layout.buildDirectory.dir("staging-deploy-snapshot").get().asFile
 
 version = t2iapiVersion
 group = "com.draeger.medical"
@@ -117,16 +123,8 @@ publishing {
 
     repositories {
         maven {
-            name = "Sonatype"
-
-            val releaseUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            val snapshotsUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-
-            url = uri(if (isRelease) releaseUrl else snapshotsUrl)
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
+            name = "StagingForCentralPortal"
+            url = uri(if (isRelease) targetToStagingDeployRelease else targetToStagingDeploySnapshot)
         }
     }
 }
@@ -141,4 +139,43 @@ tasks.javadoc {
         (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
     }
     options.encoding = "UTF-8"
+}
+
+jreleaser {
+    deploy {
+        maven {
+            mavenCentral {
+                register("release-deploy") {
+                    username = System.getenv("CENTRAL_PORTAL_USERNAME")
+                    password = System.getenv("CENTRAL_PORTAL_TOKEN")
+                    authorization = Authorization.BEARER
+                    active = Active.RELEASE
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository(targetToStagingDeployRelease.path)
+                    sign = false // Signing is already handled by the signing plugin
+                    checksums = true
+                    sourceJar = true
+                    javadocJar = true
+                    verifyPom = true
+                }
+            }
+            nexus2 {
+                register("snapshot-deploy") {
+                    username = System.getenv("CENTRAL_PORTAL_USERNAME")
+                    password = System.getenv("CENTRAL_PORTAL_TOKEN")
+                    authorization = Authorization.BEARER
+                    active = Active.SNAPSHOT
+                    url = "https://central.sonatype.com/repository/maven-snapshots/"
+                    snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
+                    snapshotSupported = true
+                    stagingRepository(targetToStagingDeploySnapshot.path)
+                    sign = false // Signing is already handled by the signing plugin
+                    checksums = true
+                    sourceJar = true
+                    javadocJar = true
+                    verifyPom = true
+                }
+            }
+        }
+    }
 }

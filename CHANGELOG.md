@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - gradle version to 8.14.2
+- adapt deploy process, switch from legacy OSSRH to Central Portal
 
 ### Removed
 
@@ -25,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - manipulation RemoveAllContextStateValidators for contexts
 - manipulation InsertMdsDescriptor for devices
 - manipulation RemoveMdsDescriptor for devices
+
+## [4.3.0]
+
+- this version is broken due to technical issues while migrating to Central Portal
 
 ## [4.2.0] - 2025-03-17
 
