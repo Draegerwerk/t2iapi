@@ -6,10 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
+## [4.5.0] - 2025-10-30
 
 - manipulation CreateNewContextStateWithAssociation for contexts
-
 
 ## [4.4.0] - 2025-07-03
 
