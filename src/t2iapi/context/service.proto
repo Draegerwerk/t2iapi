@@ -35,7 +35,7 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Set the ContextAssociation of the target ContextState to the given value.
+  Set the @ContextAssociation of the target pm:AbstractContextState to the given value.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
@@ -43,16 +43,24 @@ service ContextService {
       returns (BasicResponse);
 
   /*
-  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle. The manipulated state shall be persistent until a next manipulation call. If the device is not able to
+  maintain the static state, it shall return RESULT_NOT_SUPPORTED.
    */
   rpc CreateContextStateWithAssociation (t2iapi.context.CreateContextStateWithAssociationRequest)
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle
-  and provide at least the number of pm:Validator elements for this ContextState.
+  Create a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor handle.
+  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+  the static state, it shall return RESULT_NOT_SUPPORTED.
+   */
+  rpc CreateNewContextStateWithAssociation (t2iapi.context.CreateContextStateWithAssociationRequest)
+      returns (t2iapi.context.CreateContextStateWithAssociationResponse);
+
+  /*
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle and provide at least the number of pm:Validator elements for this pm:AbstractContextState.
   If the number of pm:Validator elements is zero, zero pm:Validator elements shall be provided.
    */
   rpc CreateContextStateWithAssociationAndValidators(
@@ -60,8 +68,8 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle
-  and provide at least one Identification and Validator for this ContextState.
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle and provide at least one Identification and Validator for this pm:AbstractContextState.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
@@ -88,8 +96,8 @@ service ContextService {
       returns (CreateContextStateWithAssociationResponse);
 
   /*
-  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle,
-  confirm by requested validator type.
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle, confirm by requested validator type.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
@@ -98,8 +106,8 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle,
-  and assign a BindingMdibVersion.
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle, and assign a BindingMdibVersion.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
@@ -108,8 +116,8 @@ service ContextService {
       returns (t2iapi.context.CreateContextStateWithAssociationResponse);
 
   /*
-  Create or adapt a ContextState instance with the given ContextAssociation value for the given descriptor handle,
-  and assign a UnbindingMdibVersion.
+  Create or adapt a pm:AbstractContextState instance with the given @ContextAssociation value for the given descriptor
+  handle, and assign a UnbindingMdibVersion.
   The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
   the static state, it shall return RESULT_NOT_SUPPORTED.
    */
