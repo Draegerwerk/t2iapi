@@ -31,7 +31,7 @@ message SetContextStateAssociationRequest {
 }
 
 /*
-Request to create or adapt a context state with a given association.
+Request a context state with a given association.
  */
 message CreateContextStateWithAssociationRequest {
     string descriptor_handle = 1;
