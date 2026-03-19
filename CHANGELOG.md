@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- gRPC version from 1.60.1 to 1.70.0
+- protoc version from 4.25.0 to 5.29.4
+- com.google.protobuf version from 0.9.1 to 0.9.6
+
 ## [4.6.0] - 2025-10-30
 
 - manipulation CreateNewContextStateWithAssociation for contexts
