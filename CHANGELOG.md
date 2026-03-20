@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - to support python 3.13 the following versions where updated:
   - gRPC version from 1.60.1 to 1.70.0 (JAVA_GRPC_VERSION, PYTHON_GRPC_VERSION)
   - protoc version from 4.25.0 to 5.29.4 (PYTHON_PROTOC_VERSION)
-  - com.google.protobuf version from 0.9.1 to 0.9.6
+  - com.google.protobuf version from 0.9.1 to 0.9.6 
 
 ### Fixed
 
