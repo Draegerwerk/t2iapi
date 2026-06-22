@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -66,16 +66,4 @@ enum ValidatorType {
     VALIDATOR_TYPE_SERVICE_PERSONNEL = 3;
     VALIDATOR_TYPE_REMOTE_SERVICE_OPERATION = 4;
     VALIDATOR_TYPE_TECHNICAL_MEANS = 5;
-}
-
-/*
-Represents types of contexts available in IEEE Std 11073-10207-2017.
- */
-enum ContextType {
-    CONTEXT_TYPE_PATIENT = 0;
-    CONTEXT_TYPE_LOCATION = 1;
-    CONTEXT_TYPE_WORKFLOW = 2;
-    CONTEXT_TYPE_OPERATOR = 3;
-    CONTEXT_TYPE_MEANS = 4;
-    CONTEXT_TYPE_ENSEMBLE = 5;
 }

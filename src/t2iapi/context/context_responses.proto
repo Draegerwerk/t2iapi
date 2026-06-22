@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022-2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -11,7 +11,6 @@ package t2iapi.context;
 
 import "t2iapi/basic_responses.proto";
 import "t2iapi/response_types.proto";
-import "t2iapi/context/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.context";
 option java_outer_classname = "ContextResponses";
@@ -22,25 +21,6 @@ Response containing the handle of the newly created or adapted context state.
 message CreateContextStateWithAssociationResponse {
     BasicResponse status = 1;
     string context_state_handle = 2;  // handle of the context state, that was created or adapted
-}
-
-/*
-Response containing the context state handle and the prior mdib version.
- */
-message AssociateValidateAndChangeIdentificationOfPatientOrLocationContextStateResponse {
-    BasicResponse status = 1;
-    string context_state_handle = 2;  // handle of the context state, that was created or adapted
-    uint64 prior_mdib_version = 3;    // mdib version before the change - contains the previously associated
-                                      //   context state whose pm:Identification the changed
-                                      //   pm:Identification must structurally differ from.
-}
-
-/*
-Response which contains all context types supported by the DUT.
- */
-message GetSupportedContextTypesResponse {
-    BasicResponse status = 1;
-    repeated ContextType context_type = 2; // all types which are supported by the DUT
 }
 
 /*

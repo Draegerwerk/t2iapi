@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2022, 2023, 2025 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -34,15 +34,6 @@ to do so, because it is not directly modelled in the MDIB.
 message SetAlarmSignalInactivationStateRequest{
   string handle = 1;  // handle reference of the alert condition
   bool enable = 2;  // if enable is True, the AlertConditionState/@Presence is requested to be True, otherwise False
-}
-
-/*
-Request for a given alert condition to start/stop escalation/deescalation action from one alert priority to another.
-The alert priority can be set to Low, Medium, High or None.
- */
-message AlertConditionEscalationRequest {
-  string handle = 1;
-  AlertConditionEscalationProcess escalation_process = 2;
 }
 
 /*

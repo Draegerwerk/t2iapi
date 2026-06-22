@@ -34,14 +34,6 @@ message GetRemovableDescriptorsResponse {
 }
 
 /*
-Response containing the handle of the newly created mds descriptor.
- */
-message InsertMdsDescriptorResponse {
-    BasicResponse status = 1;
-    string handle = 2; // handle of the mds descriptor, that was created
-}
-
-/*
 Response containing the available device metadata.
  */
 message AvailableDeviceMetaDataResponse {
