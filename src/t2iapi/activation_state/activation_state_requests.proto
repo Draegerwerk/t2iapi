@@ -58,13 +58,3 @@ message ComponentActivationTransitionRequest {
     ComponentActivation start_activation = 2;  // the start @ActivationState value
     ComponentActivation end_activation = 3;  // the end @ActivationState value
 }
-
-/*
-Request to set the SystemSignalActivation with the given AlertSignalManifestation and AlertActivation for the alert
-system with the given handle.
- */
-message SetSystemSignalActivationRequest {
-    string handle = 1; // handle reference of the alert system
-    AlertSignalManifestation manifestation = 2;
-    AlertActivation activation = 3;
-}

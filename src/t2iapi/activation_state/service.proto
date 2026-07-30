@@ -56,10 +56,5 @@ service ActivationStateService {
   t2iapi.activation_state.SetAlertConditionAndAlertSignalActivationStateRequest)
       returns (BasicResponse);
 
-  /*
-  Set a SystemSignalActivation for a alert system with the given handle.
-   */
-  rpc SetSystemSignalActivation (t2iapi.activation_state.SetSystemSignalActivationRequest)
-      returns (BasicResponse);
 }
 
