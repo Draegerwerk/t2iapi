@@ -23,28 +23,28 @@ Service to handle operation manipulations.
  */
 service OperationService {
 
-  /*
-  This manipulation shall change the devices state, which results in setting the requested OperatingMode for the
-  given operation.
-  The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-  the static state, it shall return RESULT_NOT_SUPPORTED.
-  */
-  rpc SetOperatingMode (t2iapi.operation.SetOperatingModeRequest)
-      returns (BasicResponse);
+    /*
+    This manipulation shall change the devices state, which results in setting the requested OperatingMode for the
+    given operation.
+    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
+    the static state, it shall return RESULT_NOT_SUPPORTED.
+    */
+    rpc SetOperatingMode (t2iapi.operation.SetOperatingModeRequest)
+        returns (BasicResponse);
 
-  /*
-  Set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value that is
-  less than or equal to the requested threshold.
-  */
-  rpc SetInvocationEffectiveTimeoutLessThanOrEqualToThreshold (
-      SetInvocationEffectiveTimeoutLessThanOrEqualToThresholdRequest)
-      returns (BasicResponse);
+    /*
+    Set the @InvocationEffectiveTimeout of the pm:AbstractOperationDescriptor with the given handle to a value that is
+    less than or equal to the requested threshold.
+    */
+    rpc SetInvocationEffectiveTimeoutLessThanOrEqualToThreshold (
+        SetInvocationEffectiveTimeoutLessThanOrEqualToThresholdRequest)
+        returns (BasicResponse);
 
-  /*
-  Call an operation that immediately completes execution, according to the transition 1 in Figure 13 of
-  IEEE 11073-10207-2017, and return the transaction identifier, i.e. InvocationInfo/TransactionId, as well as the
-  respective SequenceId.
-  */
-  rpc CallOperationThatImmediatelyCompletes (google.protobuf.Empty)
-      returns (OperationTransactionIdentifierResponse);
+    /*
+    Call an operation that immediately completes execution, according to the transition 1 in Figure 13 of
+    IEEE 11073-10207-2017, and return the transaction identifier, i.e. InvocationInfo/TransactionId, as well as the
+    respective SequenceId.
+    */
+    rpc CallOperationThatImmediatelyCompletes (google.protobuf.Empty)
+        returns (OperationTransactionIdentifierResponse);
 }
