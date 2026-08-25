@@ -20,5 +20,5 @@ Response containing an operation transaction identifier as well as the respectiv
 message OperationTransactionIdentifierResponse {
     BasicResponse status = 1;
     uint32 operation_transaction_identifier = 2;  // InvocationInfo/TransactionId
-    string sequence_id = 3;  // SequenceId of the transaction identifier occurred
+    string sequence_id = 3;  // SequenceId of the transaction identifier
 }
