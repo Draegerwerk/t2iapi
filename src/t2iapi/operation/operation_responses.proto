@@ -10,15 +10,16 @@ syntax = "proto3";
 package t2iapi.operation;
 
 import "t2iapi/basic_responses.proto";
+import "t2iapi/operation/types.proto";
 
 option java_package = "com.draeger.medical.t2iapi.operation";
 option java_outer_classname = "OperationResponses";
 
 /*
-Response containing an operation transaction identifier as well as the respective SequenceId of the identifier.
+Response containing tuples of an operation transaction identifier as well as
+the respective SequenceId of the identifier.
 */
 message OperationTransactionIdentifierResponse {
     BasicResponse status = 1;
-    uint32 operation_transaction_identifier = 2;  // InvocationInfo/TransactionId
-    string sequence_id = 3;  // SequenceId of the transaction identifier
+    repeated TransactionIdSequenceIdTuple transactionid_sequenceid_tuples = 2;
 }

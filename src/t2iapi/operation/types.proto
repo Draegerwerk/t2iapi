@@ -1,6 +1,6 @@
 /*
 This Source Code Form is subject to the terms of the MIT License.
-Copyright (c) 2022 Draegerwerk AG & Co. KGaA.
+Copyright (c) 2026 Draegerwerk AG & Co. KGaA.
 
 SPDX-License-Identifier: MIT
 */
@@ -19,4 +19,12 @@ enum OperatingMode {
     OPERATING_MODE_DISABLED = 0;
     OPERATING_MODE_ENABLED = 1;
     OPERATING_MODE_NOT_AVAILABLE = 2;
+}
+
+/*
+Tuple of an operation TransactionId and its respective SequenceId.
+*/
+message TransactionIdSequenceIdTuple {
+    uint32 operation_transaction_identifier = 2;  // InvocationInfo/TransactionId
+    string sequence_id = 3;  // SequenceId of the transaction identifier
 }

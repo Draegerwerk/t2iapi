@@ -41,10 +41,10 @@ service OperationService {
         returns (BasicResponse);
 
     /*
-    Call an operation that immediately completes execution, according to the transition 1 in Figure 13 of
-    IEEE 11073-10207-2017, and return the transaction identifier, i.e. InvocationInfo/TransactionId, as well as the
-    respective SequenceId.
+    Call all operations that immediately complete execution, according to the transition 1 in Figure 13 of
+    IEEE 11073-10207-2017, and return tuples of the transaction identifier,
+    i.e. InvocationInfo/TransactionId, as well as the respective SequenceId.
     */
-    rpc CallOperationThatImmediatelyCompletes (google.protobuf.Empty)
+    rpc CallOperationsThatImmediatelyComplete (google.protobuf.Empty)
         returns (OperationTransactionIdentifierResponse);
 }
