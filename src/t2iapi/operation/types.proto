@@ -22,6 +22,24 @@ enum OperatingMode {
 }
 
 /*
+Represents a transition in Figure 13 of IEEE Std 11073-10207-2017.
+ */
+enum OperationFigureThirteenTransition {
+    UNDEFINED_TRANSITION = 0;
+    TRANSITION_ONE = 1;
+    TRANSITION_TWO = 2;
+    TRANSITION_THREE = 3;
+    TRANSITION_FOUR = 4;
+    TRANSITION_FIVE = 5;
+    TRANSITION_SIX = 6;
+    TRANSITION_SEVEN = 7;
+    TRANSITION_EIGHT = 8;
+    TRANSITION_NINE = 9;
+    TRANSITION_TEN = 10;
+    TRANSITION_ELEVEN = 11;
+}
+
+/*
 Tuple of an operation TransactionId and its respective SequenceId.
 */
 message TransactionIdSequenceIdTuple {
