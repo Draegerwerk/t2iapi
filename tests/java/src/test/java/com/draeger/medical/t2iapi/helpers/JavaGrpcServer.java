@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 import static com.draeger.medical.t2iapi.helpers.Common.TEST_DATA_PATH;
 
@@ -109,112 +110,105 @@ public class JavaGrpcServer {
             }
         }
 
+        private <T extends Message> void handleRequest(
+                Message received,
+                Message.Builder responseBuilder,
+                Supplier<T> builderCall,
+                String rpcCall,
+                StreamObserver<T> responseObserver
+        ) {
+            validate(rpcCall, received);
+            buildResponse(rpcCall, responseBuilder);
+            responseObserver.onNext(builderCall.get());
+            responseObserver.onCompleted();
+        }
+
+
         @Override
         public void testString(StringCase received, StreamObserver<StringCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = StringCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = StringCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testBool(BoolCase received, StreamObserver<BoolCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = BoolCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = BoolCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testUint32(Uint32Case received, StreamObserver<Uint32Case> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = Uint32Case.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = Uint32Case.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testEnum(EnumCase received, StreamObserver<EnumCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = EnumCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = EnumCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
-        public void testRepeatedString(RepeatedStringCase received, StreamObserver<RepeatedStringCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = RepeatedStringCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+        public void testRepeatedString(
+                RepeatedStringCase received,
+                StreamObserver<RepeatedStringCase> responseObserver
+        ) {
+            var builder = RepeatedStringCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testRepeatedEnum(RepeatedEnumCase received, StreamObserver<RepeatedEnumCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = RepeatedEnumCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = RepeatedEnumCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
-        public void testRepeatedMessage(RepeatedMessageCase received, StreamObserver<RepeatedMessageCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = RepeatedMessageCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+        public void testRepeatedMessage(
+                RepeatedMessageCase received,
+                StreamObserver<RepeatedMessageCase> responseObserver
+        ) {
+            var builder = RepeatedMessageCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testMessage(MessageCase received, StreamObserver<MessageCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = MessageCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = MessageCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
-        public void testOptionalString(OptionalStringCase received, StreamObserver<OptionalStringCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = OptionalStringCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+        public void testOptionalString(
+                OptionalStringCase received,
+                StreamObserver<OptionalStringCase> responseObserver
+        ) {
+            var builder = OptionalStringCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
-        public void testOptionalUint64(OptionalUint64Case received, StreamObserver<OptionalUint64Case> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = OptionalUint64Case.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+        public void testOptionalUint64(
+                OptionalUint64Case received,
+                StreamObserver<OptionalUint64Case> responseObserver
+        ) {
+            var builder = OptionalUint64Case.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testDuration(DurationCase received, StreamObserver<DurationCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = DurationCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+            var builder = DurationCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
-        public void testDeepNestedMessage(DeepNestedCase received, StreamObserver<DeepNestedCase> responseObserver) {
-            validate(received.getRpcCall(), received);
-            var b = DeepNestedCase.newBuilder();
-            buildResponse(received.getRpcCall(), b);
-            responseObserver.onNext(b.build());
-            responseObserver.onCompleted();
+        public void testDeepNested(
+                DeepNestedMessageCase received,
+                StreamObserver<DeepNestedMessageCase> responseObserver
+        ) {
+            var builder = DeepNestedMessageCase.newBuilder();
+            handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
     }
 }

@@ -131,10 +131,10 @@ public class JavaGrpcClient {
                 var b = DurationCase.newBuilder();
                 JsonFormat.parser().merge(itemJson, b);
                 result = stub.testDuration(b.build());
-            } else if (rpcCall.startsWith("TestDeepNestedMessage")) {
-                var b = DeepNestedCase.newBuilder();
+            } else if (rpcCall.startsWith("TestDeepNested")) {
+                var b = DeepNestedMessageCase.newBuilder();
                 JsonFormat.parser().merge(itemJson, b);
-                result = stub.testDeepNestedMessage(b.build());
+                result = stub.testDeepNested(b.build());
             } else {
                 throw new IllegalArgumentException("No RPC mapped for rpcCall: '" + rpcCall + "'");
             }

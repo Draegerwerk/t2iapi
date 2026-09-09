@@ -157,7 +157,7 @@ message DurationCase {
 /*
 Test case for the deeply nested message field type.
 */
-message DeepNestedCase {
+message DeepNestedMessageCase {
   string rpc_call = 1;
   DeepNestedMsg expected = 2;
 }
@@ -217,5 +217,5 @@ service IntegrationService {
   /*
   Validates that a deeply nested message is correctly transmitted.
   */
-  rpc TestDeepNestedMessage(DeepNestedCase) returns (DeepNestedCase);
+  rpc TestDeepNested(DeepNestedMessageCase) returns (DeepNestedMessageCase);
 }

@@ -56,8 +56,8 @@ def _send_and_validate_response(stub, rpc_call, item_json):
         response = stub.TestMessage(json_format.Parse(item_json, service_pb2.MessageCase()))
     elif rpc_call.startswith('TestDuration'):
         response = stub.TestDuration(json_format.Parse(item_json, service_pb2.DurationCase()))
-    elif rpc_call.startswith('TestDeepNestedMessage'):
-        response = stub.TestDeepNestedMessage(json_format.Parse(item_json, service_pb2.DeepNestedCase()))
+    elif rpc_call.startswith('TestDeepNested'):
+        response = stub.TestDeepNested(json_format.Parse(item_json, service_pb2.DeepNestedMessageCase()))
     else:
         raise ValueError(f"No RPC mapped for rpcCall: '{rpc_call}'")
     return _validate(response)
