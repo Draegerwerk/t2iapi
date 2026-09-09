@@ -31,6 +31,10 @@ public class Common {
             .toAbsolutePath().normalize();
     static Map<String, ScenarioEntry> cases;
 
+    private static final String EXPECTED = "expected";
+    private static final String SUFFIX = "suffix";
+    private static final String RPC_CALL = "rpcCall";
+
     private Common() {
     }
 
@@ -46,8 +50,8 @@ public class Common {
             List<Optional<JsonElement>> values = new ArrayList<>();
             for (JsonElement element : type.getValue().getAsJsonArray()) {
                 JsonObject scenario = element.getAsJsonObject();
-                keys.add(type.getKey() + "_" + scenario.get("suffix").getAsString());
-                values.add(scenario.has("expected") ? Optional.of(scenario.get("expected")) : Optional.empty());
+                keys.add(type.getKey() + "_" + scenario.get(SUFFIX).getAsString());
+                values.add(scenario.has(EXPECTED) ? Optional.of(scenario.get(EXPECTED)) : Optional.empty());
             }
             for (int i = 0; i < keys.size(); i++) {
                 result.put(keys.get(i), new ScenarioEntry(values.get(i), keys.get((i + 1) % keys.size())));
@@ -70,8 +74,8 @@ public class Common {
     */
     static String buildItemJson(String rpcCall, Optional<JsonElement> raw) {
         JsonObject obj = new JsonObject();
-        obj.addProperty("rpcCall", rpcCall);
-        raw.ifPresent(e -> obj.add("expected", e));
+        obj.addProperty(RPC_CALL, rpcCall);
+        raw.ifPresent(e -> obj.add(EXPECTED, e));
         return obj.toString();
     }
 }
