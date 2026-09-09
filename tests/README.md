@@ -1,5 +1,11 @@
 # Integration Tests
 
+## Prerequisites
+
+Before running any reference implementation or automated test, build the required artifacts
+as described in [README](../README.md):
+
+
 ## Validating compatibility
 
 If you implement t2iapi in a language other than Java or Python, or if you build the
@@ -54,9 +60,10 @@ other automatically. There are two test classes, each covering one direction:
 | `PythonClientJavaServerTest` | Python | Java |
 
 Each test spawns the other language's component as a subprocess and sends every scenario from
-`tests/java/src/test/resources/integration_scenarios.json` through it. The server always responds
-with the next scenario in the same type group, which the client then validates. Both sides collect
-validation errors independently; the test fails if either side reports any.
+`tests/java/src/test/resources/integration_scenarios.json` through it. The server responds to each
+incoming scenario with the next scenario in the same type group, cycling back to the first after
+the last one (round-robin). The client validates the response against that expected next scenario.
+Both sides collect validation errors independently; the test fails if either side reports any.
 
 ### Scenario file
 
