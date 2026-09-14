@@ -114,7 +114,7 @@ public class JavaGrpcServer {
 
         private <T extends Message> void handleRequest(
                 Message received,
-                Message.Builder responseBuilder,
+                T.Builder responseBuilder,
                 Supplier<T> builderCall,
                 String rpcCall,
                 StreamObserver<T> responseObserver
@@ -128,25 +128,25 @@ public class JavaGrpcServer {
 
         @Override
         public void testString(StringCase received, StreamObserver<StringCase> responseObserver) {
-            var builder = StringCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testBool(BoolCase received, StreamObserver<BoolCase> responseObserver) {
-            var builder = BoolCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testUint32(Uint32Case received, StreamObserver<Uint32Case> responseObserver) {
-            var builder = Uint32Case.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testEnum(EnumCase received, StreamObserver<EnumCase> responseObserver) {
-            var builder = EnumCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
@@ -155,13 +155,13 @@ public class JavaGrpcServer {
                 RepeatedStringCase received,
                 StreamObserver<RepeatedStringCase> responseObserver
         ) {
-            var builder = RepeatedStringCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testRepeatedEnum(RepeatedEnumCase received, StreamObserver<RepeatedEnumCase> responseObserver) {
-            var builder = RepeatedEnumCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
@@ -170,13 +170,13 @@ public class JavaGrpcServer {
                 RepeatedMessageCase received,
                 StreamObserver<RepeatedMessageCase> responseObserver
         ) {
-            var builder = RepeatedMessageCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testMessage(MessageCase received, StreamObserver<MessageCase> responseObserver) {
-            var builder = MessageCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
@@ -185,7 +185,7 @@ public class JavaGrpcServer {
                 OptionalStringCase received,
                 StreamObserver<OptionalStringCase> responseObserver
         ) {
-            var builder = OptionalStringCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
@@ -194,13 +194,13 @@ public class JavaGrpcServer {
                 OptionalUint64Case received,
                 StreamObserver<OptionalUint64Case> responseObserver
         ) {
-            var builder = OptionalUint64Case.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
         @Override
         public void testDuration(DurationCase received, StreamObserver<DurationCase> responseObserver) {
-            var builder = DurationCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
 
@@ -209,7 +209,7 @@ public class JavaGrpcServer {
                 DeepNestedMessageCase received,
                 StreamObserver<DeepNestedMessageCase> responseObserver
         ) {
-            var builder = DeepNestedMessageCase.newBuilder();
+            final var builder = received.newBuilderForType();
             handleRequest(received, builder, builder::build, received.getRpcCall(), responseObserver);
         }
     }
