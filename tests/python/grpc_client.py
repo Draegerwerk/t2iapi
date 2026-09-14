@@ -15,20 +15,19 @@ from t2iapi.integration import service_pb2
 from t2iapi.integration import service_pb2_grpc
 
 
-def _validate(received):
+def _validate(received, rpc_call):
     """Return an error string if received does not match its scenario in cases, else empty string."""
-    received_rpc_call = received.rpc_call
-    entry = common.cases.get(received_rpc_call)
+    entry = common.cases.get(rpc_call)
     if entry is None:
-        return f"Unknown rpcCall in response: '{received_rpc_call}'"
+        return f"Unknown rpcCall: '{rpc_call}'"
     try:
-        expected = json_format.Parse(build_json(received_rpc_call, entry.scenario), type(received)())
+        expected = common.get_expected_response_and_merge(rpc_call, type(received)())
         if received != expected:
-            return (f"Validation failed for rpcCall: '{received_rpc_call}'\n"
+            return (f"Validation failed for rpcCall: '{rpc_call}'\n"
                     f"expected: {str(expected).rstrip()}\n"
                     f"received: {str(received)}")
     except Exception as e:
-        return f"Error validating response for rpcCall: '{received_rpc_call}': {e}"
+        return f"Error validating response for rpcCall: '{rpc_call}': {e}"
     return ""
 
 
@@ -56,11 +55,11 @@ def _send_and_validate_response(stub, rpc_call, item_json):
         response = stub.TestMessage(json_format.Parse(item_json, service_pb2.MessageCase()))
     elif rpc_call.startswith('TestDuration'):
         response = stub.TestDuration(json_format.Parse(item_json, service_pb2.DurationCase()))
-    elif rpc_call.startswith('TestDeepNested'):
-        response = stub.TestDeepNested(json_format.Parse(item_json, service_pb2.DeepNestedMessageCase()))
+    elif rpc_call.startswith('TestDeepNestedMessage'):
+        response = stub.TestDeepNestedMessage(json_format.Parse(item_json, service_pb2.DeepNestedMessageCase()))
     else:
         raise ValueError(f"No RPC mapped for rpcCall: '{rpc_call}'")
-    return _validate(response)
+    return _validate(response, rpc_call)
 
 
 def run(server_address, testdata_path):
