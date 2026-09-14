@@ -18,6 +18,8 @@ import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
@@ -37,7 +39,7 @@ public class JavaGrpcServer {
                 ? Path.of(args[1])
                 : TEST_DATA_PATH;
 
-        List<String> validationErrors = new java.util.ArrayList<>();
+        List<String> validationErrors = Collections.synchronizedList(new ArrayList<>());
         JavaGrpcServer server = new JavaGrpcServer(port, testdataPath, validationErrors);
         System.out.println(server.getPort());
         System.out.flush();
@@ -203,7 +205,7 @@ public class JavaGrpcServer {
         }
 
         @Override
-        public void testDeepNested(
+        public void testDeepNestedMessage(
                 DeepNestedMessageCase received,
                 StreamObserver<DeepNestedMessageCase> responseObserver
         ) {

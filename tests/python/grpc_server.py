@@ -92,7 +92,7 @@ class IntegrationServiceServicer(service_pb2_grpc.IntegrationServiceServicer):
         self._validate(request)
         return self._build_next_response(request)
 
-    def TestDeepNested(self, request, context):
+    def TestDeepNestedMessage(self, request, context):
         self._validate(request)
         return self._build_next_response(request)
 
