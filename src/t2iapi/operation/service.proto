@@ -9,8 +9,6 @@ syntax = "proto3";
 
 package t2iapi.operation;
 
-import "google/protobuf/empty.proto";
-
 import "t2iapi/basic_responses.proto";
 import "t2iapi/operation/operation_requests.proto";
 import "t2iapi/operation/operation_responses.proto";
@@ -41,10 +39,12 @@ service OperationService {
         returns (BasicResponse);
 
     /*
-    Call all operations that immediately complete execution, according to the transition 1 in Figure 13 of
-    IEEE 11073-10207-2017, and return tuples of the transaction identifier,
-    i.e. InvocationInfo/TransactionId, as well as the respective SequenceId.
+    Trigger the given transition for all operations that support it, according to the respective transition given
+    in Figure 13 of IEEE Std 11073-10207-2017, and return tuples of the transaction identifier,
+    i.e. InvocationInfo/TransactionId, as well as the respective SequenceId. Each tuple is supposed to be given only
+    once, e.g. in case that the transition is not terminal the further reports do not need to be listed in the
+    return value.
     */
-    rpc CallOperationsThatImmediatelyComplete (google.protobuf.Empty)
+    rpc TriggerFigureThirteenTransitionForOperations (t2iapi.operation.TriggerTransitionRequest)
         returns (OperationTransactionIdentifierResponse);
 }

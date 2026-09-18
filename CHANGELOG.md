@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [6.0.0]
+
+### Added
+
+- manipulation TriggerFigureThirteenTransitionForOperations for operations
+
+### Removed
+
+- manipulation CallOperationsThatImmediatelyComplete for operations
+
 ## [5.0.1] - 2026-09-01
 
 ### Added
