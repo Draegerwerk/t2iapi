@@ -75,6 +75,11 @@ graph LR
   B --SDC--> A
 ```
 
+## Validating compatibility
+
+See [tests/README.md](tests/README.md) for information on cross-language compatibility testing,
+reference client/server usage, and automated integration tests.
+
 ## Workflow
 Changes to t2iapi are guided by requirements of Dräger test tools, including [SDCcc](https://github.com/Draegerwerk/sdccc).
 As such, they are only done by Dräger employees.

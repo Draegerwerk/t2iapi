@@ -1,0 +1,101 @@
+{
+  "TestString": [
+    {"suffix": "populated",   "expected": "some-handle-ref"},
+    {"suffix": "empty",       "expected": ""},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestBool": [
+    {"suffix": "true",        "expected": true},
+    {"suffix": "false",       "expected": false},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestUint32": [
+    {"suffix": "populated",   "expected": 2},
+    {"suffix": "zero",        "expected": 0},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestEnum": [
+    {"suffix": "populated",   "expected": "COMPATIBILITY_ENUM_VALUE_1"},
+    {"suffix": "default",     "expected": "COMPATIBILITY_ENUM_VALUE_0"},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestRepeatedString": [
+    {"suffix": "populated",   "expected": ["handle-a", "handle-b", "handle-c"]},
+    {"suffix": "empty",       "expected": []},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestRepeatedEnum": [
+    {"suffix": "populated",   "expected": ["COMPATIBILITY_ENUM_VALUE_0", "COMPATIBILITY_ENUM_VALUE_1", "COMPATIBILITY_ENUM_VALUE_2"]},
+    {"suffix": "empty",       "expected": []},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestRepeatedMessage": [
+    {"suffix": "populated",   "expected": [
+      {"stringField": "some-root", "boolField": true, "optionalString": "some-extension"},
+      {"stringField": "other-root", "boolField": false}
+    ]},
+    {"suffix": "empty",       "expected": []},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestMessage": [
+    {"suffix": "populated",   "expected": {"stringField": "some-root", "boolField": true, "optionalString": "some-extension"}},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestOptionalString": [
+    {"suffix": "populated",   "expected": "some-extension"},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestOptionalUint64": [
+    {"suffix": "populated",   "expected": "42"},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestDuration": [
+    {"suffix": "populated",   "expected": "30s"},
+    {"suffix": "zero",        "expected": "0s"},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ],
+
+  "TestDeepNestedMessage": [
+    {"suffix": "populated",   "expected": {
+      "inner": [
+        {
+          "leaf": [
+            {"leafEnum": "LEAF_ENUM_VALUE_1", "version": "42", "status": {"result": "RESULT_SUCCESS"}},
+            {"leafEnum": "LEAF_ENUM_VALUE_0", "status": {"result": "RESULT_NOT_SUPPORTED"}},
+            {}
+          ],
+          "nested": {"stringField": "some-root", "boolField": true, "optionalString": "some-extension"}
+        },
+        {
+          "leaf": [],
+          "nested": {"stringField": "other-root", "boolField": false}
+        },
+        {}
+      ]
+    }},
+    {"suffix": "empty",       "expected": {}},
+    {"suffix": "not_present"},
+    {"suffix": "null",        "expected": null}
+  ]
+}

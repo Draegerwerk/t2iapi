@@ -1,0 +1,97 @@
+name: Integration tests
+
+on:
+  workflow_call:
+
+jobs:
+  run-tests-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Source dependency versions
+        working-directory: config
+        run: cat versions.txt >> $GITHUB_ENV
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Download t2iapi wheel artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - name: Install t2iapi package
+        run: python -m pip install dist/t2iapi*.whl
+      - name: pip freeze
+        run: python -m pip freeze --no-cache-dir > pip_freeze.txt
+      - name: install html test runner
+        run: python -m pip install html-testRunner==${HTML_TEST_RUNNER_VERSION}
+      - name: run unit tests
+        run: python ./tests/python/html_report.py
+      - name: Archive freeze information
+        uses: actions/upload-artifact@v4
+        with:
+          name: freeze
+          path: pip_freeze.txt
+          retention-days: 1
+      - name: Archive test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: html_unit_test
+          path: unittest_results/*.html
+          retention-days: 1
+
+  run-integration-tests-java:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Source dependency versions
+        working-directory: config
+        run: cat versions.txt >> $GITHUB_ENV
+
+      - name: Download t2iapi jar artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: target_jars
+          path: java/build
+
+      - name: Download t2iapi wheel artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: ${{ env.GRADLE_VERSION }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install python dependencies
+        run: python -m pip install --no-cache-dir --upgrade pip==${PIP_VERSION} wheel==${WHEEL_VERSION}
+
+      - name: Install Python package
+        run: pip install dist/t2iapi*.whl
+
+      - name: Run integration tests
+        working-directory: tests/java
+        run: ./gradlew test -Dpython.executable=python
+
+      - name: Archive test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-results
+          path: tests/java/build/reports/tests/test/**/*.*
+          if-no-files-found: ignore
