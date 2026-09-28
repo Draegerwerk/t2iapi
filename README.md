@@ -1,5 +1,9 @@
 # t2iapi
 
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/t2iapi)
+![PyPI - Latest Version](https://img.shields.io/pypi/v/t2iapi)
+![Maven Central Version](https://img.shields.io/maven-central/v/com.draeger.medical/t2iapi)
+
 t2iapi describes a product-independent interface to manipulate devices
 which utilize ISO/IEEE 11073 SDC during verification.
 
@@ -20,13 +24,13 @@ By contributing to the project you agree to be bound by this Agreement and to li
 
 #### Python
 
-t2iapi wheels can be built locally using the following steps using python version 3.8:
+t2iapi wheels can be built locally using the following steps using python version 3.11 or higher:
 
 Note, this requires `protoc` and `python` to be in your `PATH`.
 ```shell
 cd python
 ./build_protobuf.sh
-python -m pip install wheel==0.37.0
+python -m pip install wheel
 python setup.py bdist_wheel
 ```
 

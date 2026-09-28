@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Source dependency versions
         working-directory: config
@@ -23,13 +23,13 @@ jobs:
         run: echo RELEASE_VERSION=1 >> $GITHUB_ENV
 
       - name: Download target_jars
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: target_jars
           path: java/build
 
       - name: Set up Java for publishing to Maven Central Repository
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -56,10 +56,11 @@ jobs:
 
       - name: Download integration test results
         if: startsWith(github.ref, 'refs/tags/')
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
-          name: integration-test-results
+          pattern: integration-test-results-*
           path: release/test_results/
+          merge-multiple: false
 
       - name: Zip jar files
         if: startsWith(github.ref, 'refs/tags/')

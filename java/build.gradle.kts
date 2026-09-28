@@ -1,14 +1,12 @@
-import com.google.protobuf.gradle.id
-import com.google.protobuf.gradle.protobuf
 import org.jreleaser.model.Active
 import org.jreleaser.model.Http.Authorization
 
 plugins {
     `java-library`
     `maven-publish`
-    id("com.google.protobuf") version "0.9.1"
-    id("com.google.osdetector") version "1.7.1"
-    id("org.jreleaser") version "1.19.0"
+    id("com.google.protobuf") version "0.10.0"
+    id("com.google.osdetector") version "1.7.3"
+    id("org.jreleaser") version "1.26.0"
     signing
 }
 
@@ -36,20 +34,25 @@ repositories {
 }
 
 dependencies {
-    api(group = "com.google.protobuf", name = "protobuf-java", version = protocVersion)
-    api(group = "io.grpc", name = "grpc-all", version = grpcVersion)
+    api("com.google.protobuf:protobuf-java:$protocVersion")
+    api("io.grpc:grpc-all:$grpcVersion")
     if (JavaVersion.current().isJava9Compatible) {
         // Workaround for @javax.annotation.Generated
         // see: https://github.com/grpc/grpc-java/issues/3633
         api("javax.annotation:javax.annotation-api:1.3.2")
     }
-
-    protobuf(files("../src"))
 }
 
-tasks.compileJava {
-    sourceCompatibility = "11"
-    targetCompatibility = "11"
+sourceSets {
+    main {
+        proto {
+            srcDir("../src")
+        }
+    }
+}
+
+tasks.withType(JavaCompile::class) {
+    options.release = 17
 }
 
 java {
@@ -67,15 +70,14 @@ protobuf {
         artifact = "com.google.protobuf:protoc:$protocVersion:${osdetector.classifier}"
     }
     plugins {
-        id("grpc") {
+        create("grpc") {
             artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion:${osdetector.classifier}"
         }
     }
     generateProtoTasks {
         ofSourceSet("main").forEach {
             it.plugins {
-                // Apply the "grpc" plugin whose spec is defined above, without options.
-                id("grpc")
+                create("grpc")
             }
         }
     }

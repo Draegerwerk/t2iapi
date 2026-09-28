@@ -10,17 +10,17 @@ jobs:
       contents: write
     steps:
       - name: Download t2iapi wheel artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist/
       - name: Download t2iapi test results artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: html_unit_test
           path: unittest_results/
       - name: Download pip freeze
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: freeze
           path: freeze/
