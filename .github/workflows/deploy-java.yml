@@ -60,7 +60,7 @@ jobs:
         with:
           pattern: integration-test-results-*
           path: release/test_results/
-          merge-multiple: true
+          merge-multiple: false
 
       - name: Zip jar files
         if: startsWith(github.ref, 'refs/tags/')
