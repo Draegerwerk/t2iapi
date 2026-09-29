@@ -150,7 +150,7 @@ jreleaser {
                 register("release-deploy") {
                     username = System.getenv("CENTRAL_PORTAL_USERNAME")
                     password = System.getenv("CENTRAL_PORTAL_TOKEN")
-                    authorization = Authorization.BEARER
+                    authorization = Authorization.BASIC
                     active = Active.RELEASE
                     url = "https://central.sonatype.com/api/v1/publisher"
                     stagingRepository(targetToStagingDeployRelease.path)
@@ -165,7 +165,7 @@ jreleaser {
                 register("snapshot-deploy") {
                     username = System.getenv("CENTRAL_PORTAL_USERNAME")
                     password = System.getenv("CENTRAL_PORTAL_TOKEN")
-                    authorization = Authorization.BEARER
+                    authorization = Authorization.BASIC
                     active = Active.SNAPSHOT
                     url = "https://central.sonatype.com/repository/maven-snapshots/"
                     snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
