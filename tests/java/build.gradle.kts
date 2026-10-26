@@ -24,9 +24,11 @@ val t2iapiVersion: String = when (System.getenv("RELEASE_VERSION") == "1") {
 dependencies {
     testImplementation("io.grpc:grpc-protobuf:${grpcVersion}")
     testImplementation("io.grpc:grpc-stub:${grpcVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.5.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:6.1.3")
+    testImplementation("org.junit.platform:junit-platform-launcher:6.1.3")
     testImplementation("io.grpc:grpc-netty-shaded:${grpcVersion}")
     testImplementation("com.google.protobuf:protobuf-java-util:${protocVersion}")
+    testImplementation("com.google.code.gson:gson:2.14.0")
     testImplementation("com.draeger.medical:t2iapi:${t2iapiVersion}")
 }
 
@@ -43,7 +45,7 @@ tasks.register<JavaExec>("runJavaServer") {
 tasks.register<JavaExec>("runJavaClient") {
     classpath = sourceSets.test.get().runtimeClasspath
     mainClass.set("com.draeger.medical.t2iapi.helpers.JavaGrpcClient")
-    val server = project.findProperty("server")?.toString()
+    val server = project.findProperty("server").toString()
     val testdata = project.findProperty("testdata")?.toString()
         ?: "src/test/resources/integration_scenarios.json"
     args = listOf(server, testdata)

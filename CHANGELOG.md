@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [6.0.0]
+## [7.0.0]
 
 ### Added
 
@@ -15,6 +15,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 - manipulation CallOperationsThatImmediatelyComplete for operations
+
+## [6.0.3] - 2026-09-29
+
+### Added
+
+- support for python 3.11, 3.12, 3.13, 3.14
+- support for java 21, 25
+
+### Changed
+
+- gRPC version to 1.84.0
+- java protoc version to 4.34.2
+- python protoc version to 7.36.1
+
+### Removed
+
+- support for python 3.8, 3.9, 3.10
+- support for java 11
 
 ## [5.0.1] - 2026-09-01
 
