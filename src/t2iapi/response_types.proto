@@ -59,7 +59,8 @@ message PartialCodedValue {
 }
 
 /*
-Represents Translation from the IEEE Std 11073-10207-2017.
+Represents Translation from the IEEE Std 11073-10207-2017 with the exception of CodingSystem having the implied
+value set explicitly.
  */
 message Translation {
     string translation_code = 1;  // unique identifier of the Code in the Coding System
@@ -71,4 +72,5 @@ message Translation {
                                 // urn:oid:1.2.840.10004.1.1.1.0.0.1, however this is not the implied value here.
                                 // If urn:oid:1.2.840.10004.1.1.1.0.0.1 shall be the coding system here,
                                 // then it shall be set explicitly as a value.
+                                // An empty string is not allowed on the application level, since it is not a valid URI.
 }
