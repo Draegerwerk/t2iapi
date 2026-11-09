@@ -6,11 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [8.0.0]
+
 ### Changed
 
-- Translation message in src/t2iapi/response_types.proto: 
-     - coding_system field removed and coding_system_value field added
-  
+- **Breaking:** Translation message in src/t2iapi/response_types.proto:
+  - field `coding_system` (string, field number 2) removed and reserved
+  - field `coding_system_value` (google.protobuf.StringValue, field number 4) added; no implied value is assumed
+
 ## [7.0.0] - 2026-10-26
 
 ### Added
