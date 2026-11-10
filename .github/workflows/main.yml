@@ -20,16 +20,12 @@ jobs:
 
   deploy-java:
     needs: [integration-tests, verify-tag-version]
-    permissions:
-      contents: write
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/deploy-java.yml
     secrets: inherit
 
   deploy-python:
     needs: [integration-tests, verify-tag-version]
-    permissions:
-      contents: write
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/deploy-python.yml
     secrets: inherit

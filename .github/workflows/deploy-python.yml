@@ -6,8 +6,6 @@ on:
 jobs:
   deploy-pypi-packages:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Download t2iapi wheel artifact
         uses: actions/download-artifact@v8
