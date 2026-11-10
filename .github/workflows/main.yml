@@ -15,18 +15,24 @@ jobs:
     needs: [build-java, build-python]
     uses: ./.github/workflows/integration-test.yml
 
+  verify-tag-version:
+    uses: ./.github/workflows/verify-tag-version.yml
+
   deploy-java:
-    needs: [integration-tests]
-    permissions:
-      contents: write
+    needs: [integration-tests, verify-tag-version]
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/deploy-java.yml
     secrets: inherit
 
   deploy-python:
-    needs: [integration-tests]
-    permissions:
-      contents: write
+    needs: [integration-tests, verify-tag-version]
     if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
     uses: ./.github/workflows/deploy-python.yml
     secrets: inherit
+
+  github-release:
+    needs: [deploy-java, deploy-python]
+    permissions:
+      contents: write
+    if: startsWith(github.ref, 'refs/tags/v')
+    uses: ./.github/workflows/github-release.yml

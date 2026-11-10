@@ -1,0 +1,23 @@
+name: Verify tag version
+
+on:
+  workflow_call:
+
+jobs:
+  verify-tag-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Source dependency versions
+        working-directory: config
+        run: cat versions.txt >> $GITHUB_ENV
+
+      - name: Verify tag matches BASE_PACKAGE_VERSION
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$TAG_VERSION" != "$BASE_PACKAGE_VERSION" ]; then
+            echo "::error file=config/versions.txt::git tag '${GITHUB_REF_NAME}' (version '${TAG_VERSION}') does not match BASE_PACKAGE_VERSION '${BASE_PACKAGE_VERSION}' in config/versions.txt"
+            exit 1
+          fi
