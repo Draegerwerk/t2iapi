@@ -68,10 +68,11 @@ message Translation {
 
     string translation_code = 1;  // unique identifier of the Code in the Coding System
     google.protobuf.StringValue coding_system_version = 3;  // Coding System Version is a particular version
-                                                            // of the Coding System defined by Coding System
+                                                            // of the Coding System defined by Coding System.
+                                                            // This field is optional and may be omitted.
                                                             // An empty or blank string is not allowed on the
                                                             // application level.
-    google.protobuf.StringValue coding_system_value = 4;    // optional unique identifier of a Coding System that
+    google.protobuf.StringValue coding_system_value = 4;    // Optional unique identifier of a Coding System that
                                                             // Code is originating from.
                                                             // The implied value in the IEEE Std 11073-10207-2017
                                                             // for the coding system is
