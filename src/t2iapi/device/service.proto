@@ -48,11 +48,9 @@ service DeviceService {
     rpc SendHello (google.protobuf.Empty) returns (BasicResponse);
 
     /*
-    Adjust the clock of the device as if it were set manually by a user.
-    The manipulated state shall be persistent until a next manipulation call. If the device is not able to maintain
-    the static state, it shall return RESULT_NOT_SUPPORTED.
+    Adjust the clock of the device with the provided handle as if it were set manually by a user.
      */
-    rpc SetClockDevice (google.protobuf.Empty) returns (BasicResponse);
+    rpc SetClockManually (BasicHandleRequest) returns (BasicResponse);
 
     /*
     Set the device's (displayed) language to the given language.
